@@ -1,0 +1,119 @@
+/* 1. Variables Globales: Tu "Paleta de Identidad" */
+:root {
+    --bg-color: #f4f7f6;
+    --text-color: #2d3436;
+    --primary-color: #0984e3; /* Azul profesional */
+    --accent-color: #6c5ce7;
+    --white: #ffffff;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+    
+    /* Colores por Módulo */
+    --color-win: #00a4ef;
+    --color-word: #2b579a;
+    --color-excel: #217346;
+    --color-ppt: #d24726;
+    --color-pub: #077568;
+    --color-net: #ffb900;
+}
+
+/* 2. Reset Básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* 3. Header y Footer */
+header {
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: var(--white);
+    padding: 3rem 1rem;
+    text-align: center;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    margin-top: 3rem;
+    background: #dfe6e9;
+    font-size: 0.9rem;
+}
+
+/* 4. Layout con CSS Grid */
+.container {
+    max-width: 1100px;
+    margin: -2rem auto 0; /* Sube un poco para entrar en el clip-path del header */
+    padding: 0 1rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+/* 5. Estilo de las Tarjetas (Cards) */
+.card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-top: 5px solid var(--primary-color);
+    z-index: 1;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.card h2 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: var(--text-color);
+}
+
+/* 6. Enlaces de Navegación */
+.links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.links a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--primary-color);
+    border-radius: 6px;
+    transition: var(--transition);
+    flex: 1;
+    text-align: center;
+}
+
+.links a:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+/* 7. Colores específicos para cada módulo */
+.card:nth-child(1) { border-top-color: var(--color-win); }
+.card:nth-child(2) { border-top-color: var(--color-word); }
+.card:nth-child(3) { border-top-color: var(--color-ppt); }
+.card:nth-child(4) { border-top-color: var(--color-excel); }
+.card:nth-child(5) { border-top-color: var(--color-pub); }
+.card:nth-child(6) { border-top-color: var(--color-net); }

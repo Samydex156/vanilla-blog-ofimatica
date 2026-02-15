@@ -1,0 +1,123 @@
+/* 1. Variables Globales para Artículos */
+:root {
+    --text-main: #333333;
+    --text-muted: #666666;
+    --bg-content: #ffffff;
+    --font-header: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --font-body: 'Georgia', serif; /* Una fuente con serifa mejora la lectura de textos largos */
+    --container-width: 850px;
+    --border-radius: 8px;
+    --space-unit: 1.5rem;
+}
+
+/* 2. Configuración de Página */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-header);
+    background-color: #f0f2f5;
+    color: var(--text-main);
+    line-height: 1.8;
+}
+
+/* 3. Contenedor Principal (Lectura Enfocada) */
+.content {
+    max-width: var(--container-width);
+    margin: 2rem auto;
+    background: var(--bg-content);
+    padding: 3rem;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+    border-radius: var(--border-radius);
+}
+
+/* 4. Tipografía y Encabezados */
+.lesson-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 2rem;
+}
+
+.lesson-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+}
+
+.date {
+    display: block;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    font-weight: 300;
+}
+
+/* 5. Cuerpo de la Lección */
+.lesson-body h2 {
+    margin-top: 2.5rem;
+    font-size: 1.8rem;
+    border-left: 4px solid #ddd;
+    padding-left: 1rem;
+}
+
+.lesson-body p {
+    font-family: var(--font-body);
+    font-size: 1.15rem;
+    margin-bottom: var(--space-unit);
+}
+
+/* 6. Listas y Elementos Multimedia */
+ul, ol {
+    margin-bottom: var(--space-unit);
+    padding-left: 2rem;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+    display: block;
+    margin: 2rem auto;
+}
+
+/* 7. Navegación (Migas de Pan / Breadcrumbs) */
+.breadcrumb {
+    max-width: var(--container-width);
+    margin: 1rem auto;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.breadcrumb a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s;
+}
+
+.breadcrumb a:hover {
+    color: #000;
+    text-decoration: underline;
+}
+
+/* 8. Responsividad (Móvil) */
+@media (max-width: 900px) {
+    .content {
+        margin: 0;
+        padding: 1.5rem;
+        border-radius: 0;
+    }
+    
+    .lesson-header h1 {
+        font-size: 2rem;
+    }
+}
