@@ -117,3 +117,74 @@ footer {
 .card:nth-child(4) { border-top-color: var(--color-excel); }
 .card:nth-child(5) { border-top-color: var(--color-pub); }
 .card:nth-child(6) { border-top-color: var(--color-net); }
+
+
+/* Estilos adicionales para los Índices de Módulo */
+
+.breadcrumb-nav {
+    background: #fff;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 2rem;
+}
+
+.breadcrumb-nav a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+.module-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.module-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+.module-section h2 {
+    color: var(--color-excel); /* O el color que corresponda al módulo */
+    border-bottom: 2px solid #eee;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.item-list {
+    list-style: none;
+}
+
+.item-list li {
+    margin-bottom: 1rem;
+}
+
+.item-list a {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    padding: 0.8rem;
+    border-radius: 6px;
+    background: #f9f9f9;
+    color: var(--text-color);
+    transition: var(--transition);
+    border: 1px solid transparent;
+}
+
+.item-list a:hover {
+    background: #fff;
+    border-color: var(--color-excel);
+    transform: translateX(5px);
+}
+
+.item-date {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.item-title {
+    font-weight: bold;
+}
