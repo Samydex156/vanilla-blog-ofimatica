@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 04: Cálculo de Beneficio - Prof. Samuel Durán</title>
+    <link rel="stylesheet" href="../../modules-style.css">
+    <link rel="stylesheet" href="../../main-style.css">
+    <style>
+        .formula-box {
+            font-family: 'Consolas', monospace;
+            background-color: #f0f0f0;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            display: inline-block;
+            color: #d63384;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="breadcrumb-nav">
+        <a href="../../index.html">🏠 Inicio</a> > 
+        <a href="../index-clases.html">Excel</a> > 
+        <span>Clase 04: Cálculo de Beneficio</span>
+    </nav>
+
+    <main class="content">
+        <header class="lesson-header">
+            <span class="date">7 de Febrero, 2026</span>
+            <h1>Sesión 4: Ejercicio - Cálculo de Beneficio</h1>
+            <p class="subtitle">En esta clase practicamos el cálculo del beneficio de un producto mediante operaciones básicas y fórmulas.</p>
+        </header>
+
+        <section class="lesson-body">
+            <h2>Resumen de la Clase</h2>
+            <p>En esta clase practicamos operaciones de suma, resta, división y multiplicación aplicadas a un caso práctico de cálculo de beneficio de un producto. Usamos Fórmulas y referencias relativas para automatizar cálculos.</p>
+
+            <h3>Cálculo del total de gastos de producción:</h3>
+
+            <h4>1. Sumar todos los valores de gastos de producción</h4>
+            <div class="box box-excel">
+                <p>Gastos = Materia prima + Mano de obra + Mantenimiento</p>
+                <p>Escribir en la Celda H8: <span class="formula-box">= C8 + D8 + E8</span></p>
+            </div>
+            <img src="./excel-calculo-beneficio/01-operacion-total-gastos.png" alt="Operación Calculo de gastos">
+
+            <h4>2. Multiplicar Precio por unidad por Unidades vendidas</h4>
+            <div class="box box-excel">
+                <p>Total Ventas = Precio Unidad * Unidades vendidas</p>
+                <p>Escribir en la Celda I8: <span class="formula-box">= F8 * G8</span></p>
+            </div>
+            <img src="./excel-calculo-beneficio/01-operacion-total-gastos.png" alt="Operación Calculo de gastos">
+
+            <h4>3. Restar el Total de ventas menos Gastos</h4>
+            <div class="box box-excel">
+                <p>Beneficio = Total Ventas - Gastos</p>
+                <p>Escribir en la Celda J8: <span class="formula-box">= I8 - H8</span></p>
+            </div>
+            <img src="./excel-calculo-beneficio/01-operacion-total-gastos.png" alt="Operación Calculo de gastos">
+
+            <h3>Material de Práctica</h3>
+            <div style="margin: 1.5rem 0;">
+              <a href="../../03-excel/practicas/excel-ejercicio-calculo-beneficio.xlsx" download style="display: inline-flex; align-items: center; gap: 0.5rem; background-color: var(--color-excel, #217346); color: white; padding: 0.75rem 1.25rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); transition: all 0.2s ease;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Descargar Ejercicio - Cálculo de Beneficio
+              </a>
+            </div>
+
+            <!--
+            <h3>Videos guía</h3>
+            <p>En esta sección encontrarás videos que te ayudarán a comprender mejor los temas vistos en clase.</p>
+            -->
+
+            <h3>Tarea</h3>
+            <div class="box box-practice">
+                <p>En clase resolvimos los puntos propuestos de la Hoja "NOTAS 1" del archivo "excel-ejercicio-planilla de notas.xlsx".</p>
+                <p><strong>Ahora Resuelve los puntos propuestos en la hoja "NOTAS 2" del mismo archivo.</strong></p>
+            </div>
+
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 - Instituto Nueva Tecnología | Prof. Samuel Durán | Ofimática</p>
+    </footer>
+
+</body>
+</html>

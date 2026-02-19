@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica 01: Planilla de Notas - Excel</title>
+    <link rel="stylesheet" href="../../modules-style.css">
+    <link rel="stylesheet" href="../../main-style.css">
+</head>
+<body>
+
+    <nav class="breadcrumb-nav">
+        <a href="../../index.html">🏠 Inicio</a> > 
+        <a href="../index-practicas.html">Excel (Prácticas)</a> > 
+        <span>Práctica 01</span>
+    </nav>
+
+    <main class="content">
+        <header class="lesson-header">
+            <span class="date">Práctica #01</span>
+            <h1>Formato y Fórmulas: Planilla de Notas</h1>
+            <p class="subtitle">Aplica formato de celdas, bordes y cálculos básicos</p>
+        </header>
+
+        <section class="lesson-body">
+            
+            <div class="box box-excel">
+                <span class="task-title">Objetivo de la Práctica</span>
+                <p>El estudiante deberá dar formato profesional a una planilla de notas y automatizar el cálculo de promedios utilizando fórmulas básicas de Excel.</p>
+            </div>
+
+            <h2>Instrucciones Paso a Paso</h2>
+
+            <h3>1. Descarga del Material</h3>
+            <p>
+                Descarga el archivo base para trabajar. Este archivo contiene los datos sin formato.
+            </p>
+            <div style="margin: 1rem 0;">
+                <a href="excel-ejercicio-planilla-de-notas.xlsx" download style="display: inline-flex; align-items: center; gap: 0.5rem; background-color: var(--color-excel, #217346); color: white; padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none; font-weight: bold;">
+                    📥 Descargar Planilla de Notas.xlsx
+                </a>
+            </div>
+
+            <h3>2. Formato General (Hoja "NOTAS 1")</h3>
+            <ul class="step-list">
+                <li><strong>Título Principal:</strong> Selecciona de la celda A1 a la G1 y utiliza <strong>Combinar y centrar</strong>. Aplica Negrita y aumenta el tamaño de fuente a 14 o 16.</li>
+                <li><strong>Encabezados:</strong> Selecciona la fila de encabezados (Nombre, Nota 1, Nota 2, etc.), aplica Negrita, color de relleno (bote de pintura) gris claro o azul, y centra el texto.</li>
+                <li><strong>Bordes:</strong> Selecciona toda la talba de datos y aplica <strong>Todos los bordes</strong>. Al contorno exterior aplica <strong>Borde de cuadro grueso</strong>.</li>
+                <li><strong>Ajuste:</strong> Ajusta el ancho de la columna "Nombre del Alumno" para que se vean completos los nombres (Doble clic en la separación de columnas).</li>
+            </ul>
+
+            <h3>3. Cálculos y Fórmulas</h3>
+            <p>Calcula las columnas vacías utilizando fórmulas:</p>
+            <ul class="step-list">
+                <li><strong>Promedio:</strong> Utiliza la función <code>=PROMEDIO(celdas)</code> para calcular la nota final de cada alumno basándote en sus 3 notas parciales.</li>
+                <li><strong>Suma (Opcional):</strong> Si se requiere, calcula totales al final de la tabla.</li>
+            </ul>
+
+            <h3>4. Estilo Visual Condicional (Básico)</h3>
+            <p>
+                Identifica visualmente a los estudiantes aprobados y reprobados. (Si ya vimos Formato Condicional, aplícalo; si no, cambia el color de fuente manualmente: Rojo para notas menores a 60, Azul/Negro para mayores).
+            </p>
+
+            <div class="box box-practice" style="border-left-color: #d63031;">
+                <span class="task-title" style="color: #d63031;">Entregable</span>
+                <p>Una vez finalizado el ejercicio:</p>
+                <ol>
+                    <li>Guarda el archivo como <strong>Practica01-TuNombre-Planilla.xlsx</strong>.</li>
+                    <li>Súbelo a la plataforma o envíalo por correo según las indicaciones del instructor.</li>
+                </ol>
+            </div>
+
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 - Instituto Nueva Tecnología | Prof. Samuel Durán | Ofimática</p>
+    </footer>
+
+</body>
+</html>

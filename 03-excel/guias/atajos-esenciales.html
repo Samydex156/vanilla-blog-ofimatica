@@ -3,98 +3,279 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guía: Atajos de Teclado Excel - SamyDex</title>
-    <link rel="stylesheet" href="../../../modules-style.css">
-    <link rel="stylesheet" href="/main-style.css">
+    <title>Sesión 1: Introducción a Excel - Prof. Samuel Durán</title>
+    <link rel="stylesheet" href="../../modules-style.css">
+    <link rel="stylesheet" href="../../main-style.css">
+    <style>
+        /* Estilos específicos para esta guía */
+        
+        /* Miniaturas de atajos */
+        .shortcut-thumbnail {
+            width: 120px; /* Tamaño pequeño */
+            height: auto;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: block;
+            margin: 0 auto;
+        }
+
+        .shortcut-thumbnail:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        /* Modal para visualizar imágenes */
+        .modal {
+            display: none; /* Oculto por defecto */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: rgba(0,0,0,0.85); /* Fondo oscuro semitransparente */
+            backdrop-filter: blur(5px);
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        /* Imagen dentro del modal */
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 85vh;
+            border-radius: 8px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.5);
+            animation: zoomIn 0.3s ease;
+        }
+
+        /* Animación de zoom */
+        @keyframes zoomIn {
+            from {transform: scale(0.8); opacity: 0;}
+            to {transform: scale(1); opacity: 1;}
+        }
+
+        /* Botón de cerrar */
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            z-index: 1001;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Texto descriptivo en el modal (opcional) */
+        #caption {
+            margin: auto;
+            display: block;
+            width: 80%;
+            text-align: center;
+            color: #ccc;
+            padding: 10px 0;
+            height: 150px;
+        }
+
+        /* Ajustes de tabla para la columna de imágenes */
+        .wiki-table td:last-child {
+            text-align: center;
+            width: 140px; /* Ancho fijo para la columna de imágenes */
+        }
+        
+    </style>
 </head>
 <body>
 
-    <nav class="breadcrumb no-print">
-        <a href="../../index.html">Inicio</a> > 
+    <nav class="breadcrumb-nav">
+        <a href="../../index.html">🏠 Inicio</a> > 
         <a href="../index-guias.html">Excel</a> > 
-        <span>Guía de Atajos</span>
+        <span>Sesión 1: Intro y Atajos</span>
     </nav>
 
     <main class="content is-wide">
         <header class="lesson-header">
-            <span class="date">Guía de Referencia</span>
-            <h1>Atajos de Teclado: Excel Esencial</h1>
-            <p class="subtitle">Aumenta tu productividad en el instituto Nueva Tecnología</p>
+            <span class="date">Publicado: 17 de Enero de 2026</span>
+            <h1>Sesión 1: Introducción a Excel</h1>
+            <p class="subtitle">Conceptos básicos, entorno de trabajo y atajos esenciales.</p>
         </header>
 
-        <section>
-            <h2>1. Gestión de Archivos y Libros</h2>
-            <table>
+        <section class="lesson-body">
+            <h2>Resumen de la Clase</h2>
+            <p>El pasado sábado 17 de enero de 2026 tuvimos nuestra primera sesión introductoria a Excel.</p>
+
+            <h3>Temas Cubiertos:</h3>
+            
+            <h4>0. Qué es Excel:</h4>
+            <p>Es una aplicación de hoja de cálculo que permite gestionar y calcular datos numéricos y alfanuméricos. Es la herramienta estándar para el procesamiento de datos mediante el uso de fórmulas, funciones y herramientas de análisis.</p>
+            
+            <div class="box box-excel">
+                <span class="box-title">Se usa Excel para:</span>
+                <ul>
+                    <li>Cálculo matemático.</li>
+                    <li>Organización de la información.</li>
+                    <li>Análisis de datos.</li>
+                    <li>Visualización de datos mediante gráficos.</li>
+                    <li>Reportes y consolidaciones de datos.</li>
+                </ul>
+            </div>
+
+            <h2>1. Ventana Principal de Excel</h2>
+            <p>Partes de la ventana principal de Excel:</p>
+            
+            <figure style="text-align: center;">
+                <img src="./imagenes-excel/excel-partes-ventana-principal.png" alt="Ventana Principal de Excel" 
+                     onclick="openModal(this)" style="cursor: pointer; max-width: 100%;">
+                <figcaption><em>Vista general de la interfaz de Excel (Clic sobre la imagen para enfocarla)</em></figcaption>
+            </figure>
+
+
+            <h2>2. Atajos de teclado</h2>
+            <p>Un atajo de teclado es una combinación de teclas que se presionan para realizar una acción específica.</p>
+
+            <table class="wiki-table">
                 <thead>
                     <tr>
+                        <th>Atajo</th>
                         <th>Acción</th>
-                        <th>Combinación de Teclas</th>
+                        <th>Referencia</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Crear un nuevo libro</td>
-                        <td><span class="shortcut">Ctrl</span> + <span class="shortcut">U</span></td>
+                        <td><span class="shortcut">Windows</span> + <span class="shortcut">U</span></td>
+                        <td>Abre la configuración de accesibilidad</td>
+                        <td><img src="./atajos-excel-imgs/excel_win_U_abrir_accesibilidad_pantalla.png" alt="Windows + U" class="shortcut-thumbnail" onclick="openModal(this)"></td>
                     </tr>
                     <tr>
-                        <td>Guardar el libro actual</td>
-                        <td><span class="shortcut">Ctrl</span> + <span class="shortcut">G</span></td>
+                        <td><span class="shortcut">Windows</span> + <span class="shortcut">E</span></td>
+                        <td>Abre el explorador de archivos</td>
+                        <td><img src="./atajos-excel-imgs/excel_win_e_abrir_explorador_archivos.png" alt="Windows + E" class="shortcut-thumbnail" onclick="openModal(this)"></td>
                     </tr>
                     <tr>
-                        <td>Imprimir documento</td>
+                        <td><span class="shortcut">Ctrl</span> + <span class="shortcut">Shift</span> + <span class="shortcut">N</span></td>
+                        <td>Crea una nueva carpeta</td>
+                        <td><img src="./atajos-excel-imgs/excel_ctrl_shift_n_crear_nueva_carpeta.png" alt="Ctrl + Shift + N" class="shortcut-thumbnail" onclick="openModal(this)"></td>
+                    </tr>
+                    <tr>
+                        <td><span class="shortcut">F12</span> / <span class="shortcut">Fn</span> + <span class="shortcut">F12</span></td>
+                        <td>Abre "Guardar como"</td>
+                        <td><img src="./atajos-excel-imgs/excel_f12_guardar_como.png" alt="F12" class="shortcut-thumbnail" onclick="openModal(this)"></td>
+                    </tr>
+                    <tr>
+                        <td><span class="shortcut">Ctrl</span> + <span class="shortcut">Fin</span></td>
+                        <td>Ir al final de un bloque de datos</td>
+                        <td><img src="./atajos-excel-imgs/excel_ctrl_fin_ir_final_documento.png" alt="Ctrl + Fin" class="shortcut-thumbnail" onclick="openModal(this)"></td>
+                    </tr>
+                    <tr>
+                        <td><span class="shortcut">Ctrl</span> + <span class="shortcut">Inicio</span></td>
+                        <td>Ir al inicio de un bloque de datos</td>
+                        <td><img src="./atajos-excel-imgs/excel_ctrl_inicio_ir_principio_documento.png" alt="Ctrl + Inicio" class="shortcut-thumbnail" onclick="openModal(this)"></td>
+                    </tr>
+                    <tr>
+                        <td><span class="shortcut">Ctrl</span> + <span class="shortcut">Flecha Der</span></td>
+                        <td>Ir a la última columna</td>
+                        <td><img src="./atajos-excel-imgs/excel_ctrl_flecha_derecha_ir_final_columna.png" alt="Ctrl + Flecha Derecha" class="shortcut-thumbnail" onclick="openModal(this)"></td>
+                    </tr>
+                    <tr>
+                        <td><span class="shortcut">Ctrl</span> + <span class="shortcut">Flecha Izq</span></td>
+                        <td>Ir a la primera columna</td>
+                        <td><img src="./atajos-excel-imgs/excel_ctrl_flecha_izquierda_primera_columna_hoja.png" alt="Ctrl + Flecha Izquierda" class="shortcut-thumbnail" onclick="openModal(this)"></td>
+                    </tr>
+                    <tr>
+                        <td><span class="shortcut">Ctrl</span> + <span class="shortcut">Flecha Arr</span></td>
+                        <td>Ir a la primera fila</td>
+                        <td><img src="./atajos-excel-imgs/excel_ctrl_flecha_arriba_ir_inicio_hoja.png" alt="Ctrl + Flecha Arriba" class="shortcut-thumbnail" onclick="openModal(this)"></td>
+                    </tr>
+                    <tr>
+                        <td><span class="shortcut">Ctrl</span> + <span class="shortcut">Flecha Abj</span></td>
+                        <td>Ir a la última fila</td>
+                        <td><img src="./atajos-excel-imgs/excel_ctrl_flecha_abajo_ir_final_hoja.png" alt="Ctrl + Flecha Abajo" class="shortcut-thumbnail" onclick="openModal(this)"></td>
+                    </tr>
+                    <tr>
                         <td><span class="shortcut">Ctrl</span> + <span class="shortcut">P</span></td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <section>
-            <h2>2. Edición y Formato</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Acción</th>
-                        <th>Combinación de Teclas</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Copiar selección</td>
-                        <td><span class="shortcut">Ctrl</span> + <span class="shortcut">C</span></td>
+                        <td>Vista preliminar de Impresión</td>
+                        <td><img src="./atajos-excel-imgs/excel_ctrl_p_ir_vista_preliminar_impresion.png" alt="Ctrl + P" class="shortcut-thumbnail" onclick="openModal(this)"></td>
                     </tr>
                     <tr>
-                        <td>Pegar selección</td>
-                        <td><span class="shortcut">Ctrl</span> + <span class="shortcut">V</span></td>
-                    </tr>
-                    <tr>
-                        <td>Deshacer última acción</td>
                         <td><span class="shortcut">Ctrl</span> + <span class="shortcut">Z</span></td>
+                        <td>Deshacer</td>
+                        <td><img src="./atajos-excel-imgs/excel_ctrl_z_deshacer_estado_anterior.png" alt="Ctrl + Z" class="shortcut-thumbnail" onclick="openModal(this)"></td>
                     </tr>
                     <tr>
-                        <td>Aplicar Negrita</td>
-                        <td><span class="shortcut">Ctrl</span> + <span class="shortcut">N</span></td>
+                        <td><span class="shortcut">Ctrl</span> + <span class="shortcut">U</span></td>
+                        <td>Crear un nuevo libro de Excel</td>
+                        <td><img src="./atajos-excel-imgs/excel_ctrl_u_nuevo_libro_excel.png" alt="Ctrl + U" class="shortcut-thumbnail" onclick="openModal(this)"></td>
+                    </tr>
+                    <tr>
+                        <td><span class="shortcut">Alt</span> + <span class="shortcut">F4</span></td>
+                        <td>Cerrar ventana actual</td>
+                        <td><img src="./atajos-excel-imgs/excel_alt_f4_cerrar_ventana.png" alt="Alt + F4" class="shortcut-thumbnail" onclick="openModal(this)"></td>
                     </tr>
                 </tbody>
             </table>
-        </section>
 
-        <div class="tip">
-            <strong>Tip Pro:</strong> Usa <span class="shortcut">F2</span> para entrar directamente a editar el contenido de una celda sin tener que usar el mouse.
-        </div>
+            <h3>Tarea</h3>
+            <p>Se subirá en el transcurso de la semana (Pendiente)...</p>
 
-        <section>
-            <h2>3. Navegación Rápida</h2>
-            <p>Moverse por grandes tablas de datos en la UMSA o en el trabajo es más fácil así:</p>
-            <ul>
-                <li>Ir al final de un rango de datos: <span class="shortcut">Ctrl</span> + <span class="shortcut">Flechas</span></li>
-                <li>Seleccionar hasta el final de los datos: <span class="shortcut">Ctrl</span> + <span class="shortcut">Shift</span> + <span class="shortcut">Flechas</span></li>
-            </ul>
         </section>
     </main>
 
-    <footer class="no-print">
-        <p>Material de consulta para estudiantes - SamyDex 2026</p>
+    <!-- Estructura del Modal -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="img01">
+        <div id="caption"></div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 - Instituto Nueva Tecnología | Prof. Samuel Durán | Ofimática</p>
     </footer>
+
+    <script>
+        // Funcionalidad del Modal
+        function openModal(element) {
+            var modal = document.getElementById("imageModal");
+            var modalImg = document.getElementById("img01");
+            var captionText = document.getElementById("caption");
+            
+            modal.style.display = "flex";
+            modalImg.src = element.src;
+            captionText.innerHTML = element.alt;
+            
+            // Prevenir scroll en el body
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeModal() {
+            var modal = document.getElementById("imageModal");
+            modal.style.display = "none";
+            
+            // Restaurar scroll en el body
+            document.body.style.overflow = "auto";
+        }
+        
+        // Cerrar modal con tecla ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                closeModal();
+            }
+        });
+    </script>
 
 </body>
 </html>
