@@ -57,9 +57,11 @@ footer {
 
 /* 4. Layout con CSS Grid */
 .container {
-    max-width: 1100px;
-    margin: 2rem auto 2rem;
-    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 1rem auto;
+    padding: 3rem;
     flex: 1;
     width: 100%;
 }
