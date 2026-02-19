@@ -2,12 +2,13 @@
 :root {
     --bg-color: #f4f7f6;
     --text-color: #2d3436;
-    --primary-color: #0984e3; /* Azul profesional */
+    --primary-color: #0984e3;
+    /* Azul profesional */
     --accent-color: #6c5ce7;
     --white: #ffffff;
     --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     --transition: all 0.3s ease;
-    
+
     /* Colores por Módulo */
     --color-win: #00a4ef;
     --color-word: #2b579a;
@@ -32,26 +33,34 @@ body {
 }
 
 /* 3. Header y Footer */
+/* 3. Header y Footer */
 header {
-    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    background: #2c3e50;
+    /* Base oscura formal */
+    background: linear-gradient(to right, #0f2027, #203a43, #2c3e50);
+    /* Gradiente sobrio y académico */
     color: var(--white);
-    padding: 3rem 1rem;
+    padding: 4rem 1rem;
     text-align: center;
-    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Se eliminó el clip-path para un aspecto más rectangular y formal */
 }
 
 footer {
     text-align: center;
     padding: 2rem;
-    margin-top: 3rem;
-    background: #dfe6e9;
+    margin-top: 4rem;
+    background: #2d3436;
+    color: #dfe6e9;
     font-size: 0.9rem;
+    border-top: 5px solid var(--primary-color);
 }
 
 /* 4. Layout con CSS Grid */
 .container {
     max-width: 1100px;
-    margin: -2rem auto 0; /* Sube un poco para entrar en el clip-path del header */
+    margin: 3rem auto 0;
+    /* Margen positivo estándar */
     padding: 0 1rem;
 }
 
@@ -77,7 +86,7 @@ footer {
 
 .card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
 .card h2 {
@@ -111,12 +120,29 @@ footer {
 }
 
 /* 7. Colores específicos para cada módulo */
-.card:nth-child(1) { border-top-color: var(--color-win); }
-.card:nth-child(2) { border-top-color: var(--color-word); }
-.card:nth-child(3) { border-top-color: var(--color-ppt); }
-.card:nth-child(4) { border-top-color: var(--color-excel); }
-.card:nth-child(5) { border-top-color: var(--color-pub); }
-.card:nth-child(6) { border-top-color: var(--color-net); }
+.card:nth-child(1) {
+    border-top-color: var(--color-win);
+}
+
+.card:nth-child(2) {
+    border-top-color: var(--color-word);
+}
+
+.card:nth-child(3) {
+    border-top-color: var(--color-ppt);
+}
+
+.card:nth-child(4) {
+    border-top-color: var(--color-excel);
+}
+
+.card:nth-child(5) {
+    border-top-color: var(--color-pub);
+}
+
+.card:nth-child(6) {
+    border-top-color: var(--color-net);
+}
 
 
 /* Estilos adicionales para los Índices de Módulo */
@@ -148,7 +174,8 @@ footer {
 }
 
 .module-section h2 {
-    color: var(--color-excel); /* O el color que corresponda al módulo */
+    color: var(--color-excel);
+    /* O el color que corresponda al módulo */
     border-bottom: 2px solid #eee;
     padding-bottom: 0.5rem;
     margin-bottom: 1.5rem;
