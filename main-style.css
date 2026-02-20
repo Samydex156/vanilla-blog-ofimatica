@@ -168,6 +168,7 @@ footer {
     margin-top: 1rem;
 }
 
+/* Estilos para los modulos */
 .module-section {
     background: white;
     padding: 2rem;
@@ -176,12 +177,17 @@ footer {
 }
 .module-section h2 {
     color: var(--color-excel);
-    /* O el color que corresponda al módulo */
     border-bottom: 2px solid #eee;
     padding-bottom: 0.5rem;
     margin-bottom: 1.5rem;
 }
 .module-section-pub {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+.module-section-xls {
     background: white;
     padding: 2rem;
     border-radius: 12px;
@@ -195,6 +201,13 @@ footer {
     padding-bottom: 0.5rem;
     margin-bottom: 1.5rem;
 }
+.module-section-xls h2 {
+    color: var(--color-excel);
+    border-bottom: 2px solid #eee;
+    border-bottom-color: var(--color-excel);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
 
 .item-list {
     list-style: none;
@@ -202,11 +215,17 @@ footer {
 .item-list-pub {
     list-style: none;
 }
+.item-list-xls {
+    list-style: none;
+}
 
 .item-list li {
     margin-bottom: 1rem;
 }
 .item-list-pub li {
+    margin-bottom: 1rem;
+}
+.item-list-xls li {
     margin-bottom: 1rem;
 }
 
@@ -231,7 +250,17 @@ footer {
     color: var(--text-color);
     transition: var(--transition);
     box-shadow: 1px 1px 2px var(--color-pub);
-    
+}
+.item-list-xls a {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    padding: 0.8rem;
+    border-radius: 6px;
+    background: #f9f9f9;
+    color: var(--text-color);
+    transition: var(--transition);
+    box-shadow: 1px 1px 2px var(--color-excel);
 }
 
 .item-list a:hover {
@@ -245,7 +274,14 @@ footer {
     transform: translateX(10px);
     border-left: 5px solid var(--color-pub);
 }
+.item-list-xls a:hover {
+    background: #fff;
+    border-color: var(--color-excel);
+    transform: translateX(10px);
+    border-left: 5px solid var(--color-excel);
+}
 
+/* Estilos complementarios */
 .item-date {
     font-size: 0.8rem;
     color: var(--text-muted);
