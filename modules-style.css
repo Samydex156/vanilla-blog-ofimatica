@@ -208,6 +208,11 @@ body {
     background-color: #e8f5e9;
 }
 
+.box-word {
+    border-left-color: #2b579a;
+    background-color: #eef2f7;
+}
+
 .box-title {
     display: block;
     font-weight: bold;
