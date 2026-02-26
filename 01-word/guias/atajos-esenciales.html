@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atajos Word - Prof. Samuel Durán</title>
+    <link rel="stylesheet" href="../../modules-style.css">
+    <link rel="stylesheet" href="../../main-style.css">
+    <style>
+        /* Estilos específicos para esta guía */
+        /* Miniaturas de atajos */
+        .shortcut-thumbnail {
+            width: 120px; /* Tamaño pequeño */
+            height: auto;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: block;
+            margin: 0 auto;
+        }
+
+        .shortcut-thumbnail:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        /* Modal para visualizar imágenes */
+        .modal {
+            display: none; /* Oculto por defecto */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: rgba(0,0,0,0.85); /* Fondo oscuro semitransparente */
+            backdrop-filter: blur(5px);
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        /* Imagen dentro del modal */
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 85vh;
+            border-radius: 8px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.5);
+            animation: zoomIn 0.3s ease;
+        }
+
+        /* Animación de zoom */
+        @keyframes zoomIn {
+            from {transform: scale(0.8); opacity: 0;}
+            to {transform: scale(1); opacity: 1;}
+        }
+
+        /* Botón de cerrar */
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            z-index: 1001;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Texto descriptivo en el modal (opcional) */
+        #caption {
+            margin: auto;
+            display: block;
+            width: 80%;
+            text-align: center;
+            color: #ccc;
+            padding: 10px 0;
+            height: 150px;
+        }
+
+        /* Ajustes de tabla para la columna de imágenes */
+        .wiki-table td:last-child {
+            text-align: center;
+            width: 140px; /* Ancho fijo para la columna de imágenes */
+        }
+        
+    </style>
+</head>
+<body>
+
+    <nav class="breadcrumb-nav">
+        <a href="../../index.html">🏠 Inicio</a> > 
+        <a href="../index-guias.html">Guías Word</a> > 
+        <span>Atajos de teclado Word</span>
+    </nav>
+
+    <main class="content is-wide">
+        <header class="lesson-header">
+            <span class="date">Publicado: 26 de febrero de 2026</span>
+            <h1>Guía Atajos de Teclado</h1>
+            <p class="subtitle">Para Microsoft Word.</p>
+        </header>
+
+        <section class="lesson-body">
+            <h2>Atajos de teclado</h2>
+            <p>Un atajo de teclado es una combinación de teclas que se presionan para realizar una acción específica.</p>
+
+            <table class="wiki-table">
+                <thead>
+                    <tr>
+                        <th>Atajo</th>
+                        <th>Acción</th>
+                        <th>Referencia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="shortcut">Ctrl</span> + <span class="shortcut">G</span></td>
+                        <td>Guardar los cambios realizados de un documento Word.</td>
+                        <td><img src="./atajos-word-imgs/#" alt="Ctrl + G" class="shortcut-thumbnail" onclick="openModal(this)"></td>
+                    </tr>
+                    <tr>
+                        <td><span class="shortcut">F12</span></td>
+                        <td>Abre la ventana de "Guardar como" para guardar una copia del documento.</td>
+                        <td><img src="./atajos-word-imgs/#" alt="F12" class="shortcut-thumbnail" onclick="openModal(this)"></td>
+                    </tr>
+                    <tr>
+                        <td><span class="shortcut">Ctrl</span> + <span class="shortcut">U</span></td>
+                        <td>Crea un nuevo documento de Word</td>
+                        <td><img src="./atajos-word-imgs/#" alt="Ctrl + U" class="shortcut-thumbnail" onclick="openModal(this)"></td>
+                    </tr>
+                    <tr>
+                        <td><span class="shortcut">Ctrl</span> + <span class="shortcut">N</span></td>
+                        <td>Aplica estilo de texto Negrita al texto seleccionado.</td>
+                        <td><img src="./atajos-word-imgs/#" alt="Ctrl + N" class="shortcut-thumbnail" onclick="openModal(this)"></td>
+                    </tr>
+                    <tr>
+                        <td><span class="shortcut">Ctrl</span> + <span class="shortcut">S</span></td>
+                        <td>Aplica estilo de texto Subrayado al texto seleccionado.</td>
+                        <td><img src="./atajos-word-imgs/#" alt="Ctrl + S" class="shortcut-thumbnail" onclick="openModal(this)"></td>
+                    </tr>
+                    <tr>
+                        <td><span class="shortcut">Ctrl</span> + <span class="shortcut">K</span></td>
+                        <td>Aplica estilo de texto Cursiva al texto seleccionado.</td>
+                        <td><img src="./atajos-word-imgs/#" alt="Ctrl + K" class="shortcut-thumbnail" onclick="openModal(this)"></td>
+                    </tr>
+                    <tr>
+                        <td><span class="shortcut">Ctrl</span> + <span class="shortcut">C</span></td>
+                        <td>Copia el texto seleccionado.</td>
+                        <td><img src="./atajos-word-imgs/#" alt="Ctrl + C" class="shortcut-thumbnail" onclick="openModal(this)"></td>
+                    </tr>
+                    <tr>
+                        <td><span class="shortcut">Ctrl</span> + <span class="shortcut">V</span></td>
+                        <td>Pega el texto seleccionado en la posición del cursor.</td>
+                        <td><img src="./atajos-word-imgs/#" alt="Ctrl + V" class="shortcut-thumbnail" onclick="openModal(this)"></td>
+                    </tr>
+                    <tr>
+                        <td><span class="shortcut">Shift</span> + <span class="shortcut">F3</span></td>
+                        <td>Cambia a Mayúsculas / Minúsculas / Tipo oración al texto seleccionado.</td>
+                        <td><img src="./atajos-word-imgs/#" alt="Shift + F3" class="shortcut-thumbnail" onclick="openModal(this)"></td>
+                    </tr>
+                    <tr>
+                        <td><span class="shortcut">Ctrl</span> + <span class="shortcut">E</span></td>
+                        <td>Selecciona todo el contenido del documento.</td>
+                        <td><img src="./atajos-word-imgs/#" alt="Ctrl + E" class="shortcut-thumbnail" onclick="openModal(this)"></td>
+                    </tr>
+                    <tr>
+                        <td><span class="shortcut">Shift</span> + <span class="shortcut">Inicio</span></td>
+                        <td>Selecciona toda la línea de texto hacia la izquierda desde la posición del cursor.</td>
+                        <td><img src="./atajos-word-imgs/#" alt="Shift + Inicio" class="shortcut-thumbnail" onclick="openModal(this)"></td>
+                    </tr>
+                    <tr>
+                        <td><span class="shortcut">Shift</span> + <span class="shortcut">Fin</span></td>
+                        <td>Selecciona toda la línea de texto hacia la derecha desde la posición del cursor.</td>
+                        <td><img src="./atajos-word-imgs/#" alt="Shift + Fin" class="shortcut-thumbnail" onclick="openModal(this)"></td>
+                    </tr>
+                    <tr>
+                        <td><span class="shortcut">Ctrl</span> + <span class="shortcut">Scroll</span></td>
+                        <td>Efecto de Zoom (Acerca o alejar la hoja del documento) </td>
+                        <td><img src="./atajos-word-imgs/#" alt="Ctrl + Scroll" class="shortcut-thumbnail" onclick="openModal(this)"></td>
+                    </tr>
+<!-- añadir desde aquí más atajos -->
+                </tbody>
+            </table>
+
+        </section>
+    </main>
+
+    <!-- Estructura del Modal -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="img01">
+        <div id="caption"></div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 - Instituto Nueva Tecnología | Prof. Samuel Durán | Ofimática</p>
+    </footer>
+
+    <script>
+        // Funcionalidad del Modal
+        function openModal(element) {
+            var modal = document.getElementById("imageModal");
+            var modalImg = document.getElementById("img01");
+            var captionText = document.getElementById("caption");
+            
+            modal.style.display = "flex";
+            modalImg.src = element.src;
+            captionText.innerHTML = element.alt;
+            
+            // Prevenir scroll en el body
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeModal() {
+            var modal = document.getElementById("imageModal");
+            modal.style.display = "none";
+            
+            // Restaurar scroll en el body
+            document.body.style.overflow = "auto";
+        }
+        
+        // Cerrar modal con tecla ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                closeModal();
+            }
+        });
+    </script>
+
+</body>
+</html>
