@@ -83,16 +83,31 @@ footer {
     flex-direction: column;
     justify-content: space-between;
     border-top: 5px solid var(--primary-color);
+    position: relative;
     z-index: 1;
 }
 
 .card:hover {
-    transform: translateY(-10px);
-    rotate: 1.5deg;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
+.card-icon {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 2;
+}
+
+.card:hover .card-icon {
+    transform: scale(1.3) rotate(15deg);
+}
+
 .card h2 {
+    margin-top: 1.5rem;
     margin-bottom: 1rem;
     font-size: 1.5rem;
     color: var(--text-color);
@@ -175,18 +190,21 @@ footer {
     border-radius: 12px;
     box-shadow: var(--shadow);
 }
+
 .module-section h2 {
     color: var(--color-excel);
     border-bottom: 2px solid #eee;
     padding-bottom: 0.5rem;
     margin-bottom: 1.5rem;
 }
+
 .module-section-pub {
     background: white;
     padding: 2rem;
     border-radius: 12px;
     box-shadow: var(--shadow);
 }
+
 .module-section-xls {
     background: white;
     padding: 2rem;
@@ -201,6 +219,7 @@ footer {
     padding-bottom: 0.5rem;
     margin-bottom: 1.5rem;
 }
+
 .module-section-xls h2 {
     color: var(--color-excel);
     border-bottom: 2px solid #eee;
@@ -227,9 +246,11 @@ footer {
 .item-list {
     list-style: none;
 }
+
 .item-list-pub {
     list-style: none;
 }
+
 .item-list-xls {
     list-style: none;
 }
@@ -241,12 +262,15 @@ footer {
 .item-list li {
     margin-bottom: 1rem;
 }
+
 .item-list-pub li {
     margin-bottom: 1rem;
 }
+
 .item-list-xls li {
     margin-bottom: 1rem;
 }
+
 .item-list-doc li {
     margin-bottom: 1rem;
 }
@@ -262,6 +286,7 @@ footer {
     transition: var(--transition);
     border: 1px solid transparent;
 }
+
 .item-list-pub a {
     text-decoration: none;
     display: flex;
@@ -273,6 +298,7 @@ footer {
     transition: var(--transition);
     box-shadow: 1px 1px 2px var(--color-pub);
 }
+
 .item-list-xls a {
     text-decoration: none;
     display: flex;
@@ -302,12 +328,14 @@ footer {
     border-color: var(--color-excel);
     transform: translateX(5px);
 }
+
 .item-list-pub a:hover {
     background: #fff;
     border-color: var(--color-pub);
     transform: translateX(10px);
     border-left: 5px solid var(--color-pub);
 }
+
 .item-list-xls a:hover {
     background: #fff;
     border-color: var(--color-excel);
@@ -331,6 +359,7 @@ footer {
 .item-title {
     font-weight: bold;
 }
+
 .badge {
     display: inline-block;
     background: #cecece;
@@ -341,6 +370,7 @@ footer {
     color: #555;
     font-weight: bold;
 }
+
 h2 {
     font-family: 'Courier New', Courier, monospace;
     font-size: 1rem;
