@@ -388,3 +388,20 @@ h2 {
     color: #2b579a;
     font-weight: bold;
 }
+
+/* 8. Estilos para Imágenes de Guías */
+.guide-img-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin: 20px 0;
+    padding: 0;
+}
+
+.guide-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
