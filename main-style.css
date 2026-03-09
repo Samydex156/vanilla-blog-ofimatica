@@ -42,6 +42,7 @@ header {
     padding: .5rem 1rem;
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
 }
 
 footer {
@@ -61,7 +62,7 @@ footer {
     flex-direction: column;
     justify-content: space-between;
     margin: 1rem auto;
-    padding: 3rem;
+    padding: 1.5rem;
     flex: 1;
     width: 100%;
 }
@@ -117,7 +118,6 @@ footer {
 .links {
     display: flex;
     gap: .5rem;
-    margin-top: 1rem;
 }
 
 .links a {
@@ -161,7 +161,8 @@ footer {
 .card:nth-child(6) {
     border-top-color: var(--color-net);
 }
-
+/* ----------------------------------------------------------------
+-------------------------------------------------------------------- */
 
 /* Estilos adicionales para los Índices de Módulo */
 .breadcrumb-nav {
@@ -505,6 +506,7 @@ h2 {
     width: 140px;
     /* Ancho fijo para la columna de imágenes */
 }
+
 /* Estilos para el cuadro de búsqueda */
 .buscador-index {
     width: 100%;
