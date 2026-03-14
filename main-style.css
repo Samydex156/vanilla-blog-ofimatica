@@ -245,6 +245,21 @@ footer {
     margin-bottom: 1.5rem;
 }
 
+.module-section-ppt {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+.module-section-ppt h2 {
+    color: var(--color-ppt);
+    border-bottom: 2px solid #eee;
+    border-bottom-color: var(--color-ppt);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
 .item-list {
     list-style: none;
 }
@@ -261,6 +276,10 @@ footer {
     list-style: none;
 }
 
+.item-list-ppt {
+    list-style: none;
+}
+
 .item-list li {
     margin-bottom: 1rem;
 }
@@ -274,6 +293,10 @@ footer {
 }
 
 .item-list-doc li {
+    margin-bottom: 1rem;
+}
+
+.item-list-ppt li {
     margin-bottom: 1rem;
 }
 
@@ -350,6 +373,25 @@ footer {
     border-color: var(--color-word);
     transform: translateX(10px);
     border-left: 5px solid var(--color-word);
+}
+
+.item-list-ppt a {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    padding: 0.8rem;
+    border-radius: 6px;
+    background: #f9f9f9;
+    color: var(--text-color);
+    transition: var(--transition);
+    box-shadow: 1px 1px 2px var(--color-ppt);
+}
+
+.item-list-ppt a:hover {
+    background: #fff;
+    border-color: var(--color-ppt);
+    transform: translateX(10px);
+    border-left: 5px solid var(--color-ppt);
 }
 
 /* Estilos complementarios */

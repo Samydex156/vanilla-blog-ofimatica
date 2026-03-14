@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guía de ZoomIt - Prof. Samuel Durán</title>
+    <link rel="stylesheet" href="../../modules-style.css" />
+    <link rel="stylesheet" href="../../main-style.css" />
+    <style>
+      .box-ppt {
+        border-left-color: #d24726;
+        background-color: #fcedeb;
+      }
+      .shortcut-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1.5rem 0;
+      }
+      .shortcut-table th, .shortcut-table td {
+        border: 1px solid #ddd;
+        padding: 0.8rem;
+        text-align: left;
+      }
+      .shortcut-table th {
+        background-color: #f4f4f4;
+        color: #333;
+      }
+      kbd {
+        background-color: #eee;
+        border-radius: 3px;
+        border: 1px solid #b4b4b4;
+        box-shadow: 0 1px 1px rgba(0,0,0,.2), 0 2px 0 0 rgba(255,255,255,.7) inset;
+        color: #333;
+        display: inline-block;
+        font-size: .85em;
+        font-weight: 700;
+        line-height: 1;
+        padding: 2px 4px;
+        white-space: nowrap;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="breadcrumb-nav">
+      <a href="../../index.html">🏠 Inicio</a> >
+      <a href="../index-guias.html">Guías PowerPoint</a> >
+      <span>Herramientas Adicionales: ZoomIt</span>
+    </nav>
+
+    <main class="content">
+      <header class="lesson-header">
+        <span class="date">Herramientas para Expositores</span>
+        <h1>
+          CÓMO USAR ZOOMIT PARA TUS PRESENTACIONES
+        </h1>
+        <p class="subtitle">
+          Aprende a hacer zoom, dibujar en la pantalla y poner temporizadores en vivo durante tu exposición.
+        </p>
+      </header>
+
+      <section class="lesson-body">
+        <p>
+          <strong>ZoomIt</strong> (de Sysinternals/Microsoft) es una pequeña utilidad gratuita indispensable para cualquier persona que da presentaciones, clases o tutoriales técnicos. Se ejecuta en segundo plano y te permite interactuar con tu pantalla (incluso fuera de PowerPoint) con simples atajos de teclado.
+        </p>
+
+        <figure class="guide-img-container" style="text-align: center;">
+          <img src="ppt-guias-imgs/zoomit-interfaz.png" alt="Interfaz de Configuración de ZoomIt" class="guide-img" style="max-width: 400px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" onerror="this.style.display='none'">
+          <figcaption style="font-size: 0.85em; color: #666; margin-top: 0.5rem;">Panel principal de configuración de ZoomIt.</figcaption>
+        </figure>
+
+        <h2>Cómo Descargar e Instalar</h2>
+        <p>ZoomIt no requiere una instalación compleja, es un programa "portable". Sigue estos pasos:</p>
+        <ol>
+          <li>Ve a la página oficial de Microsoft para descargar la herramienta: <a href="https://learn.microsoft.com/es-es/sysinternals/downloads/zoomit" target="_blank" rel="noopener noreferrer"><strong>Descargar ZoomIt (Sysinternals)</strong></a>.</li>
+          <li>Haz clic en el enlace de descarga (generalmente dice "Download ZoomIt").</li>
+          <li>Se descargará un archivo comprimido <code>.zip</code>. Haz clic derecho sobre él y selecciona "Extraer todo...".</li>
+          <li>Abre la carpeta extraída y haz doble clic en el archivo <code>ZoomIt.exe</code>.</li>
+          <li>Aparecerá la ventana de configuración. Te aconsejamos marcar la casilla <em>"Run ZoomIt when Windows starts"</em> abajo a la izquierda para que siempre esté listo para usarse. Luego dale a OK.</li>
+        </ol>
+
+        <h2>1. Función de Zoom Básico y Livezoom</h2>
+        <p>A veces los asistentes en la parte de atrás no alcanzan a ver un botón o número pequeño. ZoomIt tiene dos modos de acercamiento:</p>
+        <ul>
+          <li><strong>Zoom Convencional (<kbd>Ctrl</kbd> + <kbd>1</kbd>):</strong> Congela la pantalla y hace un acercamiento. Puedes moverte con el ratón o usar la rueda para acercar más. Para salir, presiona <kbd>Esc</kbd> o clic derecho.</li>
+          <li><strong>LiveZoom (<kbd>Ctrl</kbd> + <kbd>2</kbd>):</strong> Hace un acercamiento pero <em>sin congelar</em> la pantalla. ¡Puedes seguir haciendo clics, escribiendo y usando programas mientras estás en zoom!</li>
+        </ul>
+
+        <h2>2. Modo Dibujo y Formas</h2>
+        <p>Puedes empezar a dibujar sobre cualquier pantalla en cualquier momento presionando <kbd>Ctrl</kbd> + <kbd>3</kbd>. O si ya estás en el "Zoom Convencional", simplemente haz clic izquierdo para empezar a dibujar.</p>
+
+        <div class="box box-ppt">
+          <span class="box-title">Formas Geométricas (Mantén presionada la tecla dibujando)</span>
+          <ul>
+            <li><kbd>Shift</kbd> + Arrastrar: Línea recta.</li>
+            <li><kbd>Ctrl</kbd> + Arrastrar: Rectángulo.</li>
+            <li><kbd>Tab</kbd> + Arrastrar: Círculo / Elipse.</li>
+            <li><kbd>Shift</kbd> + <kbd>Ctrl</kbd> + Arrastrar: Flecha (ideal para señalar).</li>
+          </ul>
+        </div>
+
+        <h3>Ajustar el Grosor del Lápiz</h3>
+        <p>
+          Mientras estás en modo dibujo, puedes cambiar el grosor de la línea de dos maneras:
+        </p>
+        <ol>
+          <li>Mantén presionado <kbd>Ctrl</kbd> y usa la <strong>Rueda del ratón</strong> hacia arriba o hacia abajo.</li>
+          <li>Mantén presionado <kbd>Ctrl</kbd> y pulsa las teclas de <strong>Flecha Arriba</strong> o <strong>Flecha Abajo</strong>.</li>
+        </ol>
+
+        <h2>3. Cambiar Colores del Marcador</h2>
+        <p>Mientras estás dibujando, simplemente presiona una tecla para cambiar el color de la tinta al instante (se basan en las iniciales de los colores en inglés):</p>
+        <table class="shortcut-table">
+          <thead>
+            <tr>
+              <th>Tecla</th>
+              <th>Color</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><kbd>R</kbd></td><td><span style="color: red; font-weight: bold;">Rojo (Red)</span></td></tr>
+            <tr><td><kbd>G</kbd></td><td><span style="color: green; font-weight: bold;">Verde (Green)</span></td></tr>
+            <tr><td><kbd>B</kbd></td><td><span style="color: blue; font-weight: bold;">Azul (Blue)</span></td></tr>
+            <tr><td><kbd>Y</kbd></td><td><span style="color: #d4ac0d; font-weight: bold;">Amarillo (Yellow)</span></td></tr>
+            <tr><td><kbd>O</kbd></td><td><span style="color: orange; font-weight: bold;">Naranja (Orange)</span></td></tr>
+            <tr><td><kbd>P</kbd></td><td><span style="color: purple; font-weight: bold;">Rosa / Púrpura (Pink/Purple)</span></td></tr>
+          </tbody>
+        </table>
+
+        <h2>4. Escribir Texto en Pantalla</h2>
+        <p>
+          Si dibujar letras con el ratón es muy difícil, puedes escribir con el teclado:
+        </p>
+        <ol>
+          <li>Entra al modo dibujo (<kbd>Ctrl</kbd> + <kbd>3</kbd>).</li>
+          <li>Presiona la tecla <kbd>T</kbd>.</li>
+          <li>Haz clic donde quieras escribir y tipea tu texto. (Puedes cambiar el color antes presionando las teclas de colores, o usar la rueda del ratón para agrandar/achicar la fuente).</li>
+          <li>Haz clic en otro lado para salir del modo texto, o <kbd>Esc</kbd> para borrar todo.</li>
+        </ol>
+
+        <h2>5. Copiar o Guardar la Pantalla</h2>
+        <p>
+          Si has hecho anotaciones importantes, zoom o dibujos en la pantalla y quieres guardarlos para compartirlos con tus alumnos:
+        </p>
+        <ul class="step-list">
+          <li><strong>Copiar (<kbd>Ctrl</kbd> + <kbd>C</kbd>):</strong> Estando en el modo de Zoom o de Dibujo, presiona esta combinación para copiar todo lo que ves al portapapeles. Luego puedes pegarlo (<kbd>Ctrl</kbd> + <kbd>V</kbd>) en Word, PowerPoint o WhatsApp.</li>
+          <li><strong>Guardar (<kbd>Ctrl</kbd> + <kbd>S</kbd>):</strong> Te abrirá una ventana para guardar la captura de pantalla dibujada directamente como una imagen en tu computadora.</li>
+        </ul>
+
+        <h2>6. Temporizador de Descanso (Break Timer)</h2>
+        <p>
+          ¿Vas a dar un receso de 10 minutos a tus estudiantes o público? No mires el reloj de pared. 
+          Presiona <kbd>Ctrl</kbd> + <kbd>4</kbd>.
+        </p>
+        <p>
+          La pantalla se oscurecerá o mostrará un fondo blanco y aparecerá un reloj de cuenta regresiva gigante. 
+          Puedes aumentar o disminuir los minutos usando la rueda del ratón o las flechas Arriba/Abajo. ¡Muy profesional!
+        </p>
+
+        <div class="box box-ppt" style="border-left-color: #27ae60; background-color: #e8f5e9;">
+          <span class="box-title" style="color: #27ae60;">Pizarras Rápidas</span>
+          <p style="margin: 0;">
+            Si estás en modo dibujo (<kbd>Ctrl</kbd> + <kbd>3</kbd>), pero la pantalla actual tiene mucho ruido visual, 
+            presiona <kbd>W</kbd> para volver toda la pantalla blanca (Whiteboard), o <kbd>K</kbd> para volverla completamente negra (Blackboard). 
+            Ideal para explicar un concepto desde cero con tus marcadores de colores.
+          </p>
+        </div>
+
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        &copy; 2026 - Instituto Nueva Tecnología | Prof. Samuel Durán | Ofimática
+      </p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+cómo imprimir
+cómo guardar
+como exportar a pdf
+cómo definir columnas
+cómo manejar bordes de párrafo
+cómo insertar imágenes
+cómo insertar tablas
+cómo insertar gráficos
+cómo insertar encabezados y pies de página
+cómo insertar saltos de página
+cómo insertar notas al pie
+cómo insertar citas
+cómo insertar bibliografía
+cómo insertar índice
+cómo insertar tabla de contenido
+cómo insertar tabla de ilustraciones
+cómo insertar tabla de figuras
+cómo insertar tabla de ecuaciones
+cómo insertar tabla de gráficos
+cómo insertar tabla de ilustraciones
+cómo insertar tabla de ecuaciones
+cómo insertar tabla de gráficos
+

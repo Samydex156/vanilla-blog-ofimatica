@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Visualización de Datos - Prof. Samuel Durán</title>
+    <link rel="stylesheet" href="../../modules-style.css" />
+    <link rel="stylesheet" href="../../main-style.css" />
+    <style>
+      .box-ppt {
+        border-left-color: #d24726;
+        background-color: #fcedeb;
+      }
+      .chart-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin: 2rem 0;
+      }
+      .chart-card {
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 1.5rem;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      }
+      .chart-card h3 {
+        color: #d24726;
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+      }
+      .chart-card p {
+        font-size: 0.95rem;
+        color: #555;
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="breadcrumb-nav">
+      <a href="../../index.html">🏠 Inicio</a> >
+      <a href="../index-clases.html">PowerPoint</a> >
+      <span>Visualización de Datos</span>
+    </nav>
+
+    <main class="content">
+      <header class="lesson-header">
+        <h1>Visualización de Datos en Diapositivas</h1>
+        <p class="subtitle">
+          Tablas gigantes vs. Gráficos impactantes: Cómo mostrar números sin dormir a tu audiencia.
+        </p>
+      </header>
+
+      <section class="lesson-body">
+        <h2>Resumen de la Clase</h2>
+        <p>
+          Uno de los peores errores en una presentación es copiar y pegar una tabla de Excel gigante 
+          con cientos de celdas y números diminutos. En esta clase te enseñaremos por qué el cerebro 
+          humano odia leer números en pantalla y cómo transformarlos en <strong>Visualización de Datos</strong> 
+          efectiva usando <strong>Gráficos</strong>.
+        </p>
+
+        <h2>1. El Problema de las Tablas</h2>
+        <div class="box box-ppt" style="border-left-color: #c0392b; background-color: #fadbd8;">
+          <span class="box-title" style="color: #c0392b;">Ojo con esto:</span>
+          <p style="margin: 0;">
+            Las tablas son perfectas para un reporte impreso en Word o Excel, donde el lector tiene tiempo 
+            de buscar datos específicos. Sin embargo, en una proyección que dura 30 segundos, <strong>una tabla 
+            es ruido visual</strong>. Nadie la va a leer, y si lo intentan, dejarán de escucharte a ti.
+          </p>
+        </div>
+        <p>
+          <strong>Solución:</strong> Si debes mostrar un número clave, muéstralo en GRANDE. Si debes comparar 
+          varios números, usa un Gráfico.
+        </p>
+
+        <h2>2. Eligiendo el Gráfico Correcto</h2>
+        <p>No todos los gráficos sirven para lo mismo. Elegir el equivocado hará que tus datos sean confusos.</p>
+
+        <div class="chart-grid">
+          <div class="chart-card">
+            <h3>Gráfico Circular (Pastel)</h3>
+            <p><strong>Uso:</strong> Mostrar porcentajes que suman un 100%.</p>
+            <p style="font-size: 0.85rem; margin-top: 0.5rem;">
+              <em>Tip:</em> Nunca uses más de 5 rebanadas o porciones, si tienes muchas categorías pequeñas, agrúpalas en "Otros". Si usas gráficos 3D, corres el riesgo de deformar la perspectiva real de los datos.
+            </p>
+          </div>
+          <div class="chart-card">
+            <h3>Gráfico de Columnas (Barras Verticales)</h3>
+            <p><strong>Uso:</strong> Comparar cantidades entre diferentes categorías.</p>
+            <p style="font-size: 0.85rem; margin-top: 0.5rem;">
+              <em>Tip:</em> Excelentes para comparar datos durante un período o entre distintos elementos. Ordena las barras de mayor a menor (o viceversa) si no tienes un orden cronológico.
+            </p>
+          </div>
+          <div class="chart-card">
+            <h3>Gráfico de Líneas</h3>
+            <p><strong>Uso:</strong> Mostrar tendencias a lo largo del tiempo.</p>
+            <p style="font-size: 0.85rem; margin-top: 0.5rem;">
+              <em>Tip:</em> Si quieres mostrar cómo subieron o bajaron tus ventas, notas o visitantes web de enero a diciembre, este es el Rey.
+            </p>
+          </div>
+          <div class="chart-card">
+            <h3>El Número "Héroe"</h3>
+            <p><strong>Uso:</strong> Resaltar un único dato brutalmente importante.</p>
+            <p style="font-size: 0.85rem; margin-top: 0.5rem;">
+              <em>Tip:</em> A veces no necesitas un gráfico. Escribir <strong>"95%"</strong> en tamaño gigante ocupando toda la diapositiva es el impacto visual más directo posible.
+            </p>
+          </div>
+        </div>
+
+        <h2>3. Cómo Limpiar tu Gráfico (La Tinta de los Datos)</h2>
+        <p>
+          Por defecto, cuando insertas un gráfico en PowerPoint, el programa le pone de todo: títulos, leyendas 
+          a un lado, líneas de cuadrícula grises, bordes y ejes con muchos números. 
+          Aplica el principio de <strong>"Menos tinta no esencial"</strong> para limpiarlo:
+        </p>
+        
+        <ul class="step-list">
+          <li><strong>Borra el título del gráfico:</strong> Ya deberías tener un título principal en tu diapositiva que explique el tema, no repitas.</li>
+          <li><strong>Elimina las líneas de cuadrícula de fondo:</strong> Las rayitas horizontales o verticales al fondo suelen ser innecesarias o ruido. Seleccionalas y bórralas.</li>
+          <li><strong>Borra la leyenda si puedes:</strong> Si tienes barras, es mejor colocar el nombre de lo que representa (ej. "Manzanas", "Peras") directamente debajo de cada barra, no en un cuadrito flotante al lado.</li>
+          <li><strong>Añade Etiquetas de Datos directas:</strong> En lugar de dejar que el público adivine hasta qué número del eje lateral llega la barra, pon el número exacto justo arriba de la barra. ¡Así puedes incluso borrar el eje lateral lleno de números!</li>
+        </ul>
+
+        <div class="box box-ppt">
+          <span class="box-title">4. El Color como Herrameinta de Destaque</span>
+          <p>
+            Si estás mostrando un gráfico de barras con las ventas de 5 sucursales, y tú vas a hablar sobre la Sucursal A, 
+            <strong>no pintes las 5 barras de 5 colores distintos</strong> (como un arcoiris).
+          </p>
+          <p>
+            Pinta 4 barras de color Gris (las que no te importan tanto en este momento), y pinta la barra de la Sucursal A 
+            con un color brillante (ej. Naranja vibrante). Así forzarás el ojo de tu público a mirar exactamente 
+            lo que tú estás explicando.
+          </p>
+        </div>
+
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        &copy; 2026 - Instituto Nueva Tecnología | Prof. Samuel Durán | Ofimática
+      </p>
+    </footer>
+  </body>
+</html>

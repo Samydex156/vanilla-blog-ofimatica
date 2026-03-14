@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Atajos PowerPoint - Prof. Samuel Durán</title>
+    <link rel="stylesheet" href="../../modules-style.css" />
+    <link rel="stylesheet" href="../../main-style.css" />
+  </head>
+
+  <body>
+    <nav class="breadcrumb-nav">
+      <a href="../../index.html">🏠 Inicio</a> >
+      <a href="../index-guias.html">Guías PowerPoint</a> >
+      <span>Atajos de teclado PowerPoint</span>
+    </nav>
+
+    <main class="content is-wide">
+      <header class="lesson-header">
+        <span class="date">Publicado: 13 de marzo de 2026</span>
+        <h1>Guía Atajos de Teclado</h1>
+        <p class="subtitle">Para Microsoft PowerPoint.</p>
+      </header>
+
+      <section class="lesson-body">
+        <h2>Atajos de teclado</h2>
+        <p>
+          Un atajo de teclado es una combinación de teclas que te ayudará a trabajar
+          mucho más rápido al diseñar y proyectar tus diapositivas.
+        </p>
+
+        <table class="wiki-table">
+          <thead>
+            <tr>
+              <th>Atajo</th>
+              <th>Acción</th>
+              <th>Referencia</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <span class="shortcut">F5</span>
+              </td>
+              <td>Inicia la presentación en pantalla completa desde la primera diapositiva.</td>
+              <td>
+                <img
+                  src="./atajos-ppt-imgs/#"
+                  alt="F5"
+                  class="shortcut-thumbnail"
+                  onclick="openModal(this)"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="shortcut">Shift</span> +
+                <span class="shortcut">F5</span>
+              </td>
+              <td>Inicia la presentación desde la diapositiva actual.</td>
+              <td>
+                <img
+                  src="./atajos-ppt-imgs/#"
+                  alt="Shift + F5"
+                  class="shortcut-thumbnail"
+                  onclick="openModal(this)"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="shortcut">Ctrl</span> +
+                <span class="shortcut">M</span>
+              </td>
+              <td>Inserta una nueva diapositiva.</td>
+              <td>
+                <img
+                  src="./atajos-ppt-imgs/#"
+                  alt="Ctrl + M"
+                  class="shortcut-thumbnail"
+                  onclick="openModal(this)"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="shortcut">Ctrl</span> +
+                <span class="shortcut">G</span>
+              </td>
+              <td>Guardar la presentación de PowerPoint.</td>
+              <td>
+                <img
+                  src="./atajos-ppt-imgs/#"
+                  alt="Ctrl + G"
+                  class="shortcut-thumbnail"
+                  onclick="openModal(this)"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="shortcut">Ctrl</span> +
+                <span class="shortcut">D</span>
+              </td>
+              <td>Duplica el objeto o diapositiva seleccionada.</td>
+              <td>
+                <img
+                  src="./atajos-ppt-imgs/#"
+                  alt="Ctrl + D"
+                  class="shortcut-thumbnail"
+                  onclick="openModal(this)"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="shortcut">Esc</span>
+              </td>
+              <td>Sale del modo de presentación en pantalla completa.</td>
+              <td>
+                <img
+                  src="./atajos-ppt-imgs/#"
+                  alt="Esc"
+                  class="shortcut-thumbnail"
+                  onclick="openModal(this)"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="shortcut">B</span> o
+                <span class="shortcut">.</span>
+              </td>
+              <td>Muestra una pantalla negra durante una presentación.</td>
+              <td>
+                <img
+                  src="./atajos-ppt-imgs/#"
+                  alt="B"
+                  class="shortcut-thumbnail"
+                  onclick="openModal(this)"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="shortcut">W</span> o
+                <span class="shortcut">,</span>
+              </td>
+              <td>Muestra una pantalla blanca durante una presentación.</td>
+              <td>
+                <img
+                  src="./atajos-ppt-imgs/#"
+                  alt="W"
+                  class="shortcut-thumbnail"
+                  onclick="openModal(this)"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <!-- Estructura del Modal -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <img class="modal-content" id="img01" />
+      <div id="caption"></div>
+    </div>
+
+    <footer>
+      <p>
+        &copy; 2026 - Instituto Nueva Tecnología | Prof. Samuel Durán |
+        Ofimática
+      </p>
+    </footer>
+
+    <script>
+      // Funcionalidad del Modal
+      function openModal(element) {
+        var modal = document.getElementById("imageModal");
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+
+        modal.style.display = "flex";
+        modalImg.src = element.src;
+        captionText.innerHTML = element.alt;
+
+        // Prevenir scroll en el body
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal() {
+        var modal = document.getElementById("imageModal");
+        modal.style.display = "none";
+
+        // Restaurar scroll en el body
+        document.body.style.overflow = "auto";
+      }
+
+      // Cerrar modal con tecla ESC
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+          closeModal();
+        }
+      });
+    </script>
+  </body>
+</html>
