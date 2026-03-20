@@ -15,6 +15,7 @@
     --color-ppt: #d24726;
     --color-pub: #077568;
     --color-net: #ffb900;
+    --color-ia: #8e44ad;
 }
 
 /* 2. Reset Básico */
@@ -162,6 +163,10 @@ footer {
     border-top-color: var(--color-net);
 }
 
+.card:nth-child(7) {
+    border-top-color: var(--color-ia);
+}
+
 /* ----------------------------------------------------------------
 -------------------------------------------------------------------- */
 
@@ -260,6 +265,36 @@ footer {
     margin-bottom: 1.5rem;
 }
 
+.module-section-net {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+.module-section-net h2 {
+    color: var(--color-net);
+    border-bottom: 2px solid #eee;
+    border-bottom-color: var(--color-net);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.module-section-ia {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+.module-section-ia h2 {
+    color: var(--color-ia);
+    border-bottom: 2px solid #eee;
+    border-bottom-color: var(--color-ia);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
 .item-list {
     list-style: none;
 }
@@ -280,6 +315,14 @@ footer {
     list-style: none;
 }
 
+.item-list-net {
+    list-style: none;
+}
+
+.item-list-ia {
+    list-style: none;
+}
+
 .item-list li {
     margin-bottom: 1rem;
 }
@@ -297,6 +340,14 @@ footer {
 }
 
 .item-list-ppt li {
+    margin-bottom: 1rem;
+}
+
+.item-list-net li {
+    margin-bottom: 1rem;
+}
+
+.item-list-ia li {
     margin-bottom: 1rem;
 }
 
@@ -392,6 +443,44 @@ footer {
     border-color: var(--color-ppt);
     transform: translateX(10px);
     border-left: 5px solid var(--color-ppt);
+}
+
+.item-list-net a {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    padding: 0.8rem;
+    border-radius: 6px;
+    background: #f9f9f9;
+    color: var(--text-color);
+    transition: var(--transition);
+    box-shadow: 1px 1px 2px var(--color-net);
+}
+
+.item-list-net a:hover {
+    background: #fff;
+    border-color: var(--color-net);
+    transform: translateX(10px);
+    border-left: 5px solid var(--color-net);
+}
+
+.item-list-ia a {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    padding: 0.8rem;
+    border-radius: 6px;
+    background: #f9f9f9;
+    color: var(--text-color);
+    transition: var(--transition);
+    box-shadow: 1px 1px 2px var(--color-ia);
+}
+
+.item-list-ia a:hover {
+    background: #fff;
+    border-color: var(--color-ia);
+    transform: translateX(10px);
+    border-left: 5px solid var(--color-ia);
 }
 
 /* Estilos complementarios */

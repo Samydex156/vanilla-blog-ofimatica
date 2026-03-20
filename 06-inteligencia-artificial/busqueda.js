@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const buscador = document.getElementById("buscador-guias") || document.getElementById("buscador-clases") || document.getElementById("buscador-practicas");
-    const listaItems = document.querySelectorAll(".item-list-net li");
+    const listaItems = document.querySelectorAll(".item-list-ia li");
 
     if (!buscador) return;
 
