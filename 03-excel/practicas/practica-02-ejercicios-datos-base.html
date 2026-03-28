@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica 02: Ejercicios Datos Base - Excel</title>
+    <link rel="stylesheet" href="../../modules-style.css">
+    <link rel="stylesheet" href="../../main-style.css">
+    <style>
+        .data-table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .data-table th, .data-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .data-table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="breadcrumb-nav">
+        <a href="../../index.html">🏠 Inicio</a> > 
+        <a href="../index-practicas.html">Excel (Prácticas)</a> > 
+        <span>Práctica 02</span>
+    </nav>
+
+    <main class="content">
+        <header class="lesson-header">
+            <span class="date">Práctica #02</span>
+            <h1>Ejercicios con Datos Base: Operaciones, Cálculos y Gráficos</h1>
+            <p class="subtitle">HOJA DE EJERCICIOS EXCEL – PROF. SAMUEL DURÁN – OFIMÁTICA SÁBADOS</p>
+        </header>
+
+        <section class="lesson-body">
+            
+            <div class="box box-excel">
+                <span class="task-title">Material de la Práctica</span>
+                <p>Descarga el siguiente documento de Word que contiene las instrucciones detalladas y datos para realizar los ejercicios en Excel.</p>
+                <div style="margin: 1rem 0;">
+                    <a href="ejercicios/excel-ejercicios-datos-base-v1.docx" download style="display: inline-flex; align-items: center; gap: 0.5rem; background-color: var(--color-excel, #217346); color: white; padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none; font-weight: bold;">
+                        📥 Descargar excel-ejercicios-datos-base-v1.docx
+                    </a>
+                </div>
+            </div>
+
+            <h2>EJERCICIO 1:</h2>
+            <p>Calcular el total de ventas generadas en el día.<br>Copia esta tabla en una nueva hoja de cálculo en la celda B4.</p>
+            <ol type="a">
+                <li>Calculo de del total por producto. Multiplica Precio unitario * Cantidad vendida.</li>
+                <li>Calculo del total de los productos: Suma todos los totales por producto.</li>
+                <li>Usa la función de AUTOSUMA para obtener el mismo resultado.</li>
+                <li>Aplica formato de contabilidad a todos los valores y resultados numéricos obtenidos.</li>
+            </ol>
+            
+            <div style="overflow-x: auto;">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Categoría</th>
+                            <th>Precio Unitario</th>
+                            <th>Cantidad Vendida</th>
+                            <th>Total por Producto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Leche Entera</td><td>Lácteos</td><td></td><td></td><td></td></tr>
+                        <tr><td>Pan Integral (Bolsa)</td><td>Panadería</td><td></td><td></td><td></td></tr>
+                        <tr><td>Huevos (Mapple)</td><td>Proteína</td><td></td><td></td><td></td></tr>
+                        <tr><td>Café (envase cristal)</td><td>Despensa</td><td></td><td></td><td></td></tr>
+                        <tr><td>Arroz (1 Quintal)</td><td>Granos</td><td></td><td></td><td></td></tr>
+                        <tr><td>Aceite Vegetal (2Lts)</td><td>Despensa</td><td></td><td></td><td></td></tr>
+                        <tr><td><strong>TOTAL GENERAL</strong></td><td></td><td></td><td></td><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>EJERCICIO 2:</h2>
+            <p>Calcular el total de gastos especificos por departamento.<br>Copia la tabla en una nueva hoja de cálculo de Excel.</p>
+            <ol type="a">
+                <li>En la última fila de la tabla calcula la suma total de los gastos.</li>
+                <li>Crea una tabla de resultados con dos encabezados: Resumen de gastos y Total y en las filas siguientes describe y calcula la suma de los gastos totales por departamento.</li>
+                <li>Aplica formato de contabilidad a los valores numéricos de las tablas existentes.</li>
+            </ol>
+
+            <div style="overflow-x: auto;">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID Gasto</th>
+                            <th>Departamento</th>
+                            <th>Concepto</th>
+                            <th>Monto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>G-001</td><td>Administración</td><td>Papelería</td><td>150</td></tr>
+                        <tr><td>G-002</td><td>Ventas</td><td>Publicidad RRSS</td><td>450</td></tr>
+                        <tr><td>G-003</td><td>Recursos Humanos</td><td>Capacitación</td><td>300</td></tr>
+                        <tr><td>G-004</td><td>Administración</td><td>Software Contable</td><td>120</td></tr>
+                        <tr><td>G-005</td><td>Ventas</td><td>Viáticos de Viaje</td><td>600</td></tr>
+                        <tr><td>G-006</td><td>Recursos Humanos</td><td>Reclutamiento</td><td>200</td></tr>
+                        <tr><td>G-007</td><td>Ventas</td><td>Comisiones</td><td>850</td></tr>
+                        <tr><td>G-008</td><td>Administración</td><td>Servicios Básicos</td><td>180</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>EJERCICIO 3:</h2>
+            <p>Calcular el rendimiento de cada paralelo y evalua qué paralelo tuvo mayor rendimiento.<br>Copia en una nueva hoja de cálculo de Excel las siguientes tablas:</p>
+            <ol type="a">
+                <li>En una nueva columna Promedio general, Calcula el promedio de cada estudiante.</li>
+                <li>Dos filas debajo de la tabla de notas, crea una tabla para análisis con los encabezados: Estadistica y Valor, y calcula la nota más alta, la nota más baja y el promedio general del paralelo.</li>
+                <li>Copia la tabla de comparación para analizar el rendimiento de cada paralelo.</li>
+            </ol>
+
+            <h3>PARALELO A:</h3>
+            <div style="overflow-x: auto;">
+                <table class="data-table">
+                    <thead>
+                        <tr><th>Estudiante</th><th>Matemáticas</th><th>Lenguaje</th><th>Ciencias</th><th>Historia</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Ana García</td><td>95</td><td>88</td><td>92</td><td>90</td></tr>
+                        <tr><td>Luis Pérez</td><td>60</td><td>72</td><td>65</td><td>58</td></tr>
+                        <tr><td>Marta Rivas</td><td>82</td><td>90</td><td>85</td><td>88</td></tr>
+                        <tr><td>José Torres</td><td>100</td><td>95</td><td>98</td><td>97</td></tr>
+                        <tr><td>Sofía Luna</td><td>75</td><td>80</td><td>70</td><td>82</td></tr>
+                        <tr><td>Diego Sanz</td><td>55</td><td>62</td><td>60</td><td>65</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>PARALELO B:</h3>
+            <div style="overflow-x: auto;">
+                <table class="data-table">
+                    <thead>
+                        <tr><th>Estudiante</th><th>Matemáticas</th><th>Lenguaje</th><th>Ciencias</th><th>Historia</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Carlos Ruiz</td><td>85</td><td>82</td><td>80</td><td>88</td></tr>
+                        <tr><td>Elena Sosa</td><td>92</td><td>94</td><td>90</td><td>95</td></tr>
+                        <tr><td>Mario Gil</td><td>70</td><td>65</td><td>72</td><td>68</td></tr>
+                        <tr><td>Lucía Méndez</td><td>88</td><td>90</td><td>85</td><td>82</td></tr>
+                        <tr><td>Pedro Alva</td><td>62</td><td>58</td><td>65</td><td>60</td></tr>
+                        <tr><td>Sara Vega</td><td>98</td><td>96</td><td>100</td><td>97</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>TABLA DE RENDIMIENTO ACADÉMICO</h3>
+            <div style="overflow-x: auto;">
+                <table class="data-table">
+                    <thead>
+                        <tr><th>Concepto</th><th>Paralelo A</th><th>Paralelo B</th><th>Representante</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Promedio General del Grupo</td><td></td><td></td><td></td></tr>
+                        <tr><td>Nota más alta (Máximo)</td><td></td><td></td><td></td></tr>
+                        <tr><td>Nota más baja (Mínimo)</td><td></td><td></td><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>EJERCICIO 4:</h2>
+            <p>Copia cada tabla a una nueva hoja de cálculo.</p>
+            
+            <h3>TABLA 1: Mediante un gráfico visualiza el mes de mayor crecimiento para la empresa.</h3>
+            <ol type="a">
+                <li>Inserta un gráfico que mejor represente visualmente los datos de la tabla</li>
+                <li>Visualiza las etiquetas de datos</li>
+            </ol>
+            <div style="overflow-x: auto;">
+                <table class="data-table" style="width: 50%;">
+                    <thead>
+                        <tr><th>Mes</th><th>Ventas Totales</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Enero</td><td>12000</td></tr>
+                        <tr><td>Febrero</td><td>10500</td></tr>
+                        <tr><td>Marzo</td><td>14000</td></tr>
+                        <tr><td>Abril</td><td>13500</td></tr>
+                        <tr><td>Mayo</td><td>18000</td></tr>
+                        <tr><td>Junio</td><td>21000</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>TABLA 2: Mediante un gráfico visualiza los productos más vendidos.</h3>
+            <ol type="a">
+                <li>Inserta el gráfico que mejor represente los datos.</li>
+                <li>Ordena los datos de la tabla y vuelve a generar el grafico.</li>
+            </ol>
+            <div style="overflow-x: auto;">
+                <table class="data-table" style="width: 50%;">
+                    <thead>
+                        <tr><th>Producto</th><th>Unidades Vendidas</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Laptops</td><td>85</td></tr>
+                        <tr><td>Smartphones</td><td>150</td></tr>
+                        <tr><td>Tablets</td><td>45</td></tr>
+                        <tr><td>Accesorios</td><td>210</td></tr>
+                        <tr><td>Impresoras</td><td>30</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>TABLA 3:</h3>
+            <ol type="a">
+                <li>Inserta el gráfico que mejor represente los datos de la tabla.</li>
+                <li>Expresa las etiquetas de datos en formato de porcentajes.</li>
+            </ol>
+            <div style="overflow-x: auto;">
+                <table class="data-table" style="width: 50%;">
+                    <thead>
+                        <tr><th>Categoría de Gasto</th><th>Monto ($)</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Sueldos</td><td>5000</td></tr>
+                        <tr><td>Alquiler</td><td>1200</td></tr>
+                        <tr><td>Marketing</td><td>800</td></tr>
+                        <tr><td>Inventario</td><td>2500</td></tr>
+                        <tr><td>Servicios (Luz/Internet)</td><td>500</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <p><strong>Nota:</strong> Cada gráfico debe tener un titulo principal. Aplica un diseño distinto a cada gráfico. Y visualiza o elimina caracteristicas visuales adicionales de la tabla.</p>
+
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 - Instituto Nueva Tecnología | Prof. Samuel Durán | Ofimática</p>
+    </footer>
+
+</body>
+</html>
