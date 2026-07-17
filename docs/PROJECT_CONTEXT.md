@@ -63,11 +63,12 @@ No existe capa de servidor, enrutamiento dinámico ni lógica en backend. El des
 
 ### 2. Flujo de modo oscuro
 
-1. Al cargar cualquier página, `busqueda.js` verifica `localStorage.getItem("theme")`.
-2. Si hay valor guardado, aplica `data-theme="dark"` o `data-theme="light"` en el `<body>`.
-3. Si no hay valor guardado, usa `prefers-color-scheme: dark` del sistema.
-4. El botón toggle en el header alterna entre modos y persiste en `localStorage`.
-5. Las páginas de contenido heredan el `data-theme` del body automáticamente.
+1. Al cargar cualquier página, un **script bloqueante en `<head>`** ejecuta inmediatamente: lee `localStorage.getItem("theme")`, si es `"dark"` (o si no hay valor guardado y `prefers-color-scheme: dark` coincide), aplica `data-theme="dark"` en `<html>` antes del primer render (evita flash).
+2. El CSS responde con `[data-theme="dark"]` redefiniendo las variables de color.
+3. Las páginas **índice** (`index-*.html`) cargan `busqueda.js` que agrega el event listener del botón.
+4. Las páginas de **contenido** (`guias/`, `teoria/`, `practicas/`) tienen un **script inline** al final del body con la misma lógica de toggle + sincronización del ícono.
+5. El botón `#theme-toggle` está en el header de la homepage e índices, y dentro del `breadcrumb-nav` en páginas de contenido.
+6. El cambio persiste en `localStorage` y el ícono se sincroniza (☾ → ☀).
 
 ### 3. Flujo de impresión
 
@@ -122,7 +123,7 @@ vanilla-blog-ofimatica/
 |   |-- guias/                        #   Guías paso a paso
 |   |   |-- guia-uso-mouse.html
 |   |   |-- guia-gestion-carpetas.html
-|   |   |-- atajos-esenciales.html    #   [NUEVA] Guía de atajos de teclado Windows 10
+|   |   |-- atajos-esenciales.html    #   Guía de atajos de teclado Windows 10
 |   |-- practicas/                    #   Ejercicios prácticos
 |       |-- practica-carpetas.html
 |       |-- practica-gestion-carpetas.html

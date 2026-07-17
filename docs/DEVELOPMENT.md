@@ -17,23 +17,25 @@ No hay variables de entorno ni SDKs específicos.
 El archivo está organizado en secciones numeradas:
 
 1. Variables globales (`:root`)
-2. Reset básico
-3. Header y Footer
-4. Layout (`.container`, `.grid`)
-5. Tarjetas (`.card`, con colores por `data-module`)
-6. Enlaces de navegación
-7. Breadcrumb
-8. Secciones de módulo (`.module-section`)
-9. Listas de ítems (`.item-list`, colores vía `data-module`)
-10. Buscador
-11. Modal de imágenes
-12. Contenido de lecciones (`.content`, `.lesson-header`, `.lesson-body`)
-13. Cajas informativas (`.box-*`)
-14. Tablas
-15. Código y atajos
-16. **Modo oscuro** (`[data-theme="dark"]`)
-17. **Impresión** (`@media print`)
-18. Responsive (tablet y móvil)
+2. Modo oscuro (`[data-theme="dark"]`)
+3. Reset básico
+4. Header y Footer (`.header-row`, `.theme-btn`)
+5. Layout (`.container`, `.grid`)
+6. Tarjetas (`.card`, con colores por `data-module`)
+7. Enlaces de navegación
+8. Breadcrumb (`.breadcrumb-nav`, con `.theme-btn` interno)
+9. Secciones de módulo (`.module-section`)
+10. Listas de ítems (`.item-list`, colores vía `data-module`)
+11. Buscador
+12. Modal de imágenes
+13. Contenido de lecciones (`.content`, `.lesson-header`, `.lesson-body`)
+14. Cajas informativas (`.box-*`)
+15. Tablas
+16. Código y atajos
+17. **Tabla de atajos esenciales** (`.essentials-table`, `.essentials-note`)
+18. Botón de descarga
+19. Responsive (tablet y móvil)
+20. **Impresión** (`@media print`)
 
 ### JS — `busqueda.js` (raíz)
 
