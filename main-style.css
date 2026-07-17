@@ -718,71 +718,73 @@ footer {
     letter-spacing: 0.5px;
 }
 
-/* Tarjeta de atajos esenciales (destacada al inicio de cada guía) */
-.essentials-card {
-    background: linear-gradient(135deg, var(--bg-content) 0%, var(--bg-body) 100%);
-    border: 2px solid var(--border-light);
-    border-left: 5px solid var(--color-warning);
+/* Tabla de atajos esenciales (destacada al inicio de cada guía) */
+.essentials-note {
+    display: block;
+    margin-bottom: 1.5rem;
+    padding: 0.8rem 1.2rem;
+    background: var(--bg-body);
+    border-left: 4px solid var(--color-warning);
     border-radius: var(--radius);
-    padding: 1.5rem 1.8rem;
-    margin-bottom: 2.5rem;
-    box-shadow: var(--shadow-sm);
-}
-
-.essentials-card .essentials-title {
     font-family: var(--font-heading);
-    font-size: 1rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    font-size: 0.9rem;
+    font-weight: 600;
     color: var(--color-warning);
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
 }
 
-.essentials-card .essentials-title::before {
-    content: "⭐";
-    font-size: 1.2rem;
+table.essentials-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
 }
 
-.essentials-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 0.6rem;
-}
-
-.essentials-grid .key-box {
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-    padding: 0.5rem 0.8rem;
-    background: var(--bg-content);
-    border: 1px solid var(--border-light);
-    border-radius: var(--radius);
+table.essentials-table thead th {
+    background: var(--color-warning);
+    color: #fff;
+    font-weight: 700;
+    padding: 0.7rem 1rem;
+    text-align: left;
     font-size: 0.85rem;
-    color: var(--text-main);
-    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+table.essentials-table thead th:first-child {
+    border-radius: var(--radius) 0 0 0;
+}
+
+table.essentials-table thead th:last-child {
+    border-radius: 0 var(--radius) 0 0;
+}
+
+table.essentials-table tbody tr {
     transition: var(--transition);
 }
 
-.essentials-grid .key-box:hover {
-    border-color: var(--color-warning);
-    transform: translateY(-1px);
-    box-shadow: var(--shadow-sm);
+table.essentials-table tbody tr:hover {
+    background: var(--bg-body);
 }
 
-.essentials-grid .key-box .key-combo {
+table.essentials-table tbody td {
+    padding: 0.7rem 1rem;
+    border-bottom: 1px solid var(--border-light);
+}
+
+table.essentials-table tbody td:first-child {
     font-family: var(--font-code);
     font-weight: 600;
     white-space: nowrap;
+    color: var(--title-main);
 }
 
-.essentials-grid .key-box .key-action {
+table.essentials-table tbody td:last-child {
     color: var(--text-muted);
-    font-size: 0.8rem;
-    margin-left: auto;
+}
+
+table.essentials-table + h2 {
+    margin-top: 2rem;
 }
 
 .lesson-body ul, .lesson-body ol {
