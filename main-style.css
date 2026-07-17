@@ -1,8 +1,9 @@
-/* 1. Variables Globales: Estilo Minimalista y Formal */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz@8..60&display=swap');
+
+/* 1. Variables Globales */
 :root {
-    /* Paleta de Colores Neutros y Minimalistas */
     --bg-color: #fafafa;
-    --bg-body: #fafafa;
+    --bg-body: #f6f8fa;
     --bg-content: #ffffff;
     
     --text-color: #333333;
@@ -13,21 +14,19 @@
     --white: #ffffff;
     --border-light: #e5e5e5;
     
-    --shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-    --transition: all 0.2s ease-in-out;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --transition: all 0.3s ease-in-out;
 
-    /* Tipografías Limpias */
     --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    --font-serif: 'Georgia', 'Times New Roman', serif;
+    --font-serif: 'Source Serif 4', 'Georgia', 'Times New Roman', serif;
     --font-code: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
 
-    /* Dimensiones */
     --width-reading: 800px;
     --width-wide: 950px;
-    --radius: 4px; /* Bordes más sutiles */
+    --radius: 6px;
 
-    /* Colores por Módulo (Desaturados para formalidad) */
     --color-win: #2b78a1;
     --color-word: #315180;
     --color-excel: #296843;
@@ -45,7 +44,7 @@
     --color-code-bg: #f4f4f4;
 }
 
-/* 2. Reset Básico */
+/* 2. Reset */
 * {
     margin: 0;
     padding: 0;
@@ -65,12 +64,38 @@ body {
 
 /* 3. Header y Footer */
 header {
-    background: var(--bg-content);
+    background: linear-gradient(135deg, #f0f2f5 0%, var(--bg-content) 100%);
     color: var(--title-main);
-    padding: 1.5rem 1rem;
+    padding: 2.5rem 1rem;
     text-align: center;
     border-bottom: 1px solid var(--border-light);
     width: 100%;
+}
+
+header h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 0.3rem;
+    background: linear-gradient(135deg, var(--title-main) 0%, #555 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+header h2 {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--text-muted);
+    letter-spacing: 0.3px;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    max-width: 500px;
+    margin: 0 auto;
 }
 
 footer {
@@ -84,7 +109,7 @@ footer {
     width: 100%;
 }
 
-/* 4. Layout con CSS Grid */
+/* 4. Layout */
 .container {
     display: flex;
     flex-direction: column;
@@ -98,66 +123,90 @@ footer {
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 1.5rem;
 }
 
-/* 5. Estilo de las Tarjetas (Cards) */
+/* 5. Tarjetas (Cards) */
 .card {
     background: var(--bg-content);
-    padding: 2rem;
+    padding: 1.5rem;
     border: 1px solid var(--border-light);
     border-radius: var(--radius);
     transition: var(--transition);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    position: relative;
-    z-index: 1;
+    cursor: default;
 }
 
 .card:hover {
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow-md);
     border-color: #ccc;
+    transform: translateY(-2px);
 }
 
 .card-icon {
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
     object-fit: contain;
-    opacity: 1;
+    margin-bottom: 1rem;
     transition: var(--transition);
-    z-index: 2;
 }
 
 .card:hover .card-icon {
-    transform: scale(1.1);
+    transform: scale(1.15);
 }
 
 .card h2 {
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    font-size: 1.25rem;
+    margin-bottom: 0.8rem;
+    font-size: 1.2rem;
     font-weight: 600;
     color: var(--title-main);
     font-family: var(--font-heading);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
+
+.card h2 .module-badge {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+/* Colores de badge por módulo */
+.card[data-module="win"] .module-badge { background: var(--color-win); }
+.card[data-module="word"] .module-badge { background: var(--color-word); }
+.card[data-module="ppt"] .module-badge { background: var(--color-ppt); }
+.card[data-module="xls"] .module-badge { background: var(--color-excel); }
+.card[data-module="pub"] .module-badge { background: var(--color-pub); }
+.card[data-module="net"] .module-badge { background: var(--color-net); }
+.card[data-module="ia"] .module-badge { background: var(--color-ia); }
+
+/* Fondo wash sutil por módulo en hover */
+.card[data-module="win"]:hover { background: linear-gradient(135deg, #ffffff 0%, #f4f9fc 100%); }
+.card[data-module="word"]:hover { background: linear-gradient(135deg, #ffffff 0%, #f4f6fa 100%); }
+.card[data-module="ppt"]:hover { background: linear-gradient(135deg, #ffffff 0%, #fcf6f4 100%); }
+.card[data-module="xls"]:hover { background: linear-gradient(135deg, #ffffff 0%, #f4f9f6 100%); }
+.card[data-module="pub"]:hover { background: linear-gradient(135deg, #ffffff 0%, #f4f9f8 100%); }
+.card[data-module="net"]:hover { background: linear-gradient(135deg, #ffffff 0%, #fcf9f4 100%); }
+.card[data-module="ia"]:hover { background: linear-gradient(135deg, #ffffff 0%, #f8f4fc 100%); }
 
 /* 6. Enlaces de Navegación */
 .links {
     display: flex;
     gap: 0.5rem;
     flex-wrap: wrap;
+    margin-top: auto;
 }
 
 .links a {
     text-decoration: none;
     color: var(--text-color);
     font-weight: 500;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     padding: 0.5rem 0.8rem;
     border: 1px solid var(--border-light);
     border-radius: var(--radius);
@@ -170,16 +219,25 @@ footer {
 .links a:hover {
     background-color: var(--border-light);
     color: var(--title-main);
+    transform: scale(1.02);
 }
 
-/* 7. Colores específicos para cada módulo en tarjetas */
-.card:nth-child(1) { border-top: 3px solid var(--color-win); }
-.card:nth-child(2) { border-top: 3px solid var(--color-word); }
-.card:nth-child(3) { border-top: 3px solid var(--color-ppt); }
-.card:nth-child(4) { border-top: 3px solid var(--color-excel); }
-.card:nth-child(5) { border-top: 3px solid var(--color-pub); }
-.card:nth-child(6) { border-top: 3px solid var(--color-net); }
-.card:nth-child(7) { border-top: 3px solid var(--color-ia); }
+.links a:active {
+    transform: scale(0.97);
+}
+
+.links a:visited {
+    color: var(--text-muted);
+}
+
+/* 7. Colores de borde por módulo en tarjetas */
+.card[data-module="win"] { border-top: 3px solid var(--color-win); }
+.card[data-module="word"] { border-top: 3px solid var(--color-word); }
+.card[data-module="ppt"] { border-top: 3px solid var(--color-ppt); }
+.card[data-module="xls"] { border-top: 3px solid var(--color-excel); }
+.card[data-module="pub"] { border-top: 3px solid var(--color-pub); }
+.card[data-module="net"] { border-top: 3px solid var(--color-net); }
+.card[data-module="ia"] { border-top: 3px solid var(--color-ia); }
 
 /* ----------------------------------------------------------------
    Índices de Módulo
@@ -192,6 +250,7 @@ footer {
     margin-bottom: 2rem;
     font-size: 0.85rem;
     color: var(--text-muted);
+    letter-spacing: 0.3px;
 }
 
 .breadcrumb-nav a {
@@ -211,19 +270,15 @@ footer {
     margin-top: 1rem;
 }
 
-/* Clases de secciones de módulos (unificadas para diseño minimalista) */
-.module-section, .module-section-pub, .module-section-xls, 
-.module-section-doc, .module-section-ppt, .module-section-net, 
-.module-section-ia, .module-section-win {
+/* Sección de módulo con color dinámico vía data-module */
+.module-section {
     background: var(--bg-content);
     padding: 2rem;
     border: 1px solid var(--border-light);
     border-radius: var(--radius);
 }
 
-.module-section h2, .module-section-pub h2, .module-section-xls h2, 
-.module-section-doc h2, .module-section-ppt h2, .module-section-net h2, 
-.module-section-ia h2, .module-section-win h2 {
+.module-section h2 {
     font-family: var(--font-heading);
     font-size: 1.1rem;
     font-weight: 600;
@@ -232,52 +287,38 @@ footer {
     padding-bottom: 0.8rem;
     margin-bottom: 1.5rem;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
+    border-bottom-color: var(--module-color, var(--text-muted));
+    color: var(--module-color, var(--text-muted));
 }
 
-/* Colores de cabecera por módulo */
-.module-section h2 { border-bottom-color: var(--color-excel); color: var(--color-excel); }
-.module-section-pub h2 { border-bottom-color: var(--color-pub); color: var(--color-pub); }
-.module-section-xls h2 { border-bottom-color: var(--color-excel); color: var(--color-excel); }
-.module-section-doc h2 { border-bottom-color: var(--color-word); color: var(--color-word); }
-.module-section-ppt h2 { border-bottom-color: var(--color-ppt); color: var(--color-ppt); }
-.module-section-net h2 { border-bottom-color: var(--color-net); color: var(--color-net); }
-.module-section-ia h2 { border-bottom-color: var(--color-ia); color: var(--color-ia); }
-.module-section-win h2 { border-bottom-color: var(--color-win); color: var(--color-win); }
-
 /* Listas de Ítems */
-.item-list, .item-list-pub, .item-list-xls, .item-list-doc, 
-.item-list-ppt, .item-list-net, .item-list-ia, .item-list-win {
+.item-list {
     list-style: none;
 }
 
-.item-list li, .item-list-pub li, .item-list-xls li, .item-list-doc li, 
-.item-list-ppt li, .item-list-net li, .item-list-ia li, .item-list-win li {
+.item-list li {
     margin-bottom: 0.8rem;
 }
 
-.item-list a, .item-list-pub a, .item-list-xls a, .item-list-doc a, 
-.item-list-ppt a, .item-list-net a, .item-list-ia a, .item-list-win a {
+.item-list a {
     text-decoration: none;
     display: flex;
     flex-direction: column;
     padding: 0.8rem 1rem;
     border-radius: var(--radius);
-    background: var(--bg-body); /* Fondo tenue para darle forma de tarjeta */
-    border: 1px solid var(--border-light); /* Borde sutil visible por defecto */
+    background: var(--bg-body);
+    border: 1px solid var(--border-light);
     color: var(--text-color);
     transition: var(--transition);
 }
 
-/* Efectos de Hover minimalistas */
-.item-list a:hover { background: var(--bg-body); border-left: 3px solid var(--color-excel); }
-.item-list-pub a:hover { background: var(--bg-body); border-left: 3px solid var(--color-pub); }
-.item-list-xls a:hover { background: var(--bg-body); border-left: 3px solid var(--color-excel); }
-.item-list-doc a:hover { background: var(--bg-body); border-left: 3px solid var(--color-word); }
-.item-list-ppt a:hover { background: var(--bg-body); border-left: 3px solid var(--color-ppt); }
-.item-list-net a:hover { background: var(--bg-body); border-left: 3px solid var(--color-net); }
-.item-list-ia a:hover { background: var(--bg-body); border-left: 3px solid var(--color-ia); }
-.item-list-win a:hover { background: var(--bg-body); border-left: 3px solid var(--color-win); }
+.item-list a:hover {
+    background: var(--bg-content);
+    border-left: 3px solid var(--module-color, var(--text-muted));
+    box-shadow: var(--shadow-sm);
+    transform: translateX(3px);
+}
 
 .item-date {
     font-size: 0.75rem;
@@ -292,8 +333,8 @@ footer {
 .badge {
     display: inline-block;
     background: var(--border-light);
-    padding: 2px 6px;
-    border-radius: 3px;
+    padding: 2px 8px;
+    border-radius: 4px;
     font-size: 0.7rem;
     margin-right: 8px;
     color: var(--text-muted);
@@ -306,7 +347,7 @@ footer {
     font-family: var(--font-code);
     background-color: var(--color-code-bg);
     padding: 0.1rem 0.4rem;
-    border-radius: 3px;
+    border-radius: 4px;
     border: 1px solid var(--border-light);
     display: inline-block;
     color: var(--text-main);
@@ -342,6 +383,7 @@ footer {
 
 .shortcut-thumbnail:hover {
     border-color: #aaa;
+    box-shadow: var(--shadow-sm);
 }
 
 .modal {
@@ -364,7 +406,8 @@ footer {
     max-width: 90%;
     max-height: 85vh;
     border: 1px solid var(--border-light);
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow-md);
+    border-radius: var(--radius);
 }
 
 .close {
@@ -375,10 +418,12 @@ footer {
     font-size: 35px;
     font-weight: 300;
     cursor: pointer;
+    transition: var(--transition);
 }
 
 .close:hover {
     color: var(--text-main);
+    transform: rotate(90deg);
 }
 
 #caption {
@@ -399,7 +444,7 @@ footer {
     font-family: var(--font-sans);
     border: 1px solid var(--border-light);
     border-radius: var(--radius);
-    background: var(--bg-content);
+    background: var(--bg-body);
     color: var(--text-main);
     margin-bottom: 2rem;
     outline: none;
@@ -408,10 +453,12 @@ footer {
 
 .buscador-index:focus {
     border-color: #aaa;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.04);
+    background: var(--bg-content);
 }
 
 /* ==========================================================================
-   CONTENIDO DE CLASES Y GUÍAS (Migrado de modules-style.css)
+   CONTENIDO DE CLASES Y GUÍAS
    ========================================================================== */
 
 .content {
@@ -421,6 +468,7 @@ footer {
     border: 1px solid var(--border-light);
     border-radius: var(--radius);
     max-width: var(--width-reading);
+    box-shadow: var(--shadow-sm);
 }
 
 .content.is-wide {
@@ -434,6 +482,7 @@ footer {
     padding: 0;
     font-size: 0.85rem;
     color: var(--text-muted);
+    letter-spacing: 0.3px;
 }
 
 .content.is-wide + .breadcrumb,
@@ -531,6 +580,7 @@ footer {
     margin: 2.5rem auto;
     border: 1px solid var(--border-light);
     border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
 }
 
 /* Cajas de Información */
@@ -600,7 +650,7 @@ code, .shortcut {
     color: var(--text-main);
     padding: 0.2rem 0.4rem;
     border: 1px solid var(--border-light);
-    border-radius: 3px;
+    border-radius: 4px;
     font-size: 0.85em;
 }
 
@@ -624,6 +674,7 @@ code, .shortcut {
     border-radius: var(--radius);
     max-width: var(--width-wide);
     font-family: var(--font-sans);
+    box-shadow: var(--shadow-sm);
 }
 
 .guide-header {
@@ -649,8 +700,49 @@ code, .shortcut {
     background-color: var(--bg-content);
 }
 
+/* Button descarga */
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.4rem;
+    background: var(--bg-body);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius);
+    color: var(--text-main);
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.download-btn:hover {
+    background: var(--border-light);
+    border-color: #bbb;
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-1px);
+}
+
+/* Tablets */
+@media (min-width: 481px) and (max-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .content, .guide-container {
+        padding: 2rem;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+}
+
+/* Móviles */
 @media (max-width: 768px) {
-    /* Contenedores Principales */
     .container {
         padding: 1rem 0.5rem;
     }
@@ -662,7 +754,18 @@ code, .shortcut {
         border: 1px solid var(--border-light);
     }
 
-    /* Fuentes y Encabezados */
+    header {
+        padding: 2rem 1rem;
+    }
+
+    header h1 {
+        font-size: 1.6rem;
+    }
+
+    header h2 {
+        font-size: 1rem;
+    }
+
     .lesson-header h1, .guide-header h1 {
         font-size: 1.6rem;
     }
@@ -676,7 +779,6 @@ code, .shortcut {
         margin-top: 2rem;
     }
 
-    /* Componentes (Cajas y Tablas) */
     .box {
         padding: 1.2rem;
         margin: 1.5rem 0;
@@ -685,18 +787,167 @@ code, .shortcut {
     table.wiki-table, .guide-container table, .content table:not(.wiki-table) {
         display: block;
         overflow-x: auto;
-        white-space: nowrap; /* Evita que las columnas se rompan y permite scroll horizontal */
+        white-space: nowrap;
     }
 
-    /* Índices de Navegación */
     .breadcrumb-nav {
         padding: 0.8rem 1rem;
         font-size: 0.8rem;
     }
     
-    /* Imágenes y Modales */
     .modal-content {
         max-width: 95%;
         max-height: 90vh;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================================================
+   IMPRESIÓN
+   ========================================================================== */
+@media print {
+    @page {
+        size: letter;
+        margin: 1.5cm 2cm;
+    }
+
+    body {
+        font-size: 11pt;
+        color: #000;
+        background: #fff;
+        line-height: 1.6;
+    }
+
+    /* Ocultar elementos no imprimibles */
+    nav,
+    footer,
+    .buscador-index,
+    .modal,
+    .links,
+    .card-icon,
+    .badge,
+    .step-list,
+    script {
+        display: none !important;
+    }
+
+    /* Contenido principal sin bordes ni sombras */
+    .content, .content.is-wide, .guide-container {
+        margin: 0;
+        padding: 0;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        max-width: 100%;
+    }
+
+    .lesson-header {
+        border-bottom: 1px solid #ccc;
+    }
+
+    .lesson-header h1 {
+        font-size: 18pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    .lesson-header .date,
+    .lesson-header .subtitle {
+        font-size: 10pt;
+    }
+
+    .lesson-body p {
+        font-size: 11pt;
+        line-height: 1.7;
+    }
+
+    .lesson-body h2 { font-size: 15pt; }
+    .lesson-body h3 { font-size: 12pt; }
+
+    .lesson-body img {
+        max-width: 80% !important;
+        margin: 1.5rem auto;
+        border: 0.5px solid #ddd;
+        box-shadow: none;
+    }
+
+    table.wiki-table, .guide-container table, .content table {
+        font-size: 9.5pt;
+    }
+
+    table.wiki-table th, .guide-container th, .content th {
+        background-color: #eee !important;
+        color: #000 !important;
+    }
+
+    .box, .tip {
+        border: 1px solid #ccc;
+        background: #f9f9f9;
+        padding: 1rem;
+        margin: 1.5rem 0;
+    }
+
+    .box-title {
+        font-size: 10pt;
+    }
+
+    code, .shortcut, .key-box {
+        border: 0.5px solid #ccc;
+        background: #f4f4f4;
+        color: #000;
+    }
+
+    .guide-img {
+        border: 0.5px solid #ddd;
+    }
+
+    /* Encabezado de impresión con 3 columnas */
+    .print-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 9pt;
+        color: #444;
+        border-bottom: 1px solid #999;
+        padding-bottom: 0.3cm;
+        margin-bottom: 1cm;
+    }
+
+    .print-header-left {
+        text-align: left;
+        width: 30%;
+    }
+
+    .print-header-center {
+        text-align: center;
+        width: 40%;
+        font-weight: 600;
+        font-size: 10pt;
+    }
+
+    .print-header-right {
+        text-align: right;
+        width: 30%;
+        font-size: 8.5pt;
+    }
+
+    /* Pie de página con número de página */ 
+    .print-footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-size: 8pt;
+        color: #888;
+        border-top: 1px solid #ccc;
+        padding-top: 0.2cm;
+    }
+
+    .print-footer::after {
+        content: "Página " counter(page);
     }
 }

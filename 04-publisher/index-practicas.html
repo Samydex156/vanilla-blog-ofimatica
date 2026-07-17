@@ -1,12 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Módulo Publisher - Prof. Samuel Durán - Ofimática</title>
-    <link rel="stylesheet" href="../main-style.css">
+    <link rel="stylesheet" href="../main-style.css" />
 </head>
 <body>
+    
     <header>
         <h1>Lista de Prácticas - Módulo Publisher</h1>
         <p>Ejercicios para reforzar el manejo de Publisher.</p>
@@ -16,14 +17,15 @@
         <a href="../index.html">🏠 Inicio</a> > <span>Prácticas de Publisher</span>
     </nav>
     
-    <main class="content">
-        <section class="module-section-pub">
+    <main class="container">
+        <section class="module-section" data-module="pub">
             <h2>Ejercicios Propuestos</h2>
+            <input type="search" class="buscador-index" id="buscador-practicas" placeholder="Buscar en prácticas…">
             <div class="alert-info">
                 <p><strong>Nota:</strong> Realiza estos ejercicios para reforzar el manejo de Publisher.</p>
             </div>
 
-            <ul class="item-list-pub">
+            <ul class="item-list" data-module="pub">
                 <li>
                     <a href="practicas/practica-01-tarjeta.html">
                         <span class="item-date"><span class="badge">07/02/2026</span>
@@ -39,5 +41,6 @@
     <footer>
          <p>&copy; 2026 - Instituto Nueva Tecnología | Prof. Samuel Durán | Ofimática</p>
     </footer>
+    <script src="../busqueda.js"></script>
 </body>
 </html>
