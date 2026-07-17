@@ -1,16 +1,25 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Módulo Word - Prof. Samuel Durán - Ofimática</title>
     <link rel="stylesheet" href="../main-style.css" />
+      <script>
+      (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.setAttribute('data-theme','dark')}})();
+    </script>
+      
   </head>
 
   <body>
     <header>
-      <h1>Guías Módulo Microsoft Word</h1>
-      <p>Manuales rápidos para recordar, repasar y practicar Microsoft Word.</p>
+        <div class="header-row">
+      <div class="header-text">
+        <h1>Guías Módulo Microsoft Word</h1>
+        <p>Manuales rápidos para recordar, repasar y practicar Microsoft Word.</p>
+      </div>
+      <button id="theme-toggle" aria-label="Cambiar modo oscuro/claro" class="theme-btn">☾</button>
+    </div>
     </header>
     <nav class="breadcrumb-nav">
       <a href="../index.html">🏠 Inicio</a> > <span>Guías de Word</span>
@@ -87,5 +96,6 @@
     </footer>
 
     <script src="../busqueda.js"></script>
+    
   </body>
 </html>

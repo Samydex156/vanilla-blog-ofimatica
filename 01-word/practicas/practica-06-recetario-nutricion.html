@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
@@ -6,6 +6,9 @@
     <title>Práctica 06: Caso Recetario de Nutrición (Clase) - Word</title>
     <link rel="stylesheet" href="../../main-style.css" />
     <link rel="stylesheet" href="../../main-style.css" />
+      <script>
+      (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.setAttribute('data-theme','dark')}})();
+    </script>
   </head>
   <body>
     <div class="print-header">
@@ -18,6 +21,7 @@
       <a href="../../index.html">🏠 Inicio</a> >
       <a href="../index-practicas.html">Word (Prácticas)</a> >
       <span>Práctica 06</span>
+    <button id="theme-toggle" aria-label="Cambiar modo oscuro/claro" class="theme-btn">☾</button>
     </nav>
 
     <main class="content">
@@ -194,5 +198,9 @@
     </footer>
   
     <script>!function(){var h=document.querySelector('.lesson-header h1,.guide-header h1');var c=document.querySelector('.print-header-center');if(h&&c)c.textContent=h.textContent}()</script>
-</body>
+  <script>
+    document.getElementById("theme-toggle")?.addEventListener("click",function(){var t=document.documentElement.getAttribute("data-theme");t=t==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",t);localStorage.setItem("theme",t);this.textContent=t==="dark"?"\u2600":"\u263E"});
+    (function(){var t=localStorage.getItem("theme");var b=document.getElementById("theme-toggle");if(b){b.textContent=t==="dark"?"\u2600":"\u263E"}})();
+  </script>
+  </body>
 </html>

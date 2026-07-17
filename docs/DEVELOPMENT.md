@@ -3,47 +3,65 @@
 ## Requisitos de Desarrollo
 
 - **Editor**: Cualquier editor de texto (VS Code recomendado)
-- **Navegador**: Chrome/Edge DevTools para depuración
+- **Navegador**: Chrome/Edge DevTools para depuración, vista de modo oscuro y simulación de impresión
 - **Git** para control de versiones
 - **Cuenta en Vercel** para despliegue (opcional)
 - **No requiere**: Node.js, npm, compiladores, bundlers ni transpiladores
 
 No hay variables de entorno ni SDKs específicos.
 
+## Arquitectura del Código
+
+### CSS — `main-style.css`
+
+El archivo está organizado en secciones numeradas:
+
+1. Variables globales (`:root`)
+2. Reset básico
+3. Header y Footer
+4. Layout (`.container`, `.grid`)
+5. Tarjetas (`.card`, con colores por `data-module`)
+6. Enlaces de navegación
+7. Breadcrumb
+8. Secciones de módulo (`.module-section`)
+9. Listas de ítems (`.item-list`, colores vía `data-module`)
+10. Buscador
+11. Modal de imágenes
+12. Contenido de lecciones (`.content`, `.lesson-header`, `.lesson-body`)
+13. Cajas informativas (`.box-*`)
+14. Tablas
+15. Código y atajos
+16. **Modo oscuro** (`[data-theme="dark"]`)
+17. **Impresión** (`@media print`)
+18. Responsive (tablet y móvil)
+
+### JS — `busqueda.js` (raíz)
+
+Un único archivo que maneja:
+- Búsqueda en vivo en todas las páginas índice
+- Toggle de modo oscuro (botón ☀/☾)
+- Persistencia del modo oscuro en `localStorage`
+- Copia del `<h1>` al `print-header-center` en páginas de contenido
+
 ## Solución de problemas comunes
 
-### Páginas que referencian `modules-style.css`
+### El modo oscuro no se persiste entre páginas
 
-Algunas páginas antiguas incluyen:
+Verifica que `busqueda.js` esté cargado en la página. Todas las páginas de contenido deben incluir:
+
 ```html
-<link rel="stylesheet" href="../../modules-style.css" />
+<script src="../../busqueda.js"></script>
 ```
 
-Este archivo **no existe** en el repositorio. El CSS fue migrado a `main-style.css`. Si una página se ve sin estilos, actualiza la referencia o elimina el `<link>` obsoleto.
+Si falta, el modo oscuro no se restaurará al navegar.
 
-### Duplicación de `busqueda.js`
+### El encabezado de impresión aparece vacío
 
-Existen **6 copias** idénticas de `busqueda.js`, una por módulo. Cada copia difiere únicamente en el selector CSS:
+El `print-header-center` se llena mediante JavaScript. Si el script no se ejecuta (por ejemplo, si no hay `<h1>` en la página), la columna central quedará vacía. Verifica que la página tenga un `<h1>` dentro de `.lesson-header` o `.guide-header`.
 
-| Archivo | Selector |
-|---------|----------|
-| `00-windows/busqueda.js` | `.item-list-win li` |
-| `01-word/busqueda.js` | `.item-list-doc li` |
-| `02-powerpoint/busqueda.js` | `.item-list-ppt li` |
-| `03-excel/busqueda.js` | `.item-list-xls li` |
-| `05-internet/busqueda.js` | `.item-list-net li` |
-| `06-inteligencia-artificial/busqueda.js` | `.item-list-ia li` |
+### La vista de impresión no se ve correctamente
 
-Al crear un nuevo módulo, copia `busqueda.js` y cambia el selector CSS.
-
-### Imágenes no cargadas
-
-Usa rutas relativas. Para páginas en subdirectorios profundos, verifica la ruta de la imagen respecto al archivo HTML actual. Ejemplo:
-
-```
-Archivo: 01-word/teoria/introduccion-word.html
-Imagen:  ../../imgs/img-word.png
-```
+Asegúrate de usar `Ctrl+P` y revisar la vista previa. El formato carta (`size: letter`) y los márgenes se aplican automáticamente. Si el navegador tiene márgenes personalizados, pueden solaparse.
 
 ## Comandos de Terminal Clave
 
@@ -53,95 +71,110 @@ git clone <repo-url>
 cd vanilla-blog-ofimatica
 
 # Iniciar servidor local de desarrollo (cualquiera de estos):
-npx serve .                    # Node.js — sirve en http://localhost:3000
-python -m http.server 8000     # Python 3 — sirve en http://localhost:8000
-php -S localhost:8000          # PHP — sirve en http://localhost:8000
+npx serve .                    # Node.js — http://localhost:3000
+python -m http.server 8000     # Python 3 — http://localhost:8000
+php -S localhost:8000          # PHP — http://localhost:8000
 
 # Ver cambios en vivo (opcional: Live Server en VS Code)
-#   - Click derecho en index.html > "Open with Live Server"
+#   Click derecho en index.html > "Open with Live Server"
 ```
 
-No hay comandos de build, test, lint ni release. El proyecto se despliega simplemente subiendo los archivos.
+No hay comandos de build, test, lint ni release.
 
 ## Guía de Extensión
 
 ### Cómo añadir un nuevo módulo
 
-1. Crea una carpeta numerada: `07-nuevo-modulo/`
-2. Dentro, crea la estructura base:
+1. Crea la carpeta: `07-nuevo-modulo/`
+2. Crea la estructura base:
    ```
    07-nuevo-modulo/
-   |-- busqueda.js             # Copia de busqueda.js existente, cambia selector a .item-list-nuevo li
-   |-- index-teoria.html       # Copia de index-teoria.html de otro módulo, ajusta título y breadcrumb
-   |-- index-guias.html        # Ídem
-   |-- index-practicas.html    # Ídem
-   |-- Teoría/
+   |-- index-teoria.html      # Copia de otro módulo, ajusta breadcrumb y título
+   |-- index-guias.html       # Ídem
+   |-- index-practicas.html   # Ídem
+   |-- teoria/
    |-- guias/
    |-- practicas/
    ```
-3. En `main-style.css`, añade:
+3. En `main-style.css`:
    ```css
-   --color-nuevo: #hexcolor;              /* en :root */
-   .card:nth-child(8) { border-top: 3px solid var(--color-nuevo); }  /* en .card:nth-child */
+   /* Variable en :root */
+   --color-nuevo: #hexcolor;
+   
+   /* Borde de tarjeta en homepage */
+   .card[data-module="nuevo"] { border-top: 3px solid var(--color-nuevo); }
+   
+   /* Badge de color */
+   .card[data-module="nuevo"] .module-badge { background: var(--color-nuevo); }
+   
+   /* Wash en hover */
+   .card[data-module="nuevo"]:hover { background: linear-gradient(135deg, #ffffff 0%, #f4f9fc 100%); }
    ```
-4. Añade las Teoría para el nuevo módulo en las secciones de `.module-section-*`, `.item-list-*` y efectos hover.
-5. Crea un icono en `imgs/img-nuevo-modulo.png`.
-6. Añade la tarjeta en `index.html` siguiendo el patrón de las existentes.
+4. Crea un icono en `imgs/img-nuevo-modulo.png`.
+5. Añade la tarjeta en `index.html` con `data-module="nuevo"`.
 
-### Cómo añadir una nueva clase/guía/práctica
+### Cómo añadir una nueva página de contenido
 
-1. Copia una página de contenido existente del mismo módulo.
-2. Actualiza el breadcrumb (`<nav class="breadcrumb-nav">`) con la ruta correcta.
-3. Cambia el título en `<h1>` y la fecha en `<span class="date">`.
-4. Escribe el contenido dentro de `<div class="lesson-body">`.
-5. Si necesitas imágenes, colócalas en la carpeta `*-imgs/` del módulo y referencia con ruta relativa.
-6. Agrega un enlace `<a>` en el `index-*.html` correspondiente, dentro de la lista `<ul class="item-list-*">`.
+1. Copia una página existente del mismo tipo (teoría/guía/práctica).
+2. Actualiza el breadcrumb con la ruta correcta:
+   ```html
+   <a href="../../index.html">Inicio</a> >
+   <a href="../index-teoria.html">Módulo</a> >
+   <span>Título</span>
+   ```
+3. Cambia el `<h1>` y la fecha si aplica.
+4. Escribe el contenido en `.lesson-body`.
+5. Agrega el script de modo oscuro e impresión al final del `<body>`:
+   ```html
+   <script src="../../busqueda.js"></script>
+   ```
+6. Registra la página en el `index-*.html` correspondiente.
 
-### Cómo añadir un nuevo estilo de módulo en main-style.css
+### Cómo modificar el modo oscuro
 
-El sistema de colores se basa en **variables CSS** y **Teoría paralelas**. Para cada módulo se requieren estas definiciones:
+Los colores oscuros se definen en `main-style.css` bajo `[data-theme="dark"]`. Para agregar un nuevo elemento al modo oscuro:
 
 ```css
-/* 1. Variable en :root */
---color-nuevo: #hexcolor;
-
-/* 2. Borde superior de tarjeta en homepage */
-.card:nth-child(N) { border-top: 3px solid var(--color-nuevo); }
-
-/* 3. Clase de sección */
-.module-section-nuevo h2 {
-    border-bottom-color: var(--color-nuevo);
-    color: var(--color-nuevo);
+[data-theme="dark"] .mi-clase {
+    background: #2a2a2a;
+    color: #e0e0e0;
+    border-color: #444;
 }
+```
 
-/* 4. Clase de lista */
-.item-list-nuevo a:hover {
-    background: var(--bg-body);
-    border-left: 3px solid var(--color-nuevo);
+### Cómo modificar la vista de impresión
+
+Toda la configuración de impresión está bajo `@media print` al final de `main-style.css`. Para cambiar el formato de página:
+
+```css
+@page {
+    size: letter;       /* Cambiar a A4: size: A4 */
+    margin: 1.5cm 2cm;  /* Ajustar márgenes */
 }
 ```
 
 ### Cómo modificar el buscador en vivo
 
-El script `busqueda.js` es auto-contenido. Para modificar su comportamiento:
+El script `busqueda.js` en la raíz es auto-contenido. Para modificar su comportamiento de búsqueda:
 
 ```javascript
-// Ejemplo: filtrar también por fecha o categoría
+// Ejemplo: filtrar también por fecha
 buscador.addEventListener("input", function () {
     const filtro = buscador.value.toLowerCase();
     listaItems.forEach(item => {
         const titulo = item.querySelector(".item-title").textContent.toLowerCase();
         const fecha = item.querySelector(".item-date")?.textContent.toLowerCase() || "";
-        const coincide = titulo.includes(filtro) || fecha.includes(filtro);
-        item.style.display = coincide ? "" : "none";
+        item.style.display = titulo.includes(filtro) || fecha.includes(filtro) ? "" : "none";
     });
 });
 ```
 
-### Cómo añadir un nuevo tipo de página de contenido
+### Cómo añadir una nueva caja informativa
 
-Si necesitas un layout distinto al existente (`.content`, `.guide-container`):
+```css
+.box-mimodulo {
+    border-left-color: var(--color-nuevo);
+}
+```
 
-1. Define la nueva clase en `main-style.css`.
-2. Añade una clase de caja informativa (`.box-*`) con su color de borde izquierdo.
-3. Crea una página HTML ejemplo y prueba en navegador.
+Luego en HTML: `<div class="box box-mimodulo">`.

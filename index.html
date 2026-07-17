@@ -9,14 +9,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz@8..60&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="main-style.css" />
     <link rel="icon" type="image/png" href="/imgs/img-favicon.png" />
+    <script>
+      (function(){var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme:dark)").matches)){document.documentElement.setAttribute("data-theme","dark")}})();
+    </script>
   </head>
   <body>
     <header>
-      <h1>Recursos de Ofimática</h1>
-      <h2>Prof. Samuel Durán</h2>
-      <p>
-        Aprende Office a tu ritmo &mdash; Clases, gu&iacute;as y ejercicios pr&aacute;cticos
-      </p>
+      <div class="header-row">
+        <div class="header-text">
+          <h1>Recursos de Ofimática</h1>
+          <h2>Prof. Samuel Durán</h2>
+          <p>
+            Aprende Office a tu ritmo &mdash; Clases, gu&iacute;as y ejercicios pr&aacute;cticos
+          </p>
+        </div>
+        <button id="theme-toggle" aria-label="Cambiar modo oscuro/claro" class="theme-btn">☾</button>
+      </div>
     </header>
 
     <main class="container">
@@ -115,5 +123,10 @@
         Ofimática
       </p>
     </footer>
+
+    <script>
+      document.getElementById("theme-toggle")?.addEventListener("click",function(){var t=document.documentElement.getAttribute("data-theme");t=t==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",t);localStorage.setItem("theme",t);this.textContent=t==="dark"?"☀":"☾"});
+      (function(){var t=localStorage.getItem("theme");var b=document.getElementById("theme-toggle");if(b){b.textContent=t==="dark"?"☀":"☾"}})();
+    </script>
   </body>
 </html>
