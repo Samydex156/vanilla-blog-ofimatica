@@ -128,7 +128,7 @@ vanilla-blog-ofimatica/
 |       |-- practica-carpetas.html
 |       |-- practica-gestion-carpetas.html
 |
-|-- 01-word/                          # [Módulo 2] Microsoft Word (5 teoría, 11 guías, 6 prácticas)
+|-- 01-word/                          # [Módulo 2] Microsoft Word (5 teoría, 11 guías, 7 prácticas y validador integrado)
 |   |-- index-teoria.html
 |   |-- index-guias.html
 |   |-- index-practicas.html

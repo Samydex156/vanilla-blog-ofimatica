@@ -212,7 +212,7 @@ function closeModal() {
 | Módulo | Teoría | Guías | Prácticas |
 |---|---|---|---|
 | 00-windows | 2 | 3 | 2 |
-| 01-word | 5 | 11 | 6 |
+| 01-word | 5 | 11 | 7 |
 | 02-powerpoint | 6 | 6 | 7 |
 | 03-excel | 4 | 1 | 5 |
 | 04-publisher | 1 | 1 | 1 |
