@@ -1,169 +1,127 @@
-/* styles.css — Tema oscuro gaming para Word-eSports */
+/* styles.css — Adaptación estética del validador al tema (claro/oscuro) de vanilla-blog-ofimatica */
 
-:root {
-  --bg-primary: #0a0e17;
-  --bg-secondary: #111827;
-  --bg-card: #1a2236;
-  --bg-card-hover: #1f2a42;
-  --border: #2a3550;
-  --border-glow: #3b82f6;
-  --text-primary: #e2e8f0;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
-  --accent: #3b82f6;
-  --accent-glow: rgba(59, 130, 246, 0.3);
-  --green: #22c55e;
-  --green-bg: rgba(34, 197, 94, 0.1);
-  --red: #ef4444;
-  --red-bg: rgba(239, 68, 68, 0.1);
-  --yellow: #eab308;
-  --gold: #f59e0b;
+/* Contenedor del validador */
+.validador-scope {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  font-family: var(--font-sans), sans-serif;
+  color: var(--text-color);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* Tarjetas del Validador */
+.validador-scope .card {
+  background: var(--bg-content);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  cursor: default;
 }
 
-body {
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-  background: var(--bg-primary);
-  color: var(--text-primary);
-  min-height: 100vh;
+.validador-scope .card:hover {
+  border-color: var(--color-word, #315180);
+  box-shadow: var(--shadow-md);
+  transform: none; /* Desactivar traslación de tarjetas del blog */
 }
 
-.container {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 2rem 1.5rem 4rem;
-}
-
-/* Header */
-.header {
-  text-align: center;
-  margin-bottom: 2.5rem;
-}
-
-.header-badge {
-  display: inline-block;
-  background: linear-gradient(135deg, var(--accent), #8b5cf6);
-  color: #fff;
-  font-size: 0.7rem;
+/* Etiqueta superior de las tarjetas */
+.validador-scope .card-label {
+  font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  padding: 0.3rem 0.9rem;
-  border-radius: 999px;
+  color: var(--color-word, #315180);
   margin-bottom: 0.75rem;
 }
 
-.header h1 {
-  font-size: 1.75rem;
-  font-weight: 800;
-  background: linear-gradient(135deg, #e2e8f0, #3b82f6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 0.4rem;
+[data-theme="dark"] .validador-scope .card-label {
+  color: var(--accent-color, #8899bb);
 }
 
-.header p {
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-}
-
-/* Cards */
-.card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 1.25rem 1.5rem;
-  margin-bottom: 1rem;
-  transition: border-color 0.2s;
-}
-
-.card:hover {
-  border-color: var(--border-glow);
-}
-
-.card-label {
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 0.75rem;
-}
-
-/* Select */
-.select-wrapper {
+/* Selector del Caso */
+.validador-scope .select-wrapper {
   position: relative;
 }
 
-.select-wrapper select {
+.validador-scope .select-wrapper select {
   width: 100%;
-  padding: 0.7rem 1rem;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  color: var(--text-primary);
-  font-size: 0.9rem;
+  padding: 0.8rem 1rem;
+  background: var(--bg-body);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  color: var(--text-main);
+  font-size: 0.95rem;
+  font-family: var(--font-sans);
   cursor: pointer;
   appearance: none;
   -webkit-appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%2394a3b8'%3E%3Cpath d='M6 8L1 3h10z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
-  background-position: right 0.8rem center;
-}
-
-.select-wrapper select:focus {
+  background-position: right 1rem center;
   outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-glow);
+  transition: var(--transition);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23666666'%3E%3Cpath d='M6 8L1 3h10z'/%3E%3C/svg%3E");
 }
 
-/* Drop Zone */
-.drop-zone {
-  border: 2px dashed var(--border);
-  border-radius: 12px;
+[data-theme="dark"] .validador-scope .select-wrapper select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23a0aabf'%3E%3Cpath d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+}
+
+.validador-scope .select-wrapper select:focus {
+  border-color: var(--color-word, #315180);
+  background: var(--bg-content);
+  box-shadow: 0 0 0 3px rgba(49, 81, 128, 0.15);
+}
+
+/* Zona de Arrastre (Drop Zone) */
+.validador-scope .drop-zone {
+  border: 2px dashed var(--border-light);
+  border-radius: var(--radius);
   padding: 2.5rem 1.5rem;
   text-align: center;
   cursor: pointer;
-  transition: all 0.25s;
+  transition: var(--transition);
   position: relative;
+  background: var(--bg-body);
 }
 
-.drop-zone:hover,
-.drop-zone.dragover {
-  border-color: var(--accent);
-  background: rgba(59, 130, 246, 0.05);
-  box-shadow: 0 0 20px var(--accent-glow);
+.validador-scope .drop-zone:hover,
+.validador-scope .drop-zone.dragover {
+  border-color: var(--color-word, #315180);
+  background: rgba(49, 81, 128, 0.05);
+  box-shadow: 0 0 10px rgba(49, 81, 128, 0.05);
 }
 
-.drop-zone.has-file {
-  border-color: var(--green);
+.validador-scope .drop-zone.has-file {
+  border-color: var(--color-success, #2e7d32);
   border-style: solid;
-  background: var(--green-bg);
+  background: rgba(46, 125, 50, 0.05);
 }
 
-.drop-zone-icon {
+.validador-scope .drop-zone-icon {
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
   opacity: 0.7;
 }
 
-.drop-zone-text {
-  color: var(--text-secondary);
-  font-size: 0.9rem;
+.validador-scope .drop-zone-text {
+  color: var(--text-muted);
+  font-size: 0.95rem;
   line-height: 1.5;
 }
 
-.drop-zone-text strong {
-  color: var(--accent);
+.validador-scope .drop-zone-text strong {
+  color: var(--color-word, #315180);
 }
 
-.drop-zone input[type="file"] {
+[data-theme="dark"] .validador-scope .drop-zone-text strong {
+  color: var(--accent-color, #8899bb);
+}
+
+.validador-scope .drop-zone input[type="file"] {
   position: absolute;
   width: 0;
   height: 0;
@@ -171,287 +129,270 @@ body {
   pointer-events: none;
 }
 
-.browse-btn {
+/* Botón Examinar Archivos */
+.validador-scope .browse-btn {
   display: inline-block;
   margin-top: 0.75rem;
   padding: 0.5rem 1.25rem;
-  background: var(--accent);
-  color: #fff;
+  background: var(--color-word, #315180);
+  color: #fff !important;
   font-size: 0.85rem;
   font-weight: 600;
-  border-radius: 8px;
+  border-radius: var(--radius);
   cursor: pointer;
-  transition: all 0.2s;
+  transition: var(--transition);
   text-decoration: none;
+  border: none;
 }
 
-.browse-btn:hover {
-  background: #2563eb;
-  box-shadow: 0 0 12px var(--accent-glow);
+.validador-scope .browse-btn:hover {
+  background: #253e63;
+  box-shadow: 0 4px 12px rgba(49, 81, 128, 0.2);
 }
 
-.error-card {
-  border-color: rgba(239, 68, 68, 0.4) !important;
-  background: rgba(239, 68, 68, 0.05) !important;
+/* Tarjeta de Error en Carga */
+.validador-scope .error-card {
+  border-color: var(--color-danger, #c62828) !important;
+  background: rgba(198, 40, 40, 0.05) !important;
 }
 
-.error-card p {
-  color: #fca5a5;
-  font-size: 0.85rem;
+.validador-scope .error-card p {
+  color: var(--color-danger, #c62828);
+  font-size: 0.9rem;
   line-height: 1.5;
+  font-family: var(--font-sans);
 }
 
-/* File Info */
-.file-info {
+/* Información de Archivo */
+.validador-scope .file-info {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   margin-top: 0.75rem;
-  padding: 0.5rem 0.75rem;
-  background: var(--bg-secondary);
-  border-radius: 6px;
-  font-size: 0.85rem;
+  padding: 0.6rem 0.8rem;
+  background: var(--bg-body);
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  border: 1px solid var(--border-light);
 }
 
-.file-info .icon {
-  color: var(--green);
+.validador-scope .file-info .icon {
+  color: var(--color-success, #2e7d32);
+  font-weight: bold;
 }
 
-.file-info .name {
-  color: var(--text-primary);
+.validador-scope .file-info .name {
+  color: var(--text-main);
   word-break: break-all;
 }
 
-/* Button */
-.btn-validar {
+/* Botón Validar */
+.validador-scope .btn-validar {
   display: block;
   width: 100%;
-  padding: 0.9rem;
+  padding: 1rem;
   margin-top: 0.5rem;
-  background: linear-gradient(135deg, var(--accent), #6366f1);
+  background: var(--color-word, #315180);
   border: none;
-  border-radius: 10px;
+  border-radius: var(--radius);
   color: #fff;
   font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0.03em;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: var(--transition);
   position: relative;
-  overflow: hidden;
+  box-shadow: var(--shadow-sm);
 }
 
-.btn-validar:hover:not(:disabled) {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 24px var(--accent-glow);
+.validador-scope .btn-validar:hover:not(:disabled) {
+  background: #253e63;
+  box-shadow: var(--shadow-md);
 }
 
-.btn-validar:disabled {
+.validador-scope .btn-validar:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+  background: var(--text-muted);
 }
 
-.btn-validar:active:not(:disabled) {
-  transform: translateY(0);
-}
-
-/* Loading */
-.loading {
+/* Cargando / Loading */
+.validador-scope .loading {
   text-align: center;
-  padding: 1.5rem;
-  color: var(--text-secondary);
-  font-size: 0.9rem;
+  padding: 2rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
 }
 
-.spinner {
+.validador-scope .spinner {
   display: inline-block;
-  width: 24px;
-  height: 24px;
-  border: 3px solid var(--border);
-  border-top-color: var(--accent);
+  width: 28px;
+  height: 28px;
+  border: 3px solid var(--border-light);
+  border-top-color: var(--color-word, #315180);
   border-radius: 50%;
-  animation: spin 0.7s linear infinite;
-  margin-bottom: 0.5rem;
+  animation: validador-spin 0.7s linear infinite;
+  margin-bottom: 0.75rem;
 }
 
-@keyframes spin {
+@keyframes validador-spin {
   to { transform: rotate(360deg); }
 }
 
-/* Results */
-.results {
+/* Resultados (Contenedor principal) */
+.validador-scope .results {
   margin-top: 1.5rem;
 }
 
-.result-header {
+.validador-scope .result-header {
   text-align: center;
-  padding: 1.5rem;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 12px 12px 0 0;
+  padding: 1.75rem;
+  background: var(--bg-content);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius) var(--radius) 0 0;
 }
 
-.result-mode {
+.validador-scope .result-mode {
   display: inline-block;
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--gold);
-  background: rgba(245, 158, 11, 0.1);
-  border: 1px solid rgba(245, 158, 11, 0.3);
-  padding: 0.2rem 0.7rem;
+  color: var(--color-warning, #f57c00);
+  background: rgba(245, 124, 0, 0.1);
+  border: 1px solid rgba(245, 124, 0, 0.3);
+  padding: 0.25rem 0.8rem;
   border-radius: 999px;
   margin-bottom: 0.75rem;
 }
 
-.result-score {
+.validador-scope .result-score {
   font-size: 2.5rem;
   font-weight: 800;
-  color: #fff;
+  color: var(--title-main);
   margin-bottom: 0.5rem;
 }
 
-.result-total {
-  font-size: 1rem;
+.validador-scope .result-total {
+  font-size: 1.1rem;
   font-weight: 400;
   color: var(--text-muted);
 }
 
-.result-bar-container {
-  height: 8px;
-  background: var(--bg-secondary);
+.validador-scope .result-bar-container {
+  height: 10px;
+  background: var(--bg-body);
   border-radius: 999px;
   overflow: hidden;
-  margin-bottom: 0.75rem;
+  margin: 1.25rem auto;
+  max-width: 420px;
+  border: 1px solid var(--border-light);
 }
 
-.result-bar {
+.validador-scope .result-bar {
   height: 100%;
   border-radius: 999px;
   transition: width 0.6s ease-out;
 }
 
-.bar-high { background: linear-gradient(90deg, var(--green), #4ade80); }
-.bar-mid { background: linear-gradient(90deg, var(--yellow), #facc15); }
-.bar-low { background: linear-gradient(90deg, var(--red), #f87171); }
+.validador-scope .bar-high { background: linear-gradient(90deg, var(--color-success, #2e7d32), #4ade80); }
+.validador-scope .bar-mid { background: linear-gradient(90deg, var(--color-warning, #f57c00), #facc15); }
+.validador-scope .bar-low { background: linear-gradient(90deg, var(--color-danger, #c62828), #f87171); }
 
-.result-message {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
+.validador-scope .result-message {
+  font-size: 0.95rem;
+  color: var(--text-color);
+  font-weight: 600;
 }
 
-/* Requirements */
-.result-requirements {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
+/* Lista de Requisitos Evaluados */
+.validador-scope .result-requirements {
+  background: var(--bg-content);
+  border: 1px solid var(--border-light);
   border-top: none;
-  border-radius: 0 0 12px 12px;
+  border-radius: 0 0 var(--radius) var(--radius);
   overflow: hidden;
 }
 
-.req {
-  padding: 0.8rem 1.25rem;
-  border-bottom: 1px solid var(--border);
+.validador-scope .req {
+  padding: 1.1rem 1.5rem;
+  border-bottom: 1px solid var(--border-light);
   transition: background 0.15s;
+  text-align: left;
 }
 
-.req:last-child {
+.validador-scope .req:last-child {
   border-bottom: none;
 }
 
-.req:hover {
-  background: var(--bg-card-hover);
+.validador-scope .req:hover {
+  background: var(--bg-body);
 }
 
-.req-header {
+.validador-scope .req-header {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.75rem;
 }
 
-.req-icon {
-  font-size: 0.9rem;
+.validador-scope .req-icon {
+  font-size: 1.1rem;
   font-weight: 700;
   flex-shrink: 0;
-  width: 20px;
+  width: 24px;
   text-align: center;
 }
 
-.req-pass .req-icon { color: var(--green); }
-.req-fail .req-icon { color: var(--red); }
+.validador-scope .req-pass .req-icon { color: var(--color-success, #2e7d32); }
+.validador-scope .req-fail .req-icon { color: var(--color-danger, #c62828); }
 
-.req-id {
+.validador-scope .req-id {
   color: var(--text-muted);
-  font-size: 0.8rem;
-  font-weight: 600;
-  flex-shrink: 0;
-}
-
-.req-desc {
-  flex: 1;
   font-size: 0.85rem;
-}
-
-.req-pts {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  flex-shrink: 0;
   font-weight: 600;
+  flex-shrink: 0;
 }
 
-.req-pass .req-desc { color: var(--text-secondary); }
-.req-fail .req-desc { color: var(--text-primary); }
-
-.req-hint {
-  margin-top: 0.4rem;
-  margin-left: 1.75rem;
-  padding: 0.5rem 0.75rem;
-  background: var(--red-bg);
-  border-left: 3px solid var(--red);
-  border-radius: 0 6px 6px 0;
-  font-size: 0.8rem;
-  color: #fca5a5;
+.validador-scope .req-desc {
+  flex: 1;
+  font-size: 0.95rem;
+  color: var(--text-color);
   line-height: 1.4;
 }
 
-/* Error */
-.error-msg {
-  padding: 1rem 1.25rem;
-  background: var(--red-bg);
-  border: 1px solid rgba(239, 68, 68, 0.3);
-  border-radius: 8px;
-  color: #fca5a5;
-  font-size: 0.9rem;
-}
-
-/* Hidden */
-.hidden {
-  display: none !important;
-}
-
-/* Footer */
-.footer {
-  text-align: center;
-  margin-top: 2rem;
+.validador-scope .req-pts {
+  font-size: 0.85rem;
   color: var(--text-muted);
-  font-size: 0.75rem;
+  flex-shrink: 0;
+  font-weight: 600;
 }
 
-.footer a {
-  color: var(--accent);
-  text-decoration: none;
+.validador-scope .req-pass .req-desc { color: var(--text-muted); }
+.validador-scope .req-fail .req-desc { color: var(--text-color); font-weight: 500; }
+
+/* Pista o Hint en caso de error */
+.validador-scope .req-hint {
+  margin-top: 0.6rem;
+  margin-left: 2rem;
+  padding: 0.6rem 0.8rem;
+  background: rgba(198, 40, 40, 0.04);
+  border-left: 3px solid var(--color-danger, #c62828);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: 0.85rem;
+  color: var(--color-danger, #c62828);
+  line-height: 1.45;
 }
 
-/* Responsive */
-@media (max-width: 480px) {
-  .container {
-    padding: 1rem;
-  }
-  .header h1 {
-    font-size: 1.4rem;
-  }
-  .result-score {
-    font-size: 2rem;
-  }
+/* Mensajes de error general */
+.validador-scope .error-msg {
+  padding: 1rem 1.25rem;
+  background: rgba(198, 40, 40, 0.05);
+  border: 1px solid rgba(198, 40, 40, 0.3);
+  border-radius: var(--radius);
+  color: var(--color-danger, #c62828);
+  font-size: 0.95rem;
+}
+
+.validador-scope .hidden {
+  display: none !important;
 }

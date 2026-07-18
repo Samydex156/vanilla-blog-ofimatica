@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Módulo Word - Prof. Samuel Durán - Ofimática</title>
     <link rel="stylesheet" href="../main-style.css" />
+    <link rel="stylesheet" href="validador-web/css/styles.css" />
     <script>
       (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.setAttribute('data-theme','dark')}})();
     </script>
@@ -119,7 +120,67 @@
       <section class="module-section" data-module="word" style="margin-top: 3rem; border-top: 1px solid var(--border-light); padding-top: 2rem;">
         <h2>Validador de Documentos Word</h2>
         <p style="margin-bottom: 1.5rem; color: var(--text-muted);">Sube tu archivo <code>.docx</code> de la práctica para evaluar tus respuestas y descubrir tu nota al instante.</p>
-        <iframe src="validador-web/" style="width: 100%; height: 780px; border: 1px solid var(--border-light); border-radius: 8px; background: #0a0e17; box-shadow: var(--shadow-sm);"></iframe>
+        
+        <div class="validador-scope">
+          <!-- Error de carga JS -->
+          <div class="card error-card hidden" id="load-error">
+            <div class="card-label" style="color:var(--color-danger, #c62828);">Error de carga</div>
+            <p id="load-error-msg">No se pudieron cargar las librerías necesarias. Verifica tu conexión a internet y recarga la página.</p>
+          </div>
+
+          <noscript>
+            <div class="card error-card">
+              <div class="card-label" style="color:var(--color-danger, #c62828);">JavaScript deshabilitado</div>
+              <p>Debes habilitar JavaScript para usar el validador.</p>
+            </div>
+          </noscript>
+
+          <!-- Paso 1: Seleccionar caso -->
+          <div class="card">
+            <div class="card-label">Paso 1 — Selecciona el caso</div>
+            <div class="select-wrapper">
+              <select id="caso-select">
+                <option value="caso-01">Básico — Caso 01: Newsletter (PixelWorld / RetroQuest)</option>
+                <option value="caso-02">Básico — Caso 02: Recetario Nutrición (Patatas / Tarta de Manzana)</option>
+                <option value="caso-05">Intermedio — Caso 05: Artículo Periodístico (3 Columnas, Letra Capital, Formas)</option>
+                <option value="caso-06">Intermedio — Caso 06: Conminatoria Control Social (Sangrías, CITE, Firmas)</option>
+                <option value="caso-07">Avanzado — Caso 07: Planilla Personal (Tablas, Encabezados, sombreado, efecto cebra)</option>
+                <option value="caso-08">Intermedio — Caso 08: Evaluacion Conduccion (vMerge, gridSpan, texto vertical)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Paso 2: Subir archivo -->
+          <div class="card">
+            <div class="card-label">Paso 2 — Sube tu archivo .docx</div>
+            <div class="drop-zone" id="drop-zone">
+              <div class="drop-zone-icon">📄</div>
+              <div class="drop-zone-text">
+                Arrastra tu archivo aquí o <strong>haz clic para buscar</strong>
+              </div>
+              <label for="file-input" class="browse-btn">Examinar archivos</label>
+              <input type="file" id="file-input" accept=".docx">
+            </div>
+            <div class="file-info hidden" id="file-info">
+              <span class="icon">✓</span>
+              <span class="name" id="file-name"></span>
+            </div>
+          </div>
+
+          <!-- Botón validar -->
+          <button class="btn-validar" id="btn-validar" disabled>
+            🔍 Validar mi documento
+          </button>
+
+          <!-- Loading -->
+          <div class="loading hidden" id="loading">
+            <div class="spinner"></div>
+            <div>Analizando documento...</div>
+          </div>
+
+          <!-- Resultados -->
+          <div class="results hidden" id="results"></div>
+        </div>
       </section>
     </main>
     <footer>
@@ -129,5 +190,34 @@
     </footer>
 
     <script src="../busqueda.js"></script>
+
+    <!-- CDN Libraries para el Validador -->
+    <script>
+      window._cdnOk = { jszip: false, fxparser: false };
+      window.onerror = function(msg, src, line, col, err) {
+        var el = document.getElementById('load-error');
+        var msgEl = document.getElementById('load-error-msg');
+        if (el && msgEl) {
+          msgEl.textContent = 'Error JS: ' + msg + (src ? ' (' + src.split('/').pop() + ')' : '') + '. Recarga la página.';
+          el.classList.remove('hidden');
+        }
+      };
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"
+            onload="window._cdnOk.jszip=true"
+            onerror="var el=document.getElementById('load-error');var m=document.getElementById('load-error-msg');if(el&&m){m.textContent='No se pudo cargar JSZip. Verifica tu conexión a internet.';el.classList.remove('hidden');}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fast-xml-parser/5.2.5/fxparser.min.js"
+            onload="window._cdnOk.fxparser=true"
+            onerror="var el=document.getElementById('load-error');var m=document.getElementById('load-error-msg');if(el&&m){m.textContent='No se pudo cargar fast-xml-parser. Verifica tu conexión a internet.';el.classList.remove('hidden');}"></script>
+
+    <!-- Scripts del Validador -->
+    <script src="validador-web/js/core.js"></script>
+    <script src="validador-web/js/validador-caso-01.js"></script>
+    <script src="validador-web/js/validador-caso-02.js"></script>
+    <script src="validador-web/js/validador-caso-05.js"></script>
+    <script src="validador-web/js/validador-caso-06.js"></script>
+    <script src="validador-web/js/validador-caso-07.js"></script>
+    <script src="validador-web/js/validador-caso-08.js"></script>
+    <script src="validador-web/js/app.js"></script>
   </body>
 </html>
