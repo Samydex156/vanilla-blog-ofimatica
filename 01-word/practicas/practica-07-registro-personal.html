@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Práctica 07: Caso Hoja de Vida y Planilla de Personal (Clase) - Word</title>
+    <link rel="stylesheet" href="../../main-style.css" />
+    <script>
+      (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.setAttribute('data-theme','dark')}})();
+    </script>
+  </head>
+  <body>
+    <div class="print-header">
+        <div class="print-header-left">Prof. Samuel William Durán Quispe</div>
+        <div class="print-header-center"></div>
+        <div class="print-header-right">Instituto Nueva Tecnología &mdash; Ofimática &mdash; Word &mdash; 2026</div>
+    </div>
+
+    <nav class="breadcrumb-nav">
+      <a href="../../index.html">🏠 Inicio</a> >
+      <a href="../index-practicas.html">Word (Prácticas)</a> >
+      <span>Práctica 07</span>
+      <button id="theme-toggle" aria-label="Cambiar modo oscuro/claro" class="theme-btn">☾</button>
+    </nav>
+
+    <main class="content">
+      <header class="lesson-header">
+        <span class="date">Práctica #07</span>
+        <h1>Caso: Hoja de Vida y Planilla de Personal</h1>
+        <p class="subtitle">Configuración de página A4, jerarquía tipográfica Calibri, tablas con anchos específicos, efecto cebra y personalización de bordes</p>
+      </header>
+
+      <section class="lesson-body">
+        <div class="box box-word">
+          <span class="task-title">Objetivo de la Práctica</span>
+          <p>
+            Diseñar y estructurar un documento de registro de personal corporativo en Microsoft Word utilizando una plantilla base. El estudiante deberá configurar correctamente el tamaño de página A4 y los márgenes, establecer una jerarquía tipográfica uniforme con Calibri, diseñar tablas con anchos de columna específicos, aplicar un efecto cebra (sombreado alterno), configurar alineaciones verticales en celdas, y definir bordes y márgenes internos personalizados para lograr una validación impecable de 1000 puntos.
+          </p>
+        </div>
+
+        <h2>Material de Trabajo</h2>
+        <p>Descarga la plantilla base en formato Word para iniciar el ejercicio:</p>
+        <div style="margin: 1rem 0">
+          <a
+            href="ejercicios/Caso_Registro_Personal_Clase_Plantilla.docx"
+            download
+            style="
+              display: inline-flex;
+              align-items: center;
+              gap: 0.5rem;
+              background-color: #2b579a;
+              color: white;
+              padding: 0.5rem 1rem;
+              border-radius: 4px;
+              text-decoration: none;
+              font-weight: bold;
+            "
+          >
+            📥 Descargar Plantilla del Caso.docx
+          </a>
+        </div>
+
+        <h2>Instrucciones Paso a Paso</h2>
+
+        <h3>Paso 1: Configuración de Tamaño de Página A4</h3>
+        <p>Configura el tamaño del papel de la página a exactamente <strong>A4</strong>:</p>
+        <ul class="step-list">
+          <li>Abre el documento de plantilla <code>Caso_Registro_Personal_Clase_Plantilla.docx</code> en Microsoft Word.</li>
+          <li>Dirígete a la pestaña <strong>Disposición</strong> (o <strong>Formato</strong> en algunas versiones de Word).</li>
+          <li>Haz clic en el botón <strong>Tamaño</strong> y selecciona <strong>A4</strong> (21.0 cm × 29.7 cm o 8.27" × 11.69").</li>
+        </ul>
+
+        <h3>Paso 2: Configuración de Márgenes de 2.0 cm</h3>
+        <p>Configura los márgenes de página en sus cuatro lados a exactamente <strong>2.0 cm</strong>:</p>
+        <ul class="step-list">
+          <li>En la pestaña <strong>Disposición</strong>, haz clic en el botón <strong>Márgenes</strong> y selecciona <strong>Márgenes personalizados...</strong> al final del menú.</li>
+          <li>En el cuadro de diálogo de configuración de página, introduce el valor <strong>2,0 cm</strong> (o 1134 dxa en formato XML) en los cuatro campos correspondientes: <strong>Superior</strong>, <strong>Inferior</strong>, <strong>Izquierdo</strong> y <strong>Derecho</strong>.</li>
+          <li>Asegúrate de aplicar esta configuración a <strong>Todo el documento</strong> y presiona <strong>Aceptar</strong>.</li>
+        </ul>
+
+        <h3>Paso 3: Fuente General (Calibri)</h3>
+        <p>Aplica la tipografía oficial Calibri y establece la escala de tamaños del texto:</p>
+        <ul class="step-list">
+          <li>Selecciona todo el documento usando la combinación de teclas <code>Ctrl + E</code>.</li>
+          <li>En la pestaña <strong>Inicio</strong> > grupo <strong>Fuente</strong>, cambia la tipografía a <strong>Calibri</strong> (asegúrate de que todos los textos usen esta fuente de forma predeterminada).</li>
+        </ul>
+
+        <h3>Paso 4: Formato del Título Principal</h3>
+        <p>Aplica un diseño destacado al nombre de la corporación:</p>
+        <ul class="step-list">
+          <li>Selecciona el texto del título principal: <code>"Sistemas Integrados S.A."</code>.</li>
+          <li>Establece el tamaño de fuente en exactamente <strong>26 pt</strong>.</li>
+          <li>Aplica formato <strong>Negrita</strong> (<code>Ctrl + N</code>).</li>
+          <li>Aplica el color de fuente <strong>Azul Oscuro</strong> (código hexadecimal <strong>#1F4E79</strong> o RGB: Rojo 31, Verde 78, Azul 121).</li>
+          <li>Centra el título haciendo clic en el botón <strong>Centrar</strong> (o presiona <code>Ctrl + T</code>).</li>
+        </ul>
+
+        <h3>Paso 5: Configuración de la Tabla 1 — Información de la empresa</h3>
+        <p>Aplica propiedades de diseño fijo y formato a la primera tabla:</p>
+        <ul class="step-list">
+          <li>Haz clic derecho sobre la primera tabla (Información de la empresa) y selecciona <strong>Propiedades de tabla...</strong></li>
+          <li>En la pestaña <strong>Tabla</strong>, asegúrate de establecer el <strong>Ancho preferido</strong> al <strong>100%</strong> con alineación a la izquierda o centro (sin combinaciones).</li>
+          <li>La tabla debe constar de <strong>6 filas</strong> en total (1 fila de encabezado y 5 filas de datos).</li>
+          <li>Selecciona las dos celdas de la fila de encabezado (<code>"Atributo"</code> y <code>"Valor"</code>):
+            <ul>
+              <li>Aplica un <strong>Sombreado</strong> de color azul (código hexadecimal <strong>#4472C4</strong> o RGB: Rojo 68, Verde 114, Azul 196) en la pestaña <strong>Diseño de tabla</strong> > grupo <em>Estilos de tabla</em> > botón <strong>Sombreado</strong>.</li>
+              <li>Establece el texto en color <strong>Blanco</strong> y aplica <strong>Negrita</strong>.</li>
+            </ul>
+          </li>
+          <li>Los datos de la tabla corresponden a la siguiente información (asegúrate de que estén escritos exactamente así):
+            <ul>
+              <li><strong>Nombre:</strong> Sistemas Integrados S.A.</li>
+              <li><strong>RUT:</strong> 76.123.456-7</li>
+              <li><strong>Dirección:</strong> Av. Providencia 1234, Santiago</li>
+              <li><strong>Teléfono:</strong> +56 2 2345 6789</li>
+              <li><strong>Email:</strong> contacto@sistemasintegrados.com</li>
+            </ul>
+          </li>
+        </ul>
+
+        <h3>Paso 6: Configuración de la Tabla 2 — Planilla de personal (Dimensiones e Interlineado)</h3>
+        <p>Ajusta el tamaño y la distribución general de la planilla:</p>
+        <ul class="step-list">
+          <li>Haz clic derecho sobre la segunda tabla (Planilla de personal) y selecciona <strong>Propiedades de tabla...</strong></li>
+          <li>En la pestaña <strong>Tabla</strong>, establece el <strong>Ancho preferido</strong> a exactamente el <strong>100%</strong> y asegúrate de que el diseño sea fijo.</li>
+          <li>Selecciona la primera fila (los encabezados de columna) y, en la pestaña de herramientas de tabla <strong>Disposición</strong> (o <strong>Presentación</strong>) > grupo <em>Tamaño de celda</em>, establece la altura de la fila a un valor mínimo de <strong>500 dxa</strong> (equivalente a <strong>0,88 cm</strong>).</li>
+          <li>Selecciona todas las filas de datos inferiores y establece la altura de la fila a un valor mínimo de <strong>340 dxa</strong> (equivalente a <strong>0,60 cm</strong>).</li>
+          <li>Con toda la tabla seleccionada, ve al grupo <em>Alineación</em> en la pestaña <strong>Disposición</strong> y selecciona <strong>Alinear verticalmente</strong> o <strong>Alinear en el centro a la izquierda / al centro</strong> para centrar verticalmente el contenido dentro de cada celda.</li>
+        </ul>
+
+        <h3>Paso 7: Ancho Exacto y Alineación de Columnas en Tabla 2</h3>
+        <p>Define el ancho específico y las alineaciones de contenido para cada una de las 6 columnas de la planilla:</p>
+        <ul class="step-list">
+          <li><strong>Cód. (Columna 1):</strong> Ancho preferido: <strong>9,5%</strong>. Encabezado sombreado en color <strong>#4472C4</strong> con texto blanco, negrita y <strong>centrado</strong>. El contenido de los datos debe estar alineado al <strong>centro</strong>.</li>
+          <li><strong>Nombre Completo (Columna 2):</strong> Ancho preferido: <strong>30%</strong>. Encabezado sombreado en color <strong>#4472C4</strong> con texto blanco, negrita y <strong>centrado</strong>. El contenido de los datos (nombres) debe estar alineado a la <strong>izquierda</strong>.</li>
+          <li><strong>Cargo (Columna 3):</strong> Ancho preferido: <strong>27,5%</strong>. Encabezado sombreado en color <strong>#4472C4</strong> con texto blanco, negrita y <strong>centrado</strong>. El contenido de los datos (cargos) debe estar alineado a la <strong>izquierda</strong>.</li>
+          <li><strong>Ingreso (Columna 4):</strong> Ancho preferido: <strong>11%</strong>. Encabezado sombreado en color <strong>#4472C4</strong> con texto blanco, negrita y <strong>centrado</strong>. El contenido de las fechas de ingreso debe estar alineado al <strong>centro</strong>.</li>
+          <li><strong>Salario (Columna 5):</strong> Ancho preferido: <strong>11%</strong>. Encabezado sombreado en color <strong>#4472C4</strong> con texto blanco, negrita y <strong>centrado</strong>. El contenido de los salarios debe estar alineado al <strong>centro</strong>.</li>
+          <li><strong>Nivel (Columna 6):</strong> Ancho preferido: <strong>11%</strong>. Encabezado sombreado en color <strong>#4472C4</strong> con texto blanco, negrita y <strong>centrado</strong>. El contenido de los niveles jerárquicos debe estar alineado al <strong>centro</strong>.</li>
+        </ul>
+
+        <h3>Paso 8: Efecto Cebra en Filas de Datos</h3>
+        <p>Aplica sombreado alterno a las filas de la Tabla 2 para mejorar la legibilidad:</p>
+        <ul class="step-list">
+          <li>Deja las filas impares de datos (filas 1, 3, 5 y 7) sin sombreado de color o con sombreado blanco (<strong>#FFFFFF</strong>).</li>
+          <li>Aplica sombreado de celda de color azul muy claro (código hexadecimal <strong>#DEEAF6</strong> o RGB: Rojo 222, Verde 234, Azul 246) a las filas pares de datos (filas 2, 4 y 6).
+            <ul>
+              <li><strong>Fila 1 (Ana García López):</strong> Blanco (#FFFFFF)</li>
+              <li><strong>Fila 2 (Carlos Mendoza Ruiz):</strong> Azul Claro (#DEEAF6)</li>
+              <li><strong>Fila 3 (María Fernández Torres):</strong> Blanco (#FFFFFF)</li>
+              <li><strong>Fila 4 (José Hernández Paredes):</strong> Azul Claro (#DEEAF6)</li>
+              <li><strong>Fila 5 (Laura Castillo Vega):</strong> Blanco (#FFFFFF)</li>
+              <li><strong>Fila 6 (Pedro Ramírez Solís):</strong> Azul Claro (#DEEAF6)</li>
+              <li><strong>Fila 7 (Sofía Morales Rivas):</strong> Blanco (#FFFFFF)</li>
+            </ul>
+          </li>
+        </ul>
+
+        <h3>Paso 9: Personalización de Bordes y Márgenes de Celda</h3>
+        <p>Define la cuadrícula de la planilla y el espaciado interno de los datos:</p>
+        <ul class="step-list">
+          <li><strong>Bordes de datos:</strong> Selecciona todas las celdas de datos y aplica un borde sencillo y delgado de color gris (código hexadecimal <strong>#CCCCCC</strong> o RGB: Rojo 204, Verde 204, Azul 204).</li>
+          <li><strong>Bordes de encabezado:</strong> Selecciona únicamente la fila de encabezados y aplica un borde de color azul oscuro más grueso (código hexadecimal <strong>#2E5090</strong> o RGB: Rojo 46, Verde 80, Azul 144).</li>
+          <li><strong>Márgenes de celda:</strong> Selecciona toda la Tabla 2, dirígete a la pestaña <strong>Disposición</strong> > grupo <em>Alineación</em> > haz clic en <strong>Márgenes de celda</strong>. Configura las siguientes distancias de celda:
+            <ul>
+              <li><strong>Superior:</strong> 20 dxa (aproximadamente 0,04 cm).</li>
+              <li><strong>Inferior:</strong> 20 dxa (aproximadamente 0,04 cm).</li>
+              <li><strong>Izquierdo:</strong> 60 dxa (aproximadamente 0,11 cm).</li>
+              <li><strong>Derecho:</strong> 60 dxa (aproximadamente 0,11 cm).</li>
+            </ul>
+          </li>
+        </ul>
+
+        <h3>Paso 10: Pie de Página Corporativo</h3>
+        <p>Inserta la firma de confidencialidad al final de la página:</p>
+        <ul class="step-list">
+          <li>Dirígete a la pestaña <strong>Insertar</strong> > grupo <em>Encabezado y pie de página</em> > haz clic en <strong>Pie de página</strong> y selecciona <strong>Editar pie de página</strong>.</li>
+          <li>Escribe exactamente el siguiente texto: <code>"Sistemas Integrados S.A. - Registro Confidencial"</code>.</li>
+          <li>Asegúrate de que esté formateado en fuente Calibri, tamaño estándar y alineado a la izquierda.</li>
+        </ul>
+
+        <h3>Paso 11: Validación del Caso con Node.js</h3>
+        <p>Verifica que todos los parámetros cumplan estrictamente con las reglas de validación:</p>
+        <ul class="step-list">
+          <li>Abre una consola de comandos (Terminal o PowerShell) en la carpeta donde tienes los archivos del curso.</li>
+          <li>Ejecuta el siguiente comando para verificar el archivo guardado:
+            <pre style="background-color: var(--code-bg, #f4f4f4); padding: 0.75rem; border-radius: 4px; overflow-x: auto; color: var(--text-color, #333);"><code>node validar_caso.js Caso_07_Clase.docx</code></pre>
+          </li>
+          <li>El resultado esperado en consola debe ser una puntuación de <strong>1000/1000</strong> con todos los requisitos en ✅.</li>
+        </ul>
+
+        <div class="box box-practice">
+          <span class="task-title">Entregable</span>
+          <p>
+            Guarda el archivo finalizado con el nombre exacto <strong>Caso_07_Clase.docx</strong> y preséntalo para su validación final.
+          </p>
+        </div>
+
+        <h2>Resultado Esperado</h2>
+        <p>El documento finalizado consta de una página y debe verse exactamente como se muestra en la siguiente imagen:</p>
+        <div style="max-width: 700px; margin: 1.5rem auto 0 auto;">
+          <img
+            src="imgs-practicas/Caso_Registro_Personal_Clase_Solucion_page-0001.jpg"
+            alt="Resultado de Práctica 07"
+            style="border: 1px solid #ddd; width: 100%; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-radius: 4px;"
+          />
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        &copy; 2026 - Instituto Nueva Tecnología | Prof. Samuel Durán | Ofimática
+      </p>
+    </footer>
+
+    <script>!function(){var h=document.querySelector('.lesson-header h1,.guide-header h1');var c=document.querySelector('.print-header-center');if(h&&c)c.textContent=h.textContent}()</script>
+    <script>
+      document.getElementById("theme-toggle")?.addEventListener("click",function(){var t=document.documentElement.getAttribute("data-theme");t=t==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",t);localStorage.setItem("theme",t);this.textContent=t==="dark"?"\u2600":"\u263E"});
+      (function(){var t=localStorage.getItem("theme");var b=document.getElementById("theme-toggle");if(b){b.textContent=t==="dark"?"\u2600":"\u263E"}})();
+    </script>
+  </body>
+</html>
