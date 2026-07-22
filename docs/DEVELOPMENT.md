@@ -14,23 +14,23 @@ No hay variables de entorno ni SDKs específicos.
 
 ### CSS — `main-style.css`
 
-El archivo está organizado en secciones numeradas:
+El archivo está organizado con tokens del sistema de diseño **Warm Paper & Obsidian Terminal**:
 
-1. Variables globales (`:root`)
-2. Modo oscuro (`[data-theme="dark"]`)
-3. Reset básico
-4. Header y Footer (`.header-row`, `.theme-btn`)
+1. Variables globales (`:root`: tono papel marfil `#F7F6F3`, tarjetas `#FFFFFF`, texto `#1A1A1A`, tipografía Serif `Source Serif 4`)
+2. Modo oscuro (`[data-theme="dark"]`: tono obsidiana `#121212`, tarjetas `#1C1C1C`, texto `#E6E6E6`, overlays oscurecidos)
+3. Reset básico y compacidad global (~25% más denso)
+4. Header y Footer (`.header-row`, `.theme-btn` badge retro `[ ☀ ]` / `[ ☾ ]`)
 5. Layout (`.container`, `.grid`)
-6. Tarjetas (`.card`, con colores por `data-module`)
+6. Tarjetas (`.card`, con íconos vectoriales SVG por `data-module`)
 7. Enlaces de navegación
-8. Breadcrumb (`.breadcrumb-nav`, con `.theme-btn` interno)
+8. Breadcrumb (`.breadcrumb-nav`, con ícono `icon-home.svg` e `#theme-toggle` interno)
 9. Secciones de módulo (`.module-section`)
-10. Listas de ítems (`.item-list`, colores vía `data-module`)
+10. Listas de ítems (`.item-list`, selección multilínea `li` en buscador)
 11. Buscador
-12. Modal de imágenes
+12. Modal de imágenes (`.modal` adaptado a modo oscuro y soporte para tecla `Escape`)
 13. Contenido de lecciones (`.content`, `.lesson-header`, `.lesson-body`)
 14. Cajas informativas (`.box-*`)
-15. Tablas
+15. Tablas y **Diagramas Vectoriales SVG** (`.svg-chart-preview`, `.svg-window-container`)
 16. Código y atajos
 17. **Tabla de atajos esenciales** (`.essentials-table`, `.essentials-note`)
 18. Botón de descarga
@@ -40,10 +40,11 @@ El archivo está organizado en secciones numeradas:
 ### JS — `busqueda.js` (raíz)
 
 Un único archivo que maneja:
-- Búsqueda en vivo en todas las páginas índice
-- Toggle de modo oscuro (botón ☀/☾)
+- Búsqueda en vivo en todas las páginas índice (`document.querySelectorAll(".item-list li")`)
+- Toggle de modo oscuro (botón `[ ☀ ]` / `[ ☾ ]`)
 - Persistencia del modo oscuro en `localStorage`
-- Copia del `<h1>` al `print-header-center` en páginas de contenido
+- Copia dinámica del `<h1>` al `print-header-center` en páginas de contenido
+- Manejador del evento `keydown` (tecla `Escape`) para cerrar el modal de imagen `#img-modal`
 
 ## Solución de problemas comunes
 

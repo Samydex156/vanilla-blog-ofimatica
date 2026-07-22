@@ -8,13 +8,13 @@ Actúa como un Desarrollador Web Frontend Senior especializado en HTML5 semánti
 
 El proyecto NO utiliza dependencias externas. Stack 100% nativo del navegador:
 
-- **HTML**: `<!doctype html>`, semántico, UTF-8, viewport meta
-- **CSS**: Variables personalizadas, reset, Grid layout, `@media print`, `@media (prefers-color-scheme: dark)`, `[data-theme="dark"]`, sin preprocesadores
-- **JavaScript**: Un solo archivo `busqueda.js` en la raíz. Vanilla, funciones globales, sin imports, sin npm. Maneja: búsqueda en vivo, toggle de modo oscuro, persistencia localStorage, copia de título al print header.
-- **Fuentes**: Inter (Google Fonts), Source Serif 4 (Google Fonts), system font stack como fallback
+- **HTML**: `<!doctype html>`, semántico, UTF-8, viewport meta, script síncrono en `<head>` para Anti-FOUC
+- **CSS**: Tokens de diseño Warm Paper (`#F7F6F3`) & Obsidian Terminal (`#121212`), variables personalizadas, reset compactado (25%), Grid layout, `@media print`, `[data-theme="dark"]`, sin preprocesadores
+- **JavaScript**: Un solo archivo `busqueda.js` en la raíz. Vanilla ES5, sin imports, sin npm. Maneja: búsqueda en vivo multi-lista, toggle de modo oscuro, persistencia `localStorage`, copia dinámica de título a `print-header-center` y cierre de modal con tecla `Escape`.
+- **Fuentes**: Inter (Google Fonts), Source Serif 4 (Google Fonts) para títulos retro-elegantes, system font stack como fallback
 - **Despliegue**: Vercel con `cleanUrls: true` y `trailingSlash: false`
-- **Iconos**: PNG de 40x40 px por módulo
-- **Imágenes**: PNG (`max-width: 100%`, border-radius 6px). En dark mode se invierten con `filter: invert(0.9) hue-rotate(180deg)`.
+- **Iconos e Ilustraciones**: Vectorial SVG 100% nativo (`stroke="currentColor"`, `fill="currentColor"`) en `imgs/svg/` para tarjetas de módulo, migas de pan y viñetas de listas
+- **Diagramas Teóricos**: Maquetación completa en código SVG para ventanas de aplicación (Windows, Word, PowerPoint, Excel, Publisher), esquemas de color, composición visual y gráficos de datos
 - **Archivos descargables**: .docx, .xlsx, .pdf con enlaces directos
 
 ## Modificaciones Nativas o de Configuración

@@ -5,14 +5,15 @@ Portal web de recursos educativos para el curso de **Ofimática** del **Institut
 ## Características principales
 
 -   **7 módulos completos**: Windows, Word, PowerPoint, Excel, Publisher, Internet e Inteligencia Artificial
--   **Clases de teoría** con contenido visual y explicaciones paso a paso
+-   **Sistema de Diseño Warm Paper & Obsidian Terminal**: Estilo editorial retro-elegante con tipografía Serif (`Source Serif 4`), bordes sutiles y 25% más compacto
+-   **Iconografía e Ilustración 100% SVG**: Reemplazo total de emojis e imágenes PNG por íconos vectoriales escalables e ilustraciones en código SVG
+-   **Diagramas Teóricos Interactivos en SVG**: Maquetación de la interfaz de ventanas (Word, PowerPoint, Excel, Publisher, Windows), esquemas de color (60-30-10), composición visual y gráficos de datos en código SVG
 -   **Guías prácticas** con atajos de teclado, tips y procedimientos detallados
 -   **Ejercicios descargables**: archivos .docx, .xlsx y .pdf para practicar
 -   **Buscador en vivo** unificado para filtrar contenido al instante
--   **Modal de imágenes** con zoom para ver capturas de pantalla a detalle
--   **Diseño responsive**: óptimo en desktop, tablet y móvil
--   **Modo oscuro** automático (sigue la preferencia del sistema) y manual (con toggle)
--   **Vista de impresión** optimizada: encabezado con datos del profesor, pie con número de página, tamaño carta
+-   **Modal de imágenes** con zoom y tecla `Escape` para cerrar
+-   **Modo oscuro / claro sin parpadeo (Anti-FOUC)** con persistencia en `localStorage` y adaptación cromática automática de íconos SVG
+-   **Vista de impresión** optimizada: encabezado con datos del profesor y título dinámico, pie con número de página, tamaño carta
 -   **100% estático**: sin frameworks, sin base de datos, despliegue instantáneo
 
 ## Atajos de navegación

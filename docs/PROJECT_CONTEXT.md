@@ -63,18 +63,17 @@ No existe capa de servidor, enrutamiento dinámico ni lógica en backend. El des
 
 ### 2. Flujo de modo oscuro
 
-1. Al cargar cualquier página, un **script bloqueante en `<head>`** ejecuta inmediatamente: lee `localStorage.getItem("theme")`, si es `"dark"` (o si no hay valor guardado y `prefers-color-scheme: dark` coincide), aplica `data-theme="dark"` en `<html>` antes del primer render (evita flash).
-2. El CSS responde con `[data-theme="dark"]` redefiniendo las variables de color.
-3. Las páginas **índice** (`index-*.html`) cargan `busqueda.js` que agrega el event listener del botón.
-4. Las páginas de **contenido** (`guias/`, `teoria/`, `practicas/`) tienen un **script inline** al final del body con la misma lógica de toggle + sincronización del ícono.
-5. El botón `#theme-toggle` está en el header de la homepage e índices, y dentro del `breadcrumb-nav` en páginas de contenido.
-6. El cambio persiste en `localStorage` y el ícono se sincroniza (☾ → ☀).
+1. Al cargar cualquier página, un **script síncrono bloqueante en `<head>`** ejecuta inmediatamente: lee `localStorage.getItem("theme")`, si es `"dark"` (o si no hay valor guardado y `prefers-color-scheme: dark` coincide), aplica `data-theme="dark"` en `<html>` antes del primer renderizado para evitar parpadeos (Anti-FOUC).
+2. El CSS responde con `[data-theme="dark"]` redefiniendo las variables de color (Obsidian Terminal).
+3. `busqueda.js` sincroniza el botón `#theme-toggle` (badge estilo retro `[ ☀ ]` / `[ ☾ ]`) en la carga de la página.
+4. Los íconos y diagramas vectoriales SVG utilizan `stroke="currentColor"` y `fill="currentColor"` (o variables CSS), adaptando sus colores automáticamente al tema sin distorsión.
+5. El cambio persiste en `localStorage`.
 
 ### 3. Flujo de impresión
 
 1. El usuario presiona Ctrl+P en cualquier página de contenido.
 2. `@media print` activa: se ocultan nav, footer, buscador, modal, botones.
-3. El `print-header` (oculto en pantalla) se muestra con 3 columnas: profesor | título del recurso | institución + módulo + año.
+3. El `print-header` (oculto en pantalla) se muestra con 3 columnas: profesor | título dinámico extraído por JS | institución + módulo + año.
 4. El `print-footer` muestra el número de página actual.
 5. Formato tamaño carta, márgenes 1.5cm/2cm, fuente 11pt, sin sombras ni colores de fondo.
 
@@ -92,26 +91,35 @@ No existe capa de servidor, enrutamiento dinámico ni lógica en backend. El des
 2. La función global `openModal(img)` se dispara.
 3. El modal (div con `display: none`) cambia a `display: flex`.
 4. La imagen ampliada se coloca dentro del modal.
-5. El usuario hace clic en la `X` o en el fondo del modal para cerrarlo (`closeModal()`).
+5. El usuario presiona la tecla `Escape` o hace clic en la `X` / fondo para cerrarlo (`closeModal()`).
 
 ## Estructura de Directorios
 
 ```
 vanilla-blog-ofimatica/
 |
-|-- index.html                        # [Entry Point] Página principal con grid de tarjetas, header con toggle dark mode
-|-- main-style.css                    # [Estilos Globales] ~700 líneas: variables, layout, cards, dark mode, @media print, responsive
-|-- busqueda.js                       # [JS Unificado] Búsqueda en vivo + toggle de modo oscuro con persistencia localStorage
+|-- index.html                        # [Entry Point] Página principal con tarjetas SVG y toggle de modo oscuro
+|-- main-style.css                    # [Estilos Globales] Tokens Warm Paper & Obsidian Terminal, Serif typography, compact layout, SVG charts, print & dark mode
+|-- busqueda.js                       # [JS Unificado] Búsqueda en vivo multi-lista, toggle oscuro, print title copy, escape modal handler
 |-- vercel.json                       # [Config] Despliegue en Vercel: cleanUrls + sin trailing slashes
 |
-|-- imgs/                             # [Assets] Iconos PNG de módulos para la página principal
-|   |-- img-excel.png
+|-- imgs/                             # [Assets] Iconos vectoriales SVG por módulo e imágenes
+|   |-- svg/                          #   Iconos vectoriales limpios
+|   |   |-- icon-windows.svg
+|   |   |-- icon-word.svg
+|   |   |-- icon-powerpoint.svg
+|   |   |-- icon-excel.svg
+|   |   |-- icon-publisher.svg
+|   |   |-- icon-internet.svg
+|   |   |-- icon-ia.svg
+|   |   |-- icon-home.svg
 |   |-- img-favicon.png
 |   |-- img-ia-internet.png
-|   |-- img-powerpoint.png
-|   |-- img-publisher.png
 |   |-- img-windows.png
 |   |-- img-word.png
+|   |-- img-excel.png
+|   |-- img-powerpoint.png
+|   |-- img-publisher.png
 |
 |-- 00-windows/                       # [Módulo 1] Sistema Operativo Windows
 |   |-- index-teoria.html             #   Índice de teoría
