@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
@@ -19,7 +19,7 @@
     </div>
 
     <nav class="breadcrumb-nav">
-      <a href="../../index.html">🏠 Inicio</a> >
+      <a href="../../index.html"><svg class="icon-svg-home" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -1px; margin-right: 4px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>Inicio</a> >
       <a href="../index-teoria.html">PowerPoint</a> >
       <span>Introducción</span>
     <button id="theme-toggle" aria-label="Cambiar modo oscuro/claro" class="theme-btn">☾</button>
@@ -65,10 +65,145 @@
           PowerPoint organiza las opciones y herramientas en distintas partes en su
           interfaz de usuario:
         </p>
-        <img
-          src="ppt-clases-imgs/ppt-interfaz-usuario-01.png"
-          alt="Interfaz de usuario de PowerPoint"
-        />
+        <div class="svg-window-container" style="margin: 1.5rem 0; width: 100%; overflow-x: auto;">
+        <svg viewBox="0 0 800 480" width="100%" height="auto" fill="none" xmlns="http://www.w3.org/2000/svg" style="border: 1px solid var(--border-light); border-radius: 6px; box-shadow: var(--shadow-md); font-family: var(--font-sans);">
+          <!-- Frame de la Ventana Principal -->
+          <rect width="800" height="480" rx="6" fill="var(--bg-body)" stroke="var(--border-light)" stroke-width="1.5"/>
+
+          <!-- 1. BARRA DE TÍTULO -->
+          <path d="M0 6C0 2.68629 2.68629 0 6 0H794C797.314 0 800 2.68629 800 6V32H0V6Z" fill="var(--color-ppt)"/>
+          <circle cx="16" cy="16" r="4" fill="#FFFFFF" fill-opacity="0.3"/>
+          <circle cx="30" cy="16" r="4" fill="#FFFFFF" fill-opacity="0.3"/>
+          <circle cx="44" cy="16" r="4" fill="#FFFFFF" fill-opacity="0.3"/>
+          <text x="400" y="20" text-anchor="middle" font-size="12" font-weight="600" fill="#FFFFFF" font-family="var(--font-sans)">Presentación1 - Microsoft PowerPoint</text>
+          <text x="735" y="20" font-size="12" fill="#FFFFFF" font-family="var(--font-code)">—  ❐  ✕</text>
+
+          <!-- 2. BARRA DE PESTAÑAS (MENÚ) -->
+          <rect y="32" width="800" height="28" fill="var(--bg-content)"/>
+          <line x1="0" y1="60" x2="800" y2="60" stroke="var(--border-light)" stroke-width="1"/>
+          
+          <text x="20" y="50" font-size="11" font-weight="500" fill="var(--text-muted)">Archivo</text>
+          <rect x="68" y="32" width="55" height="28" fill="var(--bg-body)"/>
+          <line x1="68" y1="32" x2="123" y2="32" stroke="var(--color-ppt)" stroke-width="2.5"/>
+          <text x="95" y="50" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-ppt)">Inicio</text>
+          
+          <text x="140" y="50" font-size="11" font-weight="500" fill="var(--text-muted)">Insertar</text>
+          <text x="198" y="50" font-size="11" font-weight="500" fill="var(--text-muted)">Dibujar</text>
+          <text x="252" y="50" font-size="11" font-weight="500" fill="var(--text-muted)">Diseño</text>
+          <text x="306" y="50" font-size="11" font-weight="500" fill="var(--text-muted)">Transiciones</text>
+          <text x="388" y="50" font-size="11" font-weight="500" fill="var(--text-muted)">Animaciones</text>
+          <text x="472" y="50" font-size="11" font-weight="500" fill="var(--text-muted)">Presentación</text>
+
+          <!-- 3. CINTA DE OPCIONES (RIBBON) -->
+          <rect y="60" width="800" height="65" fill="var(--bg-body)"/>
+          <line x1="0" y1="125" x2="800" y2="125" stroke="var(--border-light)" stroke-width="1"/>
+
+          <!-- Grupo Portapapeles -->
+          <rect x="15" y="68" width="24" height="32" rx="2" fill="var(--bg-content)" stroke="var(--border-light)"/>
+          <text x="27" y="88" text-anchor="middle" font-size="14">📋</text>
+          <text x="27" y="112" text-anchor="middle" font-size="9" fill="var(--text-muted)">Pegar</text>
+          <line x1="50" y1="68" x2="50" y2="115" stroke="var(--border-light)"/>
+
+          <!-- Grupo Diapositivas -->
+          <rect x="62" y="68" width="28" height="32" rx="2" fill="var(--bg-content)" stroke="var(--color-ppt)"/>
+          <rect x="68" y="74" width="16" height="12" rx="1" fill="var(--color-ppt)" fill-opacity="0.2"/>
+          <text x="76" y="112" text-anchor="middle" font-size="9" font-weight="600" fill="var(--color-ppt)">Nueva Diapositiva</text>
+          <line x1="150" y1="68" x2="150" y2="115" stroke="var(--border-light)"/>
+
+          <!-- Grupo Fuente / Párrafo -->
+          <text x="165" y="85" font-size="11" font-weight="600" font-family="var(--font-heading)" fill="var(--text-main)">Calibri (Cuerpo)</text>
+          <rect x="260" y="73" width="28" height="16" rx="2" fill="var(--bg-content)" stroke="var(--border-light)"/>
+          <text x="274" y="85" text-anchor="middle" font-size="10" font-family="var(--font-code)" fill="var(--text-main)">60</text>
+          <text x="165" y="108" font-size="12" font-weight="700" font-family="var(--font-sans)" fill="var(--text-main)">N  I  S  ab  A  🎨</text>
+          <line x1="330" y1="68" x2="330" y2="115" stroke="var(--border-light)"/>
+
+          <!-- Grupo Dibujo -->
+          <rect x="345" y="72" width="18" height="18" rx="2" fill="var(--bg-content)" stroke="var(--border-light)"/>
+          <rect x="370" y="72" width="18" height="18" rx="9" fill="var(--bg-content)" stroke="var(--border-light)"/>
+          <polygon points="404,72 395,90 413,90" fill="var(--bg-content)" stroke="var(--border-light)"/>
+          <text x="380" y="112" text-anchor="middle" font-size="9" fill="var(--text-muted)">Dibujo</text>
+
+          <!-- 5. PANEL DE MINIATURAS (IZQUIERDA) -->
+          <rect x="10" y="135" width="130" height="295" rx="4" fill="var(--bg-content)" stroke="var(--border-light)"/>
+          
+          <!-- Miniatura 1 (Activa) -->
+          <rect x="25" y="150" width="100" height="60" rx="3" fill="var(--bg-body)" stroke="var(--color-ppt)" stroke-width="2"/>
+          <text x="18" y="184" text-anchor="middle" font-size="10" font-weight="700" fill="var(--color-ppt)" font-family="var(--font-code)">1</text>
+          <rect x="35" y="165" width="50" height="6" rx="1" fill="var(--color-ppt)"/>
+          <rect x="35" y="177" width="70" height="4" rx="1" fill="var(--border-light)"/>
+          <rect x="35" y="185" width="40" height="4" rx="1" fill="var(--border-light)"/>
+
+          <!-- Miniatura 2 -->
+          <rect x="25" y="225" width="100" height="60" rx="3" fill="var(--bg-body)" stroke="var(--border-light)"/>
+          <text x="18" y="259" text-anchor="middle" font-size="10" fill="var(--text-muted)" font-family="var(--font-code)">2</text>
+          <rect x="35" y="240" width="60" height="5" rx="1" fill="var(--text-muted)"/>
+          <rect x="35" y="252" width="75" height="18" rx="1" fill="var(--border-light)"/>
+
+          <!-- Miniatura 3 -->
+          <rect x="25" y="300" width="100" height="60" rx="3" fill="var(--bg-body)" stroke="var(--border-light)"/>
+          <text x="18" y="334" text-anchor="middle" font-size="10" fill="var(--text-muted)" font-family="var(--font-code)">3</text>
+
+          <!-- 4. ÁREA DE TRABAJO / DIAPOSITIVA CANVAS (CENTRO) -->
+          <rect x="150" y="135" width="640" height="295" rx="4" fill="var(--bg-body)" stroke="var(--border-light)"/>
+          
+          <!-- Lienzo de Diapositiva Principal -->
+          <rect x="210" y="150" width="520" height="250" rx="3" fill="var(--bg-content)" stroke="var(--border-light)" stroke-width="1.5"/>
+          
+          <!-- Cuadro de Título -->
+          <rect x="250" y="185" width="440" height="65" rx="2" stroke="var(--color-ppt)" stroke-dasharray="4 3" stroke-opacity="0.7" fill="none"/>
+          <text x="470" y="224" text-anchor="middle" font-size="18" font-weight="700" font-family="var(--font-heading)" fill="var(--title-main)">Título de la Presentación</text>
+
+          <!-- Cuadro de Subtítulo -->
+          <rect x="280" y="270" width="380" height="50" rx="2" stroke="var(--border-light)" stroke-dasharray="3 3" fill="none"/>
+          <text x="470" y="300" text-anchor="middle" font-size="12" font-family="var(--font-sans)" fill="var(--text-muted)">Haga clic para agregar subtítulo</text>
+
+          <!-- 6. PANEL DE NOTAS -->
+          <rect x="210" y="405" width="520" height="20" fill="var(--bg-body)"/>
+          <text x="220" y="418" font-size="9" font-style="italic" fill="var(--text-muted)" font-family="var(--font-sans)">Haga clic para agregar notas del orador...</text>
+
+          <!-- 7. BARRA DE ESTADO (PIE DE VENTANA) -->
+          <path d="M0 442H800V474C800 477.314 797.314 480 794 480H6C2.68629 480 0 477.314 0 474V442Z" fill="var(--bg-content)"/>
+          <line x1="0" y1="442" x2="800" y2="442" stroke="var(--border-light)" stroke-width="1"/>
+          
+          <text x="20" y="463" font-size="10" font-family="var(--font-code)" fill="var(--text-muted)">Diapositiva 1 de 3</text>
+          <text x="140" y="463" font-size="10" font-family="var(--font-sans)" fill="var(--text-muted)">Español (Bolivia)</text>
+
+          <!-- Vistas y Zoom -->
+          <text x="630" y="463" font-size="11" fill="var(--text-muted)" font-family="var(--font-code)">🗏  🗎  📖  📽</text>
+          <line x1="710" y1="463" x2="760" y2="463" stroke="var(--text-muted)" stroke-width="2"/>
+          <circle cx="735" cy="463" r="4" fill="var(--color-ppt)"/>
+          <text x="770" y="464" font-size="10" font-weight="600" font-family="var(--font-code)" fill="var(--text-main)">60%</text>
+
+          <!-- ETIQUETAS NUMERADAS DE PARTES (CALLOUTS EDUCACIONALES) -->
+          <!-- 1. Barra de Título -->
+          <circle cx="700" cy="16" r="9" fill="var(--bg-content)" stroke="var(--color-ppt)" stroke-width="1.5"/>
+          <text x="700" y="19" text-anchor="middle" font-size="10" font-weight="700" fill="var(--color-ppt)">1</text>
+
+          <!-- 2. Pestañas -->
+          <circle cx="585" cy="46" r="9" fill="var(--bg-content)" stroke="var(--color-ppt)" stroke-width="1.5"/>
+          <text x="585" y="49" text-anchor="middle" font-size="10" font-weight="700" fill="var(--color-ppt)">2</text>
+
+          <!-- 3. Cinta de Opciones -->
+          <circle cx="460" cy="90" r="9" fill="var(--bg-content)" stroke="var(--color-ppt)" stroke-width="1.5"/>
+          <text x="460" y="93" text-anchor="middle" font-size="10" font-weight="700" fill="var(--color-ppt)">3</text>
+
+          <!-- 4. Área de Trabajo -->
+          <circle cx="470" cy="165" r="9" fill="var(--bg-content)" stroke="var(--color-ppt)" stroke-width="1.5"/>
+          <text x="470" y="168" text-anchor="middle" font-size="10" font-weight="700" fill="var(--color-ppt)">4</text>
+
+          <!-- 5. Panel de Miniaturas -->
+          <circle cx="75" cy="142" r="9" fill="var(--bg-content)" stroke="var(--color-ppt)" stroke-width="1.5"/>
+          <text x="75" y="145" text-anchor="middle" font-size="10" font-weight="700" fill="var(--color-ppt)">5</text>
+
+          <!-- 6. Panel de Notas -->
+          <circle cx="470" cy="415" r="9" fill="var(--bg-content)" stroke="var(--color-ppt)" stroke-width="1.5"/>
+          <text x="470" y="418" text-anchor="middle" font-size="10" font-weight="700" fill="var(--color-ppt)">6</text>
+
+          <!-- 7. Barra de Estado -->
+          <circle cx="270" cy="460" r="9" fill="var(--bg-content)" stroke="var(--color-ppt)" stroke-width="1.5"/>
+          <text x="270" y="463" text-anchor="middle" font-size="10" font-weight="700" fill="var(--color-ppt)">7</text>
+        </svg>
+        </div>
         <div>
           <h3>Partes de la Ventana Principal de PowerPoint</h3>
           <ul>

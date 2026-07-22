@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
@@ -18,7 +18,7 @@
     </div>
 
     <nav class="breadcrumb-nav">
-      <a href="../../index.html">🏠 Inicio</a> >
+      <a href="../../index.html"><svg class="icon-svg-home" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -1px; margin-right: 4px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>Inicio</a> >
       <a href="../index-teoria.html">Publisher</a> >
       <span>Introducción</span>
     <button id="theme-toggle" aria-label="Cambiar modo oscuro/claro" class="theme-btn">☾</button>
@@ -95,10 +95,76 @@
           veremos el entorno de trabajo:
         </p>
 
-        <img
-          src="publisher-imgs/00-Entorno-trabajo-publisher01.png"
-          alt="Entorno de Trabajo de Publisher"
-        />
+        <div class="svg-window-container" style="margin: 1.5rem 0; width: 100%; overflow-x: auto;">
+        <svg viewBox="0 0 800 440" width="100%" height="auto" fill="none" xmlns="http://www.w3.org/2000/svg" style="border: 1px solid var(--border-light); border-radius: 6px; box-shadow: var(--shadow-md); font-family: var(--font-sans);">
+          <!-- Frame de la Ventana Principal -->
+          <rect width="800" height="440" rx="6" fill="var(--bg-body)" stroke="var(--border-light)" stroke-width="1.5"/>
+
+          <!-- BARRA DE TÍTULO -->
+          <path d="M0 6C0 2.68629 2.68629 0 6 0H794C797.314 0 800 2.68629 800 6V32H0V6Z" fill="#192624"/>
+          <circle cx="16" cy="16" r="4" fill="#FFFFFF" fill-opacity="0.3"/>
+          <circle cx="30" cy="16" r="4" fill="#FFFFFF" fill-opacity="0.3"/>
+          <circle cx="44" cy="16" r="4" fill="#FFFFFF" fill-opacity="0.3"/>
+          <text x="400" y="20" text-anchor="middle" font-size="12" font-weight="600" fill="#FFFFFF">Publicación1 - Microsoft Publisher</text>
+          <text x="735" y="20" font-size="12" fill="#FFFFFF" font-family="var(--font-code)">—  ❐  ✕</text>
+
+          <!-- BARRA DE PESTAÑAS Y CINTA -->
+          <rect y="32" width="800" height="26" fill="var(--bg-content)"/>
+          <text x="20" y="48" font-size="11" font-weight="700" fill="#192624">Inicio</text>
+          <text x="70" y="48" font-size="11" font-weight="500" fill="var(--text-muted)">Insertar</text>
+          <text x="130" y="48" font-size="11" font-weight="500" fill="var(--text-muted)">Diseño de página</text>
+          <text x="240" y="48" font-size="11" font-weight="500" fill="var(--text-muted)">Correspondencia</text>
+
+          <rect y="58" width="800" height="55" fill="var(--bg-body)"/>
+          <line x1="0" y1="113" x2="800" y2="113" stroke="var(--border-light)" stroke-width="1"/>
+          <text x="25" y="80" font-size="11" fill="var(--text-main)">🔤 Dibujar cuadro de texto  🖼️ Imagen  📐 Guías  🎨 Paletas</text>
+
+          <!-- REGLAS DE MEDIDA MAQUETACIÓN -->
+          <rect y="113" width="800" height="16" fill="var(--bg-content)"/>
+          <text x="400" y="125" text-anchor="middle" font-size="8.5" font-family="var(--font-code)" fill="var(--text-muted)">0 cm · · 5 cm · · 10 cm · · 15 cm · · 20 cm · · 25 cm</text>
+
+          <!-- PANEL DE PÁGINAS (IZQUIERDA) -->
+          <rect x="10" y="135" width="120" height="270" rx="4" fill="var(--bg-content)" stroke="var(--border-light)"/>
+          <text x="70" y="152" text-anchor="middle" font-size="9" font-weight="700" fill="var(--text-muted)">PÁGINAS</text>
+
+          <!-- Thumbnail Page 1 -->
+          <rect x="25" y="165" width="90" height="60" rx="2" fill="var(--bg-body)" stroke="#192624" stroke-width="2"/>
+          <rect x="35" y="175" width="70" height="40" stroke="#192624" stroke-dasharray="2 2" fill="none"/>
+          <text x="70" y="200" text-anchor="middle" font-size="8" font-weight="700" fill="#192624">Diploma 1</text>
+
+          <!-- LIENZO DE DIBUJO / MAQUETACIÓN (CENTRO) -->
+          <rect x="140" y="135" width="650" height="270" rx="4" fill="var(--bg-body)" stroke="var(--border-light)"/>
+
+          <!-- Hoja de Trabajo (Diploma Canvas) -->
+          <rect x="200" y="145" width="530" height="250" rx="4" fill="var(--bg-content)" stroke="var(--border-light)" stroke-width="1.5"/>
+          
+          <!-- Guías Azules de Margen de Impresión -->
+          <rect x="220" y="160" width="490" height="220" stroke="#1ABC9C" stroke-dasharray="3 3" stroke-width="1.5" fill="none"/>
+
+          <!-- Ornato / Borde de Diploma SVG -->
+          <rect x="230" y="170" width="470" height="200" rx="2" stroke="#9E771D" stroke-width="2" fill="none"/>
+          <rect x="234" y="174" width="462" height="192" stroke="#9E771D" stroke-width="0.8" stroke-dasharray="2 2" fill="none"/>
+
+          <!-- Texto Diploma -->
+          <text x="465" y="210" text-anchor="middle" font-size="18" font-weight="700" font-family="var(--font-heading)" fill="var(--title-main)">DIPLOMA DE RECONOCIMIENTO</text>
+          <text x="465" y="235" text-anchor="middle" font-size="10" font-family="var(--font-sans)" fill="var(--text-muted)">Otorgado con orgullo a:</text>
+          <text x="465" y="265" text-anchor="middle" font-size="16" font-weight="700" font-family="var(--font-heading)" fill="#192624">JUAN PÉREZ RODRÍGUEZ</text>
+          <line x1="330" y1="272" x2="600" y2="272" stroke="#192624" stroke-width="1"/>
+
+          <text x="465" y="295" text-anchor="middle" font-size="9" fill="var(--text-muted)">Por su destacada participación en el curso de Ofimática 2026.</text>
+
+          <!-- Firmas -->
+          <line x1="320" y1="335" x2="420" y2="335" stroke="var(--text-muted)"/>
+          <text x="370" y="348" text-anchor="middle" font-size="8" fill="var(--text-muted)">Firma Director</text>
+
+          <line x1="510" y1="335" x2="610" y2="335" stroke="var(--text-muted)"/>
+          <text x="560" y="348" text-anchor="middle" font-size="8" fill="var(--text-muted)">Firma Instructor</text>
+
+          <!-- BARRA DE ESTADO -->
+          <path d="M0 410H800V434C800 437.314 797.314 440 794 440H6C2.68629 440 0 437.314 0 434V410Z" fill="var(--bg-content)"/>
+          <text x="20" y="426" font-size="10" font-family="var(--font-code)" fill="var(--text-muted)">Página 1 de 1 | Tamaño: Carta Horizontal (27.9 x 21.6 cm)</text>
+        </svg>
+        </div>
 
         <p>
           Y es necesario que estemos familiarizados con las partes de esta

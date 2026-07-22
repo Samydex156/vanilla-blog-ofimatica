@@ -1,91 +1,107 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz@8..60&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap');
 
-/* 1. Variables Globales */
+/* 1. Variables Globales — Estilo Warm Paper & Obsidian Retro Minimalista */
 :root {
-    --bg-color: #fafafa;
-    --bg-body: #f6f8fa;
-    --bg-content: #ffffff;
+    --bg-color: #F7F6F3;
+    --bg-body: #F7F6F3;
+    --bg-content: #FFFFFF;
     
-    --text-color: #333333;
-    --text-main: #333333;
-    --text-muted: #666666;
+    --text-color: #1A1A1A;
+    --text-main: #1A1A1A;
+    --text-muted: #5C5955;
     
     --title-main: #111111;
-    --white: #ffffff;
-    --border-light: #e5e5e5;
+    --white: #FFFFFF;
+    --border-light: #D9D7CE;
     
-    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
-    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
-    --transition: all 0.3s ease-in-out;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 2px 3px 0px rgba(0, 0, 0, 0.08);
+    --transition: all 0.2s ease-in-out;
 
-    --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --font-heading: 'Source Serif 4', Georgia, 'Times New Roman', serif;
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    --font-serif: 'Source Serif 4', 'Georgia', 'Times New Roman', serif;
-    --font-code: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    --font-serif: 'Source Serif 4', Georgia, serif;
+    --font-code: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
 
     --width-reading: 800px;
     --width-wide: 950px;
-    --radius: 6px;
+    --radius: 4px;
 
-    --color-win: #2b78a1;
-    --color-word: #315180;
-    --color-excel: #296843;
-    --color-ppt: #b34a36;
-    --color-pub: #1d695f;
-    --color-net: #b38b22;
-    --color-ia: #6b4c80;
+    /* Muted Retro Color Palette por Módulo */
+    --color-win: #295F85;
+    --color-word: #254875;
+    --color-excel: #1E5E3A;
+    --color-ppt: #9E3B2B;
+    --color-pub: #1B5E55;
+    --color-net: #9E771D;
+    --color-ia: #5B3A70;
     
-    --primary-color: #444444;
-    --accent-color: #555555;
+    --primary-color: #2B2B2B;
+    --accent-color: #5C5955;
     
-    --color-success: #2e7d32;
-    --color-warning: #f57c00;
-    --color-danger: #c62828;
-    --color-code-bg: #f4f4f4;
+    --color-success: #1E5E3A;
+    --color-warning: #9E771D;
+    --color-danger: #9E3B2B;
+    --color-code-bg: #F0EEE9;
 }
 
-/* 1b. Dark Mode */
+/* 1b. Dark Mode — Obsidian Terminal */
 [data-theme="dark"] {
-    --bg-color: #1a1a2e;
-    --bg-body: #16213e;
-    --bg-content: #1e2a4a;
+    --bg-color: #121212;
+    --bg-body: #121212;
+    --bg-content: #1C1C1C;
 
-    --text-color: #e0e0e0;
-    --text-main: #e0e0e0;
-    --text-muted: #a0aabf;
+    --text-color: #E6E6E6;
+    --text-main: #E6E6E6;
+    --text-muted: #9E9E9E;
 
-    --title-main: #f0f0f0;
-    --white: #1e2a4a;
-    --border-light: #2a3a5e;
+    --title-main: #F0F0F0;
+    --white: #1C1C1C;
+    --border-light: #2E2E2E;
 
-    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md: 2px 3px 0px rgba(0, 0, 0, 0.4);
 
-    --color-code-bg: #2a3a5e;
+    --color-code-bg: #262626;
 
-    --primary-color: #a0aabf;
-    --accent-color: #8899bb;
+    --primary-color: #E6E6E6;
+    --accent-color: #9E9E9E;
 }
 
 [data-theme="dark"] header {
-    background: linear-gradient(135deg, #16213e 0%, #1e2a4a 100%);
-    border-bottom-color: #2a3a5e;
+    background: #161616;
+    border-bottom-color: #2E2E2E;
 }
 
 [data-theme="dark"] header h1 {
-    background: linear-gradient(135deg, #f0f0f0 0%, #a0aabf 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #F0F0F0;
+    background: none;
+    -webkit-text-fill-color: initial;
 }
 
-[data-theme="dark"] .card[data-module="win"]:hover { background: linear-gradient(135deg, #1e2a4a 0%, #1a2740 100%); }
-[data-theme="dark"] .card[data-module="word"]:hover { background: linear-gradient(135deg, #1e2a4a 0%, #1a253f 100%); }
-[data-theme="dark"] .card[data-module="ppt"]:hover { background: linear-gradient(135deg, #1e2a4a 0%, #3d2420 100%); }
-[data-theme="dark"] .card[data-module="xls"]:hover { background: linear-gradient(135deg, #1e2a4a 0%, #1a2e22 100%); }
-[data-theme="dark"] .card[data-module="pub"]:hover { background: linear-gradient(135deg, #1e2a4a 0%, #1a2e2a 100%); }
-[data-theme="dark"] .card[data-module="net"]:hover { background: linear-gradient(135deg, #1e2a4a 0%, #2e2a1a 100%); }
-[data-theme="dark"] .card[data-module="ia"]:hover { background: linear-gradient(135deg, #1e2a4a 0%, #2a1a3a 100%); }
+[data-theme="dark"] .modal {
+    background-color: rgba(18, 18, 18, 0.95);
+}
+
+[data-theme="dark"] .essentials-note {
+    background: #242018;
+    color: #E5A93C;
+}
+
+[data-theme="dark"] table.wiki-table th, 
+[data-theme="dark"] .guide-container th, 
+[data-theme="dark"] .content table:not(.wiki-table) th {
+    background-color: #161616;
+    color: #F0F0F0;
+}
+
+[data-theme="dark"] .card[data-module="win"]:hover { background: #1E262E; }
+[data-theme="dark"] .card[data-module="word"]:hover { background: #1B222C; }
+[data-theme="dark"] .card[data-module="ppt"]:hover { background: #2A1D1B; }
+[data-theme="dark"] .card[data-module="xls"]:hover { background: #1B261F; }
+[data-theme="dark"] .card[data-module="pub"]:hover { background: #192624; }
+[data-theme="dark"] .card[data-module="net"]:hover { background: #262319; }
+[data-theme="dark"] .card[data-module="ia"]:hover { background: #231B28; }
 
 /* 2. Reset */
 * {
@@ -98,18 +114,18 @@ body {
     font-family: var(--font-sans);
     background-color: var(--bg-body);
     color: var(--text-color);
-    line-height: 1.7;
+    line-height: 1.6;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     -webkit-font-smoothing: antialiased;
 }
 
-/* 3. Header y Footer */
+/* 3. Header y Footer Compactos */
 header {
-    background: linear-gradient(135deg, #f0f2f5 0%, var(--bg-content) 100%);
+    background: var(--bg-content);
     color: var(--title-main);
-    padding: 2.5rem 1rem;
+    padding: 1.2rem 1rem;
     text-align: center;
     border-bottom: 1px solid var(--border-light);
     width: 100%;
@@ -119,8 +135,8 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1.5rem;
-    max-width: 800px;
+    gap: 1rem;
+    max-width: 850px;
     margin: 0 auto;
     flex-wrap: wrap;
 }
@@ -131,12 +147,13 @@ header {
 }
 
 .theme-btn {
-    background: var(--bg-content);
+    background: var(--bg-body);
     border: 1px solid var(--border-light);
     border-radius: var(--radius);
     color: var(--text-main);
-    font-size: 1.3rem;
-    padding: 0.4rem 0.7rem;
+    font-family: var(--font-code);
+    font-size: 0.95rem;
+    padding: 0.25rem 0.6rem;
     cursor: pointer;
     transition: var(--transition);
     line-height: 1;
@@ -145,72 +162,71 @@ header {
 
 .theme-btn:hover {
     background: var(--border-light);
-    transform: scale(1.08);
+    transform: translateY(-1px);
 }
 
 .theme-btn:active {
-    transform: scale(0.95);
+    transform: translateY(0);
 }
 
 header h1 {
-    font-size: 2.2rem;
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
     font-weight: 700;
-    letter-spacing: -0.5px;
-    margin-bottom: 0.3rem;
-    background: linear-gradient(135deg, var(--title-main) 0%, #555 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    letter-spacing: -0.3px;
+    margin-bottom: 0.15rem;
+    color: var(--title-main);
 }
 
 header h2 {
-    font-size: 1.1rem;
-    font-weight: 400;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 500;
     color: var(--text-muted);
-    letter-spacing: 0.3px;
-    margin-bottom: 0.5rem;
+    letter-spacing: 0.2px;
+    margin-bottom: 0.25rem;
 }
 
 header p {
-    font-size: 0.95rem;
+    font-size: 0.88rem;
     color: var(--text-muted);
-    max-width: 500px;
+    max-width: 550px;
     margin: 0 auto;
 }
 
 footer {
     text-align: center;
-    padding: 2rem 1rem;
+    padding: 1.2rem 1rem;
     margin-top: auto;
     background: var(--bg-content);
     color: var(--text-muted);
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     border-top: 1px solid var(--border-light);
     width: 100%;
 }
 
-/* 4. Layout */
+/* 4. Layout Compacto */
 .container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     margin: 0 auto;
-    padding: 2rem 1.5rem;
+    padding: 1.2rem 1rem;
     flex: 1;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1150px;
 }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1rem;
 }
 
-/* 5. Tarjetas (Cards) */
+/* 5. Tarjetas (Cards) Retro Minimalistas */
 .card {
     background: var(--bg-content);
-    padding: 1.5rem;
+    padding: 1rem;
     border: 1px solid var(--border-light);
     border-radius: var(--radius);
     transition: var(--transition);
@@ -221,37 +237,37 @@ footer {
 
 .card:hover {
     box-shadow: var(--shadow-md);
-    border-color: #ccc;
+    border-color: #B5B2A6;
     transform: translateY(-2px);
 }
 
 .card-icon {
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
     object-fit: contain;
-    margin-bottom: 1rem;
+    margin-bottom: 0.6rem;
     transition: var(--transition);
 }
 
 .card:hover .card-icon {
-    transform: scale(1.15);
+    transform: scale(1.1);
 }
 
 .card h2 {
-    margin-bottom: 0.8rem;
-    font-size: 1.2rem;
+    margin-bottom: 0.6rem;
+    font-size: 1.05rem;
     font-weight: 600;
     color: var(--title-main);
     font-family: var(--font-heading);
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.4rem;
 }
 
 .card h2 .module-badge {
     display: inline-block;
-    width: 8px;
-    height: 8px;
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
     flex-shrink: 0;
 }
@@ -266,18 +282,18 @@ footer {
 .card[data-module="ia"] .module-badge { background: var(--color-ia); }
 
 /* Fondo wash sutil por módulo en hover */
-.card[data-module="win"]:hover { background: linear-gradient(135deg, #ffffff 0%, #f4f9fc 100%); }
-.card[data-module="word"]:hover { background: linear-gradient(135deg, #ffffff 0%, #f4f6fa 100%); }
-.card[data-module="ppt"]:hover { background: linear-gradient(135deg, #ffffff 0%, #fcf6f4 100%); }
-.card[data-module="xls"]:hover { background: linear-gradient(135deg, #ffffff 0%, #f4f9f6 100%); }
-.card[data-module="pub"]:hover { background: linear-gradient(135deg, #ffffff 0%, #f4f9f8 100%); }
-.card[data-module="net"]:hover { background: linear-gradient(135deg, #ffffff 0%, #fcf9f4 100%); }
-.card[data-module="ia"]:hover { background: linear-gradient(135deg, #ffffff 0%, #f8f4fc 100%); }
+.card[data-module="win"]:hover { background: #F3F7FA; }
+.card[data-module="word"]:hover { background: #F2F5F9; }
+.card[data-module="ppt"]:hover { background: #FAF3F2; }
+.card[data-module="xls"]:hover { background: #F1F7F3; }
+.card[data-module="pub"]:hover { background: #F1F7F6; }
+.card[data-module="net"]:hover { background: #FAF7F0; }
+.card[data-module="ia"]:hover { background: #F6F2FA; }
 
-/* 6. Enlaces de Navegación */
+/* 6. Enlaces de Navegación Compactos */
 .links {
     display: flex;
-    gap: 0.5rem;
+    gap: 0.4rem;
     flex-wrap: wrap;
     margin-top: auto;
 }
@@ -286,8 +302,8 @@ footer {
     text-decoration: none;
     color: var(--text-color);
     font-weight: 500;
-    font-size: 0.85rem;
-    padding: 0.5rem 0.8rem;
+    font-size: 0.78rem;
+    padding: 0.35rem 0.5rem;
     border: 1px solid var(--border-light);
     border-radius: var(--radius);
     transition: var(--transition);
@@ -299,7 +315,6 @@ footer {
 .links a:hover {
     background-color: var(--border-light);
     color: var(--title-main);
-    transform: scale(1.02);
 }
 
 .links a:active {
@@ -311,13 +326,13 @@ footer {
 }
 
 /* 7. Colores de borde por módulo en tarjetas */
-.card[data-module="win"] { border-top: 3px solid var(--color-win); }
-.card[data-module="word"] { border-top: 3px solid var(--color-word); }
-.card[data-module="ppt"] { border-top: 3px solid var(--color-ppt); }
-.card[data-module="xls"] { border-top: 3px solid var(--color-excel); }
-.card[data-module="pub"] { border-top: 3px solid var(--color-pub); }
-.card[data-module="net"] { border-top: 3px solid var(--color-net); }
-.card[data-module="ia"] { border-top: 3px solid var(--color-ia); }
+.card[data-module="win"] { border-top: 2px solid var(--color-win); }
+.card[data-module="word"] { border-top: 2px solid var(--color-word); }
+.card[data-module="ppt"] { border-top: 2px solid var(--color-ppt); }
+.card[data-module="xls"] { border-top: 2px solid var(--color-excel); }
+.card[data-module="pub"] { border-top: 2px solid var(--color-pub); }
+.card[data-module="net"] { border-top: 2px solid var(--color-net); }
+.card[data-module="ia"] { border-top: 2px solid var(--color-ia); }
 
 /* ----------------------------------------------------------------
    Índices de Módulo
@@ -325,22 +340,22 @@ footer {
 
 .breadcrumb-nav {
     background: var(--bg-content);
-    padding: 0.8rem 1.5rem;
+    padding: 0.5rem 1rem;
     border-bottom: 1px solid var(--border-light);
-    margin-bottom: 2rem;
-    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    font-size: 0.8rem;
     color: var(--text-muted);
-    letter-spacing: 0.3px;
+    font-family: var(--font-code);
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.4rem;
     flex-wrap: wrap;
 }
 
 .breadcrumb-nav .theme-btn {
     margin-left: auto;
-    font-size: 1.1rem;
-    padding: 0.3rem 0.6rem;
+    font-size: 0.9rem;
+    padding: 0.2rem 0.5rem;
     background: transparent;
     border: 1px solid var(--border-light);
     border-radius: var(--radius);
@@ -354,11 +369,6 @@ footer {
 .breadcrumb-nav .theme-btn:hover {
     color: var(--text-main);
     background: var(--bg-body);
-    transform: scale(1.08);
-}
-
-.breadcrumb-nav .theme-btn:active {
-    transform: scale(0.95);
 }
 
 .breadcrumb-nav a {
@@ -373,31 +383,32 @@ footer {
 
 .module-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-top: 0.8rem;
 }
 
 /* Sección de módulo con color dinámico vía data-module */
 .module-section {
     background: var(--bg-content);
-    padding: 2rem;
+    padding: 1.2rem;
     border: 1px solid var(--border-light);
     border-radius: var(--radius);
 }
 
 .module-section h2 {
     font-family: var(--font-heading);
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 600;
     color: var(--title-main);
     border-bottom: 1px solid var(--border-light);
-    padding-bottom: 0.8rem;
-    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     border-bottom-color: var(--module-color, var(--text-muted));
     color: var(--module-color, var(--text-muted));
+
 }
 
 /* Listas de Ítems */
@@ -547,32 +558,32 @@ footer {
 /* Buscador */
 .buscador-index {
     width: 100%;
-    padding: 0.8rem 1rem;
-    font-size: 0.95rem;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.88rem;
     font-family: var(--font-sans);
     border: 1px solid var(--border-light);
     border-radius: var(--radius);
     background: var(--bg-body);
     color: var(--text-main);
-    margin-bottom: 2rem;
+    margin-bottom: 1.2rem;
     outline: none;
     transition: var(--transition);
 }
 
 .buscador-index:focus {
-    border-color: #aaa;
-    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.04);
+    border-color: #B5B2A6;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.04);
     background: var(--bg-content);
 }
 
 /* ==========================================================================
-   CONTENIDO DE CLASES Y GUÍAS
+   CONTENIDO DE CLASES Y GUÍAS (COMPACTO & RETRO)
    ========================================================================== */
 
 .content {
-    margin: 2rem auto;
+    margin: 1.2rem auto;
     background: var(--bg-content);
-    padding: 3rem;
+    padding: 1.8rem;
     border: 1px solid var(--border-light);
     border-radius: var(--radius);
     max-width: var(--width-reading);
@@ -581,16 +592,17 @@ footer {
 
 .content.is-wide {
     max-width: var(--width-wide);
-    padding: 2.5rem;
+    padding: 1.8rem;
 }
 
 .breadcrumb {
     max-width: var(--width-reading);
-    margin: 0 auto 1.5rem;
+    margin: 0 auto 1rem;
     padding: 0;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
+    font-family: var(--font-code);
     color: var(--text-muted);
-    letter-spacing: 0.3px;
+    letter-spacing: 0.2px;
 }
 
 .content.is-wide + .breadcrumb,
@@ -610,73 +622,75 @@ footer {
 .lesson-header {
     text-align: left;
     border-bottom: 1px solid var(--border-light);
-    padding-bottom: 1.5rem;
-    margin-bottom: 2.5rem;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .lesson-header h1 {
     font-family: var(--font-heading);
-    font-size: 2rem;
-    font-weight: 600;
-    letter-spacing: -0.5px;
+    font-size: 1.65rem;
+    font-weight: 700;
+    letter-spacing: -0.3px;
     color: var(--title-main);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
 }
 
 .lesson-header .date {
     display: inline-block;
-    font-size: 0.75rem;
+    font-size: 0.72rem;
+    font-family: var(--font-code);
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.8px;
     color: var(--text-muted);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
 }
 
 .lesson-header .subtitle {
-    font-size: 1.05rem;
+    font-size: 0.95rem;
     font-weight: 400;
     color: var(--text-muted);
-    line-height: 1.5;
+    line-height: 1.45;
 }
 
 .lesson-body p {
     font-family: var(--font-serif);
-    font-size: 1.1rem;
-    line-height: 1.8;
-    margin-bottom: 1.5rem;
+    font-size: 1.02rem;
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
     color: var(--text-color);
 }
 
 .content.mode-tech .lesson-body p,
 .content.is-wide .lesson-body p {
     font-family: var(--font-sans);
-    font-size: 1rem;
+    font-size: 0.95rem;
 }
 
 .lesson-body h2 {
     font-family: var(--font-heading);
-    margin-top: 3rem;
-    margin-bottom: 1.2rem;
-    font-size: 1.4rem;
-    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 0.8rem;
+    font-size: 1.25rem;
+    font-weight: 700;
     color: var(--title-main);
     border-bottom: 1px solid var(--border-light);
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.4rem;
 }
 
 .lesson-body h3 {
     font-family: var(--font-heading);
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    font-size: 1.15rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.6rem;
+    font-size: 1.08rem;
     font-weight: 600;
     color: var(--title-main);
 }
 
 .lesson-body h4 {
-    margin-top: 1.5rem;
+    margin-top: 1.2rem;
     color: var(--text-muted);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    font-family: var(--font-code);
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -685,7 +699,7 @@ footer {
     max-width: 100%;
     height: auto;
     display: block;
-    margin: 2.5rem auto;
+    margin: 1.8rem auto;
     border: 1px solid var(--border-light);
     border-radius: var(--radius);
     box-shadow: var(--shadow-sm);
@@ -693,10 +707,10 @@ footer {
 
 /* Cajas de Información */
 .box {
-    padding: 1.5rem;
-    margin: 2rem 0;
+    padding: 1rem 1.2rem;
+    margin: 1.4rem 0;
     border: 1px solid var(--border-light);
-    border-left: 4px solid var(--text-muted);
+    border-left: 3px solid var(--text-muted);
     border-radius: var(--radius);
     background-color: var(--bg-content);
 }
@@ -711,9 +725,9 @@ footer {
 .box-title {
     display: block;
     font-weight: 600;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
     font-family: var(--font-sans);
-    font-size: 0.95rem;
+    font-size: 0.88rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -721,13 +735,13 @@ footer {
 /* Tabla de atajos esenciales (destacada al inicio de cada guía) */
 .essentials-note {
     display: block;
-    margin-bottom: 1.5rem;
-    padding: 0.8rem 1.2rem;
+    margin-bottom: 1rem;
+    padding: 0.6rem 1rem;
     background: var(--bg-body);
-    border-left: 4px solid var(--color-warning);
+    border-left: 3px solid var(--color-warning);
     border-radius: var(--radius);
     font-family: var(--font-heading);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 600;
     color: var(--color-warning);
 }
@@ -735,18 +749,18 @@ footer {
 table.essentials-table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.8rem;
     font-family: var(--font-sans);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
 
 table.essentials-table thead th {
     background: var(--color-warning);
     color: #fff;
-    font-weight: 700;
-    padding: 0.7rem 1rem;
+    font-weight: 600;
+    padding: 0.5rem 0.8rem;
     text-align: left;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -768,7 +782,7 @@ table.essentials-table tbody tr:hover {
 }
 
 table.essentials-table tbody td {
-    padding: 0.7rem 1rem;
+    padding: 0.5rem 0.8rem;
     border-bottom: 1px solid var(--border-light);
 }
 
@@ -784,39 +798,39 @@ table.essentials-table tbody td:last-child {
 }
 
 table.essentials-table + h2 {
-    margin-top: 2rem;
+    margin-top: 1.5rem;
 }
 
 .lesson-body ul, .lesson-body ol {
-    margin-bottom: 1.5rem;
-    padding-left: 1.5rem;
+    margin-bottom: 1.2rem;
+    padding-left: 1.2rem;
     font-family: var(--font-sans);
 }
 
 .lesson-body li {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
 }
 
-/* Tablas */
+/* Tablas General Compactas */
 table.wiki-table, .guide-container table, .content table:not(.wiki-table) {
     width: 100%;
     border-collapse: collapse;
-    margin: 2rem 0;
+    margin: 1.4rem 0;
     font-family: var(--font-sans);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
 
 table.wiki-table th, .guide-container th, .content table:not(.wiki-table) th {
     background-color: var(--bg-body);
     color: var(--text-main);
     font-weight: 600;
-    padding: 12px;
+    padding: 0.5rem 0.8rem;
     text-align: left;
     border-bottom: 2px solid var(--border-light);
 }
 
 table.wiki-table td, .guide-container td, .content table:not(.wiki-table) td {
-    padding: 12px;
+    padding: 0.5rem 0.8rem;
     border-bottom: 1px solid var(--border-light);
 }
 
@@ -825,28 +839,28 @@ code, .shortcut {
     font-family: var(--font-code);
     background: var(--color-code-bg);
     color: var(--text-main);
-    padding: 0.2rem 0.4rem;
+    padding: 0.15rem 0.35rem;
     border: 1px solid var(--border-light);
-    border-radius: 4px;
-    font-size: 0.85em;
+    border-radius: var(--radius);
+    font-size: 0.83em;
 }
 
 /* Alias de Compatibilidad (Legacy) */
 .task-title {
     display: block;
     font-weight: 600;
-    margin-bottom: 0.5rem;
-    font-size: 1rem;
+    margin-bottom: 0.4rem;
+    font-size: 0.95rem;
 }
 
 .step-list li {
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.6rem;
 }
 
 .guide-container {
-    margin: 2rem auto;
+    margin: 1.4rem auto;
     background: var(--bg-content);
-    padding: 2.5rem;
+    padding: 1.8rem;
     border: 1px solid var(--border-light);
     border-radius: var(--radius);
     max-width: var(--width-wide);

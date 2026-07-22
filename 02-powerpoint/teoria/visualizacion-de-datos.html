@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
@@ -19,7 +19,7 @@
     </div>
 
     <nav class="breadcrumb-nav">
-      <a href="../../index.html">🏠 Inicio</a> >
+      <a href="../../index.html"><svg class="icon-svg-home" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -1px; margin-right: 4px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>Inicio</a> >
       <a href="../index-teoria.html">PowerPoint</a> >
       <span>Visualización de Datos</span>
     <button id="theme-toggle" aria-label="Cambiar modo oscuro/claro" class="theme-btn">☾</button>
@@ -62,31 +62,103 @@
         <div class="chart-grid">
           <div class="chart-card">
             <h3>Gráfico Circular (Pastel)</h3>
-            <p><strong>Uso:</strong> Mostrar porcentajes que suman un 100%.</p>
-            <p style="font-size: 0.85rem; margin-top: 0.5rem;">
-              <em>Tip:</em> Nunca uses más de 5 rebanadas o porciones, si tienes muchas categorías pequeñas, agrúpalas en "Otros". Si usas gráficos 3D, corres el riesgo de deformar la perspectiva real de los datos.
-            </p>
+            <svg class="svg-chart-preview" viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M100,70 L100,20 A50,50 0 0,1 147.5,85.4 Z" fill="var(--color-ppt)" />
+              <path d="M100,70 L147.5,85.4 A50,50 0 0,1 65.4,106.1 Z" fill="#295F85" />
+              <path d="M100,70 L65.4,106.1 A50,50 0 0,1 52.4,54.6 Z" fill="#1E5E3A" />
+              <path d="M100,70 L52.4,54.6 A50,50 0 0,1 100,20 Z" fill="#9E771D" />
+              <circle cx="100" cy="70" r="22" fill="var(--bg-content)" />
+              <text x="100" y="74" text-anchor="middle" font-size="9" font-weight="700" fill="var(--text-main)" font-family="var(--font-code)">100%</text>
+            </svg>
+            <p><strong>Uso:</strong> Porcentajes que suman 100% (máx. 5 porciones).</p>
           </div>
+
           <div class="chart-card">
-            <h3>Gráfico de Columnas (Barras Verticales)</h3>
-            <p><strong>Uso:</strong> Comparar cantidades entre diferentes categorías.</p>
-            <p style="font-size: 0.85rem; margin-top: 0.5rem;">
-              <em>Tip:</em> Excelentes para comparar datos durante un período o entre distintos elementos. Ordena las barras de mayor a menor (o viceversa) si no tienes un orden cronológico.
-            </p>
+            <h3>Gráfico de Columnas</h3>
+            <svg class="svg-chart-preview" viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <line x1="25" y1="30" x2="185" y2="30" stroke="var(--border-light)" stroke-dasharray="2 2" />
+              <line x1="25" y1="65" x2="185" y2="65" stroke="var(--border-light)" stroke-dasharray="2 2" />
+              <line x1="25" y1="100" x2="185" y2="100" stroke="var(--border-light)" stroke-dasharray="2 2" />
+              <line x1="25" y1="115" x2="185" y2="115" stroke="var(--text-muted)" stroke-width="1.5" />
+              
+              <rect x="38" y="55" width="22" height="60" rx="2" fill="var(--border-light)" />
+              <text x="49" y="48" text-anchor="middle" font-size="9" font-family="var(--font-code)" fill="var(--text-muted)">50</text>
+              <text x="49" y="127" text-anchor="middle" font-size="8" font-family="var(--font-sans)" fill="var(--text-muted)">Ene</text>
+              
+              <rect x="75" y="30" width="22" height="85" rx="2" fill="var(--color-ppt)" />
+              <text x="86" y="23" text-anchor="middle" font-size="9" font-weight="700" font-family="var(--font-code)" fill="var(--color-ppt)">95</text>
+              <text x="86" y="127" text-anchor="middle" font-size="8" font-weight="600" font-family="var(--font-sans)" fill="var(--text-main)">Feb</text>
+
+              <rect x="112" y="65" width="22" height="50" rx="2" fill="var(--border-light)" />
+              <text x="123" y="58" text-anchor="middle" font-size="9" font-family="var(--font-code)" fill="var(--text-muted)">40</text>
+              <text x="123" y="127" text-anchor="middle" font-size="8" font-family="var(--font-sans)" fill="var(--text-muted)">Mar</text>
+
+              <rect x="149" y="45" width="22" height="70" rx="2" fill="var(--border-light)" />
+              <text x="160" y="38" text-anchor="middle" font-size="9" font-family="var(--font-code)" fill="var(--text-muted)">65</text>
+              <text x="160" y="127" text-anchor="middle" font-size="8" font-family="var(--font-sans)" fill="var(--text-muted)">Abr</text>
+            </svg>
+            <p><strong>Uso:</strong> Comparar cantidades entre categorías o meses.</p>
           </div>
+
+          <div class="chart-card">
+            <h3>Barras Horizontales</h3>
+            <svg class="svg-chart-preview" viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <line x1="58" y1="15" x2="58" y2="120" stroke="var(--border-light)" stroke-width="1.5" />
+              
+              <text x="50" y="33" text-anchor="end" font-size="8" font-family="var(--font-sans)" fill="var(--text-muted)">Prod A</text>
+              <rect x="59" y="23" width="75" height="13" rx="2" fill="var(--border-light)" />
+              <text x="140" y="33" font-size="8" font-family="var(--font-code)" fill="var(--text-muted)">62%</text>
+
+              <text x="50" y="58" text-anchor="end" font-size="8" font-weight="600" font-family="var(--font-sans)" fill="var(--text-main)">Prod B</text>
+              <rect x="59" y="48" width="105" height="13" rx="2" fill="var(--color-ppt)" />
+              <text x="170" y="58" font-size="8" font-weight="700" font-family="var(--font-code)" fill="var(--color-ppt)">91%</text>
+
+              <text x="50" y="83" text-anchor="end" font-size="8" font-family="var(--font-sans)" fill="var(--text-muted)">Prod C</text>
+              <rect x="59" y="73" width="50" height="13" rx="2" fill="var(--border-light)" />
+              <text x="115" y="83" font-size="8" font-family="var(--font-code)" fill="var(--text-muted)">40%</text>
+
+              <text x="50" y="108" text-anchor="end" font-size="8" font-family="var(--font-sans)" fill="var(--text-muted)">Prod D</text>
+              <rect x="59" y="98" width="30" height="13" rx="2" fill="var(--border-light)" />
+              <text x="95" y="108" font-size="8" font-family="var(--font-code)" fill="var(--text-muted)">25%</text>
+            </svg>
+            <p><strong>Uso:</strong> Comparación con nombres largos o rankings.</p>
+          </div>
+
           <div class="chart-card">
             <h3>Gráfico de Líneas</h3>
+            <svg class="svg-chart-preview" viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <line x1="25" y1="30" x2="185" y2="30" stroke="var(--border-light)" stroke-dasharray="2 2" />
+              <line x1="25" y1="70" x2="185" y2="70" stroke="var(--border-light)" stroke-dasharray="2 2" />
+              <line x1="25" y1="110" x2="185" y2="110" stroke="var(--text-muted)" stroke-width="1.5" />
+              
+              <polygon points="35,95 75,55 115,75 155,30 175,45 175,110 35,110" fill="var(--color-ppt)" fill-opacity="0.12" />
+              <polyline points="35,95 75,55 115,75 155,30 175,45" fill="none" stroke="var(--color-ppt)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+              
+              <circle cx="35" cy="95" r="3" fill="var(--bg-content)" stroke="var(--color-ppt)" stroke-width="2" />
+              <circle cx="75" cy="55" r="3" fill="var(--bg-content)" stroke="var(--color-ppt)" stroke-width="2" />
+              <circle cx="115" cy="75" r="3" fill="var(--bg-content)" stroke="var(--color-ppt)" stroke-width="2" />
+              <circle cx="155" cy="30" r="4.5" fill="var(--color-ppt)" stroke="var(--bg-content)" stroke-width="1.5" />
+              <circle cx="175" cy="45" r="3" fill="var(--bg-content)" stroke="var(--color-ppt)" stroke-width="2" />
+
+              <text x="155" y="20" text-anchor="middle" font-size="9" font-weight="700" font-family="var(--font-code)" fill="var(--color-ppt)">+88%</text>
+              <text x="35" y="123" text-anchor="middle" font-size="8" font-family="var(--font-sans)" fill="var(--text-muted)">Q1</text>
+              <text x="75" y="123" text-anchor="middle" font-size="8" font-family="var(--font-sans)" fill="var(--text-muted)">Q2</text>
+              <text x="115" y="123" text-anchor="middle" font-size="8" font-family="var(--font-sans)" fill="var(--text-muted)">Q3</text>
+              <text x="155" y="123" text-anchor="middle" font-size="8" font-family="var(--font-sans)" fill="var(--text-muted)">Q4</text>
+            </svg>
             <p><strong>Uso:</strong> Mostrar tendencias a lo largo del tiempo.</p>
-            <p style="font-size: 0.85rem; margin-top: 0.5rem;">
-              <em>Tip:</em> Si quieres mostrar cómo subieron o bajaron tus ventas, notas o visitantes web de enero a diciembre, este es el Rey.
-            </p>
           </div>
+
           <div class="chart-card">
-            <h3>El Número "Héroe"</h3>
-            <p><strong>Uso:</strong> Resaltar un único dato brutalmente importante.</p>
-            <p style="font-size: 0.85rem; margin-top: 0.5rem;">
-              <em>Tip:</em> A veces no necesitas un gráfico. Escribir <strong>"95%"</strong> en tamaño gigante ocupando toda la diapositiva es el impacto visual más directo posible.
-            </p>
+            <h3>Número "Héroe"</h3>
+            <svg class="svg-chart-preview" viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="100" cy="62" r="46" stroke="var(--border-light)" stroke-width="1.5" stroke-dasharray="3 3" />
+              <circle cx="100" cy="62" r="38" stroke="var(--color-ppt)" stroke-width="3" stroke-dasharray="190 30" stroke-linecap="round" />
+              
+              <text x="100" y="72" text-anchor="middle" font-size="28" font-weight="700" font-family="var(--font-heading)" fill="var(--title-main)">95%</text>
+              <text x="100" y="122" text-anchor="middle" font-size="7.5" font-family="var(--font-sans)" fill="var(--text-muted)" letter-spacing="0.5">DATO CLAVE DESTACADO</text>
+            </svg>
+            <p><strong>Uso:</strong> Resaltar un dato único con máximo impacto.</p>
           </div>
         </div>
 

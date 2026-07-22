@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
@@ -24,7 +24,7 @@
     </div>
 
     <nav class="breadcrumb-nav">
-      <a href="../../index.html">🏠 Inicio</a> >
+      <a href="../../index.html"><svg class="icon-svg-home" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -1px; margin-right: 4px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>Inicio</a> >
       <a href="../index-teoria.html">Windows</a> >
       <span>Clase: Gestión de Carpetas</span>
     <button id="theme-toggle" aria-label="Cambiar modo oscuro/claro" class="theme-btn">☾</button>
@@ -56,6 +56,53 @@
           <p>
             Al "eliminar" convencionalmente un archivo o carpeta, a diferencia del papel normal, no desaparece de tu vida instantáneamente. Windows la mueve a un bote de basura virtual (la <strong>Papelera de Reciclaje</strong>). Esto significa que <em>si te equivocaste, puedes entrar a la papelera y recuperarla (restaurarla) intacta.</em>
           </p>
+        </div>
+
+        <div class="svg-diagram-container" style="margin: 1.5rem 0; width: 100%; text-align: center;">
+        <svg viewBox="0 0 760 220" width="100%" height="auto" fill="none" xmlns="http://www.w3.org/2000/svg" style="border: 1px solid var(--border-light); border-radius: 6px; background: var(--bg-content); padding: 10px; box-shadow: var(--shadow-sm); font-family: var(--font-sans);">
+          
+          <!-- PANEL IZQUIERDO: ESTRUCTURA EN ÁRBOL -->
+          <g transform="translate(15, 15)">
+            <text x="175" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="var(--color-win)" font-family="var(--font-heading)">Estructura de Árbol de Directorios</text>
+            
+            <rect x="15" y="32" width="320" height="155" rx="4" fill="var(--bg-body)" stroke="var(--border-light)" stroke-width="1.5"/>
+
+            <path d="M35 50 H75 L85 58 H135 V85 H35 Z" fill="var(--color-win)" fill-opacity="0.2" stroke="var(--color-win)" stroke-width="1.5"/>
+            <text x="50" y="70" font-size="10" font-weight="700" fill="var(--text-main)" font-family="var(--font-code)">📁 Disco (C:)</text>
+
+            <line x1="60" y1="85" x2="60" y2="160" stroke="var(--border-light)" stroke-width="1.5"/>
+            <line x1="60" y1="115" x2="85" y2="115" stroke="var(--border-light)" stroke-width="1.5"/>
+            <line x1="60" y1="150" x2="85" y2="150" stroke="var(--border-light)" stroke-width="1.5"/>
+
+            <path d="M85 102 H115 L122 108 H175 V128 H85 Z" fill="#9E771D" fill-opacity="0.2" stroke="#9E771D" stroke-width="1.5"/>
+            <text x="98" y="120" font-size="9" font-weight="600" fill="var(--text-main)">📂 Documentos</text>
+
+            <path d="M85 137 H115 L122 143 H175 V163 H85 Z" fill="#1E5E3A" fill-opacity="0.2" stroke="#1E5E3A" stroke-width="1.5"/>
+            <text x="98" y="155" font-size="9" font-weight="600" fill="var(--text-main)">📂 Fotos 2026</text>
+          </g>
+
+          <line x1="380" y1="15" x2="380" y2="205" stroke="var(--border-light)" stroke-dasharray="4 4" />
+
+          <!-- PANEL DERECHO: CICLO DE LA PAPELERA -->
+          <g transform="translate(395, 15)">
+            <text x="175" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="var(--color-win)" font-family="var(--font-heading)">Ciclo: Papelera vs. Eliminación Permanente</text>
+
+            <rect x="15" y="32" width="320" height="155" rx="4" fill="var(--bg-body)" stroke="var(--border-light)" stroke-width="1.5"/>
+
+            <rect x="35" y="55" width="70" height="40" rx="3" fill="var(--bg-content)" stroke="var(--border-light)"/>
+            <text x="70" y="78" text-anchor="middle" font-size="9" font-weight="600" fill="var(--text-main)">📄 Archivo</text>
+
+            <path d="M110 75 Q150 55 180 75" fill="none" stroke="#295F85" stroke-width="2" stroke-dasharray="3 3"/>
+            <rect x="185" y="55" width="80" height="40" rx="3" fill="#295F85" fill-opacity="0.15" stroke="#295F85" stroke-width="1.5"/>
+            <text x="225" y="73" text-anchor="middle" font-size="8.5" font-weight="700" fill="#295F85">🗑️ Papelera</text>
+            <text x="225" y="86" text-anchor="middle" font-size="7.5" fill="#295F85">(Restaurable)</text>
+
+            <path d="M110 75 Q150 135 180 135" fill="none" stroke="#9E3B2B" stroke-width="2" stroke-dasharray="3 3"/>
+            <rect x="185" y="115" width="125" height="40" rx="3" fill="#9E3B2B" fill-opacity="0.15" stroke="#9E3B2B" stroke-width="1.5"/>
+            <text x="247" y="133" text-anchor="middle" font-size="8.5" font-weight="700" fill="#9E3B2B">❌ Shift + Supr</text>
+            <text x="247" y="146" text-anchor="middle" font-size="7.5" fill="#9E3B2B">(Irrecuperable)</text>
+          </g>
+        </svg>
         </div>
 
         <h4>3. Eliminación Permanente</h4>
