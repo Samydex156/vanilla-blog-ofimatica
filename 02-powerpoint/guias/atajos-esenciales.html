@@ -1,11 +1,11 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Atajos PowerPoint - Prof. Samuel Durán</title>
     <link rel="stylesheet" href="../../main-style.css" />
-    <link rel="stylesheet" href="../../main-style.css" />
+    <link rel="stylesheet" href="guias.css" />
       <script>
       (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.setAttribute('data-theme','dark')}})();
     </script>
@@ -40,10 +40,17 @@
             <tr><td>F5</td><td>Iniciar presentación desde la primera diapositiva</td></tr>
             <tr><td>Shift + F5</td><td>Iniciar presentación desde la diapositiva actual</td></tr>
             <tr><td>Ctrl + M</td><td>Insertar una nueva diapositiva</td></tr>
-            <tr><td>Ctrl + D</td><td>Duplicar el objeto o diapositiva seleccionada</td></tr>
+            <tr><td>Ctrl + Shift + D</td><td>Duplicar la diapositiva seleccionada</td></tr>
             <tr><td>Esc</td><td>Salir del modo de presentación</td></tr>
           </tbody>
         </table>
+
+        <div class="box box-ppt" style="margin: 1.5rem 0;">
+          <span class="box-title">💡 Nota importante para laptops:</span>
+          <p style="margin-bottom: 0;">
+            En muchos modelos de computadoras portátiles (laptops), las teclas de función (F1 a F12) están configuradas de fábrica para controlar accesos rápidos del sistema (como brillo o volumen). Si al presionar un atajo como <strong>F5</strong> o <strong>Shift + F5</strong> no se ejecuta la acción, debes mantener presionada adicionalmente la tecla <strong><span class="shortcut">Fn</span></strong> (por ejemplo: <strong><span class="shortcut">Fn</span> + <span class="shortcut">F5</span></strong> o <strong><span class="shortcut">Fn</span> + <span class="shortcut">Shift</span> + <span class="shortcut">F5</span></strong>).
+          </p>
+        </div>
 
         <h2>Atajos de teclado</h2>
         <p>
@@ -51,12 +58,153 @@
           mucho más rápido al diseñar y proyectar tus diapositivas.
         </p>
 
+        <!-- SVG ANIMADO: CÓMO EJECUTAR ATAJOS DE 2 Y 3 TECLAS CORRECCIÓN PEDAGÓGICA -->
+        <div class="svg-window-container" style="margin: 1.5rem 0; width: 100%; text-align: center;">
+        <svg viewBox="0 0 760 300" width="100%" height="auto" fill="none" xmlns="http://www.w3.org/2000/svg" style="border: 1px solid var(--border-light); border-radius: 6px; background: var(--bg-content); box-shadow: var(--shadow-sm); font-family: var(--font-sans);">
+          <style>
+            /* FASE 1: Atajo de 2 Teclas (Ctrl + M) -> Activo del 0% al 48% */
+            @keyframes pressCtrl2Key {
+              0%, 9.9% { fill: var(--bg-body); stroke: var(--border-light); transform: translateY(0); }
+              10%, 45% { fill: var(--color-ppt); stroke: var(--color-ppt); transform: translateY(3px); }
+              45.1%, 100% { fill: var(--bg-body); stroke: var(--border-light); transform: translateY(0); }
+            }
+            @keyframes pressM2Key {
+              0%, 24.9% { fill: var(--bg-body); stroke: var(--border-light); transform: translateY(0); }
+              25%, 40% { fill: var(--color-ppt); stroke: var(--color-ppt); transform: translateY(3px); }
+              40.1%, 100% { fill: var(--bg-body); stroke: var(--border-light); transform: translateY(0); }
+            }
+            @keyframes result2KeyBadge {
+              0%, 25.9% { opacity: 0; transform: scale(0.95); }
+              26%, 45% { opacity: 1; transform: scale(1); fill: var(--color-ppt); }
+              48%, 100% { opacity: 0; transform: scale(0.95); }
+            }
+
+            /* FASE 2: Atajo de 3 Teclas (Ctrl + Shift + D) -> Activo del 50% al 98% (Posterior al primero) */
+            @keyframes pressCtrl3Key {
+              0%, 59.9% { fill: var(--bg-body); stroke: var(--border-light); transform: translateY(0); }
+              60%, 95% { fill: #2980B9; stroke: #2980B9; transform: translateY(3px); }
+              95.1%, 100% { fill: var(--bg-body); stroke: var(--border-light); transform: translateY(0); }
+            }
+            @keyframes pressShift3Key {
+              0%, 69.9% { fill: var(--bg-body); stroke: var(--border-light); transform: translateY(0); }
+              70%, 95% { fill: #2980B9; stroke: #2980B9; transform: translateY(3px); }
+              95.1%, 100% { fill: var(--bg-body); stroke: var(--border-light); transform: translateY(0); }
+            }
+            @keyframes pressD3Key {
+              0%, 79.9% { fill: var(--bg-body); stroke: var(--border-light); transform: translateY(0); }
+              80%, 90% { fill: #2ECC71; stroke: #27AE60; transform: translateY(3px); }
+              90.1%, 100% { fill: var(--bg-body); stroke: var(--border-light); transform: translateY(0); }
+            }
+            @keyframes result3KeyBadge {
+              0%, 80.9% { opacity: 0; transform: scale(0.95); }
+              81%, 95% { opacity: 1; transform: scale(1); fill: #2980B9; }
+              98%, 100% { opacity: 0; transform: scale(0.95); }
+            }
+
+            .key-press-ctrl2 { animation: pressCtrl2Key 9.5s step-end infinite; transform-box: fill-box; transform-origin: center; }
+            .key-press-m2 { animation: pressM2Key 9.5s step-end infinite; transform-box: fill-box; transform-origin: center; }
+            .badge-step2-status { animation: result2KeyBadge 9.5s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+
+            .key-press-ctrl3 { animation: pressCtrl3Key 9.5s step-end infinite; transform-box: fill-box; transform-origin: center; }
+            .key-press-shift3 { animation: pressShift3Key 9.5s step-end infinite; transform-box: fill-box; transform-origin: center; }
+            .key-press-d3 { animation: pressD3Key 9.5s step-end infinite; transform-box: fill-box; transform-origin: center; }
+            .badge-step3-status { animation: result3KeyBadge 9.5s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+          </style>
+
+          <!-- Título superior del SVG -->
+          <rect width="760" height="32" fill="var(--bg-body)"/>
+          <text x="380" y="21" text-anchor="middle" font-size="12" font-weight="700" fill="var(--title-main)">💡 ¿Cómo presionar correctamente las combinaciones de teclas?</text>
+          <line x1="0" y1="32" x2="760" y2="32" stroke="var(--border-light)"/>
+
+          <!-- COLUMNA IZQUIERDA: ATAJO DE 2 TECLAS (Ctrl + M) -->
+          <g transform="translate(20, 48)">
+            <rect width="350" height="235" rx="6" fill="var(--bg-body)" stroke="var(--border-light)"/>
+            <text x="175" y="28" text-anchor="middle" font-size="12" font-weight="800" fill="var(--color-ppt)">Atajo de 2 Teclas (ej: Ctrl + M)</text>
+            
+            <!-- Instrucción del proceso -->
+            <rect x="15" y="42" width="320" height="36" rx="3" fill="var(--bg-content)" stroke="var(--border-light)"/>
+            <text x="25" y="58" font-size="8.5" font-weight="700" fill="var(--text-main)">1. Mantén presionada la tecla Ctrl sin soltar.</text>
+            <text x="25" y="70" font-size="8.5" font-weight="700" fill="var(--color-ppt)">2. Pulsa la tecla M y luego suelta ambas.</text>
+
+            <!-- REPRESENTACIÓN TECLADO VIRTUAL 2 TECLAS -->
+            <g transform="translate(45, 95)">
+              <!-- Tecla 1: Ctrl -->
+              <g transform="translate(0, 0)">
+                <rect width="90" height="55" rx="5" stroke-width="2" class="key-press-ctrl2" filter="drop-shadow(0px 3px 0px rgba(0,0,0,0.15))"/>
+                <text x="45" y="34" text-anchor="middle" font-size="14" font-weight="800" fill="var(--title-main)">Ctrl</text>
+                <text x="45" y="48" text-anchor="middle" font-size="7.5" fill="var(--text-muted)">Mantener ✋</text>
+              </g>
+
+              <!-- Símbolo MÁS -->
+              <text x="130" y="36" text-anchor="middle" font-size="18" font-weight="800" fill="var(--text-muted)">+</text>
+
+              <!-- Tecla 2: M -->
+              <g transform="translate(170, 0)">
+                <rect width="90" height="55" rx="5" stroke-width="2" class="key-press-m2" filter="drop-shadow(0px 3px 0px rgba(0,0,0,0.15))"/>
+                <text x="45" y="34" text-anchor="middle" font-size="16" font-weight="800" fill="var(--title-main)">M</text>
+                <text x="45" y="48" text-anchor="middle" font-size="7.5" fill="var(--text-muted)">Pulsar 👆</text>
+              </g>
+            </g>
+
+            <!-- Indicador de Resultado -->
+            <g transform="translate(15, 175)">
+              <rect width="320" height="42" rx="4" fill="var(--bg-content)" stroke="var(--border-light)"/>
+              <text x="160" y="26" text-anchor="middle" font-size="10" font-weight="700" fill="var(--color-ppt)" class="badge-step2-status">✨ Nueva Diapositiva Insertada</text>
+            </g>
+          </g>
+
+          <!-- COLUMNA DERECHA: ATAJO DE 3 TECLAS (Ctrl + Shift + D) -->
+          <g transform="translate(390, 48)">
+            <rect width="350" height="235" rx="6" fill="var(--bg-body)" stroke="var(--border-light)"/>
+            <text x="175" y="28" text-anchor="middle" font-size="12" font-weight="800" fill="#2980B9">Atajo de 3 Teclas (ej: Ctrl + Shift + D)</text>
+            
+            <!-- Instrucción del proceso -->
+            <rect x="15" y="42" width="320" height="36" rx="3" fill="var(--bg-content)" stroke="var(--border-light)"/>
+            <text x="25" y="58" font-size="8.5" font-weight="700" fill="var(--text-main)">1. Mantén Ctrl ➔ 2. Mantén Shift acumulado.</text>
+            <text x="25" y="70" font-size="8.5" font-weight="700" fill="#2980B9">3. Presiona D y suelta todas las teclas juntas.</text>
+
+            <!-- REPRESENTACIÓN TECLADO VIRTUAL 3 TECLAS -->
+            <g transform="translate(20, 95)">
+              <!-- Tecla 1: Ctrl -->
+              <g transform="translate(0, 0)">
+                <rect width="75" height="55" rx="5" stroke-width="2" class="key-press-ctrl3" filter="drop-shadow(0px 3px 0px rgba(0,0,0,0.15))"/>
+                <text x="37.5" y="34" text-anchor="middle" font-size="12" font-weight="800" fill="var(--title-main)">Ctrl</text>
+                <text x="37.5" y="48" text-anchor="middle" font-size="7" fill="var(--text-muted)">1º Mantener</text>
+              </g>
+
+              <text x="93" y="36" text-anchor="middle" font-size="14" font-weight="800" fill="var(--text-muted)">+</text>
+
+              <!-- Tecla 2: Shift -->
+              <g transform="translate(110, 0)">
+                <rect width="85" height="55" rx="5" stroke-width="2" class="key-press-shift3" filter="drop-shadow(0px 3px 0px rgba(0,0,0,0.15))"/>
+                <text x="42.5" y="34" text-anchor="middle" font-size="12" font-weight="800" fill="var(--title-main)">Shift</text>
+                <text x="42.5" y="48" text-anchor="middle" font-size="7" fill="var(--text-muted)">2º Mantener</text>
+              </g>
+
+              <text x="213" y="36" text-anchor="middle" font-size="14" font-weight="800" fill="var(--text-muted)">+</text>
+
+              <!-- Tecla 3: D -->
+              <g transform="translate(230, 0)">
+                <rect width="75" height="55" rx="5" stroke-width="2" class="key-press-d3" filter="drop-shadow(0px 3px 0px rgba(0,0,0,0.15))"/>
+                <text x="37.5" y="34" text-anchor="middle" font-size="14" font-weight="800" fill="var(--title-main)">D</text>
+                <text x="37.5" y="48" text-anchor="middle" font-size="7" fill="var(--text-muted)">3º Pulsar</text>
+              </g>
+            </g>
+
+            <!-- Indicador de Resultado -->
+            <g transform="translate(15, 175)">
+              <rect width="320" height="42" rx="4" fill="var(--bg-content)" stroke="var(--border-light)"/>
+              <text x="160" y="26" text-anchor="middle" font-size="10" font-weight="700" fill="#2980B9" class="badge-step3-status">📑 Diapositiva Duplicada con Éxito</text>
+            </g>
+          </g>
+        </svg>
+        </div>
+
         <table class="wiki-table">
           <thead>
             <tr>
               <th>Atajo</th>
               <th>Acción</th>
-              <th>Referencia</th>
             </tr>
           </thead>
           <tbody>
@@ -65,14 +213,6 @@
                 <span class="shortcut">F5</span>
               </td>
               <td>Inicia la presentación en pantalla completa desde la primera diapositiva.</td>
-              <td>
-                <img
-                  src="./atajos-ppt-imgs/#"
-                  alt="F5"
-                  class="shortcut-thumbnail"
-                  onclick="openModal(this)"
-                />
-              </td>
             </tr>
             <tr>
               <td>
@@ -80,14 +220,6 @@
                 <span class="shortcut">F5</span>
               </td>
               <td>Inicia la presentación desde la diapositiva actual.</td>
-              <td>
-                <img
-                  src="./atajos-ppt-imgs/#"
-                  alt="Shift + F5"
-                  class="shortcut-thumbnail"
-                  onclick="openModal(this)"
-                />
-              </td>
             </tr>
             <tr>
               <td>
@@ -95,14 +227,6 @@
                 <span class="shortcut">M</span>
               </td>
               <td>Inserta una nueva diapositiva.</td>
-              <td>
-                <img
-                  src="./atajos-ppt-imgs/#"
-                  alt="Ctrl + M"
-                  class="shortcut-thumbnail"
-                  onclick="openModal(this)"
-                />
-              </td>
             </tr>
             <tr>
               <td>
@@ -110,85 +234,25 @@
                 <span class="shortcut">G</span>
               </td>
               <td>Guardar la presentación de PowerPoint.</td>
-              <td>
-                <img
-                  src="./atajos-ppt-imgs/#"
-                  alt="Ctrl + G"
-                  class="shortcut-thumbnail"
-                  onclick="openModal(this)"
-                />
-              </td>
             </tr>
             <tr>
               <td>
                 <span class="shortcut">Ctrl</span> +
+                <span class="shortcut">Shift</span> +
                 <span class="shortcut">D</span>
               </td>
-              <td>Duplica el objeto o diapositiva seleccionada.</td>
-              <td>
-                <img
-                  src="./atajos-ppt-imgs/#"
-                  alt="Ctrl + D"
-                  class="shortcut-thumbnail"
-                  onclick="openModal(this)"
-                />
-              </td>
+              <td>Duplica la diapositiva seleccionada.</td>
             </tr>
             <tr>
               <td>
                 <span class="shortcut">Esc</span>
               </td>
               <td>Sale del modo de presentación en pantalla completa.</td>
-              <td>
-                <img
-                  src="./atajos-ppt-imgs/#"
-                  alt="Esc"
-                  class="shortcut-thumbnail"
-                  onclick="openModal(this)"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <span class="shortcut">B</span> o
-                <span class="shortcut">.</span>
-              </td>
-              <td>Muestra una pantalla negra durante una presentación.</td>
-              <td>
-                <img
-                  src="./atajos-ppt-imgs/#"
-                  alt="B"
-                  class="shortcut-thumbnail"
-                  onclick="openModal(this)"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <span class="shortcut">W</span> o
-                <span class="shortcut">,</span>
-              </td>
-              <td>Muestra una pantalla blanca durante una presentación.</td>
-              <td>
-                <img
-                  src="./atajos-ppt-imgs/#"
-                  alt="W"
-                  class="shortcut-thumbnail"
-                  onclick="openModal(this)"
-                />
-              </td>
             </tr>
           </tbody>
         </table>
       </section>
     </main>
-
-    <!-- Estructura del Modal -->
-    <div id="imageModal" class="modal" onclick="closeModal()">
-      <span class="close" onclick="closeModal()">&times;</span>
-      <img class="modal-content" id="img01" />
-      <div id="caption"></div>
-    </div>
 
     <footer>
       <p>
@@ -197,37 +261,6 @@
       </p>
     </footer>
 
-    <script>
-      // Funcionalidad del Modal
-      function openModal(element) {
-        var modal = document.getElementById("imageModal");
-        var modalImg = document.getElementById("img01");
-        var captionText = document.getElementById("caption");
-
-        modal.style.display = "flex";
-        modalImg.src = element.src;
-        captionText.innerHTML = element.alt;
-
-        // Prevenir scroll en el body
-        document.body.style.overflow = "hidden";
-      }
-
-      function closeModal() {
-        var modal = document.getElementById("imageModal");
-        modal.style.display = "none";
-
-        // Restaurar scroll en el body
-        document.body.style.overflow = "auto";
-      }
-
-      // Cerrar modal con tecla ESC
-      document.addEventListener("keydown", function (event) {
-        if (event.key === "Escape") {
-          closeModal();
-        }
-      });
-    </script>
-  
     <script>!function(){var h=document.querySelector('.lesson-header h1,.guide-header h1');var c=document.querySelector('.print-header-center');if(h&&c)c.textContent=h.textContent}()</script>
   <script>
     document.getElementById("theme-toggle")?.addEventListener("click",function(){var t=document.documentElement.getAttribute("data-theme");t=t==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",t);localStorage.setItem("theme",t);this.textContent=t==="dark"?"\u2600":"\u263E"});

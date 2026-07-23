@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
@@ -42,46 +42,249 @@
           Ya sea que estés redactando una carta comercial, un oficio, o una solicitud a una institución, la mayoría de los documentos formales comparten una estructura clásica. A continuación, detallamos sus partes principales:
         </p>
 
-        <img src="word-clases-imgs/infografia-anatomia-documento-formal.png" alt="Infografía de las partes de un documento formal" class="guide-img" />
+        <!-- SVG ANIMADO 1: INFOGRAFÍA INTERACTIVA DE ANATOMÍA DE UN DOCUMENTO FORMAL -->
+        <div class="svg-window-container" style="margin: 1.5rem 0; width: 100%; text-align: center;">
+        <svg viewBox="0 0 760 400" width="100%" height="auto" fill="none" xmlns="http://www.w3.org/2000/svg" style="border: 1px solid var(--border-light); border-radius: 6px; background: var(--bg-content); box-shadow: var(--shadow-sm); font-family: var(--font-sans);">
+          <style>
+            @keyframes scanDocHighlight {
+              0%, 12% { transform: translateY(0px); opacity: 1; }
+              15%, 27% { transform: translateY(35px); opacity: 1; }
+              30%, 42% { transform: translateY(68px); opacity: 1; }
+              45%, 57% { transform: translateY(105px); opacity: 1; }
+              60%, 72% { transform: translateY(135px); opacity: 1; }
+              75%, 87% { transform: translateY(170px); opacity: 1; }
+              90%, 98% { transform: translateY(240px); opacity: 1; }
+              100% { transform: translateY(0px); opacity: 0; }
+            }
+            @keyframes badgePulseAnatomy {
+              0%, 100% { transform: scale(1); }
+              50% { transform: scale(1.15); }
+            }
+            .scan-beam-bar { animation: scanDocHighlight 14s ease-in-out infinite; }
+            .badge-anatomy { transform-box: fill-box; transform-origin: center; animation: badgePulseAnatomy 2.5s ease-in-out infinite; }
+          </style>
 
-        <h3>1. Membrete (Opcional pero recomendado)</h3>
+          <!-- Título superior -->
+          <rect width="760" height="30" fill="var(--bg-body)"/>
+          <text x="380" y="20" text-anchor="middle" font-size="11" font-weight="700" fill="var(--title-main)">📄 Estructura Anatómica de un Documento Formal</text>
+          <line x1="0" y1="30" x2="760" y2="30" stroke="var(--border-light)"/>
+
+          <!-- Hoja A4 Centrada -->
+          <g transform="translate(180, 42)">
+            <rect width="400" height="340" rx="4" fill="var(--bg-body)" stroke="var(--border-light)" stroke-width="1.5"/>
+
+            <!-- 1. Membrete -->
+            <g transform="translate(25, 15)">
+              <rect width="350" height="32" rx="3" fill="#254875" fill-opacity="0.1" stroke="#254875" stroke-dasharray="3 2"/>
+              <text x="175" y="16" text-anchor="middle" font-size="9" font-weight="800" fill="#254875">1. MEMBRETE / ENCABEZADO INSTITUCIONAL</text>
+              <text x="175" y="26" text-anchor="middle" font-size="7.5" fill="var(--text-muted)">Logo + Nombre de Organización + Datos de Contacto</text>
+            </g>
+
+            <!-- 2. Lugar y Fecha -->
+            <g transform="translate(180, 52)">
+              <rect width="195" height="24" rx="3" fill="var(--color-ppt)" fill-opacity="0.1" stroke="var(--color-ppt)" stroke-dasharray="3 2"/>
+              <text x="97.5" y="15" text-anchor="middle" font-size="8.5" font-weight="700" fill="var(--color-ppt)">2. LUGAR Y FECHA</text>
+            </g>
+
+            <!-- 3. Destinatario -->
+            <g transform="translate(25, 82)">
+              <rect width="200" height="30" rx="3" fill="#2980B9" fill-opacity="0.1" stroke="#2980B9" stroke-dasharray="3 2"/>
+              <text x="100" y="15" text-anchor="middle" font-size="8.5" font-weight="700" fill="#2980B9">3. DESTINATARIO</text>
+              <text x="100" y="24" text-anchor="middle" font-size="7" fill="var(--text-muted)">Señor / Cargo / Institución</text>
+            </g>
+
+            <!-- 4. Asunto -->
+            <g transform="translate(25, 118)">
+              <rect width="260" height="22" rx="3" fill="#8E44AD" fill-opacity="0.1" stroke="#8E44AD" stroke-dasharray="3 2"/>
+              <text x="130" y="15" text-anchor="middle" font-size="8.5" font-weight="700" fill="#8E44AD">4. ASUNTO / REFERENCIA</text>
+            </g>
+
+            <!-- 5. Saludo -->
+            <g transform="translate(25, 145)">
+              <rect width="160" height="20" rx="3" fill="#27AE60" fill-opacity="0.1" stroke="#27AE60" stroke-dasharray="3 2"/>
+              <text x="80" y="14" text-anchor="middle" font-size="8.5" font-weight="700" fill="#27AE60">5. SALUDO FORMAL</text>
+            </g>
+
+            <!-- 6. Cuerpo del Documento -->
+            <g transform="translate(25, 170)">
+              <rect width="350" height="65" rx="3" fill="#E67E22" fill-opacity="0.1" stroke="#E67E22" stroke-dasharray="3 2"/>
+              <text x="175" y="20" text-anchor="middle" font-size="9" font-weight="800" fill="#E67E22">6. CUERPO DEL DOCUMENTO</text>
+              <rect x="25" y="28" width="300" height="4" rx="1" fill="#E67E22" opacity="0.6"/>
+              <rect x="25" y="36" width="280" height="4" rx="1" fill="#E67E22" opacity="0.6"/>
+              <rect x="25" y="44" width="290" height="4" rx="1" fill="#E67E22" opacity="0.6"/>
+              <rect x="25" y="52" width="240" height="4" rx="1" fill="#E67E22" opacity="0.6"/>
+            </g>
+
+            <!-- 7. Despedida y Firma -->
+            <g transform="translate(100, 242)">
+              <rect width="200" height="85" rx="3" fill="#16A085" fill-opacity="0.1" stroke="#16A085" stroke-dasharray="3 2"/>
+              <text x="100" y="16" text-anchor="middle" font-size="8.5" font-weight="700" fill="#16A085">7. DESPEDIDA Y FIRMA</text>
+              <text x="100" y="32" text-anchor="middle" font-size="8" fill="var(--text-muted)">Atentamente,</text>
+              <path d="M60 52 C70 42, 90 62, 110 44 C120 54, 130 38, 140 48" stroke="#254875" stroke-width="1.5" fill="none"/>
+              <line x1="40" y1="62" x2="160" y2="62" stroke="var(--border-light)"/>
+              <text x="100" y="72" text-anchor="middle" font-size="7.5" font-weight="700" fill="var(--text-main)">Prof. Samuel Durán</text>
+              <text x="100" y="80" text-anchor="middle" font-size="6.5" fill="var(--text-muted)">Docente Coordinador</text>
+            </g>
+
+            <!-- SCANNING HIGHLIGHT BEAM -->
+            <rect x="15" y="12" width="370" height="36" rx="3" fill="#254875" fill-opacity="0.18" class="scan-beam-bar"/>
+          </g>
+
+          <!-- BADGES NUMERADOS (1 al 7) CON LÍNEAS DE CONEXIÓN -->
+          <!-- Badge 1: Membrete -->
+          <g transform="translate(140, 58)" class="badge-anatomy">
+            <circle cx="0" cy="0" r="11" fill="#254875" stroke="#FFFFFF" stroke-width="1.5"/>
+            <text x="0" y="4" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">1</text>
+          </g>
+
+          <!-- Badge 2: Lugar y Fecha -->
+          <g transform="translate(620, 108)" class="badge-anatomy">
+            <circle cx="0" cy="0" r="11" fill="var(--color-ppt)" stroke="#FFFFFF" stroke-width="1.5"/>
+            <text x="0" y="4" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">2</text>
+          </g>
+
+          <!-- Badge 3: Destinatario -->
+          <g transform="translate(140, 140)" class="badge-anatomy">
+            <circle cx="0" cy="0" r="11" fill="#2980B9" stroke="#FFFFFF" stroke-width="1.5"/>
+            <text x="0" y="4" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">3</text>
+          </g>
+
+          <!-- Badge 4: Asunto -->
+          <g transform="translate(140, 175)" class="badge-anatomy">
+            <circle cx="0" cy="0" r="11" fill="#8E44AD" stroke="#FFFFFF" stroke-width="1.5"/>
+            <text x="0" y="4" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">4</text>
+          </g>
+
+          <!-- Badge 5: Saludo -->
+          <g transform="translate(140, 202)" class="badge-anatomy">
+            <circle cx="0" cy="0" r="11" fill="#27AE60" stroke="#FFFFFF" stroke-width="1.5"/>
+            <text x="0" y="4" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">5</text>
+          </g>
+
+          <!-- Badge 6: Cuerpo -->
+          <g transform="translate(140, 245)" class="badge-anatomy">
+            <circle cx="0" cy="0" r="11" fill="#E67E22" stroke="#FFFFFF" stroke-width="1.5"/>
+            <text x="0" y="4" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">6</text>
+          </g>
+
+          <!-- Badge 7: Firma -->
+          <g transform="translate(140, 325)" class="badge-anatomy">
+            <circle cx="0" cy="0" r="11" fill="#16A085" stroke="#FFFFFF" stroke-width="1.5"/>
+            <text x="0" y="4" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">7</text>
+          </g>
+        </svg>
+        </div>
+
+        <h3><span style="display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: #254875; color: #FFFFFF; font-weight: 800; font-size: 11px; margin-right: 8px; vertical-align: middle;">1</span>Membrete (Opcional pero recomendado)</h3>
         <p>
           Es la sección de identificación que suele ir en la parte superior del documento. Incluye el nombre de la empresa, institución o profesional, su logotipo y datos de contacto. Otorga identidad oficial al documento.
         </p>
 
-        <h3>2. Lugar y Fecha</h3>
+        <h3><span style="display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: var(--color-ppt); color: #FFFFFF; font-weight: 800; font-size: 11px; margin-right: 8px; vertical-align: middle;">2</span>Lugar y Fecha</h3>
         <p>
           Un elemento crucial que da validez temporal al escrito. Se suele ubicar en el margen superior derecho o izquierdo, debajo del membrete.
           <br><em>Ejemplo: "Ciudad de México, 15 de marzo de 2026."</em>
         </p>
 
-        <h3>3. Destinatario</h3>
+        <h3><span style="display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: #2980B9; color: #FFFFFF; font-weight: 800; font-size: 11px; margin-right: 8px; vertical-align: middle;">3</span>Destinatario</h3>
         <p>
           A quién va dirigido el documento. Debe incluir el nombre completo, el cargo que ocupa y, en algunos casos, el nombre de la institución a la que pertenece. Es una señal de respeto y precisión.
         </p>
 
-        <h3>4. Asunto o Referencia (Opcional)</h3>
+        <h3><span style="display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: #8E44AD; color: #FFFFFF; font-weight: 800; font-size: 11px; margin-right: 8px; vertical-align: middle;">4</span>Asunto o Referencia (Opcional)</h3>
         <p>
           Una línea breve que resume el propósito del documento. Permite al lector saber rápidamente de qué trata el texto antes de leerlo por completo.
         </p>
 
-        <h3>5. Saludo</h3>
+        <h3><span style="display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: #27AE60; color: #FFFFFF; font-weight: 800; font-size: 11px; margin-right: 8px; vertical-align: middle;">5</span>Saludo</h3>
         <p>
           Una apertura de cortesía formal. Ejemplos comunes son "Estimado/a [Nombre]:" o "A quien corresponda:".
         </p>
 
-        <h3>6. Cuerpo del Documento</h3>
+        <h3><span style="display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: #E67E22; color: #FFFFFF; font-weight: 800; font-size: 11px; margin-right: 8px; vertical-align: middle;">6</span>Cuerpo del Documento</h3>
         <p>
           Es el mensaje en sí. Debe estar redactado de manera clara, concisa y estructurado en párrafos. Lo ideal es ir directo al punto sin redundancias.
         </p>
 
-        <h3>7. Despedida y Firma</h3>
+        <h3><span style="display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: #16A085; color: #FFFFFF; font-weight: 800; font-size: 11px; margin-right: 8px; vertical-align: middle;">7</span>Despedida y Firma</h3>
         <p>
           El cierre formal ("Atentamente", "Cordialmente") seguido de un espacio prudente para la firma manuscrita o digital, el nombre impreso del remitente y su cargo.
         </p>
 
-        <h3>Ejemplo Práctico</h3>
-        <img src="word-clases-imgs/modelo-ejemplo-documento-formal.png" alt="Ejemplo visual de un documento formal completo" class="guide-img" />
+        <h2>Ejemplo Práctico en Vivo</h2>
+        <!-- SVG ANIMADO 2: MODELO PRÁCTICO EN VIVO DE DOCUMENTO FORMAL -->
+        <div class="svg-window-container" style="margin: 1.5rem 0; width: 100%; text-align: center;">
+        <svg viewBox="0 0 760 360" width="100%" height="auto" fill="none" xmlns="http://www.w3.org/2000/svg" style="border: 1px solid var(--border-light); border-radius: 6px; background: var(--bg-content); box-shadow: var(--shadow-sm); font-family: var(--font-sans);">
+          <style>
+            @keyframes typeFormalDocText {
+              0%, 10% { opacity: 0; }
+              25%, 90% { opacity: 1; }
+              95%, 100% { opacity: 0; }
+            }
+            @keyframes pulseStampFormal {
+              0%, 75% { transform: scale(0.9) rotate(-3deg); opacity: 0.3; }
+              80%, 95% { transform: scale(1) rotate(-3deg); opacity: 1; }
+              100% { transform: scale(0.9) rotate(-3deg); opacity: 0.3; }
+            }
+            .typed-formal-text { animation: typeFormalDocText 8s ease-in-out infinite; }
+            .stamp-formal-anim { transform-box: fill-box; transform-origin: center; animation: pulseStampFormal 8s ease-in-out infinite; }
+          </style>
+
+          <!-- Título superior -->
+          <rect width="760" height="30" fill="var(--bg-body)"/>
+          <text x="380" y="20" text-anchor="middle" font-size="11" font-weight="700" fill="var(--title-main)">📄 Ejemplo Práctico: Carta Formal de Solicitud de Certificación</text>
+          <line x1="0" y1="30" x2="760" y2="30" stroke="var(--border-light)"/>
+
+          <!-- Hoja A4 Centrada con Modelo Real -->
+          <g transform="translate(100, 42)">
+            <rect width="560" height="305" rx="4" fill="var(--bg-body)" stroke="var(--border-light)" stroke-width="1.5"/>
+
+            <!-- Membrete Real -->
+            <text x="280" y="25" text-anchor="middle" font-size="11" font-weight="800" fill="#254875">INSTITUTO NUEVA TECNOLOGÍA &mdash; OFIMÁTICA 2026</text>
+            <text x="280" y="36" text-anchor="middle" font-size="7.5" fill="var(--text-muted)">Av. Mariscal Santa Cruz #1020 &bull; La Paz, Bolivia &bull; Teléf: (+591) 2-244890</text>
+            <line x1="40" y1="44" x2="520" y2="44" stroke="#254875" stroke-width="1"/>
+
+            <!-- Fecha -->
+            <text x="520" y="62" text-anchor="end" font-size="9" font-weight="600" fill="var(--text-main)">La Paz, 15 de marzo de 2026</text>
+
+            <!-- Destinatario -->
+            <text x="40" y="82" font-size="9" font-weight="800" fill="var(--title-main)">Señor:</text>
+            <text x="40" y="94" font-size="9" font-weight="700" fill="var(--text-main)">Lic. Carlos Mendoza Ramos</text>
+            <text x="40" y="105" font-size="8.5" fill="var(--text-muted)">Director Académico - Instituto Nueva Tecnología</text>
+
+            <!-- Asunto -->
+            <text x="40" y="125" font-size="9" font-weight="800" fill="#8E44AD">ASUNTO: <tspan font-weight="600" fill="var(--text-main)">Solicitud de Certificado de Estudios de Ofimática</tspan></text>
+
+            <!-- Saludo -->
+            <text x="40" y="145" font-size="9" font-weight="700" fill="var(--title-main)">Estimado Lic. Mendoza:</text>
+
+            <!-- Cuerpo del texto animado -->
+            <g class="typed-formal-text">
+              <text x="40" y="165" font-size="8.5" fill="var(--text-main)">Mediante la presente, me dirijo a su autoridad para solicitar la emisión del certificado</text>
+              <text x="40" y="177" font-size="8.5" fill="var(--text-main)">correspondiente al curso de Ofimática Profesional 2026, habiendo cumplido satisfactoriamente</text>
+              <text x="40" y="189" font-size="8.5" fill="var(--text-main)">con todos los requisitos académicos y evaluaciones prácticas programadas.</text>
+
+              <text x="40" y="209" font-size="8.5" fill="var(--text-main)">Agradeciendo de antemano su atención a la presente solicitud, me despido cordialmente.</text>
+            </g>
+
+            <!-- Despedida y Firma -->
+            <text x="280" y="235" text-anchor="middle" font-size="8.5" font-weight="700" fill="var(--text-main)">Atentamente,</text>
+            
+            <path d="M230 260 C240 248, 270 270, 290 250 C300 260, 310 245, 330 255" stroke="#254875" stroke-width="1.8" fill="none"/>
+            <line x1="200" y1="268" x2="360" y2="268" stroke="var(--border-light)"/>
+            <text x="280" y="278" text-anchor="middle" font-size="8.5" font-weight="800" fill="var(--title-main)">Prof. Samuel William Durán Quispe</text>
+            <text x="280" y="288" text-anchor="middle" font-size="7.5" fill="var(--text-muted)">C.I. 4839201 LP &bull; Docente de Ofimática</text>
+
+            <!-- Sello Digital de Recepción Animado -->
+            <g transform="translate(420, 220)" class="stamp-formal-anim">
+              <rect width="110" height="45" rx="4" fill="none" stroke="#27AE60" stroke-width="2" stroke-dasharray="4 2"/>
+              <text x="55" y="18" text-anchor="middle" font-size="8" font-weight="800" fill="#27AE60">✔ RECIBIDO</text>
+              <text x="55" y="30" text-anchor="middle" font-size="7" font-weight="600" fill="#27AE60">15 MAR 2026 - 10:30</text>
+              <text x="55" y="39" text-anchor="middle" font-size="6" fill="#27AE60">SECRETARÍA ACADÉMICA</text>
+            </g>
+          </g>
+        </svg>
+        </div>
 
         <div class="box box-tip">
           <span class="box-title">📌 Tip para la práctica</span>

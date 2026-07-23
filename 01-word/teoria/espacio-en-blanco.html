@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
@@ -37,12 +37,235 @@
           Un error clásico de principiante es pensar que debemos aprovechar cada centímetro de la hoja llenándola de texto de borde a borde. La realidad es que el espacio vacío (o "espacio en blanco") es tan importante como las letras mismas. Es lo que guía al ojo y permite una lectura fluida sin agotar la vista.
         </div>
 
-        <img src="word-clases-imgs/espacios_margenes_sangrias.png" alt="Ejemplo visual de márgenes, sangrías e interlineado" class="guide-img" />
+        <!-- SVG ANIMADO 1: ANATOMÍA VISUAL DE MÁRGENES, SANGRÍA E INTERLINEADO -->
+        <div class="svg-window-container" style="margin: 1.5rem 0; width: 100%; text-align: center;">
+        <svg viewBox="0 0 760 360" width="100%" height="auto" fill="none" xmlns="http://www.w3.org/2000/svg" style="border: 1px solid var(--border-light); border-radius: 6px; background: var(--bg-content); box-shadow: var(--shadow-sm); font-family: var(--font-sans);">
+          <style>
+            @keyframes pulseMarginBox {
+              0%, 100% { stroke-opacity: 0.4; stroke-width: 1.5; }
+              50% { stroke-opacity: 1; stroke-width: 2.5; stroke: #2980B9; }
+            }
+            @keyframes indentArrowMove {
+              0%, 20% { transform: translateX(0px); }
+              40%, 80% { transform: translateX(35px); }
+              90%, 100% { transform: translateX(0px); }
+            }
+            @keyframes lineSpacingExpand {
+              0%, 20% { transform: scaleY(1); }
+              50%, 85% { transform: scaleY(1.35); }
+              95%, 100% { transform: scaleY(1); }
+            }
+            .margin-outline-anim { animation: pulseMarginBox 3s ease-in-out infinite; }
+            .indent-marker-anim { animation: indentArrowMove 6s ease-in-out infinite; }
+            .line-spacing-text-anim { transform-box: fill-box; transform-origin: top; animation: lineSpacingExpand 6s ease-in-out infinite; }
+          </style>
+
+          <!-- Título superior -->
+          <rect width="760" height="30" fill="var(--bg-body)"/>
+          <text x="380" y="20" text-anchor="middle" font-size="11" font-weight="700" fill="var(--title-main)">📐 Estructura del Espacio en Blanco: Márgenes, Sangría e Interlineado</text>
+          <line x1="0" y1="30" x2="760" y2="30" stroke="var(--border-light)"/>
+
+          <!-- Hoja A4 Centrada -->
+          <g transform="translate(130, 42)">
+            <rect width="500" height="300" rx="4" fill="var(--bg-body)" stroke="var(--border-light)" stroke-width="1.5"/>
+
+            <!-- LÍMITES DE MÁRGENES (Línea punteada azul) -->
+            <rect x="60" y="45" width="380" height="210" fill="var(--bg-content)" stroke="#2980B9" stroke-dasharray="5 3" class="margin-outline-anim"/>
+
+            <!-- Indicadores de medidas de márgenes -->
+            <!-- Margen Superior (3 cm) -->
+            <text x="250" y="28" text-anchor="middle" font-size="8.5" font-weight="700" fill="#2980B9">↑ Margen Superior (3.0 cm)</text>
+            <!-- Margen Izquierdo (3 cm) -->
+            <text x="30" y="150" text-anchor="middle" font-size="8.5" font-weight="700" fill="#2980B9" transform="rotate(-90 30 150)">← Margen Izquierdo (3.0 cm)</text>
+            <!-- Margen Derecho (2.5 cm) -->
+            <text x="470" y="150" text-anchor="middle" font-size="8.5" font-weight="700" fill="#2980B9" transform="rotate(90 470 150)">Margen Derecho (2.5 cm) →</text>
+            <!-- Margen Inferior (2.5 cm) -->
+            <text x="250" y="278" text-anchor="middle" font-size="8.5" font-weight="700" fill="#2980B9">↓ Margen Inferior (2.5 cm)</text>
+
+            <!-- CONTENIDO DE TEXTO CON SANGRÍA E INTERLINEADO -->
+            <g transform="translate(75, 60)">
+              <!-- Párrafo 1 con Sangría de 1ra Línea -->
+              <g class="indent-marker-anim">
+                <rect x="35" y="0" width="280" height="6" rx="1.5" fill="#E67E22"/>
+                <text x="20" y="6" font-size="10">➔</text>
+                <text x="0" y="-8" font-size="8" font-weight="800" fill="#E67E22">Sangría de 1ª Línea (1.25 cm)</text>
+              </g>
+
+              <!-- Texto con Interlineado animado -->
+              <g transform="translate(0, 16)" class="line-spacing-text-anim">
+                <rect x="0" y="0" width="345" height="5" rx="1" fill="var(--text-main)" opacity="0.85"/>
+                <rect x="0" y="14" width="330" height="5" rx="1" fill="var(--text-main)" opacity="0.85"/>
+                <rect x="0" y="28" width="310" height="5" rx="1" fill="var(--text-main)" opacity="0.85"/>
+
+                <!-- Indicador de Interlineado -->
+                <line x1="355" y1="0" x2="355" y2="28" stroke="#8E44AD" stroke-width="1.5"/>
+                <polygon points="355,-3 352,2 358,2" fill="#8E44AD"/>
+                <polygon points="355,31 352,26 358,26" fill="#8E44AD"/>
+                <text x="365" y="16" font-size="8" font-weight="800" fill="#8E44AD">Interlineado (1.5)</text>
+              </g>
+
+              <!-- Párrafo 2 -->
+              <g transform="translate(0, 85)">
+                <rect x="35" y="0" width="280" height="6" rx="1.5" fill="#E67E22"/>
+                <rect x="0" y="16" width="340" height="5" rx="1" fill="var(--text-main)" opacity="0.85"/>
+                <rect x="0" y="30" width="290" height="5" rx="1" fill="var(--text-main)" opacity="0.85"/>
+              </g>
+            </g>
+          </g>
+
+          <!-- BADGES NUMERADOS (1, 2, 3) -->
+          <!-- 1: Márgenes -->
+          <g transform="translate(160, 68)">
+            <circle cx="0" cy="0" r="10" fill="#2980B9" stroke="#FFFFFF" stroke-width="1.5"/>
+            <text x="0" y="3.5" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">1</text>
+          </g>
+
+          <!-- 2: Sangría -->
+          <g transform="translate(240, 95)">
+            <circle cx="0" cy="0" r="10" fill="#E67E22" stroke="#FFFFFF" stroke-width="1.5"/>
+            <text x="0" y="3.5" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">2</text>
+          </g>
+
+          <!-- 3: Interlineado -->
+          <g transform="translate(560, 150)">
+            <circle cx="0" cy="0" r="10" fill="#8E44AD" stroke="#FFFFFF" stroke-width="1.5"/>
+            <text x="0" y="3.5" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">3</text>
+          </g>
+        </svg>
+        </div>
 
         <h2>1. Los Márgenes: El marco de tu contenido</h2>
         <p>
           Imagina tu documento como un cuadro en un museo. Los <strong>márgenes</strong> son ese marco protector que separa la obra (tu texto) del mundo exterior (el borde del papel). 
         </p>
+
+        <!-- SVG ANIMADO SECCIÓN 1: CONFIGURACIÓN DE MÁRGENES EN WORD -->
+        <div class="svg-window-container" style="margin: 1.5rem 0; width: 100%; text-align: center;">
+        <svg viewBox="0 0 760 250" width="100%" height="auto" fill="none" xmlns="http://www.w3.org/2000/svg" style="border: 1px solid var(--border-light); border-radius: 6px; background: var(--bg-content); box-shadow: var(--shadow-sm); font-family: var(--font-sans);">
+          <style>
+            @keyframes mouseMoveMargins1 {
+              0%, 15% { transform: translate(50px, 180px); }
+              35% { transform: translate(145px, 42px); }
+              42% { transform: translate(145px, 42px) scale(0.88); }
+              48% { transform: translate(145px, 42px) scale(1); }
+              68% { transform: translate(140px, 215px); }
+              75% { transform: translate(140px, 215px) scale(0.88); }
+              82%, 100% { transform: translate(450px, 160px); }
+            }
+            @keyframes marginsRipple1 {
+              0%, 35% { r: 0; opacity: 0; }
+              42% { r: 14; opacity: 0.85; stroke-width: 2; opacity: 1; }
+              48% { r: 24; opacity: 0; }
+              68% { r: 0; opacity: 0; }
+              75% { r: 14; opacity: 0.85; stroke-width: 2; opacity: 1; }
+              82% { r: 24; opacity: 0; }
+              100% { r: 0; opacity: 0; }
+            }
+            @keyframes menuDropdownMargins1 {
+              0%, 71% { opacity: 0; transform: translateY(-5px); visibility: hidden; }
+              72%, 100% { opacity: 1; transform: translateY(0); visibility: visible; }
+            }
+            /* Crecimiento de márgenes blancos (empujan hacia adentro) */
+            @keyframes marginAreaBoxExpand {
+              0%, 74% { x: 20px; y: 28px; width: 320px; height: 100px; stroke: var(--border-light); stroke-dasharray: 4 2; fill: var(--bg-content); }
+              75%, 100% { x: 65px; y: 38px; width: 230px; height: 80px; stroke: #2980B9; stroke-width: 2; stroke-dasharray: 0; fill: var(--bg-content); }
+            }
+            /* Estrechamiento del texto al aumentar los márgenes */
+            @keyframes textLinesNarrowShrink {
+              0%, 74% { transform: scaleX(1); }
+              75%, 100% { transform: scaleX(0.68); }
+            }
+            .mouse-margin-cursor1 { animation: mouseMoveMargins1 7s ease-in-out infinite; }
+            .margin-click-ripple1 { animation: marginsRipple1 7s ease-in-out infinite; }
+            .dropdown-margins-menu1 { animation: menuDropdownMargins1 7s ease-in-out infinite; }
+            .margin-preview-sheet1 { animation: marginAreaBoxExpand 7s ease-in-out infinite; }
+            .text-block-narrow1 { animation: textLinesNarrowShrink 7s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+          </style>
+
+          <!-- Encabezado Ventana Word -->
+          <path d="M0 6C0 2.68629 2.68629 0 6 0H754C757.314 0 760 2.68629 760 6V28H0V6Z" fill="#254875"/>
+          <text x="380" y="18" text-anchor="middle" font-size="11" font-weight="600" fill="#FFFFFF">Documento1 - Microsoft Word [Selección de Márgenes Preset: Ancho]</text>
+
+          <!-- Ribbon Bar -->
+          <rect y="28" width="760" height="60" fill="var(--bg-body)"/>
+          <line x1="0" y1="88" x2="760" y2="88" stroke="var(--border-light)" stroke-width="1"/>
+
+          <!-- Pestaña Activa: Disposición -->
+          <rect x="105" y="28" width="85" height="24" fill="var(--bg-content)"/>
+          <text x="147.5" y="44" text-anchor="middle" font-size="10" font-weight="700" fill="#254875">Disposición</text>
+
+          <!-- Grupo Márgenes -->
+          <g transform="translate(80, 52)">
+            <rect width="130" height="32" rx="3" fill="#2980B9" fill-opacity="0.15" stroke="#2980B9" stroke-width="1.5"/>
+            <text x="20" y="21" font-size="14">🖼️</text>
+            <text x="75" y="21" text-anchor="middle" font-size="9" font-weight="700" fill="#2980B9">Márgenes ▾</text>
+          </g>
+
+          <!-- MENÚ DESPLEGABLE DE MÁRGENES ANIMADO -->
+          <g class="dropdown-margins-menu1" transform="translate(80, 88)">
+            <rect width="190" height="150" rx="3" fill="var(--bg-content)" stroke="#2980B9" stroke-width="1.5" filter="drop-shadow(0px 4px 8px rgba(0,0,0,0.18))"/>
+            
+            <!-- Opción 1: Normal -->
+            <text x="12" y="18" font-size="8.5" font-weight="600" fill="var(--text-main)">Normal (2.5 cm)</text>
+            <text x="12" y="30" font-size="7.5" fill="var(--text-muted)">Sup: 2.5cm | Inf: 2.5cm | Izq: 3cm</text>
+
+            <!-- Opción 2: Estrecho -->
+            <text x="12" y="55" font-size="8.5" font-weight="600" fill="var(--text-main)">Estrecho</text>
+
+            <!-- Opción 3: Moderado -->
+            <text x="12" y="85" font-size="8.5" font-weight="600" fill="var(--text-main)">Moderado</text>
+
+            <!-- Opción 4: Ancho (SELECCIONADO PARA MOSTRAR CRECIMIENTO DE MÁRGENES Y ESTRECHAMIENTO DE TEXTO) -->
+            <rect x="3" y="105" width="184" height="38" rx="2" fill="#2980B9" fill-opacity="0.2"/>
+            <text x="12" y="120" font-size="9" font-weight="700" fill="#2980B9">✔ Ancho (Márgenes grandes)</text>
+            <text x="12" y="134" font-size="7.5" fill="var(--text-muted)">Sup: 2.54cm | Izq: 5.08cm | Der: 5.08cm</text>
+          </g>
+
+          <!-- LIENZO CON MÁRGENES EXPANDIÉNDOSE Y TEXTO COMPRIMIÉNDOSE -->
+          <g transform="translate(360, 98)">
+            <!-- Hoja blanca física -->
+            <rect width="360" height="140" rx="4" fill="var(--bg-body)" stroke="var(--border-light)"/>
+            <text x="180" y="18" text-anchor="middle" font-size="9" font-weight="700" fill="#2980B9">Efecto: El margen crece ➔ El texto se estrecha</text>
+
+            <!-- Marco de Margen interactivo -->
+            <rect class="margin-preview-sheet1"/>
+
+            <!-- Bloque de Texto comprimiéndose -->
+            <g class="text-block-narrow1">
+              <rect x="80" y="48" width="200" height="5" rx="1" fill="var(--text-main)" opacity="0.85"/>
+              <rect x="80" y="61" width="190" height="5" rx="1" fill="var(--text-main)" opacity="0.85"/>
+              <rect x="80" y="74" width="195" height="5" rx="1" fill="var(--text-main)" opacity="0.85"/>
+              <rect x="80" y="87" width="150" height="5" rx="1" fill="var(--text-main)" opacity="0.85"/>
+            </g>
+          </g>
+
+          <!-- BADGES NUMERADOS (1, 2, 3) -->
+          <!-- 1: Pestaña Disposición -->
+          <g transform="translate(145, 18)">
+            <circle cx="0" cy="0" r="10" fill="#C0392B" stroke="#FFFFFF" stroke-width="1.5"/>
+            <text x="0" y="3.5" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">1</text>
+          </g>
+
+          <!-- 2: Márgenes -->
+          <g transform="translate(220, 52)">
+            <circle cx="0" cy="0" r="10" fill="#C0392B" stroke="#FFFFFF" stroke-width="1.5"/>
+            <text x="0" y="3.5" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">2</text>
+          </g>
+
+          <!-- 3: Opción Normal -->
+          <g transform="translate(280, 105)">
+            <circle cx="0" cy="0" r="10" fill="#C0392B" stroke="#FFFFFF" stroke-width="1.5"/>
+            <text x="0" y="3.5" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">3</text>
+          </g>
+
+          <!-- PUNTERO ANIMADO -->
+          <g class="mouse-margin-cursor1">
+            <circle cx="0" cy="0" r="0" fill="none" stroke="#2980B9" class="margin-click-ripple1"/>
+            <path d="M0 0L12 12L7 13L10 20L7 21L4 14L0 17V0Z" fill="#111111" stroke="#FFFFFF" stroke-width="1.2"/>
+          </g>
+        </svg>
+        </div>
+
         <p>
           Teóricamente, los márgenes cumplen dos funciones vitales:
         </p>
@@ -55,6 +278,98 @@
         <p>
           A diferencia del margen, que afecta a toda la página, la <strong>sangría</strong> es un espacio interior. Es un pequeño desplazamiento hacia la derecha que se aplica generalmente en la <em>primera línea</em> de un párrafo.
         </p>
+
+        <!-- SVG ANIMADO SECCIÓN 2: AJUSTE DE SANGRÍA CON LA REGLA HORIZONTAL -->
+        <div class="svg-window-container" style="margin: 1.5rem 0; width: 100%; text-align: center;">
+        <svg viewBox="0 0 760 250" width="100%" height="auto" fill="none" xmlns="http://www.w3.org/2000/svg" style="border: 1px solid var(--border-light); border-radius: 6px; background: var(--bg-content); box-shadow: var(--shadow-sm); font-family: var(--font-sans);">
+          <style>
+            @keyframes mouseDragIndent2 {
+              0%, 15% { transform: translate(80px, 45px); }
+              45%, 75% { transform: translate(165px, 45px); }
+              90%, 100% { transform: translate(80px, 45px); }
+            }
+            @keyframes rulerIndentMarkerMove {
+              0%, 15% { transform: translateX(0px); }
+              45%, 75% { transform: translateX(85px); }
+              90%, 100% { transform: translateX(0px); }
+            }
+            @keyframes paragraphFirstLineShift {
+              0%, 15% { x: 0px; fill: var(--text-main); }
+              45%, 75% { x: 85px; fill: #E67E22; }
+              90%, 100% { x: 0px; fill: var(--text-main); }
+            }
+            .mouse-indent-cursor2 { animation: mouseDragIndent2 7s ease-in-out infinite; }
+            .ruler-marker-slider2 { animation: rulerIndentMarkerMove 7s ease-in-out infinite; }
+            .first-line-text-shift2 { animation: paragraphFirstLineShift 7s ease-in-out infinite; }
+          </style>
+
+          <!-- Encabezado Ventana Word -->
+          <path d="M0 6C0 2.68629 2.68629 0 6 0H754C757.314 0 760 2.68629 760 6V28H0V6Z" fill="#254875"/>
+          <text x="380" y="18" text-anchor="middle" font-size="11" font-weight="600" fill="#FFFFFF">Documento1 - Microsoft Word [Regla Horizontal y Marcadores de Sangría]</text>
+
+          <!-- REGLA HORIZONTAL DE WORD -->
+          <g transform="translate(0, 28)">
+            <rect width="760" height="30" fill="var(--bg-body)"/>
+            <line x1="0" y1="30" x2="760" y2="30" stroke="var(--border-light)"/>
+            <!-- Marcas de centímetros de la regla -->
+            <text x="380" y="18" text-anchor="middle" font-size="9" font-family="var(--font-code)" fill="var(--text-muted)">1 · · 2 · · 3 · · 4 · · 5 · · 6 · · 7 · · 8 · · 9 · · 10</text>
+            
+            <!-- MARCADORES DE SANGRÍA ANIMADOS EN LA REGLA -->
+            <g transform="translate(80, 5)" class="ruler-marker-slider2">
+              <!-- Marcador Sangría 1ª Línea (Triángulo invertido superior) -->
+              <polygon points="0,0 -5,8 5,8" fill="#E67E22"/>
+              <text x="0" y="-2" text-anchor="middle" font-size="7" font-weight="800" fill="#E67E22">🔻</text>
+            </g>
+
+            <!-- Marcador Sangría Izquierda (Triángulo + Rectángulo inferior fijo) -->
+            <g transform="translate(80, 16)">
+              <polygon points="0,8 -5,0 5,0" fill="#254875"/>
+              <rect x="-5" y="8" width="10" height="4" fill="#254875"/>
+            </g>
+          </g>
+
+          <!-- LIENZO DE TRABAJO CON TEXTO DE PÁRRAFO -->
+          <g transform="translate(40, 75)">
+            <rect width="680" height="155" rx="4" fill="var(--bg-body)" stroke="var(--border-light)"/>
+            <text x="340" y="22" text-anchor="middle" font-size="9" font-weight="700" fill="#E67E22">Efecto en Vivo de la Sangría de Primera Línea (1.25 cm)</text>
+
+            <g transform="translate(65, 45)">
+              <!-- Línea 1 (DESPLAZÁNDOSE CON SANGRÍA) -->
+              <rect y="0" width="380" height="6" rx="1.5" class="first-line-text-shift2"/>
+              
+              <!-- Línea 2 y 3 (Fijas) -->
+              <rect x="0" y="20" width="510" height="5" rx="1" fill="var(--text-main)" opacity="0.8"/>
+              <rect x="0" y="36" width="480" height="5" rx="1" fill="var(--text-main)" opacity="0.8"/>
+              <rect x="0" y="52" width="420" height="5" rx="1" fill="var(--text-main)" opacity="0.8"/>
+            </g>
+          </g>
+
+          <!-- BADGES NUMERADOS (1, 2, 3) -->
+          <!-- 1: Regla y Marcador de Sangría -->
+          <g transform="translate(115, 38)">
+            <circle cx="0" cy="0" r="10" fill="#C0392B" stroke="#FFFFFF" stroke-width="1.5"/>
+            <text x="0" y="3.5" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">1</text>
+          </g>
+
+          <!-- 2: Arrastre a 1.25 cm -->
+          <g transform="translate(240, 38)">
+            <circle cx="0" cy="0" r="10" fill="#C0392B" stroke="#FFFFFF" stroke-width="1.5"/>
+            <text x="0" y="3.5" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">2</text>
+          </g>
+
+          <!-- 3: Párrafo Desplazado -->
+          <g transform="translate(600, 150)">
+            <circle cx="0" cy="0" r="10" fill="#C0392B" stroke="#FFFFFF" stroke-width="1.5"/>
+            <text x="0" y="3.5" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">3</text>
+          </g>
+
+          <!-- PUNTERO ANIMADO DE ARRASTRE -->
+          <g class="mouse-indent-cursor2">
+            <path d="M0 0L12 12L7 13L10 20L7 21L4 14L0 17V0Z" fill="#111111" stroke="#FFFFFF" stroke-width="1.2"/>
+          </g>
+        </svg>
+        </div>
+
         <p>
           ¿Por qué lo usamos? Visualmente, la sangría funciona como una señal de tráfico que le dice al cerebro del lector: <em>"Aquí comienza una nueva idea"</em>. Ayuda a distinguir claramente dónde termina un párrafo y dónde empieza el siguiente sin tener que dejar saltos de línea exagerados.
         </p>
@@ -66,6 +381,110 @@
         <p>
           Si las líneas están muy juntas, el ojo del lector "resbala" y es muy fácil perderse y volver a leer la misma línea dos veces. Si están demasiado separadas, la lectura se siente fragmentada y desconectada. Un buen interlineado (como 1.15 o 1.5 en textos formales) crea un "carril" imaginario que guía suavemente la mirada desde el final de una línea hasta el inicio de la siguiente.
         </p>
+
+        <!-- SVG ANIMADO 2: SECUENCIA PASO A PASO CONFIGURACIÓN EN WORD -->
+        <div class="svg-window-container" style="margin: 1.5rem 0; width: 100%; text-align: center;">
+        <svg viewBox="0 0 760 270" width="100%" height="auto" fill="none" xmlns="http://www.w3.org/2000/svg" style="border: 1px solid var(--border-light); border-radius: 6px; background: var(--bg-content); box-shadow: var(--shadow-sm); font-family: var(--font-sans);">
+          <style>
+            @keyframes mouseMoveWhitespaceConfig {
+              0%, 15% { transform: translate(50px, 200px); }
+              35% { transform: translate(320px, 42px); }
+              42% { transform: translate(320px, 42px) scale(0.88); }
+              48% { transform: translate(320px, 42px) scale(1); }
+              68% { transform: translate(315px, 125px); }
+              75% { transform: translate(315px, 125px) scale(0.88); }
+              82%, 100% { transform: translate(480px, 190px); }
+            }
+            @keyframes spacingRipple2 {
+              0%, 35% { r: 0; opacity: 0; }
+              42% { r: 14; opacity: 0.85; stroke-width: 2; opacity: 1; }
+              48% { r: 24; opacity: 0; }
+              68% { r: 0; opacity: 0; }
+              75% { r: 14; opacity: 0.85; stroke-width: 2; opacity: 1; }
+              82% { r: 24; opacity: 0; }
+              100% { r: 0; opacity: 0; }
+            }
+            @keyframes dropdownSpacingAppear {
+              0%, 71% { opacity: 0; transform: translateY(-5px); visibility: hidden; }
+              72%, 100% { opacity: 1; transform: translateY(0); visibility: visible; }
+            }
+            .mouse-space-cursor2 { animation: mouseMoveWhitespaceConfig 7s ease-in-out infinite; }
+            .space-click-ripple2 { animation: spacingRipple2 7s ease-in-out infinite; }
+            .dropdown-spacing-menu { animation: dropdownSpacingAppear 7s ease-in-out infinite; }
+          </style>
+
+          <!-- Encabezado Ventana Word -->
+          <path d="M0 6C0 2.68629 2.68629 0 6 0H754C757.314 0 760 2.68629 760 6V28H0V6Z" fill="#254875"/>
+          <text x="380" y="18" text-anchor="middle" font-size="11" font-weight="600" fill="#FFFFFF">Documento1 - Microsoft Word [Ajustes de Párrafo e Interlineado]</text>
+
+          <!-- Ribbon Bar -->
+          <rect y="28" width="760" height="60" fill="var(--bg-body)"/>
+          <line x1="0" y1="88" x2="760" y2="88" stroke="var(--border-light)" stroke-width="1"/>
+
+          <!-- Pestaña Activa: Inicio -->
+          <rect x="68" y="28" width="55" height="24" fill="var(--bg-content)"/>
+          <text x="95.5" y="44" text-anchor="middle" font-size="10" font-weight="700" fill="#254875">Inicio</text>
+
+          <!-- Grupo Párrafo -->
+          <g transform="translate(260, 36)">
+            <rect width="130" height="46" rx="3" fill="#254875" fill-opacity="0.12" stroke="#254875" stroke-width="1.5"/>
+            <text x="25" y="20" font-size="12" fill="var(--text-main)">≡  ≡  ≡</text>
+            
+            <!-- Botón Interlineado (DESTACADO) -->
+            <rect x="75" y="8" width="45" height="30" rx="2" fill="#254875"/>
+            <text x="97.5" y="28" text-anchor="middle" font-size="12" fill="#FFFFFF">⇳ ▾</text>
+            <text x="65" y="44" text-anchor="middle" font-size="7.5" font-weight="700" fill="#254875">Párrafo</text>
+          </g>
+
+          <!-- MENÚ DESPLEGABLE INTERLINEADO -->
+          <g class="dropdown-spacing-menu" transform="translate(330, 88)">
+            <rect width="140" height="110" rx="3" fill="var(--bg-content)" stroke="#254875" stroke-width="1.5" filter="drop-shadow(0px 4px 8px rgba(0,0,0,0.18))"/>
+            <text x="12" y="18" font-size="8.5" fill="var(--text-muted)">1.0  (Sencillo)</text>
+            <text x="12" y="38" font-size="8.5" fill="var(--text-muted)">1.15 (Estándar)</text>
+            <!-- Opción: 1.5 (SELECCIONADO) -->
+            <rect x="3" y="48" width="134" height="22" rx="2" fill="#254875" fill-opacity="0.2"/>
+            <text x="12" y="63" font-size="8.5" font-weight="700" fill="#254875">✔ 1.5 (Recomendado)</text>
+            <text x="12" y="88" font-size="8.5" fill="var(--text-muted)">2.0  (Doble)</text>
+          </g>
+
+          <!-- LIENZO DE TRABAJO CON TEXTO RESPIRANDO -->
+          <g transform="translate(20, 105)">
+            <rect width="280" height="145" rx="4" fill="var(--bg-body)" stroke="var(--border-light)"/>
+            <text x="140" y="20" text-anchor="middle" font-size="9" font-weight="700" fill="#254875">Vista Previa de Lectura Fluidizada</text>
+            
+            <rect x="40" y="38" width="200" height="5" rx="1" fill="#E67E22"/>
+            <rect x="20" y="58" width="240" height="4" rx="1" fill="var(--text-main)" opacity="0.8"/>
+            <rect x="20" y="78" width="220" height="4" rx="1" fill="var(--text-main)" opacity="0.8"/>
+            <rect x="20" y="98" width="230" height="4" rx="1" fill="var(--text-main)" opacity="0.8"/>
+            <rect x="20" y="118" width="180" height="4" rx="1" fill="var(--text-main)" opacity="0.8"/>
+          </g>
+
+          <!-- BADGES NUMERADOS (1, 2, 3) -->
+          <!-- 1: Pestaña Inicio -->
+          <g transform="translate(95, 18)">
+            <circle cx="0" cy="0" r="10" fill="#C0392B" stroke="#FFFFFF" stroke-width="1.5"/>
+            <text x="0" y="3.5" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">1</text>
+          </g>
+
+          <!-- 2: Botón Interlineado -->
+          <g transform="translate(385, 38)">
+            <circle cx="0" cy="0" r="10" fill="#C0392B" stroke="#FFFFFF" stroke-width="1.5"/>
+            <text x="0" y="3.5" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">2</text>
+          </g>
+
+          <!-- 3: Selección 1.5 -->
+          <g transform="translate(485, 158)">
+            <circle cx="0" cy="0" r="10" fill="#C0392B" stroke="#FFFFFF" stroke-width="1.5"/>
+            <text x="0" y="3.5" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">3</text>
+          </g>
+
+          <!-- PUNTERO ANIMADO -->
+          <g class="mouse-space-cursor2">
+            <circle cx="0" cy="0" r="0" fill="none" stroke="#254875" class="space-click-ripple2"/>
+            <path d="M0 0L12 12L7 13L10 20L7 21L4 14L0 17V0Z" fill="#111111" stroke="#FFFFFF" stroke-width="1.2"/>
+          </g>
+        </svg>
+        </div>
 
         <div class="box box-tip">
           <span class="box-title">📌 Tip para la práctica</span>

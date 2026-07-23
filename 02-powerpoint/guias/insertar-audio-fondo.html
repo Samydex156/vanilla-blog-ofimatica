@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
@@ -59,13 +59,149 @@
           <li>Aparecerá un icono con forma de bocina (altavoz) en el centro de tu diapositiva.</li>
         </ol>
 
-        <figure class="guide-img-container">
-          <img
-            src="ppt-guias-imgs/ppt-insertar-audio-01.png"
-            alt="Botón para insertar audio desde la PC"
-            class="guide-img"
-          />
-        </figure>
+        <!-- SVG INTERFAZ PASO 1: INSERTAR AUDIO DE FONDO -->
+        <div class="svg-window-container" style="margin: 1.5rem 0; width: 100%; text-align: center;">
+        <svg viewBox="0 0 760 260" width="100%" height="auto" fill="none" xmlns="http://www.w3.org/2000/svg" style="border: 1px solid var(--border-light); border-radius: 6px; background: var(--bg-content); box-shadow: var(--shadow-sm); font-family: var(--font-sans);">
+          <style>
+            @keyframes mouseAudioInsert {
+              0%, 12% { transform: translate(100px, 215px); }
+              25% { transform: translate(145px, 40px); }
+              30% { transform: translate(145px, 40px) scale(0.88); }
+              35% { transform: translate(145px, 40px) scale(1); }
+              52% { transform: translate(714px, 90px); }
+              57% { transform: translate(714px, 90px) scale(0.88); }
+              62% { transform: translate(714px, 90px) scale(1); }
+              78% { transform: translate(635px, 135px); }
+              83% { transform: translate(635px, 135px) scale(0.88); }
+              88%, 100% { transform: translate(635px, 135px) scale(1); }
+            }
+            @keyframes audioRipple {
+              0%, 25% { r: 0; opacity: 0; }
+              30% { r: 14; opacity: 0.85; stroke-width: 2; }
+              35% { r: 24; opacity: 0; }
+              52% { r: 0; opacity: 0; }
+              57% { r: 14; opacity: 0.85; stroke-width: 2; }
+              62% { r: 24; opacity: 0; }
+              78% { r: 0; opacity: 0; }
+              83% { r: 14; opacity: 0.85; stroke-width: 2; }
+              88% { r: 24; opacity: 0; }
+              100% { r: 0; opacity: 0; }
+            }
+            @keyframes menuDropdownAudio {
+              0%, 56% { opacity: 0; transform: translateY(-5px); visibility: hidden; }
+              57%, 100% { opacity: 1; transform: translateY(0); visibility: visible; }
+            }
+            @keyframes speakerAppearPulse {
+              0%, 82% { opacity: 0.2; transform: scale(0.88); }
+              83%, 100% { opacity: 1; transform: scale(1.12); }
+            }
+            .mouse-audio-cursor { animation: mouseAudioInsert 7s ease-in-out infinite; }
+            .audio-click-ripple { animation: audioRipple 7s ease-in-out infinite; }
+            .dropdown-audio-menu { animation: menuDropdownAudio 7s ease-in-out infinite; }
+            .speaker-badge-pulse { animation: speakerAppearPulse 7s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+          </style>
+
+          <!-- Encabezado de Ventana -->
+          <path d="M0 6C0 2.68629 2.68629 0 6 0H754C757.314 0 760 2.68629 760 6V28H0V6Z" fill="var(--color-ppt)"/>
+          <text x="380" y="18" text-anchor="middle" font-size="11" font-weight="600" fill="#FFFFFF">Presentación1 - PowerPoint [Pestaña Insertar]</text>
+
+          <!-- Barra de Pestañas -->
+          <rect y="28" width="760" height="26" fill="var(--bg-content)"/>
+          <line x1="0" y1="54" x2="760" y2="54" stroke="var(--border-light)" stroke-width="1"/>
+          
+          <text x="20" y="44" font-size="10.5" fill="var(--text-muted)">Archivo</text>
+          <text x="65" y="44" font-size="10.5" fill="var(--text-muted)">Inicio</text>
+
+          <!-- Pestaña Activa: INSERTAR -->
+          <rect x="105" y="28" width="80" height="26" fill="var(--bg-body)"/>
+          <line x1="105" y1="28" x2="185" y2="28" stroke="var(--color-ppt)" stroke-width="2.5"/>
+          <text x="145" y="44" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-ppt)">Insertar</text>
+          
+          <text x="205" y="44" font-size="10.5" fill="var(--text-muted)">Diseño</text>
+          <text x="260" y="44" font-size="10.5" fill="var(--text-muted)">Transiciones</text>
+          <text x="340" y="44" font-size="10.5" fill="var(--text-muted)">Animaciones</text>
+
+          <!-- Ribbon Bar -->
+          <rect y="54" width="760" height="85" fill="var(--bg-body)"/>
+          <line x1="0" y1="139" x2="760" y2="139" stroke="var(--border-light)" stroke-width="1"/>
+
+          <!-- Grupo Formas e Imágenes -->
+          <rect x="12" y="62" width="120" height="68" rx="3" fill="var(--bg-content)" stroke="var(--border-light)"/>
+          <text x="72" y="98" text-anchor="middle" font-size="9" fill="var(--text-muted)">Imágenes / Formas</text>
+          <line x1="142" y1="60" x2="142" y2="133" stroke="var(--border-light)"/>
+
+          <!-- Grupo Multimedia (Derecha) -->
+          <rect x="630" y="60" width="118" height="74" rx="3" fill="var(--bg-content)" stroke="var(--color-ppt)" stroke-width="1"/>
+          <text x="689" y="128" text-anchor="middle" font-size="8.5" font-weight="700" fill="var(--color-ppt)">Multimedia</text>
+
+          <!-- Botón Video -->
+          <rect x="636" y="65" width="45" height="52" rx="2" fill="var(--bg-body)" stroke="var(--border-light)"/>
+          <text x="658" y="88" text-anchor="middle" font-size="12">🎬</text>
+          <text x="658" y="106" text-anchor="middle" font-size="7.5" fill="var(--text-muted)">Video</text>
+
+          <!-- BOTÓN DESTACADO: AUDIO -->
+          <rect x="686" y="65" width="56" height="52" rx="2" fill="var(--color-ppt)" fill-opacity="0.15" stroke="var(--color-ppt)" stroke-width="1.5"/>
+          <text x="714" y="86" text-anchor="middle" font-size="14">🔊</text>
+          <text x="714" y="104" text-anchor="middle" font-size="8" font-weight="700" fill="var(--color-ppt)">Audio ▾</text>
+
+          <!-- Menú desplegable Audio Animado -->
+          <g class="dropdown-audio-menu" transform="translate(570, 120)">
+            <rect width="175" height="55" rx="3" fill="var(--bg-content)" stroke="var(--color-ppt)" stroke-width="1.5" filter="drop-shadow(0px 4px 8px rgba(0,0,0,0.15))"/>
+            <!-- Opción 1: Audio en mi PC (Seleccionado) -->
+            <rect x="3" y="3" width="169" height="24" rx="2" fill="var(--color-ppt)" fill-opacity="0.2"/>
+            <text x="12" y="19" font-size="9" font-weight="700" fill="var(--color-ppt)">🎵 Audio en mi PC...</text>
+            <!-- Opción 2: Grabar audio -->
+            <text x="12" y="43" font-size="8.5" fill="var(--text-muted)">🎤 Grabar audio...</text>
+          </g>
+
+          <!-- CANVAS INFERIOR: DIAPOSITIVA CON ICONO DE ALTAVOZ DE AUDIO -->
+          <rect x="150" y="150" width="410" height="98" rx="3" fill="var(--bg-body)" stroke="var(--border-light)"/>
+          <text x="355" y="175" text-anchor="middle" font-size="11" font-weight="700" fill="var(--title-main)">Diapositiva 1 (Inicio de la Música)</text>
+          
+          <!-- Altavoz Insertado en el centro -->
+          <g transform="translate(355, 205)" class="speaker-badge-pulse">
+            <circle cx="0" cy="0" r="18" fill="var(--color-ppt)" fill-opacity="0.15" stroke="var(--color-ppt)" stroke-width="1.5"/>
+            <text x="0" y="5" text-anchor="middle" font-size="16">🔊</text>
+          </g>
+
+          <!-- BADGES NUMERADOS (1, 2, 3, 4, 5) -->
+          <!-- 1: Diapositiva 1 -->
+          <g transform="translate(170, 205)">
+            <circle cx="0" cy="0" r="10" fill="#C0392B" stroke="#FFFFFF" stroke-width="1.5"/>
+            <text x="0" y="3.5" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">1</text>
+          </g>
+
+          <!-- 2: Pestaña INSERTAR -->
+          <g transform="translate(145, 18)">
+            <circle cx="0" cy="0" r="10" fill="#C0392B" stroke="#FFFFFF" stroke-width="1.5"/>
+            <text x="0" y="3.5" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">2</text>
+          </g>
+
+          <!-- 3: Grupo Multimedia > Audio -->
+          <g transform="translate(735, 60)">
+            <circle cx="0" cy="0" r="10" fill="#C0392B" stroke="#FFFFFF" stroke-width="1.5"/>
+            <text x="0" y="3.5" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">3</text>
+          </g>
+
+          <!-- 4: Selección Audio en mi PC -->
+          <g transform="translate(560, 130)">
+            <circle cx="0" cy="0" r="10" fill="#C0392B" stroke="#FFFFFF" stroke-width="1.5"/>
+            <text x="0" y="3.5" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">4</text>
+          </g>
+
+          <!-- 5: Altavoz generado -->
+          <g transform="translate(390, 205)">
+            <circle cx="0" cy="0" r="10" fill="#C0392B" stroke="#FFFFFF" stroke-width="1.5"/>
+            <text x="0" y="3.5" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">5</text>
+          </g>
+
+          <!-- MOUSE CURSOR Y RIPPLE ANIMADO -->
+          <g class="mouse-audio-cursor">
+            <circle cx="0" cy="0" r="0" fill="none" stroke="var(--color-ppt)" class="audio-click-ripple"/>
+            <path d="M0 0L12 12L7 13L10 20L7 21L4 14L0 17V0Z" fill="#111111" stroke="#FFFFFF" stroke-width="1.2"/>
+          </g>
+        </svg>
+        </div>
 
         <h2>Paso 2: Configurar para Reproducir en el Fondo</h2>
         <p>
@@ -83,13 +219,148 @@
           </li>
         </ol>
 
-        <figure class="guide-img-container">
-          <img
-            src="ppt-guias-imgs/ppt-configurar-audio-02.png"
-            alt="Botón Reproducir en el fondo en la pestaña Reproducción"
-            class="guide-img"
-          />
-        </figure>
+        <!-- SVG INTERFAZ PASO 2 Y 3: REPRODUCIR EN EL FONDO Y FUNDIDOS -->
+        <div class="svg-window-container" style="margin: 1.5rem 0; width: 100%; text-align: center;">
+        <svg viewBox="0 0 760 280" width="100%" height="auto" fill="none" xmlns="http://www.w3.org/2000/svg" style="border: 1px solid var(--border-light); border-radius: 6px; background: var(--bg-content); box-shadow: var(--shadow-sm); font-family: var(--font-sans);">
+          <style>
+            @keyframes mouseBgAudio {
+              0%, 15% { transform: translate(450px, 200px); }
+              35% { transform: translate(320px, 42px); }
+              42% { transform: translate(320px, 42px) scale(0.88); }
+              48% { transform: translate(320px, 42px) scale(1); }
+              68% { transform: translate(250px, 88px); }
+              75% { transform: translate(250px, 88px) scale(0.88); }
+              82%, 100% { transform: translate(250px, 88px) scale(1); }
+            }
+            @keyframes bgAudioRipple {
+              0%, 35% { r: 0; opacity: 0; }
+              42% { r: 14; opacity: 0.85; stroke-width: 2; }
+              48% { r: 24; opacity: 0; }
+              68% { r: 0; opacity: 0; }
+              75% { r: 14; opacity: 0.85; stroke-width: 2; }
+              82% { r: 24; opacity: 0; }
+              100% { r: 0; opacity: 0; }
+            }
+            @keyframes wavePulse {
+              0%, 100% { height: 6px; }
+              50% { height: 24px; fill: var(--color-ppt); }
+            }
+            .mouse-bg-cursor { animation: mouseBgAudio 7s ease-in-out infinite; }
+            .bg-audio-ripple { animation: bgAudioRipple 7s ease-in-out infinite; }
+            .sound-wave-bar { animation: wavePulse 1.5s ease-in-out infinite alternate; }
+          </style>
+
+          <!-- Encabezado de Ventana con Pestaña Contextual -->
+          <path d="M0 6C0 2.68629 2.68629 0 6 0H754C757.314 0 760 2.68629 760 6V28H0V6Z" fill="var(--color-ppt)"/>
+          <text x="380" y="18" text-anchor="middle" font-size="11" font-weight="600" fill="#FFFFFF">Herramientas de audio - PowerPoint [Pestaña Reproducción]</text>
+
+          <!-- Barra de Pestañas Contextual -->
+          <rect y="28" width="760" height="26" fill="var(--bg-content)"/>
+          <line x1="0" y1="54" x2="760" y2="54" stroke="var(--border-light)" stroke-width="1"/>
+          
+          <text x="20" y="44" font-size="10.5" fill="var(--text-muted)">Formato de audio</text>
+          
+          <!-- Pestaña Activa: REPRODUCCIÓN -->
+          <rect x="135" y="28" width="115" height="26" fill="var(--bg-body)"/>
+          <line x1="135" y1="28" x2="250" y2="28" stroke="var(--color-ppt)" stroke-width="2.5"/>
+          <text x="192" y="44" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-ppt)">Reproducción</text>
+
+          <!-- Ribbon Bar -->
+          <rect y="54" width="760" height="85" fill="var(--bg-body)"/>
+          <line x1="0" y1="139" x2="760" y2="139" stroke="var(--border-light)" stroke-width="1"/>
+
+          <!-- Grupo 1: Estilos de Audio (DESTACADO: Reproducir en el fondo) -->
+          <g transform="translate(15, 62)">
+            <rect width="165" height="68" rx="3" fill="var(--color-ppt)" fill-opacity="0.15" stroke="var(--color-ppt)" stroke-width="1.5"/>
+            <text x="82.5" y="26" text-anchor="middle" font-size="18">🎶</text>
+            <text x="82.5" y="44" text-anchor="middle" font-size="9" font-weight="800" fill="var(--color-ppt)">Reproducir en el fondo</text>
+            <text x="82.5" y="58" text-anchor="middle" font-size="7.5" fill="var(--text-muted)">Configuración automática 1-clic</text>
+          </g>
+
+          <!-- Grupo 2: Opciones de Audio (Casillas activadas automáticamente) -->
+          <g transform="translate(190, 62)">
+            <rect width="330" height="68" rx="3" fill="var(--bg-content)" stroke="var(--border-light)"/>
+            <text x="10" y="18" font-size="8.5" font-weight="700" fill="var(--text-main)">Opciones de audio:</text>
+            
+            <text x="10" y="36" font-size="8" font-weight="600" fill="var(--color-ppt)">☑ Inicio: Automáticamente</text>
+            <text x="170" y="36" font-size="8" font-weight="600" fill="var(--color-ppt)">☑ En todas las diapositivas</text>
+            <text x="10" y="56" font-size="8" font-weight="600" fill="var(--color-ppt)">☑ Repetir la reproducción</text>
+            <text x="170" y="56" font-size="8" font-weight="600" fill="var(--color-ppt)">☑ Ocultar en presentación</text>
+          </g>
+
+          <!-- Grupo 3: Edición (Fundidos Fade In / Fade Out) -->
+          <g transform="translate(530, 62)">
+            <rect width="215" height="68" rx="3" fill="var(--bg-content)" stroke="var(--color-ppt)" stroke-width="1"/>
+            <text x="10" y="18" font-size="8.5" font-weight="700" fill="var(--color-ppt)">Fundido de entrada / salida:</text>
+
+            <text x="10" y="38" font-size="8" fill="var(--text-muted)">Entrada:</text>
+            <rect x="55" y="26" width="65" height="18" rx="2" fill="var(--bg-body)" stroke="var(--color-ppt)" stroke-width="1"/>
+            <text x="87" y="39" text-anchor="middle" font-size="8.5" font-weight="700" fill="var(--color-ppt)">02,00 s</text>
+
+            <text x="10" y="58" font-size="8" fill="var(--text-muted)">Salida:</text>
+            <rect x="55" y="46" width="65" height="18" rx="2" fill="var(--bg-body)" stroke="var(--border-light)"/>
+            <text x="87" y="59" text-anchor="middle" font-size="8.5" font-weight="600" fill="var(--text-main)">02,00 s</text>
+          </g>
+
+          <!-- CANVAS INFERIOR: VISUALIZADOR DE ONDAS SONORAS Y PRESENTACIÓN -->
+          <g transform="translate(150, 152)">
+            <rect width="460" height="110" rx="4" fill="var(--bg-body)" stroke="var(--border-light)"/>
+            <text x="230" y="30" text-anchor="middle" font-size="11" font-weight="700" fill="var(--title-main)">Música de fondo continua activada en toda la presentación</text>
+
+            <!-- Visualizador de Ondas Sonoras Animado -->
+            <g transform="translate(140, 50)">
+              <rect x="0" y="10" width="6" height="12" rx="3" fill="var(--color-ppt)" class="sound-wave-bar" style="animation-delay: 0.1s;"/>
+              <rect x="12" y="5" width="6" height="20" rx="3" fill="var(--color-ppt)" class="sound-wave-bar" style="animation-delay: 0.3s;"/>
+              <rect x="24" y="0" width="6" height="30" rx="3" fill="var(--color-ppt)" class="sound-wave-bar" style="animation-delay: 0.5s;"/>
+              <rect x="36" y="8" width="6" height="16" rx="3" fill="var(--color-ppt)" class="sound-wave-bar" style="animation-delay: 0.2s;"/>
+              <rect x="48" y="2" width="6" height="26" rx="3" fill="var(--color-ppt)" class="sound-wave-bar" style="animation-delay: 0.4s;"/>
+              <rect x="60" y="10" width="6" height="12" rx="3" fill="var(--color-ppt)" class="sound-wave-bar" style="animation-delay: 0.6s;"/>
+              <rect x="72" y="4" width="6" height="22" rx="3" fill="var(--color-ppt)" class="sound-wave-bar" style="animation-delay: 0.15s;"/>
+              <rect x="84" y="0" width="6" height="30" rx="3" fill="var(--color-ppt)" class="sound-wave-bar" style="animation-delay: 0.35s;"/>
+              <rect x="96" y="6" width="6" height="18" rx="3" fill="var(--color-ppt)" class="sound-wave-bar" style="animation-delay: 0.55s;"/>
+              <rect x="108" y="12" width="6" height="10" rx="3" fill="var(--color-ppt)" class="sound-wave-bar" style="animation-delay: 0.25s;"/>
+              <rect x="120" y="3" width="6" height="24" rx="3" fill="var(--color-ppt)" class="sound-wave-bar" style="animation-delay: 0.45s;"/>
+              <rect x="132" y="8" width="6" height="16" rx="3" fill="var(--color-ppt)" class="sound-wave-bar" style="animation-delay: 0.65s;"/>
+              <rect x="144" y="0" width="6" height="30" rx="3" fill="var(--color-ppt)" class="sound-wave-bar" style="animation-delay: 0.05s;"/>
+              <rect x="156" y="5" width="6" height="20" rx="3" fill="var(--color-ppt)" class="sound-wave-bar" style="animation-delay: 0.28s;"/>
+              <rect x="168" y="11" width="6" height="12" rx="3" fill="var(--color-ppt)" class="sound-wave-bar" style="animation-delay: 0.48s;"/>
+              <rect x="180" y="2" width="6" height="26" rx="3" fill="var(--color-ppt)" class="sound-wave-bar" style="animation-delay: 0.68s;"/>
+            </g>
+            <text x="230" y="96" text-anchor="middle" font-size="8.5" font-weight="600" fill="var(--color-ppt)">🎵 Fundido de entrada suave (02.00 s) + Repetición en bucle activa</text>
+          </g>
+
+          <!-- BADGES NUMERADOS (1, 2, 3, 4) -->
+          <!-- 1: Clic en altavoz -->
+          <g transform="translate(170, 205)">
+            <circle cx="0" cy="0" r="10" fill="#C0392B" stroke="#FFFFFF" stroke-width="1.5"/>
+            <text x="0" y="3.5" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">1</text>
+          </g>
+
+          <!-- 2: Pestaña Reproducción -->
+          <g transform="translate(250, 18)">
+            <circle cx="0" cy="0" r="10" fill="#C0392B" stroke="#FFFFFF" stroke-width="1.5"/>
+            <text x="0" y="3.5" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">2</text>
+          </g>
+
+          <!-- 3: Reproducir en el fondo -->
+          <g transform="translate(170, 60)">
+            <circle cx="0" cy="0" r="10" fill="#C0392B" stroke="#FFFFFF" stroke-width="1.5"/>
+            <text x="0" y="3.5" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">3</text>
+          </g>
+
+          <!-- 4: Fundido de entrada/salida -->
+          <g transform="translate(735, 60)">
+            <circle cx="0" cy="0" r="10" fill="#C0392B" stroke="#FFFFFF" stroke-width="1.5"/>
+            <text x="0" y="3.5" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">4</text>
+          </g>
+
+          <!-- MOUSE CURSOR ANIMADO -->
+          <g class="mouse-bg-cursor">
+            <circle cx="0" cy="0" r="0" fill="none" stroke="var(--color-ppt)" class="bg-audio-ripple"/>
+            <path d="M0 0L12 12L7 13L10 20L7 21L4 14L0 17V0Z" fill="#111111" stroke="#FFFFFF" stroke-width="1.2"/>
+          </g>
+        </svg>
+        </div>
 
         <div class="box box-ppt">
           <p>

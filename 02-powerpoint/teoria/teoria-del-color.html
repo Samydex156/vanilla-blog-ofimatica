@@ -63,22 +63,12 @@
           </ul>
         </div>
 
-        <h2>2. La Regla del 60-30-10 para Diapositivas</h2>
-        <p>
-          Si no sabes cuántos colores usar, utiliza esta regla clásica de diseño y decoración de interiores. 
-          Divide el uso de color en porcentajes:
-        </p>
-        <ul>
-          <li><strong>60% Color Dominante (Fondo):</strong> Usualmente blanco, gris claro, azul muy oscuro o negro. Será el lienzo.</li>
-          <li><strong>30% Color Secundario (Texto principal y Formas):</strong> Para la tipografía principal o áreas grandes como encabezados rectangulares. (Ej. Azul corporativo).</li>
-          <li><strong>10% Color de Acento (Destacar):</strong> Para un botón, un número clave en gráfica o la palabra más importante de la diapositiva. (Ej. Amarillo brillante).</li>
-        </ul>
-
-        <div class="svg-diagram-container" style="margin: 1.5rem 0; width: 100%; text-align: center;">
-        <svg viewBox="0 0 760 260" width="100%" height="auto" fill="none" xmlns="http://www.w3.org/2000/svg" style="border: 1px solid var(--border-light); border-radius: 6px; background: var(--bg-content); padding: 10px; box-shadow: var(--shadow-sm); font-family: var(--font-sans);">
+        <div class="svg-diagram-container" style="margin: 1.5rem 0; width: 100%; display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+        <!-- SVG 1: COLORES COMPLEMENTARIOS -->
+        <svg viewBox="0 0 300 290" width="100%" height="auto" fill="none" xmlns="http://www.w3.org/2000/svg" style="border: 1px solid var(--border-light); border-radius: 6px; background: var(--bg-content); padding: 12px; box-shadow: var(--shadow-sm); font-family: var(--font-sans); max-width: 340px; flex: 1 1 280px;">
+          <text x="150" y="22" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-ppt)" font-family="var(--font-heading)">Colores Complementarios</text>
           
-          <!-- PANEL IZQUIERDO: CÍRCULO CROMÁTICO Y ARMONÍAS -->
-          <g transform="translate(140, 125)">
+          <g transform="translate(150, 138) scale(1.25)">
             <path d="M0 0 L0 -85 A85 85 0 0 1 42.5 -73.6 Z" fill="#E74C3C" />
             <path d="M0 0 L42.5 -73.6 A85 85 0 0 1 73.6 -42.5 Z" fill="#E67E22" />
             <path d="M0 0 L73.6 -42.5 A85 85 0 0 1 85 0 Z" fill="#F1C40F" />
@@ -92,34 +82,76 @@
             <path d="M0 0 L-73.6 -42.5 A85 85 0 0 1 -42.5 -73.6 Z" fill="#9B59B6" />
             <path d="M0 0 L-42.5 -73.6 A85 85 0 0 1 0 -85 Z" fill="#C0392B" />
 
-            <circle cx="0" cy="0" r="40" fill="var(--bg-content)" stroke="var(--border-light)" stroke-width="1.5" />
-            <text x="0" y="-4" text-anchor="middle" font-size="8.5" font-weight="700" fill="var(--title-main)">CÍRCULO</text>
-            <text x="0" y="8" text-anchor="middle" font-size="8.5" font-weight="700" fill="var(--title-main)">CROMÁTICO</text>
+            <circle cx="0" cy="0" r="38" fill="var(--bg-content)" stroke="var(--border-light)" stroke-width="1.5" />
+            <text x="0" y="-3" text-anchor="middle" font-size="8" font-weight="700" fill="var(--title-main)">CÍRCULO</text>
+            <text x="0" y="8" text-anchor="middle" font-size="8" font-weight="700" fill="var(--title-main)">CROMÁTICO</text>
 
             <line x1="-75" y1="18" x2="60" y2="-35" stroke="#FFFFFF" stroke-width="2.5" stroke-dasharray="3 3"/>
             <circle cx="-75" cy="18" r="5" fill="#2980B9" stroke="#FFFFFF" stroke-width="2" />
             <circle cx="60" cy="-35" r="5" fill="#E67E22" stroke="#FFFFFF" stroke-width="2" />
           </g>
-          <text x="140" y="235" text-anchor="middle" font-size="9.5" font-weight="600" fill="var(--text-muted)">Opuestos = Complementarios (Alto Contraste)</text>
+          <text x="150" y="272" text-anchor="middle" font-size="10" font-weight="600" fill="var(--text-muted)">Opuestos (Ej: Azul y Naranja)</text>
+        </svg>
 
-          <line x1="280" y1="15" x2="280" y2="240" stroke="var(--border-light)" stroke-dasharray="4 4" />
+        <!-- SVG 2: COLORES ANÁLOGOS -->
+        <svg viewBox="0 0 300 290" width="100%" height="auto" fill="none" xmlns="http://www.w3.org/2000/svg" style="border: 1px solid var(--border-light); border-radius: 6px; background: var(--bg-content); padding: 12px; box-shadow: var(--shadow-sm); font-family: var(--font-sans); max-width: 340px; flex: 1 1 280px;">
+          <text x="150" y="22" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-ppt)" font-family="var(--font-heading)">Colores Análogos</text>
+          
+          <g transform="translate(150, 138) scale(1.25)">
+            <path d="M0 0 L0 -85 A85 85 0 0 1 42.5 -73.6 Z" fill="#E74C3C" />
+            <path d="M0 0 L42.5 -73.6 A85 85 0 0 1 73.6 -42.5 Z" fill="#E67E22" />
+            <path d="M0 0 L73.6 -42.5 A85 85 0 0 1 85 0 Z" fill="#F1C40F" />
+            <path d="M0 0 L85 0 A85 85 0 0 1 73.6 42.5 Z" fill="#2ECC71" />
+            <path d="M0 0 L73.6 42.5 A85 85 0 0 1 42.5 73.6 Z" fill="#27AE60" />
+            <path d="M0 0 L42.5 73.6 A85 85 0 0 1 0 85 Z" fill="#16A085" />
+            <path d="M0 0 L0 85 A85 85 0 0 1 -42.5 73.6 Z" fill="#1ABC9C" />
+            <path d="M0 0 L-42.5 73.6 A85 85 0 0 1 -73.6 42.5 Z" fill="#3498DB" />
+            <path d="M0 0 L-73.6 42.5 A85 85 0 0 1 -85 0 Z" fill="#2980B9" />
+            <path d="M0 0 L-85 0 A85 85 0 0 1 -73.6 -42.5 Z" fill="#8E44AD" />
+            <path d="M0 0 L-73.6 -42.5 A85 85 0 0 1 -42.5 -73.6 Z" fill="#9B59B6" />
+            <path d="M0 0 L-42.5 -73.6 A85 85 0 0 1 0 -85 Z" fill="#C0392B" />
 
-          <!-- PANEL DERECHO: REGLA 60-30-10 EN DIAPOSITIVA -->
-          <g transform="translate(300, 15)">
-            <text x="210" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="var(--color-ppt)" font-family="var(--font-heading)">Regla Visual del 60 - 30 - 10</text>
-            
-            <rect x="20" y="32" width="380" height="185" rx="6" fill="var(--bg-body)" stroke="var(--border-light)" stroke-width="1.5"/>
-            <text x="35" y="52" font-size="9" font-weight="700" font-family="var(--font-code)" fill="var(--text-muted)">60% FONDO DOMINANTE (Lienzo Neutro)</text>
+            <circle cx="0" cy="0" r="38" fill="var(--bg-content)" stroke="var(--border-light)" stroke-width="1.5" />
+            <text x="0" y="-3" text-anchor="middle" font-size="8" font-weight="700" fill="var(--title-main)">CÍRCULO</text>
+            <text x="0" y="8" text-anchor="middle" font-size="8" font-weight="700" fill="var(--title-main)">CROMÁTICO</text>
 
-            <rect x="40" y="65" width="210" height="130" rx="4" fill="#254875" />
-            <text x="55" y="90" font-size="12" font-weight="700" fill="#FFFFFF" font-family="var(--font-heading)">30% Estructura</text>
-            <text x="55" y="110" font-size="8.5" fill="#FFFFFF" fill-opacity="0.85">Texto principal, encabezados</text>
-            <text x="55" y="124" font-size="8.5" fill="#FFFFFF" fill-opacity="0.85">y bloques de contenido.</text>
-
-            <rect x="268" y="105" width="118" height="50" rx="4" fill="#9E771D" stroke="#FFFFFF" stroke-width="1.5" />
-            <text x="327" y="127" text-anchor="middle" font-size="9.5" font-weight="700" fill="#FFFFFF" font-family="var(--font-code)">10% ACENTO</text>
-            <text x="327" y="141" text-anchor="middle" font-size="8" fill="#FFFFFF">¡Destacar Dato!</text>
+            <!-- Arca punteada uniendo colores vecinos (Turquesa, Azul, Cian) -->
+            <path d="M -60 55 A 75 75 0 0 1 -77 -20" stroke="#FFFFFF" stroke-width="2.5" stroke-dasharray="3 3" fill="none" />
+            <circle cx="-60" cy="55" r="5" fill="#1ABC9C" stroke="#FFFFFF" stroke-width="2" />
+            <circle cx="-75" cy="18" r="5" fill="#3498DB" stroke="#FFFFFF" stroke-width="2" />
+            <circle cx="-77" cy="-20" r="5" fill="#2980B9" stroke="#FFFFFF" stroke-width="2" />
           </g>
+          <text x="150" y="272" text-anchor="middle" font-size="10" font-weight="600" fill="var(--text-muted)">Vecinos (Ej: Turquesa, Azul y Cian)</text>
+        </svg>
+        </div>
+
+        <h2>2. La Regla del 60-30-10 para Diapositivas</h2>
+        <p>
+          Si no sabes cuántos colores usar, utiliza esta regla clásica de diseño y decoración de interiores. 
+          Divide el uso de color en porcentajes:
+        </p>
+        <ul>
+          <li><strong>60% Color Dominante (Fondo):</strong> Usualmente blanco, gris claro, azul muy oscuro o negro. Será el lienzo.</li>
+          <li><strong>30% Color Secundario (Texto principal y Formas):</strong> Para la tipografía principal o áreas grandes como encabezados rectangulares. (Ej. Azul corporativo).</li>
+          <li><strong>10% Color de Acento (Destacar):</strong> Para un botón, un número clave en gráfica o la palabra más importante de la diapositiva. (Ej. Amarillo brillante).</li>
+        </ul>
+
+        <div class="svg-diagram-container" style="margin: 1.5rem 0; width: 100%; text-align: center;">
+        <svg viewBox="0 0 460 250" width="100%" height="auto" fill="none" xmlns="http://www.w3.org/2000/svg" style="border: 1px solid var(--border-light); border-radius: 6px; background: var(--bg-content); padding: 10px; box-shadow: var(--shadow-sm); font-family: var(--font-sans); max-width: 500px; display: inline-block;">
+          <!-- REGLA 60-30-10 -->
+          <text x="230" y="24" text-anchor="middle" font-size="12" font-weight="700" fill="var(--color-ppt)" font-family="var(--font-heading)">Regla Visual del 60 - 30 - 10</text>
+          
+          <rect x="40" y="40" width="380" height="185" rx="6" fill="var(--bg-body)" stroke="var(--border-light)" stroke-width="1.5"/>
+          <text x="55" y="60" font-size="9" font-weight="700" font-family="var(--font-code)" fill="var(--text-muted)">60% FONDO DOMINANTE (Lienzo Neutro)</text>
+
+          <rect x="60" y="73" width="210" height="130" rx="4" fill="#254875" />
+          <text x="75" y="98" font-size="12" font-weight="700" fill="#FFFFFF" font-family="var(--font-heading)">30% Estructura</text>
+          <text x="75" y="118" font-size="8.5" fill="#FFFFFF" fill-opacity="0.85">Texto principal, encabezados</text>
+          <text x="75" y="132" fill="#FFFFFF" fill-opacity="0.85">y bloques de contenido.</text>
+
+          <rect x="288" y="113" width="118" height="50" rx="4" fill="#9E771D" stroke="#FFFFFF" stroke-width="1.5" />
+          <text x="347" y="135" text-anchor="middle" font-size="9.5" font-weight="700" fill="#FFFFFF" font-family="var(--font-code)">10% ACENTO</text>
+          <text x="347" y="149" text-anchor="middle" font-size="8" fill="#FFFFFF">¡Destacar Dato!</text>
         </svg>
         </div>
 

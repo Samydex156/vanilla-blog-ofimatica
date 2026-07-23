@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Insertar Cuadro de Texto - Prof. Samuel Durán</title>
+    <link rel="stylesheet" href="../../main-style.css" />
+    <link rel="stylesheet" href="../../main-style.css" />
+    <link rel="stylesheet" href="guias.css" />
+    <script>
+      (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.setAttribute('data-theme','dark')}})();
+    </script>
+  </head>
+  <body>
+    <div class="print-header">
+        <div class="print-header-left">Prof. Samuel William Durán Quispe</div>
+        <div class="print-header-center"></div>
+        <div class="print-header-right">Instituto Nueva Tecnología &mdash; Ofimática &mdash; PowerPoint &mdash; 2026</div>
+    </div>
+
+    <nav class="breadcrumb-nav">
+      <a href="../../index.html"><svg class="icon-svg-home" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -1px; margin-right: 4px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>Inicio</a> >
+      <a href="../index-guias.html">Guías PowerPoint</a> >
+      <span>Insertar Cuadro de Texto</span>
+    <button id="theme-toggle" aria-label="Cambiar modo oscuro/claro" class="theme-btn">☾</button>
+    </nav>
+
+    <main class="content">
+      <header class="lesson-header">
+        <span class="date">Una guía de PowerPoint para saber:</span>
+        <h1>
+          CÓMO INSERTAR Y DAR FORMATO A UN CUADRO DE TEXTO
+        </h1>
+        <p class="subtitle">
+          Aprende a colocar bloques de texto personalizados en cualquier parte de tu diapositiva, cambiando tipografía, colores, rellenos y bordes.
+        </p>
+      </header>
+
+      <section class="lesson-body">
+        <p>
+          Los cuadros de texto son elementos fundamentales en PowerPoint. Te permiten colocar títulos, párrafos o notas en cualquier lugar de la diapositiva sin depender de las plantillas predeterminadas.
+        </p>
+
+        <h2>Paso 1: Activar la herramienta Cuadro de Texto</h2>
+        <ol>
+          <li>Selecciona la diapositiva en la que deseas trabajar.</li>
+          <li>Dirígete a la pestaña <strong>INSERTAR</strong> en la cinta de opciones superior.</li>
+          <li>En el grupo <em>Texto</em>, haz clic en el botón <strong>Cuadro de texto</strong>.</li>
+          <li>El puntero del ratón cambiará a una forma de cruz o flecha invertida (<code>|</code>).</li>
+        </ol>
+
+        <!-- SVG INTERFAZ PASO 1: ACTIVAR CUADRO DE TEXTO -->
+        <div class="svg-window-container" style="margin: 1.5rem 0; width: 100%; text-align: center;">
+        <svg viewBox="0 0 760 250" width="100%" height="auto" fill="none" xmlns="http://www.w3.org/2000/svg" style="border: 1px solid var(--border-light); border-radius: 6px; background: var(--bg-content); box-shadow: var(--shadow-sm); font-family: var(--font-sans);">
+          <style>
+            @keyframes mouseMoveTextBox1 {
+              0%, 15% { transform: translate(50px, 200px); }
+              35% { transform: translate(145px, 42px); }
+              42% { transform: translate(145px, 42px) scale(0.88); }
+              48% { transform: translate(145px, 42px) scale(1); }
+              68% { transform: translate(515px, 92px); }
+              75% { transform: translate(515px, 92px) scale(0.88); }
+              82%, 100% { transform: translate(515px, 92px) scale(1); }
+            }
+            @keyframes textBoxRipple1 {
+              0%, 35% { r: 0; opacity: 0; }
+              42% { r: 14; opacity: 0.85; stroke-width: 2; }
+              48% { r: 24; opacity: 0; }
+              68% { r: 0; opacity: 0; }
+              75% { r: 14; opacity: 0.85; stroke-width: 2; }
+              82% { r: 24; opacity: 0; }
+              100% { r: 0; opacity: 0; }
+            }
+            .mouse-textbox-cursor1 { animation: mouseMoveTextBox1 6.5s ease-in-out infinite; }
+            .textbox-click-ripple1 { animation: textBoxRipple1 6.5s ease-in-out infinite; }
+          </style>
+
+          <!-- Encabezado de Ventana -->
+          <path d="M0 6C0 2.68629 2.68629 0 6 0H754C757.314 0 760 2.68629 760 6V28H0V6Z" fill="var(--color-ppt)"/>
+          <text x="380" y="18" text-anchor="middle" font-size="11" font-weight="600" fill="#FFFFFF">Presentación1 - PowerPoint [Pestaña Insertar]</text>
+
+          <!-- Barra de Pestañas -->
+          <rect y="28" width="760" height="26" fill="var(--bg-content)"/>
+          <line x1="0" y1="54" x2="760" y2="54" stroke="var(--border-light)" stroke-width="1"/>
+          
+          <text x="20" y="44" font-size="10.5" fill="var(--text-muted)">Archivo</text>
+          <text x="65" y="44" font-size="10.5" fill="var(--text-muted)">Inicio</text>
+
+          <!-- Pestaña Activa: INSERTAR -->
+          <rect x="105" y="28" width="80" height="26" fill="var(--bg-body)"/>
+          <line x1="105" y1="28" x2="185" y2="28" stroke="var(--color-ppt)" stroke-width="2.5"/>
+          <text x="145" y="44" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-ppt)">Insertar</text>
+          
+          <text x="205" y="44" font-size="10.5" fill="var(--text-muted)">Diseño</text>
+          <text x="260" y="44" font-size="10.5" fill="var(--text-muted)">Transiciones</text>
+          <text x="340" y="44" font-size="10.5" fill="var(--text-muted)">Animaciones</text>
+
+          <!-- Ribbon Bar -->
+          <rect y="54" width="760" height="85" fill="var(--bg-body)"/>
+          <line x1="0" y1="139" x2="760" y2="139" stroke="var(--border-light)" stroke-width="1"/>
+
+          <!-- Grupo Tabla e Imágenes -->
+          <rect x="12" y="62" width="130" height="68" rx="3" fill="var(--bg-content)" stroke="var(--border-light)"/>
+          <text x="77" y="98" text-anchor="middle" font-size="9" fill="var(--text-muted)">Tablas e Imágenes</text>
+          <line x1="152" y1="60" x2="152" y2="133" stroke="var(--border-light)"/>
+
+          <!-- Grupo Formas e Ilustraciones -->
+          <rect x="162" y="62" width="280" height="68" rx="3" fill="var(--bg-content)" stroke="var(--border-light)"/>
+          <text x="302" y="98" text-anchor="middle" font-size="9" fill="var(--text-muted)">Ilustraciones / Formas</text>
+          <line x1="452" y1="60" x2="452" y2="133" stroke="var(--border-light)"/>
+
+          <!-- Grupo Texto (DESTACADO: Cuadro de Texto) -->
+          <g transform="translate(462, 60)">
+            <rect width="130" height="74" rx="3" fill="var(--bg-content)" stroke="var(--color-ppt)" stroke-width="1"/>
+            <text x="65" y="128" text-anchor="middle" font-size="8.5" font-weight="700" fill="var(--color-ppt)">Texto</text>
+
+            <!-- BOTÓN PRINCIPAL: CUADRO DE TEXTO -->
+            <rect x="10" y="8" width="110" height="48" rx="3" fill="var(--color-ppt)" fill-opacity="0.15" stroke="var(--color-ppt)" stroke-width="1.5"/>
+            <text x="32" y="36" font-size="16">🔤</text>
+            <text x="75" y="32" text-anchor="middle" font-size="8.5" font-weight="700" fill="var(--color-ppt)">Cuadro de</text>
+            <text x="75" y="44" text-anchor="middle" font-size="8.5" font-weight="700" fill="var(--color-ppt)">texto</text>
+          </g>
+
+          <!-- Otros botones (Encabezado, WordArt) -->
+          <g transform="translate(602, 60)">
+            <rect width="145" height="74" rx="3" fill="var(--bg-content)" stroke="var(--border-light)"/>
+            <text x="72" y="88" text-anchor="middle" font-size="14">🎨</text>
+            <text x="72" y="110" text-anchor="middle" font-size="8" fill="var(--text-muted)">WordArt</text>
+          </g>
+
+          <!-- CANVAS INFERIOR: DIAPOSITIVA LISTA PARA DIBUJAR -->
+          <rect x="150" y="150" width="460" height="90" rx="3" fill="var(--bg-body)" stroke="var(--border-light)"/>
+          <text x="380" y="195" text-anchor="middle" font-size="11" fill="var(--text-muted)">Haz clic o arrastra sobre el lienzo para colocar el cuadro</text>
+
+          <!-- BADGES NUMERADOS (1, 2, 3) -->
+          <!-- 1: Pestaña INSERTAR -->
+          <g transform="translate(145, 18)">
+            <circle cx="0" cy="0" r="10" fill="#C0392B" stroke="#FFFFFF" stroke-width="1.5"/>
+            <text x="0" y="3.5" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">1</text>
+          </g>
+
+          <!-- 2: Grupo Texto > Cuadro de Texto -->
+          <g transform="translate(580, 60)">
+            <circle cx="0" cy="0" r="10" fill="#C0392B" stroke="#FFFFFF" stroke-width="1.5"/>
+            <text x="0" y="3.5" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">2</text>
+          </g>
+
+          <!-- 3: Puntero listo en lienzo -->
+          <g transform="translate(595, 195)">
+            <circle cx="0" cy="0" r="10" fill="#C0392B" stroke="#FFFFFF" stroke-width="1.5"/>
+            <text x="0" y="3.5" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">3</text>
+          </g>
+
+          <!-- MOUSE CURSOR ANIMADO -->
+          <g class="mouse-textbox-cursor1">
+            <circle cx="0" cy="0" r="0" fill="none" stroke="var(--color-ppt)" class="textbox-click-ripple1"/>
+            <path d="M0 0L12 12L7 13L10 20L7 21L4 14L0 17V0Z" fill="#111111" stroke="#FFFFFF" stroke-width="1.2"/>
+          </g>
+        </svg>
+        </div>
+
+        <h2>Paso 2: Dibujar el Cuadro y Escribir el Contenido</h2>
+        <p>Tienes dos formas de colocar el cuadro en tu diapositiva:</p>
+        <ul>
+          <li><strong>Hacer un solo clic:</strong> Crea un cuadro de ancho automático que se expandirá a medida que escribas.</li>
+          <li><strong>Hacer clic y arrastrar:</strong> Define un tamaño fijo de ancho y alto dibujando un rectángulo con el ratón.</li>
+        </ul>
+        <p>Una vez colocado, verás el cursor parpadeando listo para tipear tu información.</p>
+
+        <!-- SVG INTERFAZ PASO 2: DIBUJAR Y ESCRIBIR EN EL CUADRO DE TEXTO -->
+        <div class="svg-window-container" style="margin: 1.5rem 0; width: 100%; text-align: center;">
+        <svg viewBox="0 0 760 260" width="100%" height="auto" fill="none" xmlns="http://www.w3.org/2000/svg" style="border: 1px solid var(--border-light); border-radius: 6px; background: var(--bg-content); box-shadow: var(--shadow-sm); font-family: var(--font-sans);">
+          <style>
+            @keyframes drawBoxFrame {
+              0%, 15% { width: 0px; height: 0px; opacity: 0; }
+              35%, 100% { width: 380px; height: 110px; opacity: 1; }
+            }
+            @keyframes typeTextContent {
+              0%, 40% { opacity: 0; }
+              55%, 100% { opacity: 1; }
+            }
+            @keyframes cursorBlinkText {
+              0%, 49% { opacity: 1; }
+              50%, 100% { opacity: 0; }
+            }
+            @keyframes mouseDragBox2 {
+              0%, 15% { transform: translate(190px, 75px); }
+              35% { transform: translate(570px, 185px); }
+              42% { transform: translate(570px, 185px) scale(0.88); }
+              50%, 100% { transform: translate(380px, 130px); }
+            }
+            .drawn-text-box { animation: drawBoxFrame 7s ease-in-out infinite; }
+            .typed-inner-text { animation: typeTextContent 7s ease-in-out infinite; }
+            .blinking-cursor { animation: cursorBlinkText 0.8s infinite; }
+            .mouse-drag-cursor2 { animation: mouseDragBox2 7s ease-in-out infinite; }
+          </style>
+
+          <!-- Título Superior -->
+          <rect width="760" height="28" fill="var(--bg-body)"/>
+          <text x="25" y="18" font-size="11" font-weight="700" fill="var(--title-main)">Lienzo de Diapositiva: Dibujando y tipeando texto</text>
+          <line x1="0" y1="28" x2="760" y2="28" stroke="var(--border-light)"/>
+
+          <!-- Canvas Diapositiva -->
+          <g transform="translate(40, 45)">
+            <rect width="680" height="195" rx="4" fill="var(--bg-body)" stroke="var(--border-light)"/>
+            
+            <!-- CUADRO DE TEXTO DIBUJADO (CON MANIJAS DE SELECCIÓN) -->
+            <g transform="translate(150, 30)">
+              <!-- Borde punteado de selección activa -->
+              <rect width="380" height="110" fill="var(--bg-content)" stroke="var(--color-ppt)" stroke-width="1.5" stroke-dasharray="4 3" class="drawn-text-box"/>
+
+              <!-- Puntos/Manijas de cambio de tamaño (Resize handles) -->
+              <circle cx="0" cy="0" r="4" fill="#FFFFFF" stroke="var(--color-ppt)" stroke-width="1.5"/>
+              <circle cx="190" cy="0" r="4" fill="#FFFFFF" stroke="var(--color-ppt)" stroke-width="1.5"/>
+              <circle cx="380" cy="0" r="4" fill="#FFFFFF" stroke="var(--color-ppt)" stroke-width="1.5"/>
+              <circle cx="0" cy="55" r="4" fill="#FFFFFF" stroke="var(--color-ppt)" stroke-width="1.5"/>
+              <circle cx="380" cy="55" r="4" fill="#FFFFFF" stroke="var(--color-ppt)" stroke-width="1.5"/>
+              <circle cx="0" cy="110" r="4" fill="#FFFFFF" stroke="var(--color-ppt)" stroke-width="1.5"/>
+              <circle cx="190" cy="110" r="4" fill="#FFFFFF" stroke="var(--color-ppt)" stroke-width="1.5"/>
+              <circle cx="380" cy="110" r="4" fill="#FFFFFF" stroke="var(--color-ppt)" stroke-width="1.5"/>
+
+              <!-- Manija de Rotación superior -->
+              <line x1="190" y1="0" x2="190" y2="-12" stroke="var(--color-ppt)"/>
+              <circle cx="190" cy="-16" r="5" fill="var(--color-ppt)"/>
+
+              <!-- TEXTO TIPEADO DENTRO DEL CUADRO -->
+              <g class="typed-inner-text">
+                <text x="20" y="35" font-size="14" font-weight="800" fill="var(--color-ppt)">Curso de Ofimática 2026</text>
+                <text x="20" y="60" font-size="10" fill="var(--text-main)">Microsoft PowerPoint - Módulo de Guías Prácticas</text>
+                <text x="20" y="80" font-size="9" fill="var(--text-muted)">Prof. Samuel Durán | Instituto Nueva Tecnología</text>
+                <line x1="225" y1="68" x2="225" y2="82" stroke="var(--color-ppt)" stroke-width="2" class="blinking-cursor"/>
+              </g>
+            </g>
+          </g>
+
+          <!-- BADGES NUMERADOS (1, 2, 3) -->
+          <!-- 1: Inicio de arrastre -->
+          <g transform="translate(180, 70)">
+            <circle cx="0" cy="0" r="10" fill="#C0392B" stroke="#FFFFFF" stroke-width="1.5"/>
+            <text x="0" y="3.5" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">1</text>
+          </g>
+
+          <!-- 2: Soltar y formar el marco -->
+          <g transform="translate(590, 200)">
+            <circle cx="0" cy="0" r="10" fill="#C0392B" stroke="#FFFFFF" stroke-width="1.5"/>
+            <text x="0" y="3.5" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">2</text>
+          </g>
+
+          <!-- 3: Escribir texto -->
+          <g transform="translate(420, 160)">
+            <circle cx="0" cy="0" r="10" fill="#C0392B" stroke="#FFFFFF" stroke-width="1.5"/>
+            <text x="0" y="3.5" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">3</text>
+          </g>
+
+          <!-- PUNTERO ANIMADO DE ARRASTRE -->
+          <g class="mouse-drag-cursor2">
+            <path d="M0 0L12 12L7 13L10 20L7 21L4 14L0 17V0Z" fill="#111111" stroke="#FFFFFF" stroke-width="1.2"/>
+          </g>
+        </svg>
+        </div>
+
+        <h2>Paso 3: Personalizar el Estilo (Relleno, Borde y Formato)</h2>
+        <p>
+          Al hacer clic sobre el borde del cuadro de texto, aparecerá en la parte superior la pestaña contextual <strong>FORMATO DE FORMA</strong>. Desde allí puedes personalizarlo totalmente:
+        </p>
+        <div class="box box-ppt">
+          <ul>
+            <li><strong>Relleno de forma:</strong> Asigna un color de fondo al cuadro de texto (ej. amarillo, azul o un gris suave).</li>
+            <li><strong>Contorno de forma:</strong> Cambia el color, grosor o estilo (punteado/continuo) del borde del cuadro.</li>
+            <li><strong>Efectos de forma:</strong> Agrega sombras, iluminados o bordes suaves para destacarlo.</li>
+            <li><strong>Alineación de Texto:</strong> Usa los atajos de teclado para alinear el texto dentro del cuadro: <code>Ctrl + Q</code> (Izquierda), <code>Ctrl + T</code> (Centrar), <code>Ctrl + D</code> (Derecha).</li>
+          </ul>
+        </div>
+
+        <!-- SVG INTERFAZ PASO 3: APLICAR FORMATO DE FORMA Y COLOR -->
+        <div class="svg-window-container" style="margin: 1.5rem 0; width: 100%; text-align: center;">
+        <svg viewBox="0 0 760 270" width="100%" height="auto" fill="none" xmlns="http://www.w3.org/2000/svg" style="border: 1px solid var(--border-light); border-radius: 6px; background: var(--bg-content); box-shadow: var(--shadow-sm); font-family: var(--font-sans);">
+          <style>
+            @keyframes mouseFormatMove3 {
+              0%, 15% { transform: translate(450px, 200px); }
+              35% { transform: translate(210px, 42px); }
+              42% { transform: translate(210px, 42px) scale(0.88); }
+              48% { transform: translate(210px, 42px) scale(1); }
+              68% { transform: translate(115px, 92px); }
+              75% { transform: translate(115px, 92px) scale(0.88); }
+              82%, 100% { transform: translate(115px, 92px) scale(1); }
+            }
+            @keyframes formatRipple3 {
+              0%, 35% { r: 0; opacity: 0; }
+              42% { r: 14; opacity: 0.85; stroke-width: 2; }
+              48% { r: 24; opacity: 0; }
+              68% { r: 0; opacity: 0; }
+              75% { r: 14; opacity: 0.85; stroke-width: 2; }
+              82% { r: 24; opacity: 0; }
+              100% { r: 0; opacity: 0; }
+            }
+            @keyframes applyBoxStyle3 {
+              0%, 74% { fill: var(--bg-content); stroke: var(--border-light); }
+              75%, 100% { fill: var(--color-ppt); fill-opacity: 0.12; stroke: var(--color-ppt); stroke-width: 2; }
+            }
+            .mouse-format-cursor3 { animation: mouseFormatMove3 7s ease-in-out infinite; }
+            .format-click-ripple3 { animation: formatRipple3 7s ease-in-out infinite; }
+            .styled-canvas-box3 { animation: applyBoxStyle3 7s ease-in-out infinite; }
+          </style>
+
+          <!-- Encabezado de Ventana Contextual -->
+          <path d="M0 6C0 2.68629 2.68629 0 6 0H754C757.314 0 760 2.68629 760 6V28H0V6Z" fill="var(--color-ppt)"/>
+          <text x="380" y="18" text-anchor="middle" font-size="11" font-weight="600" fill="#FFFFFF">Herramientas de dibujo - PowerPoint [Pestaña Formato de Forma]</text>
+
+          <!-- Barra de Pestañas -->
+          <rect y="28" width="760" height="26" fill="var(--bg-content)"/>
+          <line x1="0" y1="54" x2="760" y2="54" stroke="var(--border-light)" stroke-width="1"/>
+          
+          <text x="20" y="44" font-size="10.5" fill="var(--text-muted)">Inicio</text>
+          <text x="65" y="44" font-size="10.5" fill="var(--text-muted)">Insertar</text>
+
+          <!-- Pestaña Activa: FORMATO DE FORMA -->
+          <rect x="150" y="28" width="130" height="26" fill="var(--bg-body)"/>
+          <line x1="150" y1="28" x2="280" y2="28" stroke="var(--color-ppt)" stroke-width="2.5"/>
+          <text x="215" y="44" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-ppt)">Formato de forma</text>
+
+          <!-- Ribbon Bar -->
+          <rect y="54" width="760" height="85" fill="var(--bg-body)"/>
+          <line x1="0" y1="139" x2="760" y2="139" stroke="var(--border-light)" stroke-width="1"/>
+
+          <!-- Grupo Estilos de Forma (Relleno y Contorno) -->
+          <g transform="translate(15, 62)">
+            <rect width="210" height="68" rx="3" fill="var(--color-ppt)" fill-opacity="0.12" stroke="var(--color-ppt)" stroke-width="1.5"/>
+            <text x="10" y="18" font-size="8.5" font-weight="700" fill="var(--color-ppt)">Estilos de forma:</text>
+            
+            <!-- Botón Relleno -->
+            <rect x="10" y="25" width="90" height="35" rx="2" fill="var(--color-ppt)" stroke="var(--color-ppt)"/>
+            <text x="55" y="46" text-anchor="middle" font-size="9" font-weight="700" fill="#FFFFFF">🎨 Relleno ▾</text>
+
+            <!-- Botón Contorno -->
+            <rect x="110" y="25" width="90" height="35" rx="2" fill="var(--bg-body)" stroke="var(--border-light)"/>
+            <text x="155" y="46" text-anchor="middle" font-size="9" font-weight="600" fill="var(--text-main)">✏️ Contorno ▾</text>
+          </g>
+
+          <!-- Grupo Estilos de WordArt (Texto) -->
+          <g transform="translate(235, 62)">
+            <rect width="240" height="68" rx="3" fill="var(--bg-content)" stroke="var(--border-light)"/>
+            <text x="10" y="18" font-size="8.5" font-weight="700" fill="var(--text-main)">Estilos de texto / WordArt:</text>
+
+            <rect x="10" y="25" width="105" height="35" rx="2" fill="var(--bg-body)" stroke="var(--border-light)"/>
+            <text x="62.5" y="46" text-anchor="middle" font-size="8.5" fill="var(--text-main)">🔤 Relleno texto ▾</text>
+
+            <rect x="123" y="25" width="105" height="35" rx="2" fill="var(--bg-body)" stroke="var(--border-light)"/>
+            <text x="175.5" y="46" text-anchor="middle" font-size="8.5" fill="var(--text-main)">✨ Efectos texto ▾</text>
+          </g>
+
+          <!-- Grupo Organizar y Tamaño -->
+          <g transform="translate(485, 62)">
+            <rect width="260" height="68" rx="3" fill="var(--bg-content)" stroke="var(--border-light)"/>
+            <text x="130" y="38" text-anchor="middle" font-size="9" fill="var(--text-muted)">Organizar / Alineación / Tamaño</text>
+          </g>
+
+          <!-- CANVAS INFERIOR CON EL RESULTADO DEL FORMATO APLICADO -->
+          <g transform="translate(160, 152)">
+            <rect width="440" height="100" rx="6" fill="var(--bg-body)" stroke="var(--border-light)"/>
+            
+            <!-- CUADRO DE TEXTO RESULTANTE CON FORMATO ANIMADO -->
+            <rect x="20" y="15" width="400" height="70" rx="4" class="styled-canvas-box3"/>
+            <text x="220" y="42" text-anchor="middle" font-size="12" font-weight="800" fill="var(--color-ppt)">¡CONSEJO IMPORTANTE DE EXPOSICIÓN!</text>
+            <text x="220" y="62" text-anchor="middle" font-size="9.5" fill="var(--text-main)">Usa cuadros de texto con relleno suave para destacar tus conclusiones.</text>
+          </g>
+
+          <!-- BADGES NUMERADOS (1, 2, 3, 4) -->
+          <!-- 1: Seleccionar cuadro en lienzo -->
+          <g transform="translate(180, 205)">
+            <circle cx="0" cy="0" r="10" fill="#C0392B" stroke="#FFFFFF" stroke-width="1.5"/>
+            <text x="0" y="3.5" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">1</text>
+          </g>
+
+          <!-- 2: Pestaña Formato de Forma -->
+          <g transform="translate(285, 18)">
+            <circle cx="0" cy="0" r="10" fill="#C0392B" stroke="#FFFFFF" stroke-width="1.5"/>
+            <text x="0" y="3.5" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">2</text>
+          </g>
+
+          <!-- 3: Clic Relleno / Contorno -->
+          <g transform="translate(120, 60)">
+            <circle cx="0" cy="0" r="10" fill="#C0392B" stroke="#FFFFFF" stroke-width="1.5"/>
+            <text x="0" y="3.5" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">3</text>
+          </g>
+
+          <!-- 4: Resultado visual -->
+          <g transform="translate(580, 205)">
+            <circle cx="0" cy="0" r="10" fill="#C0392B" stroke="#FFFFFF" stroke-width="1.5"/>
+            <text x="0" y="3.5" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">4</text>
+          </g>
+
+          <!-- MOUSE CURSOR ANIMADO -->
+          <g class="mouse-format-cursor3">
+            <circle cx="0" cy="0" r="0" fill="none" stroke="var(--color-ppt)" class="format-click-ripple3"/>
+            <path d="M0 0L12 12L7 13L10 20L7 21L4 14L0 17V0Z" fill="#111111" stroke="#FFFFFF" stroke-width="1.2"/>
+          </g>
+        </svg>
+        </div>
+
+        <div class="box box-ppt">
+          <span class="box-title">Tip Extra: Mover y Eliminar un Cuadro de Texto</span>
+          <p>
+            • <strong>Mover:</strong> Haz clic sobre el borde punteado del cuadro hasta que el ratón tome forma de cruz con 4 flechas (<code>✢</code>), luego arrástralo a donde desees.<br />
+            • <strong>Eliminar:</strong> Haz clic en el borde del cuadro para seleccionarlo por completo (el borde se volverá una línea continua) y presiona la tecla <code>Supr</code> (Delete) o <code>Backspace</code>.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        &copy; 2026 - Instituto Nueva Tecnología | Prof. Samuel Durán |
+        Ofimática
+      </p>
+    </footer>
+  
+    <script>!function(){var h=document.querySelector('.lesson-header h1,.guide-header h1');var c=document.querySelector('.print-header-center');if(h&&c)c.textContent=h.textContent}()</script>
+  <script>
+    document.getElementById("theme-toggle")?.addEventListener("click",function(){var t=document.documentElement.getAttribute("data-theme");t=t==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",t);localStorage.setItem("theme",t);this.textContent=t==="dark"?"\u2600":"\u263E"});
+    (function(){var t=localStorage.getItem("theme");var b=document.getElementById("theme-toggle");if(b){b.textContent=t==="dark"?"\u2600":"\u263E"}})();
+  </script>
+  </body>
+</html>

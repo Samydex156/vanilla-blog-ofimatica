@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
@@ -51,12 +51,191 @@
           realizar una acción específica.
         </p>
 
+        <!-- SVG ANIMADO INTERACTIVO: DEMOSTRACIÓN DE EJECUCIÓN DE ATAJOS (CTRL + N Y SHIFT + F3) -->
+        <div class="svg-window-container" style="margin: 1.5rem 0; width: 100%; text-align: center;">
+        <svg viewBox="0 0 760 330" width="100%" height="auto" fill="none" xmlns="http://www.w3.org/2000/svg" style="border: 1px solid var(--border-light); border-radius: 6px; background: var(--bg-content); box-shadow: var(--shadow-sm); font-family: var(--font-sans);">
+          <style>
+            /* ANIMACIÓN MECÁNICA DE PULSACIÓN SECUENCIAL (STEP-END) */
+            /* 1. TECLA MODIFICADORA CTRL (Se presiona en t = 10%) */
+            @keyframes pressCtrlKeyGroup {
+              0%, 9% { transform: translateY(0px); }
+              10%, 45% { transform: translateY(3px); }
+              46%, 100% { transform: translateY(0px); }
+            }
+            @keyframes pressCtrlKeyRect {
+              0%, 9% { fill: var(--bg-body); stroke: var(--border-light); }
+              10%, 45% { fill: #254875; stroke: #1A3456; }
+              46%, 100% { fill: var(--bg-body); stroke: var(--border-light); }
+            }
+            @keyframes pressCtrlKeyText {
+              0%, 9% { fill: var(--text-main); }
+              10%, 45% { fill: #FFFFFF; }
+              46%, 100% { fill: var(--text-main); }
+            }
+
+            /* 2. TECLA DE ACCIÓN N (Se presiona en t = 18% mientras Ctrl sigue presionado) */
+            @keyframes pressNKeyGroup {
+              0%, 17% { transform: translateY(0px); }
+              18%, 45% { transform: translateY(3px); }
+              46%, 100% { transform: translateY(0px); }
+            }
+            @keyframes pressNKeyRect {
+              0%, 17% { fill: var(--bg-body); stroke: var(--border-light); }
+              18%, 45% { fill: #254875; stroke: #1A3456; }
+              46%, 100% { fill: var(--bg-body); stroke: var(--border-light); }
+            }
+            @keyframes pressNKeyText {
+              0%, 17% { fill: var(--text-main); }
+              18%, 45% { fill: #FFFFFF; }
+              46%, 100% { fill: var(--text-main); }
+            }
+
+            /* 3. TECLA MODIFICADORA SHIFT (Se presiona en t = 50%) */
+            @keyframes pressShiftKeyGroup {
+              0%, 49% { transform: translateY(0px); }
+              50%, 88% { transform: translateY(3px); }
+              89%, 100% { transform: translateY(0px); }
+            }
+            @keyframes pressShiftKeyRect {
+              0%, 49% { fill: var(--bg-body); stroke: var(--border-light); }
+              50%, 88% { fill: #E67E22; stroke: #D35400; }
+              89%, 100% { fill: var(--bg-body); stroke: var(--border-light); }
+            }
+            @keyframes pressShiftKeyText {
+              0%, 49% { fill: var(--text-main); }
+              50%, 88% { fill: #FFFFFF; }
+              89%, 100% { fill: var(--text-main); }
+            }
+
+            /* 4. TECLA DE ACCIÓN F3 (Se presiona en t = 58% mientras Shift sigue presionado) */
+            @keyframes pressF3KeyGroup {
+              0%, 57% { transform: translateY(0px); }
+              58%, 88% { transform: translateY(3px); }
+              89%, 100% { transform: translateY(0px); }
+            }
+            @keyframes pressF3KeyRect {
+              0%, 57% { fill: var(--bg-body); stroke: var(--border-light); }
+              58%, 88% { fill: #E67E22; stroke: #D35400; }
+              89%, 100% { fill: var(--bg-body); stroke: var(--border-light); }
+            }
+            @keyframes pressF3KeyText {
+              0%, 57% { fill: var(--text-main); }
+              58%, 88% { fill: #FFFFFF; }
+              89%, 100% { fill: var(--text-main); }
+            }
+
+            /* RESULTADO EN EL DOCUMENTO DE WORD (Aparece exactamente al pulsar la tecla de acción) */
+            @keyframes wordBoldResultText {
+              0%, 17% { font-weight: 400; fill: var(--text-main); }
+              18%, 45% { font-weight: 900; fill: #254875; }
+              46%, 100% { font-weight: 400; fill: var(--text-main); }
+            }
+            @keyframes wordCaseResultText {
+              0%, 57% { text-transform: lowercase; fill: var(--text-main); }
+              58%, 88% { text-transform: uppercase; fill: #E67E22; font-weight: 800; }
+              89%, 100% { text-transform: lowercase; fill: var(--text-main); }
+            }
+
+            .key-group-ctrl { animation: pressCtrlKeyGroup 7s step-end infinite; }
+            .key-rect-ctrl { animation: pressCtrlKeyRect 7s step-end infinite; }
+            .key-text-ctrl { animation: pressCtrlKeyText 7s step-end infinite; }
+
+            .key-group-n { animation: pressNKeyGroup 7s step-end infinite; }
+            .key-rect-n { animation: pressNKeyRect 7s step-end infinite; }
+            .key-text-n { animation: pressNKeyText 7s step-end infinite; }
+
+            .key-group-shift { animation: pressShiftKeyGroup 7s step-end infinite; }
+            .key-rect-shift { animation: pressShiftKeyRect 7s step-end infinite; }
+            .key-text-shift { animation: pressShiftKeyText 7s step-end infinite; }
+
+            .key-group-f3 { animation: pressF3KeyGroup 7s step-end infinite; }
+            .key-rect-f3 { animation: pressF3KeyRect 7s step-end infinite; }
+            .key-text-f3 { animation: pressF3KeyText 7s step-end infinite; }
+
+            .text-word-bold-result { animation: wordBoldResultText 7s step-end infinite; }
+            .text-word-case-result { animation: wordCaseResultText 7s step-end infinite; }
+          </style>
+
+          <!-- Título superior -->
+          <rect width="760" height="30" fill="var(--bg-body)"/>
+          <text x="380" y="20" text-anchor="middle" font-size="11" font-weight="700" fill="var(--title-main)">⌨️ Demostración en Vivo: Ejecución de Atajos en Microsoft Word</text>
+          <line x1="0" y1="30" x2="760" y2="30" stroke="var(--border-light)"/>
+
+          <!-- COLUMNA 1: ATAJO 1 (Ctrl + N -> NEGRITA) -->
+          <g transform="translate(20, 48)">
+            <rect width="350" height="260" rx="6" fill="var(--bg-body)" stroke="#254875" stroke-width="1.5"/>
+            <path d="M0 6C0 2.68629 2.68629 0 6 0H344C347.314 0 350 2.68629 350 6V30H0V6Z" fill="#254875"/>
+            <text x="175" y="20" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">1. Aplicar Negrita: Ctrl + N</text>
+
+            <!-- TECLADO SIMULADO SECUENCIAL -->
+            <g transform="translate(45, 52)">
+              <!-- Tecla CTRL (Baja primero en t=10%) -->
+              <g class="key-group-ctrl">
+                <rect x="20" y="0" width="75" height="40" rx="5" stroke-width="2" class="key-rect-ctrl"/>
+                <text x="57.5" y="25" text-anchor="middle" font-size="13" font-weight="800" class="key-text-ctrl">Ctrl</text>
+              </g>
+
+              <!-- Signo + -->
+              <text x="122" y="25" text-anchor="middle" font-size="18" font-weight="800" fill="var(--text-muted)">+</text>
+
+              <!-- Tecla N (Baja después en t=18%) -->
+              <g class="key-group-n">
+                <rect x="145" y="0" width="60" height="40" rx="5" stroke-width="2" class="key-rect-n"/>
+                <text x="175" y="25" text-anchor="middle" font-size="15" font-weight="800" class="key-text-n">N</text>
+              </g>
+            </g>
+
+            <!-- LIENZO DOCUMENTO WORD -->
+            <g transform="translate(30, 118)">
+              <rect width="290" height="120" rx="4" fill="var(--bg-content)" stroke="var(--border-light)"/>
+              <text x="145" y="22" text-anchor="middle" font-size="8.5" font-weight="700" fill="var(--text-muted)">Vista Previa en Word</text>
+
+              <text x="20" y="55" font-size="11" font-weight="400" fill="var(--text-main)">Este es un párrafo de ejemplo.</text>
+              <text x="20" y="85" font-size="13" class="text-word-bold-result">¡Texto Importante Resaltado!</text>
+            </g>
+          </g>
+
+          <!-- COLUMNA 2: ATAJO 2 (Shift + F3 -> MAYÚSCULAS / MINÚSCULAS) -->
+          <g transform="translate(390, 48)">
+            <rect width="350" height="260" rx="6" fill="var(--bg-body)" stroke="#E67E22" stroke-width="1.5"/>
+            <path d="M0 6C0 2.68629 2.68629 0 6 0H344C347.314 0 350 2.68629 350 6V30H0V6Z" fill="#E67E22"/>
+            <text x="175" y="20" text-anchor="middle" font-size="11" font-weight="800" fill="#FFFFFF">2. Cambiar Caso: Shift + F3</text>
+
+            <!-- TECLADO SIMULADO SECUENCIAL -->
+            <g transform="translate(45, 52)">
+              <!-- Tecla SHIFT (Baja primero en t=50%) -->
+              <g class="key-group-shift">
+                <rect x="15" y="0" width="80" height="40" rx="5" stroke-width="2" class="key-rect-shift"/>
+                <text x="55" y="25" text-anchor="middle" font-size="12" font-weight="800" class="key-text-shift">Shift ⇧</text>
+              </g>
+
+              <!-- Signo + -->
+              <text x="122" y="25" text-anchor="middle" font-size="18" font-weight="800" fill="var(--text-muted)">+</text>
+
+              <!-- Tecla F3 (Baja después en t=58%) -->
+              <g class="key-group-f3">
+                <rect x="145" y="0" width="60" height="40" rx="5" stroke-width="2" class="key-rect-f3"/>
+                <text x="175" y="25" text-anchor="middle" font-size="14" font-weight="800" class="key-text-f3">F3</text>
+              </g>
+            </g>
+
+            <!-- LIENZO DOCUMENTO WORD -->
+            <g transform="translate(30, 118)">
+              <rect width="290" height="120" rx="4" fill="var(--bg-content)" stroke="var(--border-light)"/>
+              <text x="145" y="22" text-anchor="middle" font-size="8.5" font-weight="700" fill="var(--text-muted)">Vista Previa en Word</text>
+
+              <text x="20" y="55" font-size="10" fill="var(--text-main)">Transformación de capitalización:</text>
+              <text x="20" y="85" font-size="12" font-weight="700" class="text-word-case-result">instituto nueva tecnologia</text>
+            </g>
+          </g>
+        </svg>
+        </div>
+
         <table class="wiki-table">
           <thead>
             <tr>
               <th>Atajo</th>
               <th>Acción</th>
-              <th>Referencia</th>
             </tr>
           </thead>
           <tbody>
@@ -66,28 +245,12 @@
                 <span class="shortcut">G</span>
               </td>
               <td>Guardar los cambios realizados de un documento Word.</td>
-              <td>
-                <img
-                  src="./atajos-word-imgs/#"
-                  alt="Ctrl + G"
-                  class="shortcut-thumbnail"
-                  onclick="openModal(this)"
-                />
-              </td>
             </tr>
             <tr>
               <td><span class="shortcut">F12</span></td>
               <td>
                 Abre la ventana de "Guardar como" para guardar una copia del
                 documento.
-              </td>
-              <td>
-                <img
-                  src="./atajos-word-imgs/#"
-                  alt="F12"
-                  class="shortcut-thumbnail"
-                  onclick="openModal(this)"
-                />
               </td>
             </tr>
             <tr>
@@ -96,14 +259,6 @@
                 <span class="shortcut">U</span>
               </td>
               <td>Crea un nuevo documento de Word</td>
-              <td>
-                <img
-                  src="./atajos-word-imgs/#"
-                  alt="Ctrl + U"
-                  class="shortcut-thumbnail"
-                  onclick="openModal(this)"
-                />
-              </td>
             </tr>
             <tr>
               <td>
@@ -111,14 +266,6 @@
                 <span class="shortcut">N</span>
               </td>
               <td>Aplica estilo de texto Negrita al texto seleccionado.</td>
-              <td>
-                <img
-                  src="./atajos-word-imgs/#"
-                  alt="Ctrl + N"
-                  class="shortcut-thumbnail"
-                  onclick="openModal(this)"
-                />
-              </td>
             </tr>
             <tr>
               <td>
@@ -126,14 +273,6 @@
                 <span class="shortcut">S</span>
               </td>
               <td>Aplica estilo de texto Subrayado al texto seleccionado.</td>
-              <td>
-                <img
-                  src="./atajos-word-imgs/#"
-                  alt="Ctrl + S"
-                  class="shortcut-thumbnail"
-                  onclick="openModal(this)"
-                />
-              </td>
             </tr>
             <tr>
               <td>
@@ -141,14 +280,6 @@
                 <span class="shortcut">K</span>
               </td>
               <td>Aplica estilo de texto Cursiva al texto seleccionado.</td>
-              <td>
-                <img
-                  src="./atajos-word-imgs/#"
-                  alt="Ctrl + K"
-                  class="shortcut-thumbnail"
-                  onclick="openModal(this)"
-                />
-              </td>
             </tr>
             <tr>
               <td>
@@ -156,14 +287,6 @@
                 <span class="shortcut">C</span>
               </td>
               <td>Copia el texto seleccionado.</td>
-              <td>
-                <img
-                  src="./atajos-word-imgs/#"
-                  alt="Ctrl + C"
-                  class="shortcut-thumbnail"
-                  onclick="openModal(this)"
-                />
-              </td>
             </tr>
             <tr>
               <td>
@@ -171,14 +294,6 @@
                 <span class="shortcut">V</span>
               </td>
               <td>Pega el texto seleccionado en la posición del cursor.</td>
-              <td>
-                <img
-                  src="./atajos-word-imgs/#"
-                  alt="Ctrl + V"
-                  class="shortcut-thumbnail"
-                  onclick="openModal(this)"
-                />
-              </td>
             </tr>
             <tr>
               <td>
@@ -189,14 +304,6 @@
                 Cambia a Mayúsculas / Minúsculas / Tipo oración al texto
                 seleccionado.
               </td>
-              <td>
-                <img
-                  src="./atajos-word-imgs/#"
-                  alt="Shift + F3"
-                  class="shortcut-thumbnail"
-                  onclick="openModal(this)"
-                />
-              </td>
             </tr>
             <tr>
               <td>
@@ -204,14 +311,6 @@
                 <span class="shortcut">E</span>
               </td>
               <td>Selecciona todo el contenido del documento.</td>
-              <td>
-                <img
-                  src="./atajos-word-imgs/#"
-                  alt="Ctrl + E"
-                  class="shortcut-thumbnail"
-                  onclick="openModal(this)"
-                />
-              </td>
             </tr>
             <tr>
               <td>
@@ -221,14 +320,6 @@
               <td>
                 Selecciona toda la línea de texto hacia la izquierda desde la
                 posición del cursor.
-              </td>
-              <td>
-                <img
-                  src="./atajos-word-imgs/#"
-                  alt="Shift + Inicio"
-                  class="shortcut-thumbnail"
-                  onclick="openModal(this)"
-                />
               </td>
             </tr>
             <tr>
@@ -240,14 +331,6 @@
                 Selecciona toda la línea de texto hacia la derecha desde la
                 posición del cursor.
               </td>
-              <td>
-                <img
-                  src="./atajos-word-imgs/#"
-                  alt="Shift + Fin"
-                  class="shortcut-thumbnail"
-                  onclick="openModal(this)"
-                />
-              </td>
             </tr>
             <tr>
               <td>
@@ -255,16 +338,7 @@
                 <span class="shortcut">Scroll</span>
               </td>
               <td>Efecto de Zoom (Acerca o alejar la hoja del documento)</td>
-              <td>
-                <img
-                  src="./atajos-word-imgs/#"
-                  alt="Ctrl + Scroll"
-                  class="shortcut-thumbnail"
-                  onclick="openModal(this)"
-                />
-              </td>
             </tr>
-            <!-- añadir desde aquí más atajos -->
           </tbody>
         </table>
       </section>
