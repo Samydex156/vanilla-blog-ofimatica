@@ -123,14 +123,11 @@ vanilla-blog-ofimatica/
 │   │   ├── insertar-imagenes.html        # Guía interactiva SVG de inserción y marco de imágenes.
 │   │   ├── transiciones-y-animaciones.html
 │   │   └── uso-de-zoomit.html
-│   └── practicas/                    # [7 Ejercicios Prácticos]
+│   └── practicas/                    # [4 Ejercicios Prácticos]
 │       ├── practica-01-presentacion-base.html
 │       ├── practica-02-multimedia-animacion.html
-│       ├── practica-03-hipervinculos-interaccion.html
-│       ├── practica-04-storytelling-datos.html
-│       ├── practica-05-storytelling-casa.html
-│       ├── practica-06-storytelling-coca-cola.html
-│       └── practica-06-storytelling-coca-cola-solucion.html
+│       ├── practica-03-calentamiento-global.html
+│       └── practica-04-metabolismo.html
 │
 ├── 03-excel/                         # [Módulo 03] Microsoft Excel
 │   ├── index-teoria.html             # Índice de hojas de cálculo y fórmulas.
