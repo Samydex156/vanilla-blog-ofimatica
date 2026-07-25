@@ -35,6 +35,7 @@
     --color-pub: #1B5E55;
     --color-net: #9E771D;
     --color-ia: #5B3A70;
+    --color-herramientas: #D96B27;
     
     --primary-color: #2B2B2B;
     --accent-color: #5C5955;
@@ -102,6 +103,7 @@
 [data-theme="dark"] .card[data-module="pub"]:hover { background: #192624; }
 [data-theme="dark"] .card[data-module="net"]:hover { background: #262319; }
 [data-theme="dark"] .card[data-module="ia"]:hover { background: #231B28; }
+[data-theme="dark"] .card[data-module="herramientas"]:hover { background: #2A2019; }
 
 /* 2. Reset */
 * {
@@ -280,6 +282,7 @@ footer {
 .card[data-module="pub"] .module-badge { background: var(--color-pub); }
 .card[data-module="net"] .module-badge { background: var(--color-net); }
 .card[data-module="ia"] .module-badge { background: var(--color-ia); }
+.card[data-module="herramientas"] .module-badge { background: var(--color-herramientas); }
 
 /* Fondo wash sutil por módulo en hover */
 .card[data-module="win"]:hover { background: #F3F7FA; }
@@ -289,6 +292,7 @@ footer {
 .card[data-module="pub"]:hover { background: #F1F7F6; }
 .card[data-module="net"]:hover { background: #FAF7F0; }
 .card[data-module="ia"]:hover { background: #F6F2FA; }
+.card[data-module="herramientas"]:hover { background: #FAF3ED; }
 
 /* 6. Enlaces de Navegación Compactos */
 .links {
@@ -333,6 +337,16 @@ footer {
 .card[data-module="pub"] { border-top: 2px solid var(--color-pub); }
 .card[data-module="net"] { border-top: 2px solid var(--color-net); }
 .card[data-module="ia"] { border-top: 2px solid var(--color-ia); }
+.card[data-module="herramientas"] { border-top: 2px solid var(--color-herramientas); }
+
+[data-module="win"] { --module-color: var(--color-win); }
+[data-module="word"] { --module-color: var(--color-word); }
+[data-module="ppt"] { --module-color: var(--color-ppt); }
+[data-module="xls"] { --module-color: var(--color-excel); }
+[data-module="pub"] { --module-color: var(--color-pub); }
+[data-module="net"] { --module-color: var(--color-net); }
+[data-module="ia"] { --module-color: var(--color-ia); }
+[data-module="herramientas"] { --module-color: var(--color-herramientas); }
 
 /* ----------------------------------------------------------------
    Índices de Módulo

@@ -193,6 +193,10 @@ vanilla-blog-ofimatica/
 │       ├── practica-generar-diapositivas.html
 │       └── practica-nanobanana-imagenes.html
 │
+├── instaladores-herramientas/        # [Módulo 07] Programas y Herramientas Utilitarias
+│   ├── index.html                    # Catálogo de herramientas descargables de ofimática y mecanografía.
+│   └── MecaSamType_Installer.exe     # Instalador ejecutable del programa de práctica de mecanografía MecaSamType.
+│
 └── docs/                             # [Documentación Técnica y Comercial]
     ├── README.md                     # Manual principal e introducción pública.
     ├── CONTEXTO_PROYECTO.md         # Contexto de negocio, alcance y árbol comentado.
