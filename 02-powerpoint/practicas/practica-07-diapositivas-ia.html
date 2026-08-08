@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Práctica 07: Generación de Diapositivas con IA y pptxgenjs - PowerPoint</title>
+    <link rel="stylesheet" href="../../main-style.css" />
+    <style>
+      .code-block {
+        background-color: var(--card-bg, #ffffff);
+        border: 1px solid var(--border-color, #e2e0d8);
+        border-left: 4px solid var(--color-ppt, #d84315);
+        padding: 15px;
+        margin: 15px 0;
+        border-radius: 4px;
+        font-family: "Consolas", "Courier New", monospace;
+        font-size: 0.9em;
+        white-space: pre-wrap;
+        overflow-x: auto;
+      }
+      .skill-note {
+        border-left: 4px solid var(--color-ppt, #d84315);
+        background-color: var(--card-bg, #ffffff);
+      }
+    </style>
+    <script>
+      (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.setAttribute('data-theme','dark')}})();
+    </script>
+  </head>
+  <body>
+    <div class="print-header">
+        <div class="print-header-left">Prof. Samuel William Durán Quispe</div>
+        <div class="print-header-center"></div>
+        <div class="print-header-right">Instituto Nueva Tecnología &mdash; Ofimática &mdash; PowerPoint &mdash; 2026</div>
+    </div>
+
+    <nav class="breadcrumb-nav">
+      <a href="../../index.html"><svg class="icon-svg-home" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -1px; margin-right: 4px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>Inicio</a> >
+      <a href="../index-practicas.html">PowerPoint (Prácticas)</a> >
+      <span>Práctica 07</span>
+    <button id="theme-toggle" aria-label="Cambiar modo oscuro/claro" class="theme-btn">☾</button>
+    </nav>
+
+    <main class="content">
+      <header class="lesson-header">
+        <span class="date">Práctica #07</span>
+        <h1>Generación de Diapositivas con Inteligencia Artificial (pptxgenjs)</h1>
+        <p class="subtitle">
+          Uso de una skill de IA para generar presentaciones .pptx programáticamente con Node.js y pptxgenjs
+        </p>
+      </header>
+
+      <section class="lesson-body">
+        <div class="box box-practice">
+          <span class="task-title">Objetivo de la Práctica</span>
+          <p>
+            El estudiante descargará la skill <strong>skill-pptxgenjs-decks-portable.md</strong>, comprenderá cómo un agente de IA puede generar presentaciones PowerPoint de forma programática con Node.js y la librería <code>pptxgenjs</code>, y producirá una presentación completa sobre un tema asignado sin errores de reparación de PowerPoint.
+          </p>
+        </div>
+
+        <h2>Material de Trabajo</h2>
+        <p>Descarga el documento de la skill que contiene las instrucciones técnicas para la generación de presentaciones:</p>
+        <div style="margin: 1.5rem 0;">
+          <a
+            href="../archivos/skill-pptxgenjs-decks-portable.md"
+            download
+            style="
+              display: inline-flex;
+              align-items: center;
+              gap: 0.5rem;
+              background-color: var(--color-ppt, #b34a36);
+              color: white;
+              padding: 0.75rem 1.25rem;
+              border-radius: 6px;
+              text-decoration: none;
+              font-weight: 600;
+              box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+              transition: all 0.2s ease;
+            "
+          >
+            🤖 Descargar Skill: pptxgenjs-decks (.md)
+          </a>
+        </div>
+
+        <h2>Instrucciones Paso a Paso</h2>
+
+        <h3>1. Descarga y Estudio de la Skill</h3>
+        <ul class="step-list">
+          <li>
+            Haz clic en el botón superior para descargar el archivo <code>skill-pptxgenjs-decks-portable.md</code>.
+          </li>
+          <li>
+            Lee el documento y anota los conceptos clave: layout <code>LAYOUT_WIDE</code> (13.33 x 7.5 in), formas válidas (<code>rect</code>, <code>roundRect</code>, <code>ellipse</code>, <code>line</code>), tipos de gráfico permitidos (<code>bar</code>, <code>doughnut</code>, <code>line</code>, <code>pie</code>) y el post-proceso de charset.
+          </li>
+        </ul>
+
+        <h3>2. Preparación del Entorno</h3>
+        <ul class="step-list">
+          <li>
+            Instala <strong>Node.js</strong> si no lo tienes (la skill documenta que es un proyecto Vanilla, pero esta práctica usa Node.js de forma puntual para la generación de archivos).
+          </li>
+          <li>
+            Crea una carpeta de trabajo, inicializa el proyecto e instala las dependencias:
+          </li>
+        </ul>
+        <div class="code-block">npm init -y
+npm install pptxgenjs jszip pdf-parse</div>
+
+        <h3>3. Generación de la Presentación con un Agente de IA</h3>
+        <ul class="step-list">
+          <li>
+            Abre tu herramienta de IA (Command Code, Gemini CLI, Claude, etc.) y activa la skill <code>pptxgenjs-decks</code>.
+          </li>
+          <li>
+            Solicita la generación de una presentación con un tema definido, indicando el número de diapositivas, por ejemplo:
+          </li>
+        </ul>
+        <div class="code-block">/pptxgenjs-decks Energías renovables en el Perú 8</div>
+        <ul class="step-list">
+          <li>
+            Revisa que el generador use el layout <code>LAYOUT_WIDE</code>, formas válidas y guarde con el post-proceso de charset.
+          </li>
+          <li>
+            Pide al agente que verifique el archivo generado antes de entregarlo (salida esperada: <em>OK: sin valores inválidos</em>).
+          </li>
+        </ul>
+
+        <h3>4. Verificación y Apertura en PowerPoint</h3>
+        <ul class="step-list">
+          <li>
+            Abre el archivo <code>.pptx</code> generado en Microsoft PowerPoint y confirma que no aparezca la alerta de reparación.
+          </li>
+          <li>
+            Compara el resultado con una presentación creada manualmente e identifica ventajas y limitaciones de la generación automática.
+          </li>
+        </ul>
+
+        <div class="box box-tip">
+          <strong>Consejo:</strong> El documento de la skill incluye un <em>cheat sheet</em> con los valores correctos y problemáticos (layout, formas, chart, charset). Consúltalo para depurar rápidamente cualquier presentación generada.
+        </div>
+
+        <div class="box box-practice">
+          <span class="task-title">Entregable</span>
+          <p>
+            Guarda el archivo final con el nombre <strong>P07-DiapositivasIA-TuNombre.pptx</strong> y preséntalo junto con un breve resumen del prompt utilizado y el proceso seguido.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        &copy; 2026 - Instituto Nueva Tecnología | Prof. Samuel Durán |
+        Ofimática
+      </p>
+    </footer>
+  
+    <script>!function(){var h=document.querySelector('.lesson-header h1,.guide-header h1');var c=document.querySelector('.print-header-center');if(h&&c)c.textContent=h.textContent}()</script>
+  <script>
+    document.getElementById("theme-toggle")?.addEventListener("click",function(){var t=document.documentElement.getAttribute("data-theme");t=t==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",t);localStorage.setItem("theme",t);this.textContent=t==="dark"?"\u2600":"\u263E"});
+    (function(){var t=localStorage.getItem("theme");var b=document.getElementById("theme-toggle");if(b){b.textContent=t==="dark"?"\u2600":"\u263E"}})();
+  </script>
+  </body>
+</html>

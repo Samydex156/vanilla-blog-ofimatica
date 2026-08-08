@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Shell(powershell -Command \"Get-ChildItem '02-powerpoint\\archivos' | Select-Object Name, Length\")"
+    ],
+    "deny": [],
+    "defaultMode": "default"
+  }
+}

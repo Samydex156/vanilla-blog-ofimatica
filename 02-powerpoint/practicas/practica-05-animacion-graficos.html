@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Práctica 05: Animación de Gráficos - PowerPoint</title>
+    <link rel="stylesheet" href="../../main-style.css" />
+    <script>
+      (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.setAttribute('data-theme','dark')}})();
+    </script>
+  </head>
+  <body>
+    <div class="print-header">
+        <div class="print-header-left">Prof. Samuel William Durán Quispe</div>
+        <div class="print-header-center"></div>
+        <div class="print-header-right">Instituto Nueva Tecnología &mdash; Ofimática &mdash; PowerPoint &mdash; 2026</div>
+    </div>
+
+    <nav class="breadcrumb-nav">
+      <a href="../../index.html"><svg class="icon-svg-home" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -1px; margin-right: 4px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>Inicio</a> >
+      <a href="../index-practicas.html">PowerPoint (Prácticas)</a> >
+      <span>Práctica 05</span>
+    <button id="theme-toggle" aria-label="Cambiar modo oscuro/claro" class="theme-btn">☾</button>
+    </nav>
+
+    <main class="content">
+      <header class="lesson-header">
+        <span class="date">Práctica #05</span>
+        <h1>Animación de Gráficos y Datos en Diapositivas</h1>
+        <p class="subtitle">
+          Análisis de una presentación base con gráficos animados y recreación de sus efectos en PowerPoint
+        </p>
+      </header>
+
+      <section class="lesson-body">
+        <div class="box box-practice">
+          <span class="task-title">Objetivo de la Práctica</span>
+          <p>
+            El estudiante descargará el archivo PowerPoint base <strong>Animacion Graficos v1.pptx</strong>, analizará cómo se aplican animaciones a los gráficos y datos, y recreará una presentación propia aplicando técnicas de animación secuencial sobre gráficos estadísticos.
+          </p>
+        </div>
+
+        <h2>Material de Trabajo</h2>
+        <p>Descarga el archivo PowerPoint que servirá como referencia visual y técnica para el desarrollo de la práctica:</p>
+        <div style="margin: 1.5rem 0;">
+          <a
+            href="../archivos/Animacion Graficos v1.pptx"
+            download
+            style="
+              display: inline-flex;
+              align-items: center;
+              gap: 0.5rem;
+              background-color: var(--color-ppt, #b34a36);
+              color: white;
+              padding: 0.75rem 1.25rem;
+              border-radius: 6px;
+              text-decoration: none;
+              font-weight: 600;
+              box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+              transition: all 0.2s ease;
+            "
+          >
+            📊 Descargar Archivo Base: Animación de Gráficos (.pptx)
+          </a>
+        </div>
+
+        <h2>Instrucciones Paso a Paso</h2>
+
+        <h3>1. Descarga y Análisis del Archivo Base</h3>
+        <ul class="step-list">
+          <li>
+            Haz clic en el botón superior para descargar el archivo <code>Animacion Graficos v1.pptx</code>.
+          </li>
+          <li>
+            Abre el archivo en PowerPoint y reproduce la presentación (F5) para observar el orden y ritmo con que aparecen los gráficos, las series de datos y las etiquetas.
+          </li>
+          <li>
+            Abre el <strong>Panel de Animación</strong> y estudia qué tipo de animación (Entrada, Énfasis o Salida) se aplicó a cada elemento del gráfico y con qué disparador (Con clic, Con la anterior, Después de la anterior).
+          </li>
+        </ul>
+
+        <h3>2. Inserción y Animación de un Gráfico</h3>
+        <ul class="step-list">
+          <li>
+            Crea una nueva presentación con un tema libre y añade una diapositiva que contenga un gráfico estadístico (pestaña <strong>Insertar</strong> &gt; <strong>Gráfico</strong>), por ejemplo de barras o de líneas.
+          </li>
+          <li>
+            Selecciona el gráfico y aplica una animación de <strong>Entrada</strong> (por ejemplo, <em>Aparición</em>, <em>Desvanecer</em> o <em>Barrido</em>).
+          </li>
+          <li>
+            En el <strong>Panel de Animación</strong>, abre las opciones del efecto y en <strong>Efecto &gt; Animar gráfico</strong> elige cómo animar los elementos: <em>Como un solo objeto</em>, <em>Por serie</em>, <em>Por categoría</em> o <em>Por elemento de serie</em>, tal como observaste en el archivo base.
+          </li>
+        </ul>
+
+        <h3>3. Temporización de la Secuencia</h3>
+        <ul class="step-list">
+          <li>
+            Configura los disparadores para que el gráfico y sus elementos aparezcan de forma progresiva y didáctica durante la explicación.
+          </li>
+          <li>
+            Aplica <strong>Énfasis</strong> a los valores o datos más relevantes (por ejemplo, <em>Cambiar color de fuente</em> o <em>Aumentar y hundir</em>) para destacar la información clave.
+          </li>
+          <li>
+            Ajusta la <strong>duración</strong> y los <strong>intervalos</strong> en el Panel de Animación para lograr un ritmo fluido que acompañe la narración.
+          </li>
+        </ul>
+
+        <div class="box box-practice">
+          <span class="task-title">Entregable</span>
+          <p>
+            Guarda el archivo final con el nombre <strong>P05-AnimacionGraficos-TuNombre.pptx</strong> y proyéctalo (F5) para verificar que las series y datos del gráfico se animen en el orden previsto.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        &copy; 2026 - Instituto Nueva Tecnología | Prof. Samuel Durán |
+        Ofimática
+      </p>
+    </footer>
+  
+    <script>!function(){var h=document.querySelector('.lesson-header h1,.guide-header h1');var c=document.querySelector('.print-header-center');if(h&&c)c.textContent=h.textContent}()</script>
+  <script>
+    document.getElementById("theme-toggle")?.addEventListener("click",function(){var t=document.documentElement.getAttribute("data-theme");t=t==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",t);localStorage.setItem("theme",t);this.textContent=t==="dark"?"\u2600":"\u263E"});
+    (function(){var t=localStorage.getItem("theme");var b=document.getElementById("theme-toggle");if(b){b.textContent=t==="dark"?"\u2600":"\u263E"}})();
+  </script>
+  </body>
+</html>
