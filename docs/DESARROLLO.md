@@ -66,11 +66,12 @@ npx vercel --prod
 
 | Síntoma / Problema | Causa Raíz | Solución Paso a Paso |
 | :--- | :--- | :--- |
-| **Parpadeo blanco al cargar en Modo Oscuro (FOUC)** | Falta el script bloqueante en la cabecera `<head>` del HTML. | Copiar e inyectar en el `<head>` del HTML la IIFE síncrona: `<script>(function(){var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme:dark)").matches)){document.documentElement.setAttribute("data-theme","dark")}})();</script>`. |
-| **El buscador no filtra los elementos** | El ID del input no coincide o la estructura `<li>` no tiene la clase `.item-list`. | Verificar que el `<input>` tenga alguno de los IDs válidos (`buscador-clases`, `buscador-guias`, `buscador-practicas`, `buscador-index`) y que la lista `<ul>` tenga la clase `.item-list`. |
-| **El encabezado de impresión aparece en blanco en la columna central** | No se encuentra el elemento `<h1>` dentro de la cabecera de la lección o `busqueda.js` no cargó. | Asegurarse de que el título esté maquetado dentro de `.lesson-header h1` o `.guide-header h1`, y que `<script src="../../busqueda.js"></script>` esté presente antes de cerrar el `</body>`. |
+| **Parpadeo blanco al cargar en Modo Oscuro (FOUC)** | Falta el script bloqueante en la cabecera `<head>` del HTML. | Copiar e inyectar en el `<head>` del HTML la IIFE síncrona: `<script>(function(){var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme:dark)").matches)){document.documentElement.setAttribute("data-theme","dark")}})();</script>`. Excepción conocida: `01-word/validador-web/index.html` no la incluye a propósito. |
+| **El buscador no filtra los elementos** | El ID del input no coincide o la estructura `<li>` no tiene la clase `.item-list`. | Verificar que el `<input>` tenga alguno de los IDs válidos (`buscador-clases`, `buscador-guias`, `buscador-practicas`, `buscador-index`) y que la lista `<ul>` tenga la clase `.item-list`. `busqueda.js` acepta cualquiera de los cuatro IDs (por eso índices de teoría/prácticas de Word y PowerPoint usan `buscador-guias` y siguen funcionando). |
+| **El encabezado de impresión aparece en blanco en la columna central** | Falta el script que copia el `<h1>`. | En páginas de contenido (`teoria/`, `guias/`, `practicas/`) se usa un script inline antes de `</body>`: `<script>!function(){var h=document.querySelector('.lesson-header h1,.guide-header h1');var c=document.querySelector('.print-header-center');if(h&&c)c.textContent=h.textContent}()</script>`. En índices lo hace `busqueda.js`. |
+| **El toggle de tema no funciona en una página de contenido** | La página no carga `busqueda.js` (solo se carga en índices) y no tiene el script inline de toggle. | Las páginas de contenido incluyen su propio script inline de toggle + sync de ícono (ver Receta 2). No agregar `busqueda.js` en contenido; ese script está reservado para índices. |
 | **Los íconos SVG no cambian de color en modo oscuro** | El archivo SVG tiene colores codificados de forma fija (`fill="#000000"`). | Abrir el archivo `.svg` en `imgs/svg/` y reemplazar los valores hexadecimales de `stroke` o `fill` por `currentColor`. |
-| **Imágenes o rutas rotas al navegar en carpetas profundas** | La ruta relativa en el atributo `href` o `src` tiene un nivel incorrecto de `../`. | Verificar el nivel del directorio: desde `01-word/teoria/` se debe usar `../../` para regresar a la raíz. |
+| **Imágenes o rutas rotas al navegar en carpetas profundas** | La ruta relativa en el atributo `href` o `src` tiene un nivel incorrecto de `../`. | Verificar el nivel del directorio: desde `01-word/teoria/` se debe usar `../../` para regresar a la raíz, y rutas relativas al archivo para imágenes (ej. `word-clases-imgs/*.png`). |
 
 ---
 
@@ -124,11 +125,22 @@ npx vercel --prod
    </nav>
    ```
 3. Escribir el contenido dentro del contenedor `<div class="lesson-body">`.
-4. Incluir el script de JS al final del documento:
+4. **Las páginas de contenido NO cargan `busqueda.js`** (ese script es exclusivo de los índices). En su lugar, incluir antes de `</body>` los dos scripts inline estándar:
+
    ```html
-   <script src="../../busqueda.js"></script>
+   <!-- Copia el título al encabezado de impresión -->
+   <script>!function(){var h=document.querySelector('.lesson-header h1,.guide-header h1');var c=document.querySelector('.print-header-center');if(h&&c)c.textContent=h.textContent}()</script>
+
+   <!-- Toggle de tema + sync de ícono -->
+   <script>
+     document.getElementById("theme-toggle")?.addEventListener("click",function(){var t=document.documentElement.getAttribute("data-theme");t=t==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",t);localStorage.setItem("theme",t);this.textContent=t==="dark"?"\u2600":"\u263E"});
+     (function(){var t=localStorage.getItem("theme");var b=document.getElementById("theme-toggle");if(b){b.textContent=t==="dark"?"\u2600":"\u263E"}})();
+   </script>
    ```
-5. Registrar el nuevo archivo en el `index-teoria.html` o `index-guias.html` del módulo correspondiente dentro de la lista `<ul class="item-list">`.
+
+5. Registrar el nuevo archivo en el `index-teoria.html` o `index-guias.html` del módulo correspondiente dentro de la lista `<ul class="item-list">` (allí `busqueda.js` se encarga de la búsqueda y el toggle).
+
+> **Nota sobre el modal de zoom**: solo las guías de atajos de Word (`01-word/guias/atajos-esenciales.html`) y Excel (`03-excel/guias/atajos-esenciales.html`) implementan el modal de ampliación de imágenes, con marcado `#imageModal` y funciones inline `openModal`/`closeModal`. Las demás páginas de contenido no incluyen modal.
 
 ---
 

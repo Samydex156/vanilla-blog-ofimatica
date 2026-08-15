@@ -12,7 +12,7 @@ El **Portal Educativo de Ofimática** es una plataforma web estática desarrolla
 
 ### 🛡️ Alcance y Límites del Sistema
 - **Dentro del Alcance**:
-  - Presentación interactiva de 7 módulos temáticos (Windows, Word, PowerPoint, Excel, Publisher, Internet e Inteligencia Artificial).
+  - Presentación interactiva de 7 módulos temáticos (Windows, Word, PowerPoint, Excel, Publisher, Internet e Inteligencia Artificial) más un catálogo de herramientas descargables (Módulo 07: Programas y Herramientas).
   - Índices dinámicos de clases teóricas, guías metodológicas y ejercicios prácticos.
   - Motor de búsqueda síncrono client-side en tiempo real para todas las listas.
   - Sistema de temas visuales (Claro / Oscuro) con persistencia y ejecución Anti-FOUC.
@@ -32,9 +32,9 @@ El **Portal Educativo de Ofimática** es una plataforma web estática desarrolla
 ```text
 vanilla-blog-ofimatica/
 │
-├── index.html                        # [Entry Point] Portal principal con cuadrícula de tarjetas de módulos, badges SVG y toggle de tema.
-├── main-style.css                    # [Estilos Globales] Tokens Warm Paper & Obsidian Terminal, reset compactado (25%), tipografía Serif, diagramas SVG y @media print.
-├── busqueda.js                       # [Lógica Client-Side] Búsqueda en vivo multi-lista, toggle e inicialización de tema oscuro, sync de print-header y modal listener.
+├── index.html                        # [Entry Point] Portal principal con cuadrícula de 8 tarjetas (7 módulos + herramientas), badges SVG y toggle de tema.
+├── main-style.css                    # [Estilos Globales] Tokens Warm Paper & Obsidian Terminal, reset compactado, tipografía Serif/Sans/Mono, diagramas SVG y @media print.
+├── busqueda.js                       # [Lógica Client-Side de Índices] Búsqueda en vivo multi-lista y toggle de tema (solo se carga en páginas índice).
 ├── vercel.json                       # [Configuración CDN] Parámetros de despliegue en Vercel (cleanUrls y trailingSlash).
 │
 ├── imgs/                             # [Recursos Visuales] Íconos vectoriales SVG e ilustraciones estáticas del sistema.
@@ -47,6 +47,7 @@ vanilla-blog-ofimatica/
 │   ├── img-word.png                  # Banner ilustrativo para Word.
 │   └── svg/                          # [Íconos Vectoriales SVG Nativo]
 │       ├── icon-excel.svg            # Ícono vectorial del módulo Excel.
+│       ├── icon-herramientas.svg     # Ícono vectorial del módulo 07 Programas y Herramientas.
 │       ├── icon-home.svg             # Ícono de miga de pan (Breadcrumb Home).
 │       ├── icon-ia.svg               # Ícono vectorial del módulo Inteligencia Artificial.
 │       ├── icon-internet.svg         # Ícono vectorial del módulo Internet.
@@ -74,15 +75,21 @@ vanilla-blog-ofimatica/
 │   ├── index-teoria.html             # Índice teórico del módulo Word.
 │   ├── index-guias.html              # Índice de guías paso a paso del módulo Word.
 │   ├── index-practicas.html          # Índice de ejercicios prácticos del módulo Word.
+│   ├── lista/                        # [Índice Auxiliar] lista-guias.txt: borrador de temas de guías pendientes.
+│   ├── validador-web/                # [Herramienta Exclusiva] Word-eSports: validador gamificado de .docx en el navegador.
+│   │   ├── index.html                # Interfaz de subida/validación (sin main-style.css ni IIFE Anti-FOUC).
+│   │   ├── css/styles.css            # Estilos propios de la herramienta.
+│   │   └── js/                       # core.js, app.js y validador-caso-{01,02,05,06,07,08}.js (usa JSZip y fast-xml-parser vía CDN).
 │   ├── teoria/                       # [5 Clases Teóricas]
 │   │   ├── anatomia-documento-formal.html # Estructura y márgenes de documentos institucionales.
 │   │   ├── espacio-en-blanco.html    # Principios de composición y legibilidad.
 │   │   ├── formatos-de-papel.html    # Dimensiones estándar (Carta, A4, Oficio).
 │   │   ├── formatos-docx-vs-pdf.html # Diferencias operativas y casos de uso.
-│   │   └── introduccion-word.html   # Interfaz de cinta de opciones y entorno.
+│   │   ├── introduccion-word.html    # Interfaz de cinta de opciones y entorno.
+│   │   └── word-clases-imgs/         # [Imágenes] Infografías y capturas de las lecciones (word-*.png).
 │   ├── guias/                        # [11 Guías Metodológicas]
 │   │   ├── alineaciones-de-texto.html# Configuración de alineación y justificación.
-│   │   ├── atajos-esenciales.html    # Atajos de teclado en Microsoft Word.
+│   │   ├── atajos-esenciales.html    # Atajos de teclado en Microsoft Word (incluye modal #imageModal).
 │   │   ├── como-corregir-errores.html# Ortografía, gramática y diccionario.
 │   │   ├── copiar-cortar-pegar.html  # Portapapeles y pegado especial.
 │   │   ├── espaciado-interlineado.html# Párrafo, interlineado y sangrías.
@@ -91,7 +98,8 @@ vanilla-blog-ofimatica/
 │   │   ├── mayusculas-minusculas.html# Cambio de caja y capitalización.
 │   │   ├── saltos.html               # Saltos de página y de sección.
 │   │   ├── smartart-jerarquia.html   # Gráficos SmartArt y organigramas.
-│   │   └── vinetas-y-numeracion.html # Listas multinivel y viñetas custom.
+│   │   ├── vinetas-y-numeracion.html # Listas multinivel y viñetas custom.
+│   │   └── word-guias-imgs/          # [Imágenes] Capturas de pasos para las guías (word-*.png).
 │   └── practicas/                    # [7 Prácticas y Ejercicios]
 │       ├── practica-01-formato-base.html
 │       ├── practica-02-modelo-carta.html
@@ -100,19 +108,22 @@ vanilla-blog-ofimatica/
 │       ├── practica-05-recetario-nutricion.html
 │       ├── practica-06-registro-personal.html
 │       ├── practica-07-informe-evaluacion.html
-│       └── ejercicios/               # [Recursos Descargables] Plantillas .docx, .xlsx e imágenes base.
+│       ├── ejercicios/               # [Recursos Descargables] Plantillas .docx, .xlsx e imágenes base.
+│       └── imgs-practicas/           # [Imágenes] Previsualizaciones de soluciones de las prácticas.
 │
 ├── 02-powerpoint/                    # [Módulo 02] Microsoft PowerPoint
 │   ├── index-teoria.html             # Índice teórico de presentaciones efectivas.
 │   ├── index-guias.html              # Índice de guías teatrales, multimedia y de diseño.
 │   ├── index-practicas.html          # Índice de prácticas de diapositivas.
+│   ├── archivos/                     # [Material Soporte] Presentaciones .pptx, documentos .pdf y skill de generación con pptxgenjs.
 │   ├── teoria/                       # [6 Clases Teóricas]
 │   │   ├── diseno-maquetacion-tipografia.html # Regla 60-30-10 y jerarquía tipográfica.
 │   │   ├── el-arte-de-exponer.html   # Técnicas de oratoria y apoyo visual.
 │   │   ├── introduccion-powerpoint.html # Interfaz y vistas de la aplicación.
 │   │   ├── storytelling.html         # Narrativa visual aplicada a datos.
 │   │   ├── teoria-del-color.html     # Paletas cromáticas y contraste accesible.
-│   │   └── visualizacion-de-datos.html# Transformación de datos en gráficos claros.
+│   │   ├── visualizacion-de-datos.html# Transformación de datos en gráficos claros.
+│   │   └── clases.css                # [Estilo Local] Ajustes específicos de las clases teóricas.
 │   ├── guias/                        # [9 Guías Metodológicas]
 │   │   ├── album-de-fotografias.html
 │   │   ├── atajos-esenciales.html
@@ -122,7 +133,9 @@ vanilla-blog-ofimatica/
 │   │   ├── insertar-formas.html          # Guía interactiva SVG de formas vectoriales.
 │   │   ├── insertar-imagenes.html        # Guía interactiva SVG de inserción y marco de imágenes.
 │   │   ├── transiciones-y-animaciones.html
-│   │   └── uso-de-zoomit.html
+│   │   ├── uso-de-zoomit.html
+│   │   ├── guias.css                # [Estilo Local] Estilos de las guías del módulo.
+│   │   └── ppt-guias-imgs/          # [Imágenes] Capturas de guías (ej. zoomit-interfaz.png).
 │   └── practicas/                    # [7 Ejercicios Prácticos]
 │       ├── practica-01-presentacion-base.html
 │       ├── practica-02-multimedia-animacion.html
@@ -130,7 +143,8 @@ vanilla-blog-ofimatica/
 │       ├── practica-04-metabolismo.html
 │       ├── practica-05-animacion-graficos.html
 │       ├── practica-06-impacto-coca-cola.html
-│       └── practica-07-diapositivas-ia.html
+│       ├── practica-07-diapositivas-ia.html
+│       └── practicas.css             # [Estilo Local] Estilos de las páginas de prácticas.
 │
 ├── 03-excel/                         # [Módulo 03] Microsoft Excel
 │   ├── index-teoria.html             # Índice de hojas de cálculo y fórmulas.
@@ -140,22 +154,27 @@ vanilla-blog-ofimatica/
 │   │   ├── 2026-01-17-introduccion.html       # Filas, columnas, celdas y referencias.
 │   │   ├── 2026-01-24-formato-celdas.html     # Tipos de datos y formato numérico.
 │   │   ├── 2026-01-31-operaciones-formulas.html # Sintaxis de fórmulas y operadores.
-│   │   └── 2026-02-07-calculo-beneficio.html  # Fórmulas de aplicación financiera.
+│   │   ├── 2026-02-07-calculo-beneficio.html  # Fórmulas de aplicación financiera.
+│   │   ├── excel-imgs/               # [Imágenes] Capturas de la interfaz de las clases.
+│   │   └── excel-calculo-beneficio/  # [Imágenes] Secuencia de capturas de la clase de cálculo de beneficio.
 │   ├── guias/                        # [1 Guía]
-│   │   └── atajos-esenciales.html    # Atajos de navegación en cuadrículas de Excel.
+│   │   ├── atajos-esenciales.html    # Atajos de navegación en cuadrículas de Excel (incluye modal #imageModal).
+│   │   └── atajos-excel-imgs/        # [Imágenes] Capturas de cada atajo de teclado (excel_*.png).
 │   └── practicas/                    # [5 Prácticas]
 │       ├── practica-01-planilla-notas.html
 │       ├── practica-02-ejercicios-datos-base.html
 │       ├── practica-03-miscelaneas.html
 │       ├── practica-04-combinar-correspondencia.html
-│       └── practica-05-funciones-basicas.html
+│       ├── practica-05-funciones-basicas.html
+│       └── ejercicios/               # [Recursos Descargables] Plantillas .xlsx, .docx y .pdf base.
 │
 ├── 04-publisher/                     # [Módulo 04] Microsoft Publisher
 │   ├── index-teoria.html             # Índice de publicaciones y maquetación.
-│   ├── index-guias.html              # Índice de guías teatrales de Publisher.
+│   ├── index-guias.html              # Índice de guías de maquetación de Publisher.
 │   ├── index-practicas.html          # Índice de ejercicios de diseño impreso.
 │   ├── teoria/                       # [1 Clase]
-│   │   └── 2026-02-07-introduccion.html # Lienzo de trabajo y guías de impresión.
+│   │   ├── 2026-02-07-introduccion.html # Lienzo de trabajo y guías de impresión.
+│   │   └── publisher-imgs/           # [Imágenes] Capturas del entorno de trabajo y creación de publicaciones.
 │   ├── guias/                        # [1 Guía]
 │   │   └── conceptos-basicos.html    # Operación de objetos y cajas de texto.
 │   └── practicas/                    # [1 Práctica]
@@ -172,7 +191,8 @@ vanilla-blog-ofimatica/
 │   ├── guias/                        # [3 Guías]
 │   │   ├── guia-pixabay.html
 │   │   ├── guia-musica-pixabay.html
-│   │   └── guia-videos-pixabay.html
+│   │   ├── guia-videos-pixabay.html
+│   │   └── img-guias/guia-pixabay/   # [Imágenes] Capturas de pasos de la guía de Pixabay.
 │   └── practicas/                    # [3 Prácticas]
 │       ├── practica-pixabay.html
 │       ├── practica-musica-pixabay.html
@@ -191,7 +211,8 @@ vanilla-blog-ofimatica/
 │   └── practicas/                    # [3 Prácticas]
 │       ├── practica-gemini-texto.html
 │       ├── practica-generar-diapositivas.html
-│       └── practica-nanobanana-imagenes.html
+│       ├── practica-nanobanana-imagenes.html
+│       └── archivos/                 # [Recursos Descargables] System Prompt Generar Diapositivas.docx.
 │
 ├── instaladores-herramientas/        # [Módulo 07] Programas y Herramientas Utilitarias
 │   ├── index.html                    # Catálogo de herramientas descargables de ofimática y mecanografía.
@@ -227,7 +248,7 @@ vanilla-blog-ofimatica/
 | :--- | :--- | :--- | :--- |
 | **Estructura Web** | HTML5 Semántico | W3C Standard | Garantiza accesibilidad nativa, SEO optimizado y compatibilidad universal con navegadores sin compilación. |
 | **Diseño y Estilos** | CSS3 Vanilla | CSS Grid / Flexbox | Control fino sobre variables de diseño (`:root`), rendimiento acelerado por GPU y media queries de impresión (`@media print`). |
-| **Lógica Client-Side** | JavaScript Vanilla | ECMAScript 5 (ES5) | Compatibilidad retrospectiva total sin requerir transpiladores (Babel) ni empaquetadores (Webpack/Vite). |
+| **Lógica Client-Side** | JavaScript Vanilla | ES5 en `busqueda.js` (índices) y ES2020 en scripts inline de contenido | `busqueda.js` (páginas índice) usa sintaxis ES5 sin transpiladores; las páginas de contenido llevan scripts inline propios que emplean *optional chaining* (`?.`). |
 | **Tipografía Digital** | Google Fonts API | Source Serif 4 & Inter | Combinación perfecta entre elegancia editorial para títulos y máxima legibilidad sans-serif para cuerpos de texto. |
 | **Iconografía Vectorial** | SVG Nativos | XML/SVG 1.1 | Cero latencia de red adicional, escalabilidad infinita en pantallas Retina/4K y adaptación automática al modo oscuro. |
 | **Persistencia de Tema** | Web Storage API | `localStorage` | Almacenamiento key-value local sin cookies, liviano y accesible de manera síncrona en la carga del sitio. |

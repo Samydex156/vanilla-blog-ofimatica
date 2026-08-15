@@ -18,6 +18,7 @@
 - 📰 **04 Publisher**: Maquetación editorial, diseño de publicaciones impresas, tarjetas formales y piezas publicitarias.
 - 🌐 **05 Internet**: Navegación web profesional, banco de recursos multimedia (imágenes, audio y video con Pixabay) y licencias digitales.
 - 🤖 **06 Inteligencia Artificial**: Prompts efectivos para generación de texto con Google Gemini, creación de imágenes y diapositivas asistidas.
+- 🧰 **07 Programas y Herramientas**: Catálogo de utilidades descargables, incluyendo el instalador del programa de mecanografía MecaSamType.
 
 ### 🎨 Sistema de Diseño y UI/UX
 - 📜 **Warm Paper & Obsidian Terminal**: Estilo visual retro-elegante inspirado en publicaciones editoriales clásicas y consolas modernas, respaldado por la tipografía Serif `Source Serif 4` e `Inter`.
@@ -25,8 +26,8 @@
 - 📊 **Diagramas Teóricos en SVG**: Maquetación interactiva de interfaces de usuario (ventanas de aplicaciones Office, esquemas de color y gráficos de datos) renderizados completamente en código SVG.
 - 🔍 **Buscador en Vivo Unificado**: Motor de búsqueda síncrono del lado del cliente para filtrar contenidos e índices en tiempo real de forma instantánea.
 - 🌙 **Modo Oscuro Anti-FOUC**: Cambio cromático fluido entre temas Claro y Oscuro con persistencia en `localStorage` y ejecución síncrona en `<head>` para evitar parpadeos visuales (*Flash of Unstyled Content*).
-- 🖨️ **Modo Impresión Institucional**: Hojas de estilo dedicadas (`@media print`) que generan un encabezado institucional de 3 columnas, numeración de páginas y formato carta limpio sin elementos superfluos.
-- ⚡ **Arquitectura Cero-Dependencias**: Desarrollado con tecnología nativa (Vanilla HTML5, CSS3 y JS ES5), garantizando tiempo de carga instantáneo y cero costo de mantenimiento.
+- 🖨️ **Modo Impresión Institucional**: Hojas de estilo dedicadas (`@media print`) que generan un encabezado institucional de 3 columnas y formato carta limpio sin elementos superfluos. *(Las reglas para numeración de páginas con `.print-footer` existen en CSS pero aún no se renderizan en ningún HTML.)*
+- ⚡ **Arquitectura Cero-Dependencias**: Desarrollado con tecnología nativa (Vanilla HTML5, CSS3 y JS sin frameworks ni bundlers), garantizando tiempo de carga instantáneo y cero costo de mantenimiento. *(Excepción: el validador `01-word/validador-web/` carga JSZip y fast-xml-parser desde CDN.)*
 
 ---
 
@@ -36,8 +37,8 @@
 | :--- | :--- | :--- |
 | **Alternar Tema Visual** | Clic en el botón `[ ☀ ]` / `[ ☾ ]` | Cambia instantáneamente entre el modo *Warm Paper* (Claro) y *Obsidian Terminal* (Oscuro). |
 | **Búsqueda Rápida** | Tipear en `<input id="buscador-*">` | Filtra dinámicamente las lecciones y ejercicios en las páginas índice. |
-| **Ampliar Imagen** | Clic en imagen `.shortcut-thumbnail` | Abre el modal de zoom a pantalla completa para examinar capturas e interfaces. |
-| **Cerrar Zoom** | Tecla `Escape` o clic fuera del modal | Oculta el modal de zoom de imagen de forma inmediata. |
+| **Ampliar Imagen** | Clic en imagen `.shortcut-thumbnail` | Abre el modal de zoom a pantalla completa en las guías de atajos de Word y Excel (`#imageModal`). |
+| **Cerrar Zoom** | Tecla `Escape` o clic fuera del modal | Oculta el modal de zoom de imagen de forma inmediata (guías de atajos). |
 | **Imprimir / Exportar PDF** | `Ctrl + P` / `Cmd + P` | Genera una vista de impresión optimizada en formato carta con encabezado institucional. |
 
 ---

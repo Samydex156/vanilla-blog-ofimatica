@@ -7,9 +7,9 @@
 ## 1. Rol e Instrucción de Actuación
 
 ```text
-Actúa como un Desarrollador Frontend Principal y Arquitecto Web Senior experto en Vanilla Jamstack, HTML5 semántico, CSS3 avanzado (Variables CSS, Grid Layout, Flexbox, Media Queries de impresión @media print) y JavaScript nativo (ECMAScript 5, sin frameworks ni dependencias).
+Actúa como un Desarrollador Frontend Principal y Arquitecto Web Senior experto en Vanilla Jamstack, HTML5 semántico, CSS3 avanzado (Variables CSS, Grid Layout, Flexbox, Media Queries de impresión @media print) y JavaScript nativo (sin frameworks ni dependencias; ES5 en `busqueda.js` para índices y scripts inline modernos en las páginas de contenido).
 
-Tu objetivo es construir, mantener o replicar un Portal Web Educativo Estático de 7 Módulos de Ofimática con soporte de temas Claro (Warm Paper) y Oscuro (Obsidian Terminal), búsqueda en vivo en tiempo real, modales de imágenes con control de teclado, maquetación de impresión institucional y gráficos 100% vectoriales SVG.
+Tu objetivo es construir, mantener o replicar un Portal Web Educativo Estático de 7 Módulos de Ofimática más un catálogo de herramientas (8 tarjetas en la portada) con soporte de temas Claro (Warm Paper) y Oscuro (Obsidian Terminal), búsqueda en vivo en tiempo real en índices, modal de ampliación de imágenes en guías de atajos, maquetación de impresión institucional y gráficos 100% vectoriales SVG.
 ```
 
 ---
@@ -25,8 +25,9 @@ Tu objetivo es construir, mantener o replicar un Portal Web Educativo Estático 
    - Los módulos se deben nombrar siguiendo la regla: `NN-nombre-modulo/` (`00-windows/`, `01-word/`, `02-powerpoint/`, `03-excel/`, `04-publisher/`, `05-internet/`, `06-inteligencia-artificial/`).
    - Cada módulo contiene exactamente tres subcarpetas: `teoria/`, `guias/`, `practicas/`.
    - Cada módulo posee 3 páginas índice en su raíz: `index-teoria.html`, `index-guias.html`, `index-practicas.html`.
-4. **Compatibilidad Retrospectiva**:
-   - El código JavaScript debe ser compatible con ES5 (usar `var`, `function`, `document.getElementById`, `querySelectorAll`).
+4. **Compatibilidad Retrospectiva (Dual)**:
+   - El archivo `busqueda.js` (solo se carga en páginas índice) debe ser compatible con ES5 (usar `var`, `function`, `document.getElementById`, `querySelectorAll`).
+   - Las páginas de contenido (`teoria/`, `guias/`, `practicas/`) NO cargan `busqueda.js`; llevan scripts inline propios que pueden usar sintaxis moderna (optional chaining `?.`).
 5. **Rutas Relativas Limpias**:
    - Todas las referencias a archivos CSS, JS e imágenes deben ser estrictamente relativas (`../`, `../../`).
 
@@ -45,7 +46,7 @@ Tu objetivo es construir, mantener o replicar un Portal Web Educativo Estático 
     <title>Título de la Lección - Prof. Samuel Durán</title>
     <link rel="stylesheet" href="../../main-style.css" />
     <script>
-      (function(){var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme:dark)").matches)){document.documentElement.setAttribute("data-theme","dark")}})();
+      (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.setAttribute('data-theme','dark')}})();
     </script>
   </head>
   <body>
@@ -53,7 +54,7 @@ Tu objetivo es construir, mantener o replicar un Portal Web Educativo Estático 
     <div class="print-header">
       <div class="print-header-left">Prof. Samuel Durán</div>
       <div class="print-header-center"><!-- Copiado dinámicamente por JS --></div>
-      <div class="print-header-right">Instituto Nueva Tecnología</div>
+      <div class="print-header-right">Instituto Nueva Tecnología &mdash; Ofimática</div>
     </div>
 
     <!-- Navegación Breadcrumb -->
@@ -61,53 +62,45 @@ Tu objetivo es construir, mantener o replicar un Portal Web Educativo Estático 
       <a href="../../index.html">Inicio</a> &gt;
       <a href="../index-teoria.html">Módulo</a> &gt;
       <span>Título Lección</span>
-      <button id="theme-toggle" class="theme-btn">☾</button>
+      <button id="theme-toggle" aria-label="Cambiar modo oscuro/claro" class="theme-btn">☾</button>
     </nav>
 
     <!-- Contenido Principal -->
-    <main class="container">
-      <article class="content">
-        <header class="lesson-header">
-          <h1>Nombre Completo de la Lección</h1>
-          <p class="subtitle">Descripción breve del contenido pedagógico</p>
-        </header>
+    <main class="content">
+      <header class="lesson-header">
+        <h1>Nombre Completo de la Lección</h1>
+        <p class="subtitle">Descripción breve del contenido pedagógico</p>
+      </header>
 
-        <section class="lesson-body">
-          <!-- Párrafos, tablas, cajas informativas y diagramas SVG -->
-          <div class="box box-tip">
-            <strong>Consejo:</strong> Contenido informativo relevante.
-          </div>
-        </section>
-      </article>
+      <section class="lesson-body">
+        <!-- Párrafos, tablas, cajas informativas y diagramas SVG -->
+        <div class="box box-tip">
+          <strong>Consejo:</strong> Contenido informativo relevante.
+        </div>
+      </section>
     </main>
 
-    <!-- Modal de Zoom de Imagen -->
-    <div id="img-modal" class="modal" onclick="closeModal()">
-      <span class="close">&times;</span>
-      <img class="modal-content" id="modal-img" alt="Zoom" />
-    </div>
+    <footer>
+      <p>&copy; 2026 - Instituto Nueva Tecnología | Prof. Samuel Durán | Ofimática</p>
+    </footer>
 
-    <!-- Pie de página para impresión -->
-    <div class="print-footer">Página <span class="page-number"></span></div>
-
-    <!-- Script único desacoplado -->
-    <script src="../../busqueda.js"></script>
+    <!-- Scripts inline (las páginas de contenido NO usan busqueda.js) -->
+    <script>!function(){var h=document.querySelector('.lesson-header h1,.guide-header h1');var c=document.querySelector('.print-header-center');if(h&&c)c.textContent=h.textContent}()</script>
     <script>
-      function openModal(img) {
-        document.getElementById("modal-img").src = img.src;
-        document.getElementById("img-modal").style.display = "flex";
-      }
-      function closeModal() {
-        document.getElementById("img-modal").style.display = "none";
-      }
+      document.getElementById("theme-toggle")?.addEventListener("click",function(){var t=document.documentElement.getAttribute("data-theme");t=t==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",t);localStorage.setItem("theme",t);this.textContent=t==="dark"?"\u2600":"\u263E"});
+      (function(){var t=localStorage.getItem("theme");var b=document.getElementById("theme-toggle");if(b){b.textContent=t==="dark"?"\u2600":"\u263E"}})();
     </script>
   </body>
 </html>
 ```
 
+> **Modal de ampliación de imágenes**: solo se incluye en las guías de atajos de Word (`01-word/guias/atajos-esenciales.html`) y Excel (`03-excel/guias/atajos-esenciales.html`), mediante un `<div id="imageModal">` y funciones inline `openModal`/`closeModal` con cierre por tecla `Escape`. Las demás páginas de contenido no lo incorporan.
+
 ---
 
 ## 4. Especificación de Servicios y Lógica JavaScript (`busqueda.js`)
+
+> **Nota de carga**: `busqueda.js` se incluye únicamente en las páginas índice (portada, los 21 índices `index-{teoria,guias,practicas}.html` y el catálogo de herramientas). Las páginas de contenido llevan scripts inline (ver Sección 3) y no lo cargan.
 
 Crea o mantiene el archivo `busqueda.js` en la raíz del proyecto con la siguiente implementación exacta:
 
@@ -167,6 +160,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 ```
 
+> **Observación**: El bloque 4 (listener `Escape` sobre `#img-modal`) está presente en el archivo real, pero **ninguna página usa el id `img-modal`**, por lo que es código inerte. El modal real de ampliación de imágenes vive en las guías de atajos de Word y Excel con el id `#imageModal` y funciones inline `openModal`/`closeModal` (ver Sección 3). Mantener el bloque de `busqueda.js` tal cual para preservar compatibilidad con el archivo desplegado.
+
 ---
 
 ## 5. Diseño de Interfaz de Usuario (UI) y Sistema de Estilos (`main-style.css`)
@@ -174,37 +169,79 @@ document.addEventListener("DOMContentLoaded", function () {
 ### 🎨 Tokens Globales de Diseño (`:root` y `[data-theme="dark"]`)
 
 ```css
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap');
+
 :root {
   /* Warm Paper Theme (Light Mode Default) */
+  --bg-color: #F7F6F3;
   --bg-body: #F7F6F3;
   --bg-content: #FFFFFF;
+
   --text-color: #1A1A1A;
-  --text-muted: #555555;
-  --border-color: #E2E0D8;
-  --card-bg: #FFFFFF;
+  --text-main: #1A1A1A;
+  --text-muted: #5C5955;
+
+  --title-main: #111111;
+  --white: #FFFFFF;
+  --border-light: #D9D7CE;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 2px 3px 0px rgba(0, 0, 0, 0.08);
+  --transition: all 0.2s ease-in-out;
+
+  --font-heading: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-serif: 'Source Serif 4', Georgia, serif;
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  
-  /* Módulo Colors */
-  --color-win: #0078D4;
-  --color-word: #1B5E20;
-  --color-ppt: #D84315;
-  --color-xls: #2E7D32;
-  --color-pub: #00838F;
-  --color-net: #1565C0;
-  --color-ia: #6A1B9A;
+  --font-code: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
+
+  --width-reading: 800px;
+  --width-wide: 950px;
+  --radius: 4px;
+
+  /* Muted Retro Color Palette por Módulo */
+  --color-win: #295F85;
+  --color-word: #254875;
+  --color-excel: #1E5E3A;
+  --color-ppt: #9E3B2B;
+  --color-pub: #1B5E55;
+  --color-net: #9E771D;
+  --color-ia: #5B3A70;
+  --color-herramientas: #D96B27;
+
+  --primary-color: #2B2B2B;
+  --accent-color: #5C5955;
+
+  --color-success: #1E5E3A;
+  --color-warning: #9E771D;
+  --color-danger: #9E3B2B;
+  --color-code-bg: #F0EEE9;
 }
 
 [data-theme="dark"] {
   /* Obsidian Terminal Theme (Dark Mode) */
+  --bg-color: #121212;
   --bg-body: #121212;
   --bg-content: #1C1C1C;
+
   --text-color: #E6E6E6;
-  --text-muted: #AAAAAA;
-  --border-color: #333333;
-  --card-bg: #1E1E1E;
+  --text-main: #E6E6E6;
+  --text-muted: #9E9E9E;
+
+  --title-main: #F0F0F0;
+  --white: #1C1C1C;
+  --border-light: #2E2E2E;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 2px 3px 0px rgba(0, 0, 0, 0.4);
+
+  --color-code-bg: #262626;
+
+  --primary-color: #E6E6E6;
+  --accent-color: #9E9E9E;
 }
 ```
+
+> **Nota de colores**: el módulo Excel usa la variable `--color-excel` (no `--color-xls`), y el módulo 07 Programas y Herramientas usa `data-module="herramientas"` con `--color-herramientas`. La tipografía monoespaciada `JetBrains Mono` se usa en atajos, código y breadcrumbs.
 
 ### 🖨️ Configuración del Modo Impresión (`@media print`)
 
@@ -214,27 +251,68 @@ document.addEventListener("DOMContentLoaded", function () {
     size: letter;
     margin: 1.5cm 2cm;
   }
-  
+
   body {
     background: #FFFFFF !important;
     color: #000000 !important;
     font-size: 11pt;
+    line-height: 1.6;
   }
-  
+
   /* Ocultar elementos no imprimibles */
-  nav, button, .theme-btn, .modal, .buscador-index, footer {
+  nav, footer, .buscador-index, .modal, .links, .card-icon, .badge, .step-list, script {
     display: none !important;
   }
-  
-  /* Activar encabezado institucional */
+
+  /* Contenido principal sin bordes ni sombras */
+  .content, .content.is-wide, .guide-container {
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    max-width: 100%;
+  }
+
+  .lesson-header { border-bottom: 1px solid #ccc; }
+  .lesson-header h1 { font-size: 18pt; }
+  .lesson-body p { font-size: 11pt; line-height: 1.7; }
+  .lesson-body h2 { font-size: 15pt; }
+  .lesson-body h3 { font-size: 12pt; }
+  .lesson-body img { max-width: 80% !important; margin: 1.5rem auto; border: 0.5px solid #ddd; }
+  table.wiki-table, .guide-container table, .content table { font-size: 9.5pt; }
+
+  /* Encabezado institucional (3 columnas flex 30% | 40% | 30%) */
   .print-header {
-    display: grid !important;
-    grid-template-columns: 1fr auto 1fr;
-    border-bottom: 2px solid #000;
-    padding-bottom: 8px;
-    margin-bottom: 20px;
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
     font-size: 9pt;
-    font-weight: bold;
+    color: #444;
+    border-bottom: 1px solid #999;
+    padding-bottom: 0.3cm;
+    margin-bottom: 1cm;
+  }
+
+  .print-header-left  { text-align: left;   width: 30%; }
+  .print-header-center { text-align: center; width: 40%; font-weight: 600; font-size: 10pt; }
+  .print-header-right { text-align: right;  width: 30%; font-size: 8.5pt; }
+
+  /* Pie de página con número de página (el elemento .print-footer aún no existe en el HTML) */
+  .print-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 8pt;
+    color: #888;
+    border-top: 1px solid #ccc;
+    padding-top: 0.2cm;
+  }
+
+  .print-footer::after {
+    content: "Página " counter(page);
   }
 }
 ```

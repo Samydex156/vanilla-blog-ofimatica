@@ -57,7 +57,7 @@ Atributos personalizados utilizados en el DOM para la selección cromática y l�
 | Atributo | Elemento Target | Valores Permitidos | Descripción |
 | :--- | :--- | :--- | :--- |
 | `data-theme` | `<html>` | `"dark"` \| `"light"` | Controla las variables CSS globales para el tema *Warm Paper* (light) o *Obsidian Terminal* (dark). |
-| `data-module` | `.card`, `.module-section` | `"win"`, `"word"`, `"ppt"`, `"xls"`, `"pub"`, `"net"`, `"ia"` | Identifica el módulo activo para aplicar el color distintivo en bordes, badges y acentos visuales. |
+| `data-module` | `.card`, `.module-section`, `.item-list` | `"win"`, `"word"`, `"ppt"`, `"xls"`, `"pub"`, `"net"`, `"ia"`, `"herramientas"` | Identifica el módulo activo para aplicar el color distintivo en bordes, badges y acentos visuales. `"herramientas"` corresponde a la tarjeta 07 Programas y Herramientas de la portada. |
 
 ---
 
@@ -67,13 +67,14 @@ Campos requeridos en la maquetación HTML de cualquier lección o guía pedagóg
 
 | Nombre del Campo / Elemento | Selector / Clase CSS | Tipo HTML | Restricción | Descripción |
 | :--- | :--- | :--- | :--- | :--- |
-| **ID de Tema Toggle** | `#theme-toggle` | `<button>` | Obligatorio | Botón interactivo que conmuta el estado de `localStorage`. |
-| **Buscador de Índice** | `#buscador-*` | `<input>` | Requerido en Índices | Campo de texto que activa la búsqueda en vivo. |
+| **ID de Tema Toggle** | `#theme-toggle` | `<button>` | Obligatorio | Botón interactivo que conmuta el estado de `localStorage`. En páginas índice lo gestiona `busqueda.js`; en páginas de contenido se implementa con un script inline propio. |
+| **Buscador de Índice** | `#buscador-*` | `<input>` | Requerido en Índices | Campo de texto que activa la búsqueda en vivo vía `busqueda.js`. |
 | **Lista de Contenidos** | `.item-list` | `<ul>` / `<ol>` | Requerido en Índices | Contenedor principal de los enlaces a clases. |
 | **Ítem de Lista** | `.item-list li` | `<li>` | Multiplicidad N | Elemento evaluado dinámicamente por la búsqueda en vivo. |
-| **Título de Lección** | `.lesson-header h1` | `<h1>` | Unico por Página | Título principal copiado síncronamente al encabezado de impresión. |
-| **Cabecera Impresión Centro** | `.print-header-center` | `<div>` | Requerido para Impresión | Recibe el contenido textual del `<h1>` mediante `busqueda.js`. |
-| **Modal de Imagen** | `#img-modal` | `<div>` | Requerido en Contenidos | Contenedor overlay para ampliación de capturas e imágenes. |
+| **Título de Lección** | `.lesson-header h1`, `.guide-header h1` | `<h1>` | Único por Página | Título principal copiado al encabezado de impresión (script inline en contenido, `busqueda.js` en índices). |
+| **Cabecera Impresión Centro** | `.print-header-center` | `<div>` | Requerido para Impresión | Recibe el contenido textual del `<h1>` mediante script inline / `busqueda.js`. |
+| **Modal de Imagen** | `#imageModal` | `<div>` | Opcional (guías de atajos de Word y Excel) | Contenedor overlay para ampliación de capturas. Solo existe en `01-word/guias/atajos-esenciales.html` y `03-excel/guias/atajos-esenciales.html`, con lógica inline (`openModal`/`closeModal`). |
+| **Pie de Impresión** | `.print-footer` | `<div>` | No implementado | Existen reglas CSS (`counter(page)`) pero ningún HTML incluye el elemento actualmente, por lo que la numeración de páginas no se renderiza. |
 
 ---
 
@@ -81,6 +82,6 @@ Campos requeridos en la maquetación HTML de cualquier lección o guía pedagóg
 
 Al no existir un motor de base de datos relacional, la **estrategia de indexación** se traslada al procesamiento en memoria del navegador:
 
-1. **Búsqueda DOM Directa O(N)**: El script `busqueda.js` ejecuta un selector masivo `document.querySelectorAll(".item-list li")` al cargar la página. Al filtrar, realiza búsquedas de subcadenas (`indexOf`) en memoria sobre el arreglo cargado, logrando tiempos de respuesta de **< 2 milisegundos**.
+1. **Búsqueda DOM Directa O(N)**: El script `busqueda.js` (cargado únicamente en las 23 páginas índice) ejecuta un selector masivo `document.querySelectorAll(".item-list li")` al cargar la página. Al filtrar, realiza búsquedas de subcadenas (`indexOf`) en memoria sobre el arreglo cargado, logrando tiempos de respuesta de **< 2 milisegundos**.
 2. **Caché Estático en CDN (Vercel)**: Los archivos estáticos cuentan con cabeceras HTTP de caché optimizadas para minimizar la latencia de red en cargas consecutivas.
 3. **Optimización de Assets Vectoriales**: El uso de íconos en formato `.svg` elimina la necesidad de tablas de metadatos de imágenes pesadas y llamadas adicionales a bases de datos.

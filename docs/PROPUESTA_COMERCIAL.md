@@ -4,7 +4,7 @@
 
 El **Portal Educativo de Ofimática** es una solución digital integral diseñada para centralizar, estandarizar y optimizar la enseñanza de herramientas informáticas y productividad digital en instituciones educativas y centros de capacitación.
 
-A través de un portal web de alta velocidad, los estudiantes acceden de forma instantánea a **7 módulos completos de formación** (Windows, Word, PowerPoint, Excel, Publisher, Internet e Inteligencia Artificial), incorporando guías interactivas paso a paso, lecciones teóricas ilustradas y plantillas de práctica profesional descargables. Desarrollado con tecnología de vanguardia sin dependencias complejas, garantiza **cero costos recurrentes de infraestructura, disponibilidad 24/7 y una experiencia de aprendizaje de primer nivel en cualquier dispositivo**.
+A través de un portal web de alta velocidad, los estudiantes acceden de forma instantánea a **7 módulos completos de formación** (Windows, Word, PowerPoint, Excel, Publisher, Internet e Inteligencia Artificial) más un **catálogo de herramientas descargables** (Módulo 07), incorporando guías interactivas paso a paso, lecciones teóricas ilustradas y plantillas de práctica profesional descargables. Desarrollado con tecnología de vanguardia sin dependencias complejas, garantiza **cero costos recurrentes de infraestructura, disponibilidad 24/7 y una experiencia de aprendizaje de primer nivel en cualquier dispositivo**.
 
 ---
 
@@ -24,7 +24,7 @@ Sin un portal educativo centralizado, las instituciones y docentes enfrentan ine
 | Pilar de Valor | Descripción Comercial | Impacto Directo |
 | :--- | :--- | :--- |
 | 🚀 **Acceso Inmediato sin Barreras** | Sin registros, ni inicios de sesión, ni descarga de aplicaciones. Funciona en cualquier navegador. | Adopción del 100% de los estudiantes desde el primer día de clase. |
-| 📚 **Centralización Pedagógica** | 77+ clases y guías estructuradas metodológicamente en una sola biblioteca digital. | Coherencia en el plan de estudios y calidad de enseñanza garantizada. |
+| 📚 **Centralización Pedagógica** | 80+ lecciones, guías y prácticas (23 de teoría, 30 guías y 28 ejercicios) estructuradas metodológicamente en una sola biblioteca digital. | Coherencia en el plan de estudios y calidad de enseñanza garantizada. |
 | 💰 **Cero Costos de Mantenimiento** | Arquitectura estática sin servidor backend ni bases de datos activas. | Gastos operativos de software reducidos exactamente a $0 USD/mes. |
 | 🌙 **Estudio Nocturno Accesible** | Modo oscuro inteligente Anti-FOUC que protege la salud visual del estudiante. | Aumento en la tasa de finalización de ejercicios y tareas prácticas. |
 | 🖨️ **Formato Impreso Profesional** | Botón de impresión limpia que formatea las guías a tamaño carta con membrete institucional. | Reducción de hasta un 70% en el consumo de tinta y papel. |
