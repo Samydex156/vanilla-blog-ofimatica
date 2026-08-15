@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Guía de ZoomIt - Prof. Samuel Durán</title>
     <link rel="stylesheet" href="../../main-style.css" />
-    <link rel="stylesheet" href="../../main-style.css" />
     <link rel="stylesheet" href="guias.css" />
       <script>
       (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.setAttribute('data-theme','dark')}})();
@@ -40,11 +39,6 @@
         <p>
           <strong>ZoomIt</strong> (de Sysinternals/Microsoft) es una pequeña utilidad gratuita indispensable para cualquier persona que da presentaciones, clases o tutoriales técnicos. Se ejecuta en segundo plano y te permite interactuar con tu pantalla (incluso fuera de PowerPoint) con simples atajos de teclado.
         </p>
-
-        <figure class="guide-img-container" style="text-align: center;">
-          <img src="ppt-guias-imgs/zoomit-interfaz.png" alt="Interfaz de Configuración de ZoomIt" class="guide-img" style="max-width: 400px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" onerror="this.style.display='none'">
-          <figcaption style="font-size: 0.85em; color: #666; margin-top: 0.5rem;">Panel principal de configuración de ZoomIt.</figcaption>
-        </figure>
 
         <!-- SVG INTERFAZ ANIMADA: SIMULADOR ZOOMIT EN VIVO -->
         <div class="svg-window-container" style="margin: 1.5rem 0; width: 100%; text-align: center;">
@@ -299,5 +293,6 @@
     document.getElementById("theme-toggle")?.addEventListener("click",function(){var t=document.documentElement.getAttribute("data-theme");t=t==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",t);localStorage.setItem("theme",t);this.textContent=t==="dark"?"\u2600":"\u263E"});
     (function(){var t=localStorage.getItem("theme");var b=document.getElementById("theme-toggle");if(b){b.textContent=t==="dark"?"\u2600":"\u263E"}})();
   </script>
+    <div class="print-footer"></div>
   </body>
 </html>

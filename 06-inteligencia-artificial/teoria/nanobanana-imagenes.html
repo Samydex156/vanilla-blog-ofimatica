@@ -1,10 +1,9 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nano Banana: Generación de Imágenes - Prof. Samuel Durán</title>
-    <link rel="stylesheet" href="../../main-style.css" />
     <link rel="stylesheet" href="../../main-style.css" />
     <style>
       .box-ia {
@@ -77,5 +76,6 @@
     document.getElementById("theme-toggle")?.addEventListener("click",function(){var t=document.documentElement.getAttribute("data-theme");t=t==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",t);localStorage.setItem("theme",t);this.textContent=t==="dark"?"\u2600":"\u263E"});
     (function(){var t=localStorage.getItem("theme");var b=document.getElementById("theme-toggle");if(b){b.textContent=t==="dark"?"\u2600":"\u263E"}})();
   </script>
+    <div class="print-footer"></div>
   </body>
 </html>
