@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Práctica 08: Carta Formal con OpenCode - Prof. Samuel Durán</title>
+    <link rel="stylesheet" href="../../main-style.css" />
+    <style>
+      .box-ia { border-left-color: var(--color-ia); background-color: #f5eef8; }
+      [data-theme="dark"] .box-ia { background: #2a1f33; color: #e0c8f0; }
+    </style>
+    <script>
+      (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.setAttribute('data-theme','dark')}})();
+    </script>
+  </head>
+  <body>
+    <div class="print-header">
+      <div class="print-header-left">Prof. Samuel William Durán Quispe</div>
+      <div class="print-header-center"></div>
+      <div class="print-header-right">Instituto Nueva Tecnología &mdash; Ofimática &mdash; IA &mdash; 2026</div>
+    </div>
+
+    <nav class="breadcrumb-nav">
+      <a href="../../index.html"><svg class="icon-svg-home" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -1px; margin-right: 4px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>Inicio</a> >
+      <a href="../index-practicas.html">Inteligencia Artificial</a> >
+      <span>Práctica 08 — Carta</span>
+      <button id="theme-toggle" aria-label="Cambiar modo oscuro/claro" class="theme-btn">☾</button>
+    </nav>
+
+    <main class="content">
+      <header class="lesson-header">
+        <span class="date">Práctica 08 — Guiada</span>
+        <h1>Generar una Carta Formal con OpenCode y Word</h1>
+        <p class="subtitle">De la idea al .docx listo para imprimir — prompt → plan → generación → formato en Word</p>
+      </header>
+
+      <section class="lesson-body">
+        <div class="box box-ia">
+          <span class="box-title">Objetivo</span>
+          <p style="margin-bottom:0">Usar <strong>OpenCode (CLI o Desktop)</strong> para generar el contenido de una <strong>carta formal modelo</strong>, exportarlo a <code>.md</code>/<code>.docx</code> y darle formato profesional en <strong>Word</strong> según el módulo 01 (márgenes, estilos, sangrías, firma).</p>
+        </div>
+
+        <h2>Pre-requisitos</h2>
+        <ul>
+          <li>OpenCode instalado (<a href="../guias/guia-opencode-instalacion-windows.html">Guía Windows</a>) y proveedor conectado (<code>/connect</code>).</li>
+          <li>Word instalado. Repasa <a href="../../01-word/teoria/anatomia-documento-formal.html">Anatomía del documento formal</a> y <a href="../../01-word/guias/fuente-y-tamano.html">Fuente y tamaño</a>.</li>
+        </ul>
+
+        <h2>Paso 1 — Abrir el proyecto y pedir el plan (Tab)</h2>
+        <pre style="background: var(--color-code-bg); border: 1px solid var(--border-light); padding: 0.8rem; border-radius: var(--radius); overflow-x: auto; font-family: var(--font-code); font-size: 0.85rem;"><code>cd C:\dev\vanilla\vanilla-blog-ofimatica
+opencode</code></pre>
+        <p>Presiona <code>Tab</code> para entrar a <strong>Plan</strong> (verás “Plan mode” abajo a la derecha) y pega este prompt guiado:</p>
+        <pre style="background: var(--color-code-bg); border: 1px solid var(--border-light); padding: 0.8rem; border-radius: var(--radius); overflow-x: auto; font-family: var(--font-code); font-size: 0.85rem;"><code>Actúa como asistente administrativo del Instituto Nueva Tecnología. Necesito una carta formal en español, en formato A4, de una página, con tono respetuoso y claro.
+
+Contexto: solicitud de constancia de estudios para presentar a una empresa. Destinatario: Jefe de Recursos Humanos. Remitente: estudiante de Ofimática (deja placeholders [NOMBRE], [CARNET], [FECHA], [EMPRESA]).
+
+Estructura obligatoria: membrete, lugar y fecha, destinatario, asunto (Asunto: Solicitud de constancia de estudios), saludo, 3 párrafos (presentación + motivo + compromiso/agradecimiento), despedida, firma con cargo, pie con contacto. Usa lenguaje formal boliviano.
+
+Propón primero el plan: qué archivos crearás y qué validaciones harás, sin generar aún el documento.</code></pre>
+        <p>Revisa el plan que propone OpenCode. Si te gusta, presiona <code>Tab</code> de nuevo para pasar a <strong>Build</strong>.</p>
+
+        <h2>Paso 2 — Generar el borrador con OpenCode</h2>
+        <p>En Build, confirma:</p>
+        <pre style="background: var(--color-code-bg); border: 1px solid var(--border-light); padding: 0.8rem; border-radius: var(--radius); overflow-x: auto; font-family: var(--font-code); font-size: 0.85rem;"><code>Perfecto, genera ahora el archivo 06-inteligencia-artificial/practicas/archivos/carta-constancia-borrador.md con la carta completa y placeholders visibles.</code></pre>
+        <p>Abre el <code>.md</code> generado. Verifica con el docente que tenga los 7 elementos de una carta formal (membrete, fecha, destinatario, asunto, cuerpo, despedida, firma).</p>
+
+        <div class="box" style="border-left-color: var(--color-ia);">
+          <span class="box-title">Variación del prompt (para practicar)</span>
+          <p style="margin-bottom:0; font-size:0.9rem;">Cambia el motivo a “solicitud de práctica pre-profesional” o “carta de recomendación”. Observa cómo el mismo prompt estructurado (rol + tarea + formato + tono) genera resultados distintos sin reescribir todo.</p>
+        </div>
+
+        <h2>Paso 3 — Pasar a Word y aplicar formato profesional</h2>
+        <ol>
+          <li>Copia el contenido del <code>.md</code> a un nuevo <strong>Word</strong> (<code>Carta_Constancia_TuNombre.docx</code>).</li>
+          <li>Aplica del módulo Word: fuente <strong>Calibri 11 o Arial 12</strong>, interlineado <strong>1.15</strong>, alineación justificada en cuerpo, sangría primera línea 1.27 cm, márgenes 2.54 cm.</li>
+          <li>Encabezado con logo/membrete “Instituto Nueva Tecnología — Ofimática”, pie con teléfono y correo (usa <em>Insertar → Encabezado/Pie</em>).</li>
+          <li>Reemplaza placeholders <code>[NOMBRE]</code>, <code>[FECHA]</code> con tus datos y guarda.</li>
+          <li>Exporta a PDF con <code>Archivo → Exportar → Crear PDF</code> para verificar vista de impresión (usa <code>Ctrl+P</code> del portal como referencia).</li>
+        </ol>
+
+        <h2>Paso 4 — Verificar con OpenCode (opcional pero recomendado)</h2>
+        <pre style="background: var(--color-code-bg); border: 1px solid var(--border-light); padding: 0.8rem; border-radius: var(--radius); overflow-x: auto; font-family: var(--font-code); font-size: 0.85rem;"><code>Revisa @06-inteligencia-artificial/practicas/archivos/carta-constancia-borrador.md y dime si cumple con: asunto explícito, 3 párrafos, tono formal y placeholders. Sugiere 2 mejoras sin reescribir todo.</code></pre>
+        <p>Usa <code>/undo</code> si alguna edición no te convence y <code>/share</code> para generar el link de entrega.</p>
+
+        <div class="box" style="border-left-color: #d63031;">
+          <span class="box-title" style="color: #d63031;">Entregable</span>
+          <ol style="margin-bottom:0">
+            <li><code>carta-constancia-borrador.md</code> generado por OpenCode (en <code>06-inteligencia-artificial/practicas/archivos/</code> o captura del chat).</li>
+            <li><code>Carta_Constancia_TuNombre.docx</code> y <code>.pdf</code> con formato Word aplicado.</li>
+            <li>Link <code>/share</code> de la conversación Plan → Build.</li>
+          </ol>
+        </div>
+
+        <p style="font-size:0.85rem; color: var(--text-muted);">Tip Desktop: mismos pasos en <strong>OpenCode Desktop</strong> → <em>Open Project</em> → terminal integrada → <code>opencode</code>.</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 - Instituto Nueva Tecnología | Prof. Samuel Durán | Ofimática</p>
+    </footer>
+
+    <script>!function(){var h=document.querySelector('.lesson-header h1,.guide-header h1');var c=document.querySelector('.print-header-center');if(h&&c)c.textContent=h.textContent}()</script>
+    <script>
+      document.getElementById("theme-toggle")?.addEventListener("click",function(){var t=document.documentElement.getAttribute("data-theme");t=t==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",t);localStorage.setItem("theme",t);this.textContent=t==="dark"?"\u2600":"\u263E"});
+      (function(){var t=localStorage.getItem("theme");var b=document.getElementById("theme-toggle");if(b){b.textContent=t==="dark"?"\u2600":"\u263E"}})();
+    </script>
+    <div class="print-footer"></div>
+  </body>
+</html>

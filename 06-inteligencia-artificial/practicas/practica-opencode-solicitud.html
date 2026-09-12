@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Práctica 09: Solicitud con OpenCode - Prof. Samuel Durán</title>
+    <link rel="stylesheet" href="../../main-style.css" />
+    <style>
+      .box-ia { border-left-color: var(--color-ia); background-color: #f5eef8; }
+      [data-theme="dark"] .box-ia { background: #2a1f33; color: #e0c8f0; }
+    </style>
+    <script>
+      (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.setAttribute('data-theme','dark')}})();
+    </script>
+  </head>
+  <body>
+    <div class="print-header">
+      <div class="print-header-left">Prof. Samuel William Durán Quispe</div>
+      <div class="print-header-center"></div>
+      <div class="print-header-right">Instituto Nueva Tecnología &mdash; Ofimática &mdash; IA &mdash; 2026</div>
+    </div>
+
+    <nav class="breadcrumb-nav">
+      <a href="../../index.html"><svg class="icon-svg-home" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -1px; margin-right: 4px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>Inicio</a> >
+      <a href="../index-practicas.html">Inteligencia Artificial</a> >
+      <span>Práctica 09 — Solicitud</span>
+      <button id="theme-toggle" aria-label="Cambiar modo oscuro/claro" class="theme-btn">☾</button>
+    </nav>
+
+    <main class="content">
+      <header class="lesson-header">
+        <span class="date">Práctica 09 — Guiada</span>
+        <h1>Generar una Solicitud Formal con OpenCode</h1>
+        <p class="subtitle">Solicitud de permiso / ampliación de plazo — del prompt al documento con membrete institucional</p>
+      </header>
+
+      <section class="lesson-body">
+        <div class="box box-ia">
+          <span class="box-title">Objetivo</span>
+          <p style="margin-bottom:0">Emplear <strong>OpenCode en modo Plan → Build</strong> para redactar una <strong>solicitud formal modelo</strong> (permiso académico o ampliación de plazo), pulirla iterando el prompt y maquetarla en Word con numeración, asunto y firma digital.</p>
+        </div>
+
+        <h2>Escenario</h2>
+        <p>Eres estudiante de Ofimática y necesitas solicitar al Director Académico <strong>permiso por 2 días</strong> o <strong>ampliación de plazo para entrega de proyecto</strong>. La solicitud debe ser breve (¾ de página), formal y lista para imprimir en hoja carta con membrete del instituto.</p>
+
+        <h2>Paso 1 — Plan con OpenCode (Tab)</h2>
+        <pre style="background: var(--color-code-bg); border: 1px solid var(--border-light); padding: 0.8rem; border-radius: var(--radius); overflow-x: auto; font-family: var(--font-code); font-size: 0.85rem;"><code>cd C:\dev\vanilla\vanilla-blog-ofimatica
+opencode</code></pre>
+        <p>Entra a <strong>Plan</strong> con <code>Tab</code> y usa este prompt base (copia tal cual, luego personaliza los corchetes):</p>
+        <pre style="background: var(--color-code-bg); border: 1px solid var(--border-light); padding: 0.8rem; border-radius: var(--radius); overflow-x: auto; font-family: var(--font-code); font-size: 0.85rem;"><code>Actúa como redactor administrativo del Instituto Nueva Tecnología. Redacta una SOLICITUD formal en español, hoja carta, máximo 250 palabras, tono formal y directo.
+
+Datos variables (deja placeholders): [NOMBRE COMPLETO], [CURSO/PARALELO], [FECHA], [DESTINATARIO: Director Académico], [MOTIVO: ampliación de plazo de entrega del proyecto de Access por motivos de salud], [FECHA PROPUESTA: 15/03/2026], [TEL/CORREO].
+
+Estructura: membrete "Instituto Nueva Tecnología — Ofimática", lugar y fecha, destinatario con cargo, asunto (Asunto: Solicitud de ampliación de plazo), referencia opcional, saludo, 2 párrafos (exposición del motivo + petición concreta con compromiso), agradecimiento, despedida, firma con nombre/curso/carnet, CC: Tutor. No inventes datos, usa placeholders.
+
+Primero propón el plan de generación y validación, sin crear el archivo aún.</code></pre>
+
+        <h2>Paso 2 — Generar y refinar iterando</h2>
+        <p>Pasa a <strong>Build</strong> (<code>Tab</code>) y confirma:</p>
+        <pre style="background: var(--color-code-bg); border: 1px solid var(--border-light); padding: 0.8rem; border-radius: var(--radius); overflow-x: auto; font-family: var(--font-code); font-size: 0.85rem;"><code>Genera 06-inteligencia-artificial/practicas/archivos/solicitud-ampliacion-borrador.md con la solicitud completa.</code></pre>
+        <p>Ahora itera con prompts cortos para practicar refinamiento:</p>
+        <pre style="background: var(--color-code-bg); border: 1px solid var(--border-light); padding: 0.8rem; border-radius: var(--radius); overflow-x: auto; font-family: var(--font-code); font-size: 0.85rem;"><code>Hazla 20% más breve y usa viñetas para el compromiso
+Cambia el motivo a "permiso por 2 días por trámite familiar" manteniendo la estructura
+Añade al pie "Adjunto: certificado médico (opcional)"</code></pre>
+        <p>Observa cómo mencionar <strong>rol + formato + tono</strong> en cada iteración evita que la IA se desvíe. Usa <code>/undo</code> si una versión empeora.</p>
+
+        <h2>Paso 3 — Llevar a Word y maquetar como solicitud</h2>
+        <ol>
+          <li>Crea <code>Solicitud_Ampliacion_TuNombre.docx</code> y pega el <code>.md</code> final.</li>
+          <li>Formato Word (módulo 01): <strong>Título “SOLICITUD” centrado, negrita 14 pt</strong>; asunto en negrita; cuerpo justificado 11 pt; interlineado 1.15; márgenes 2 cm; numeración de página en pie.</li>
+          <li>Inserta <strong>Tabla de datos</strong> de 2×2 para placeholders visibles (opcional): | Estudiante | [NOMBRE] | | Curso | [CURSO] | — aplica bordes finos.</li>
+          <li>Reemplaza un juego de placeholders con tus datos reales, deja el segundo juego como plantilla reutilizable.</li>
+          <li>Guarda y exporta a <strong>PDF</strong> (<code>Archivo → Exportar</code>). Verifica con vista preliminar del portal (el <code>.print-header</code> simula el membrete).</li>
+        </ol>
+
+        <div class="box box-ia">
+          <span class="box-title">Checklist de calidad (autoevalúa con OpenCode)</span>
+          <pre style="background: var(--color-code-bg); border: 1px solid var(--border-light); padding: 0.8rem; border-radius: var(--radius); overflow-x: auto; font-family: var(--font-code); font-size: 0.85rem;"><code>Evalúa @06-inteligencia-artificial/practicas/archivos/solicitud-ampliacion-borrador.md con este checklist y marca ✅/❌: 1) Asunto explícito, 2) Destinatario con cargo, 3) Motivo en 1 párrafo, 4) Petición concreta con fecha, 5) Tono formal, 6) Despedida + firma, 7) Placeholders intactos. Dame 2 mejoras puntuales.</code></pre>
+        </div>
+
+        <div class="box" style="border-left-color: #d63031;">
+          <span class="box-title" style="color: #d63031;">Entregable</span>
+          <ol style="margin-bottom:0">
+            <li><code>solicitud-ampliacion-borrador.md</code> generado por OpenCode + una iteración breve (captura o archivo).</li>
+            <li><code>Solicitud_Ampliacion_TuNombre.docx</code> y <code>.pdf</code> con formato Word (membrete, asunto, firma).</li>
+            <li>Link <code>/share</code> de la sesión Plan → Build → iteraciones.</li>
+          </ol>
+        </div>
+
+        <h2>Extensión (para quien termina antes)</h2>
+        <p>Pide a OpenCode que convierta la carta de la <a href="practica-opencode-carta-formal.html">Práctica 08</a> en solicitud con un solo prompt: <em>“Reusa la carta anterior y transfórmala en solicitud de permiso por 2 días, mantén placeholders y añade CC al tutor”</em>. Compara qué conserva y qué cambia — es la ventaja del enfoque procedural de OpenCode.</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 - Instituto Nueva Tecnología | Prof. Samuel Durán | Ofimática</p>
+    </footer>
+
+    <script>!function(){var h=document.querySelector('.lesson-header h1,.guide-header h1');var c=document.querySelector('.print-header-center');if(h&&c)c.textContent=h.textContent}()</script>
+    <script>
+      document.getElementById("theme-toggle")?.addEventListener("click",function(){var t=document.documentElement.getAttribute("data-theme");t=t==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",t);localStorage.setItem("theme",t);this.textContent=t==="dark"?"\u2600":"\u263E"});
+      (function(){var t=localStorage.getItem("theme");var b=document.getElementById("theme-toggle");if(b){b.textContent=t==="dark"?"\u2600":"\u263E"}})();
+    </script>
+    <div class="print-footer"></div>
+  </body>
+</html>
