@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Práctica 01: Base Clientes - Access</title>
+    <title>Práctica 01: Migración Excel a Access - Access</title>
     <link rel="stylesheet" href="../../main-style.css" />
     <script>
       (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.setAttribute('data-theme','dark')}})();
@@ -26,72 +26,85 @@
     <main class="content">
       <header class="lesson-header">
         <span class="date">Práctica #01</span>
-        <h1>Base de Datos de Clientes — Tablas y Relaciones</h1>
-        <p class="subtitle">Crea 2 tablas relacionadas, carga datos y genera una consulta básica</p>
+        <h1>Migración de Excel a Access — bdTienda y bdFarmacia</h1>
+        <p class="subtitle">Importa bases en Excel, crea el modelo relacional en Access y luego arma formularios</p>
       </header>
 
       <section class="lesson-body">
         <div class="box" style="border-left-color: var(--color-access);">
-          <span class="task-title">Objetivo de la Práctica</span>
-          <p>Diseñar una base relacional mínima: tabla <strong>Clientes</strong> (1) — <strong>Pedidos</strong> (N), aplicar integridad referencial y obtener un listado por ciudad.</p>
+          <span class="box-title">Objetivo</span>
+          <p>Migrar dos bases de datos de Excel a Microsoft Access mediante importación, definir claves primarias/foráneas y relaciones, y dejar el .accdb listo para construir formularios en la siguiente fase.</p>
         </div>
 
-        <h2>Instrucciones Paso a Paso</h2>
+        <h2>Archivos Base (Excel)</h2>
+        <p>Descarga los dos libros que contienen datos normalizados listos para importar. No los edites en Excel — el trabajo principal se hace en Access.</p>
 
-        <h3>1. Descarga del Material Base</h3>
-        <p>Si ya dispones de la plantilla, descárgala. Si aún no existe, crea la base en blanco según la <a href="../guias/crear-tabla.html">Guía 01</a>.</p>
         <div style="margin: 1rem 0; display: flex; gap: 0.6rem; flex-wrap: wrap;">
-          <a href="ejercicios/PlantillaClientes.accdb" download class="download-btn">📥 Descargar PlantillaClientes.accdb</a>
-          <a href="ejercicios/DatosClientes.xlsx" download class="download-btn">📥 DatosClientes.xlsx (para importar)</a>
+          <a href="archivos/bdTienda-v1.xlsx" download class="download-btn">📥 Descargar bdTienda-v1.xlsx</a>
+          <a href="archivos/bdFarmacia-v1.xlsx" download class="download-btn">📥 Descargar bdFarmacia-v1.xlsx</a>
         </div>
-        <p style="font-size: 0.85rem; color: var(--text-muted);">*Si los archivos aún no están subidos, los enlaces mostrarán 404 — reemplázalos al subir tus <code>.accdb</code> a <code>07-Access/practicas/ejercicios/</code>.</p>
 
-        <h3>2. Tabla Clientes (ya creada en la guía)</h3>
-        <ul class="step-list">
-          <li>Verifica campos: <code>IdCliente</code> (Autonumeración, PK), <code>NombreCompleto</code>, <code>Ciudad</code>, <code>Telefono</code>, <code>FechaRegistro</code>, <code>Activo</code>.</li>
-          <li>Carga 8 registros: 4 de La Paz, 2 de Cochabamba, 2 de Santa Cruz.</li>
+        <div class="box box-tip">
+          <span class="box-title">Contenido de cada libro</span>
+          <ul style="margin-bottom: 0;">
+            <li><strong>bdTienda-v1.xlsx:</strong> 4 hojas — VENDEDOR (10), PRODUCTO (50), VENTA (300), DETALLE_VENTA (906)</li>
+            <li><strong>bdFarmacia-v1.xlsx:</strong> 4 hojas — EMPLEADO (10), MEDICAMENTO (50), VENTA (300), DETALLE_VENTA (907)</li>
+          </ul>
+          <p style="margin-top: 0.6rem; margin-bottom: 0; font-size: 0.88rem; color: var(--text-muted);">Ambas bases comparten el patrón VENTA → DETALLE_VENTA (1 a N) y catálogos maestros. Ideal para practicar claves y relaciones idénticas en dos dominios distintos.</p>
+        </div>
+
+        <h2>Flujo de Migración (Excel → Access)</h2>
+
+        <h3>1. Crear la base destino</h3>
+        <p>Access → <strong>Base de datos en blanco</strong> → guarda como <code>Tienda_Migracion_TuNombre.accdb</code> y <code>Farmacia_Migracion_TuNombre.accdb</code> (una base por cada Excel).</p>
+
+        <h3>2. Importar cada hoja como tabla</h3>
+        <p>Por cada hoja: <strong>Datos externos → Nuevo origen de datos → Desde archivo → Excel</strong> → selecciona el .xlsx → <em>Importar el origen de datos en una nueva tabla de la base de datos actual</em> → marca <em>Primera fila contiene encabezados</em>.</p>
+        <ul>
+          <li>En el asistente, respeta los nombres: <code>VENDEDOR / PRODUCTO / VENTA / DETALLE_VENTA</code> (o <code>EMPLEADO / MEDICAMENTO / VENTA / DETALLE_VENTA</code>).</li>
+          <li>Define tipos: <code>Id*</code> como <em>Número entero largo</em> (luego será PK/FK), <code>PrecioUnitario/PrecioVenta</code> como <em>Moneda</em>, <code>Fecha</code> como <em>Fecha/Hora</em>, <code>Stock*</code> y <code>Cantidad</code> como <em>Número</em>.</li>
+          <li>No dejes que Access cree un campo <code>Id</code> automático si ya existe <code>IdVendedor/IdProducto/etc.</code> — elige <em>Elegir mi propia clave principal</em> y selecciona el Id correspondiente.</li>
         </ul>
 
-        <h3>3. Crear Tabla Pedidos</h3>
+        <h3>3. Definir claves primarias</h3>
+        <p>En <strong>Vista Diseño</strong> de cada tabla, asigna la llave (clic derecho → <em>Clave principal</em>):</p>
         <table class="wiki-table">
-          <thead><tr><th>Campo</th><th>Tipo</th><th>Notas</th></tr></thead>
+          <thead><tr><th>Base</th><th>Tabla</th><th>Clave principal</th></tr></thead>
           <tbody>
-            <tr><td>IdPedido</td><td>Autonumeración</td><td>PK</td></tr>
-            <tr><td>IdCliente</td><td>Número (Entero largo)</td><td>FK → Clientes.IdCliente</td></tr>
-            <tr><td>FechaPedido</td><td>Fecha/Hora</td><td>Predeterminado Ahora()</td></tr>
-            <tr><td>Monto</td><td>Moneda</td><td>2 decimales</td></tr>
-            <tr><td>Estado</td><td>Texto corto (15)</td><td>Lista: Pendiente | Entregado</td></tr>
+            <tr><td>Tienda</td><td>VENDEDOR</td><td>IdVendedor</td></tr>
+            <tr><td>Tienda</td><td>PRODUCTO</td><td>IdProducto</td></tr>
+            <tr><td>Tienda</td><td>VENTA</td><td>IdVenta</td></tr>
+            <tr><td>Tienda</td><td>DETALLE_VENTA</td><td>IdDetalle</td></tr>
+            <tr><td>Farmacia</td><td>EMPLEADO</td><td>IdEmpleado</td></tr>
+            <tr><td>Farmacia</td><td>MEDICAMENTO</td><td>IdMedicamento</td></tr>
+            <tr><td>Farmacia</td><td>VENTA</td><td>IdVenta</td></tr>
+            <tr><td>Farmacia</td><td>DETALLE_VENTA</td><td>IdDetalle</td></tr>
           </tbody>
         </table>
 
-        <h3>4. Crear la Relación 1-a-muchos</h3>
-        <p><strong>Herramientas de base de datos</strong> → <strong>Relaciones</strong> → agrega ambas tablas → arrastra <code>Clientes.IdCliente</code> sobre <code>Pedidos.IdCliente</code> → tilda <em>Exigir integridad referencial</em> + <em>Actualizar en cascada</em> → <strong>Crear</strong>.</p>
-        <p>Prueba la integridad: intenta crear un pedido con <code>IdCliente = 999</code> — Access debe rechazarlo.</p>
+        <h3>4. Crear relaciones e integridad referencial</h3>
+        <p><strong>Herramientas de base de datos → Relaciones</strong> → agrega las 4 tablas → arrastra:</p>
+        <ul>
+          <li>Tienda: <code>VENDEDOR.IdVendedor → VENTA.IdVendedor</code>, <code>VENTA.IdVenta → DETALLE_VENTA.IdVenta</code>, <code>PRODUCTO.IdProducto → DETALLE_VENTA.IdProducto</code></li>
+          <li>Farmacia: <code>EMPLEADO.IdEmpleado → VENTA.IdEmpleado</code>, <code>VENTA.IdVenta → DETALLE_VENTA.IdVenta</code>, <code>MEDICAMENTO.IdMedicamento → DETALLE_VENTA.IdMedicamento</code></li>
+        </ul>
+        <p>En cada relación tilda <em>Exigir integridad referencial</em> y <em>Actualizar en cascada los campos relacionados</em>. Verifica arrastrando un <code>IdVendedor</code> inexistente en VENTA — Access debe rechazarlo.</p>
 
-        <h3>5. Consulta Básica</h3>
-        <p><strong>Crear → Asistente para consultas →</strong> Tablas Clientes + Pedidos → campos <code>NombreCompleto, Ciudad, FechaPedido, Monto</code> → criterio en Ciudad: <code>"La Paz"</code> → guarda como <code>ConsultaLaPaz</code>. Ejecuta y verifica que solo aparezcan clientes paceños.</p>
-
-        <h3>6. Formulario Rápido (opcional)</h3>
-        <p>Selecciona tabla Clientes → <strong>Crear → Formulario</strong>. Guarda como <code>FrmClientes</code> y prueba ingresar un nuevo cliente desde el formulario.</p>
+        <h3>5. Siguiente fase: formularios</h3>
+        <p>Con el modelo migrado y relacionado, en la próxima clase construirás formularios (ej. formulario VENTA con subformulario DETALLE_VENTA) para carga operativa sin tocar las tablas directamente.</p>
 
         <div class="box" style="border-left-color: #d63031;">
           <span class="task-title" style="color: #d63031;">Entregable</span>
           <ol>
-            <li>Guarda como <code>Practica01-TuNombre-Clientes.accdb</code>.</li>
-            <li>Debe contener: 2 tablas relacionadas, ≥8 clientes, ≥5 pedidos, 1 consulta y (opcional) 1 formulario.</li>
-            <li>Envía por la plataforma o correo según indique el docente.</li>
+            <li>Dos archivos: <code>Tienda_Migracion_TuNombre.accdb</code> y <code>Farmacia_Migracion_TuNombre.accdb</code> con las 4 tablas importadas, PK definidas y relaciones con integridad referencial.</li>
+            <li>No se requiere aún formulario — quedará para la práctica 02.</li>
+            <li>Sube los .accdb a la plataforma o envíalos según indique el docente.</li>
           </ol>
         </div>
 
         <div class="box box-tip">
-          <span class="box-title">Dónde agregar más recursos</span>
-          <p>Sube futuros archivos a:</p>
-          <ul>
-            <li><code>07-Access/practicas/ejercicios/*.accdb</code> — bases de ejemplo/solución</li>
-            <li><code>07-Access/practicas/ejercicios/*.xlsx</code> — datos para importar</li>
-            <li><code>07-Access/archivos/*.pdf</code> — guías imprimibles o esquemas ER</li>
-          </ul>
-          <p>Enlázalos en las prácticas con: <code>&lt;a href="ejercicios/NombreArchivo.accdb" download&gt;</code> + clase <code>download-btn</code>.</p>
+          <span class="box-title">Dónde están los descargables</span>
+          <p>Los Excel viven en <code>07-Access/practicas/archivos/</code> y se enlazan como <code>archivos/bdTienda-v1.xlsx</code> (relativo a esta práctica). Para agregar nuevos recursos, súbelos a esa misma carpeta y añade un <code>&lt;a download&gt;</code> aquí.</p>
         </div>
       </section>
     </main>
