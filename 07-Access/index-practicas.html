@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Módulo Access - Prof. Samuel Durán - Ofimática</title>
+    <link rel="stylesheet" href="../main-style.css" />
+    <script>
+      (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.setAttribute('data-theme','dark')}})();
+    </script>
+  </head>
+  <body>
+    <header>
+      <div class="header-row">
+        <div class="header-text">
+          <h1>Lista de Prácticas - Módulo Access</h1>
+          <p>Ejercicios prácticos para reforzar bases de datos en Access.</p>
+        </div>
+        <button id="theme-toggle" aria-label="Cambiar modo oscuro/claro" class="theme-btn">☾</button>
+      </div>
+    </header>
+    <nav class="breadcrumb-nav">
+      <a href="../index.html"><svg class="icon-svg-home" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -1px; margin-right: 4px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>Inicio</a> > <span>Prácticas de Access</span>
+    </nav>
+    <main class="container">
+      <section class="module-section" data-module="access">
+        <h2>Ejercicios Propuestos</h2>
+        <input
+          type="text"
+          id="buscador-practicas"
+          class="buscador-index"
+          placeholder=" Buscar práctica por título o palabra clave..."
+        />
+        <ul class="item-list" data-module="access">
+          <li>
+            <a href="practicas/practica-01-base-clientes.html">
+              <span class="item-date"><span class="badge">Práctica 01</span></span>
+              <span class="item-title">Práctica 01: Base de Datos de Clientes — Tablas y Relaciones</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2026 - Instituto Nueva Tecnología | Prof. Samuel Durán | Ofimática</p>
+    </footer>
+    <script src="../busqueda.js"></script>
+  </body>
+</html>

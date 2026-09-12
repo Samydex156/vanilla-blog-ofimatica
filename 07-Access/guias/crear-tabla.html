@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guía: Crear Tabla en Access - Prof. Samuel Durán</title>
+    <link rel="stylesheet" href="../../main-style.css" />
+    <script>
+      (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.setAttribute('data-theme','dark')}})();
+    </script>
+  </head>
+  <body>
+    <div class="print-header">
+      <div class="print-header-left">Prof. Samuel William Durán Quispe</div>
+      <div class="print-header-center"></div>
+      <div class="print-header-right">Instituto Nueva Tecnología &mdash; Ofimática &mdash; Access &mdash; 2026</div>
+    </div>
+
+    <nav class="breadcrumb-nav">
+      <a href="../../index.html"><svg class="icon-svg-home" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -1px; margin-right: 4px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>Inicio</a> >
+      <a href="../index-guias.html">Access</a> >
+      <span>Guía Crear Tabla</span>
+      <button id="theme-toggle" aria-label="Cambiar modo oscuro/claro" class="theme-btn">☾</button>
+    </nav>
+
+    <main class="content">
+      <header class="lesson-header">
+        <span class="date">Guía 01</span>
+        <h1>Cómo Crear tu Primera Tabla en Access</h1>
+        <p class="subtitle">Vista Diseño — tipos de datos — clave principal</p>
+      </header>
+
+      <section class="lesson-body">
+        <div class="box" style="border-left-color: var(--color-access);">
+          <span class="box-title">Objetivo</span>
+          <p>Al finalizar podrás crear la tabla <strong>Clientes</strong> con campos bien tipados y clave principal autonumérica lista para relacionar.</p>
+        </div>
+
+        <h2>Pasos</h2>
+
+        <h3>1. Crear la base</h3>
+        <p>Access → <code>Base de datos en blanco</code> → nombre <code>PracticaAccess_TuNombre.accdb</code> → <em>Crear</em>. Se genera <code>Tabla1</code>; ciérrala sin guardar para empezar en <em>Vista Diseño</em>.</p>
+
+        <h3>2. Ir a Vista Diseño</h3>
+        <p>Pestaña <strong>Crear</strong> → <strong>Tabla</strong> → botón <strong>Vista</strong> → <strong>Vista Diseño</strong>. Nombra la tabla <code>Clientes</code>.</p>
+
+        <h3>3. Definir campos</h3>
+        <table class="wiki-table">
+          <thead>
+            <tr><th>Campo</th><th>Tipo de datos</th><th>Descripción</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>IdCliente</td><td>Autonumeración</td><td>Clave principal</td></tr>
+            <tr><td>NombreCompleto</td><td>Texto corto (80)</td><td>Requerido = Sí</td></tr>
+            <tr><td>Ciudad</td><td>Texto corto (40)</td><td>Valor predeterminado: La Paz</td></tr>
+            <tr><td>Telefono</td><td>Texto corto (15)</td><td>Máscara de entrada opcional</td></tr>
+            <tr><td>FechaRegistro</td><td>Fecha/Hora</td><td>Predeterminado = Ahora()</td></tr>
+            <tr><td>Activo</td><td>Sí/No</td><td>Casilla de verificación</td></tr>
+          </tbody>
+        </table>
+
+        <h3>4. Clave principal</h3>
+        <p>Selecciona <code>IdCliente</code> → clic derecho → <strong>Clave principal</strong> (icono llave). Access no permitirá duplicados ni nulos en ese campo.</p>
+
+        <h3>5. Guardar y probar</h3>
+        <p>Guarda (<code>Ctrl+G</code>), cambia a <strong>Vista Hoja de datos</strong> e ingresa 3 registros de prueba. Observa cómo <code>IdCliente</code> se autonumera.</p>
+
+        <div class="box box-tip">
+          <span class="box-title">Consejo</span>
+          <p>Usa <code>Texto corto</code> para códigos/teléfonos (no números) y <code>Número</code> solo para cálculos. Define <em>Tamaño del campo</em> abajo para optimizar almacenamiento.</p>
+        </div>
+
+        <h2>Próximos pasos</h2>
+        <p>En la práctica <a href="../practicas/practica-01-base-clientes.html">Práctica 01</a> usarás esta tabla como base y agregarás una segunda tabla <code>Pedidos</code> para crear la primera relación 1-a-muchos.</p>
+
+        <div class="box" style="border-left-color: var(--color-access);">
+          <span class="box-title">Recursos descargables</span>
+          <p>Coloca aquí tus plantillas vacías:</p>
+          <ul>
+            <li><code>practicas/ejercicios/PlantillaClientes.accdb</code> — base vacía con tabla sin datos</li>
+            <li><code>archivos/EsquemaClientes.pdf</code> — diagrama de campos para imprimir</li>
+          </ul>
+          <p style="margin-top: 0.6rem;"><em>Cuando subas los archivos, enlázalos con:</em> <code>&lt;a href="../practicas/ejercicios/PlantillaClientes.accdb" download&gt;</code></p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 - Instituto Nueva Tecnología | Prof. Samuel Durán | Ofimática</p>
+    </footer>
+
+    <script>!function(){var h=document.querySelector('.lesson-header h1,.guide-header h1');var c=document.querySelector('.print-header-center');if(h&&c)c.textContent=h.textContent}()</script>
+    <script>
+      document.getElementById("theme-toggle")?.addEventListener("click",function(){var t=document.documentElement.getAttribute("data-theme");t=t==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",t);localStorage.setItem("theme",t);this.textContent=t==="dark"?"\u2600":"\u263E"});
+      (function(){var t=localStorage.getItem("theme");var b=document.getElementById("theme-toggle");if(b){b.textContent=t==="dark"?"\u2600":"\u263E"}})();
+    </script>
+    <div class="print-footer"></div>
+  </body>
+</html>

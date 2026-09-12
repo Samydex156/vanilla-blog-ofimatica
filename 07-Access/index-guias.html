@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Módulo Access - Prof. Samuel Durán - Ofimática</title>
+    <link rel="stylesheet" href="../main-style.css" />
+    <script>
+      (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.setAttribute('data-theme','dark')}})();
+    </script>
+  </head>
+  <body>
+    <header>
+      <div class="header-row">
+        <div class="header-text">
+          <h1>Guías Complementarias - Módulo Access</h1>
+          <p>Manuales paso a paso para dominar Microsoft Access.</p>
+        </div>
+        <button id="theme-toggle" aria-label="Cambiar modo oscuro/claro" class="theme-btn">☾</button>
+      </div>
+    </header>
+    <nav class="breadcrumb-nav">
+      <a href="../index.html"><svg class="icon-svg-home" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -1px; margin-right: 4px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>Inicio</a> > <span>Guías de Access</span>
+    </nav>
+    <main class="container">
+      <section class="module-section" data-module="access">
+        <h2>Listado de Guías</h2>
+        <input
+          type="text"
+          id="buscador-guias"
+          class="buscador-index"
+          placeholder=" Buscar guía por título o palabra clave..."
+        />
+        <ul class="item-list" data-module="access">
+          <li>
+            <a href="guias/crear-tabla.html">
+              <span class="item-title"><svg class="icon-svg-book" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 6px; opacity: 0.85;"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>Guía 01: Cómo Crear tu Primera Tabla en Access</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2026 - Instituto Nueva Tecnología | Prof. Samuel Durán | Ofimática</p>
+    </footer>
+    <script src="../busqueda.js"></script>
+  </body>
+</html>

@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Práctica 01: Base Clientes - Access</title>
+    <link rel="stylesheet" href="../../main-style.css" />
+    <script>
+      (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.setAttribute('data-theme','dark')}})();
+    </script>
+  </head>
+  <body>
+    <div class="print-header">
+      <div class="print-header-left">Prof. Samuel William Durán Quispe</div>
+      <div class="print-header-center"></div>
+      <div class="print-header-right">Instituto Nueva Tecnología &mdash; Ofimática &mdash; Access &mdash; 2026</div>
+    </div>
+
+    <nav class="breadcrumb-nav">
+      <a href="../../index.html"><svg class="icon-svg-home" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -1px; margin-right: 4px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>Inicio</a> >
+      <a href="../index-practicas.html">Access (Prácticas)</a> >
+      <span>Práctica 01</span>
+      <button id="theme-toggle" aria-label="Cambiar modo oscuro/claro" class="theme-btn">☾</button>
+    </nav>
+
+    <main class="content">
+      <header class="lesson-header">
+        <span class="date">Práctica #01</span>
+        <h1>Base de Datos de Clientes — Tablas y Relaciones</h1>
+        <p class="subtitle">Crea 2 tablas relacionadas, carga datos y genera una consulta básica</p>
+      </header>
+
+      <section class="lesson-body">
+        <div class="box" style="border-left-color: var(--color-access);">
+          <span class="task-title">Objetivo de la Práctica</span>
+          <p>Diseñar una base relacional mínima: tabla <strong>Clientes</strong> (1) — <strong>Pedidos</strong> (N), aplicar integridad referencial y obtener un listado por ciudad.</p>
+        </div>
+
+        <h2>Instrucciones Paso a Paso</h2>
+
+        <h3>1. Descarga del Material Base</h3>
+        <p>Si ya dispones de la plantilla, descárgala. Si aún no existe, crea la base en blanco según la <a href="../guias/crear-tabla.html">Guía 01</a>.</p>
+        <div style="margin: 1rem 0; display: flex; gap: 0.6rem; flex-wrap: wrap;">
+          <a href="ejercicios/PlantillaClientes.accdb" download class="download-btn">📥 Descargar PlantillaClientes.accdb</a>
+          <a href="ejercicios/DatosClientes.xlsx" download class="download-btn">📥 DatosClientes.xlsx (para importar)</a>
+        </div>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">*Si los archivos aún no están subidos, los enlaces mostrarán 404 — reemplázalos al subir tus <code>.accdb</code> a <code>07-Access/practicas/ejercicios/</code>.</p>
+
+        <h3>2. Tabla Clientes (ya creada en la guía)</h3>
+        <ul class="step-list">
+          <li>Verifica campos: <code>IdCliente</code> (Autonumeración, PK), <code>NombreCompleto</code>, <code>Ciudad</code>, <code>Telefono</code>, <code>FechaRegistro</code>, <code>Activo</code>.</li>
+          <li>Carga 8 registros: 4 de La Paz, 2 de Cochabamba, 2 de Santa Cruz.</li>
+        </ul>
+
+        <h3>3. Crear Tabla Pedidos</h3>
+        <table class="wiki-table">
+          <thead><tr><th>Campo</th><th>Tipo</th><th>Notas</th></tr></thead>
+          <tbody>
+            <tr><td>IdPedido</td><td>Autonumeración</td><td>PK</td></tr>
+            <tr><td>IdCliente</td><td>Número (Entero largo)</td><td>FK → Clientes.IdCliente</td></tr>
+            <tr><td>FechaPedido</td><td>Fecha/Hora</td><td>Predeterminado Ahora()</td></tr>
+            <tr><td>Monto</td><td>Moneda</td><td>2 decimales</td></tr>
+            <tr><td>Estado</td><td>Texto corto (15)</td><td>Lista: Pendiente | Entregado</td></tr>
+          </tbody>
+        </table>
+
+        <h3>4. Crear la Relación 1-a-muchos</h3>
+        <p><strong>Herramientas de base de datos</strong> → <strong>Relaciones</strong> → agrega ambas tablas → arrastra <code>Clientes.IdCliente</code> sobre <code>Pedidos.IdCliente</code> → tilda <em>Exigir integridad referencial</em> + <em>Actualizar en cascada</em> → <strong>Crear</strong>.</p>
+        <p>Prueba la integridad: intenta crear un pedido con <code>IdCliente = 999</code> — Access debe rechazarlo.</p>
+
+        <h3>5. Consulta Básica</h3>
+        <p><strong>Crear → Asistente para consultas →</strong> Tablas Clientes + Pedidos → campos <code>NombreCompleto, Ciudad, FechaPedido, Monto</code> → criterio en Ciudad: <code>"La Paz"</code> → guarda como <code>ConsultaLaPaz</code>. Ejecuta y verifica que solo aparezcan clientes paceños.</p>
+
+        <h3>6. Formulario Rápido (opcional)</h3>
+        <p>Selecciona tabla Clientes → <strong>Crear → Formulario</strong>. Guarda como <code>FrmClientes</code> y prueba ingresar un nuevo cliente desde el formulario.</p>
+
+        <div class="box" style="border-left-color: #d63031;">
+          <span class="task-title" style="color: #d63031;">Entregable</span>
+          <ol>
+            <li>Guarda como <code>Practica01-TuNombre-Clientes.accdb</code>.</li>
+            <li>Debe contener: 2 tablas relacionadas, ≥8 clientes, ≥5 pedidos, 1 consulta y (opcional) 1 formulario.</li>
+            <li>Envía por la plataforma o correo según indique el docente.</li>
+          </ol>
+        </div>
+
+        <div class="box box-tip">
+          <span class="box-title">Dónde agregar más recursos</span>
+          <p>Sube futuros archivos a:</p>
+          <ul>
+            <li><code>07-Access/practicas/ejercicios/*.accdb</code> — bases de ejemplo/solución</li>
+            <li><code>07-Access/practicas/ejercicios/*.xlsx</code> — datos para importar</li>
+            <li><code>07-Access/archivos/*.pdf</code> — guías imprimibles o esquemas ER</li>
+          </ul>
+          <p>Enlázalos en las prácticas con: <code>&lt;a href="ejercicios/NombreArchivo.accdb" download&gt;</code> + clase <code>download-btn</code>.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 - Instituto Nueva Tecnología | Prof. Samuel Durán | Ofimática</p>
+    </footer>
+
+    <script>!function(){var h=document.querySelector('.lesson-header h1,.guide-header h1');var c=document.querySelector('.print-header-center');if(h&&c)c.textContent=h.textContent}()</script>
+    <script>
+      document.getElementById("theme-toggle")?.addEventListener("click",function(){var t=document.documentElement.getAttribute("data-theme");t=t==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",t);localStorage.setItem("theme",t);this.textContent=t==="dark"?"\u2600":"\u263E"});
+      (function(){var t=localStorage.getItem("theme");var b=document.getElementById("theme-toggle");if(b){b.textContent=t==="dark"?"\u2600":"\u263E"}})();
+    </script>
+    <div class="print-footer"></div>
+  </body>
+</html>
