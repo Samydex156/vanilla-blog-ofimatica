@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Catálogo de programas y herramientas de práctica ofimática - Prof. Samuel Durán" />
+    <meta name="description" content="Catálogo de programas y herramientas de práctica ofimática y diseño animado - Prof. Samuel Durán" />
     <title>Programas y Herramientas - Prof. Samuel Durán</title>
     <link rel="stylesheet" href="../main-style.css" />
     <script>
@@ -16,7 +16,7 @@
       <div class="header-row">
         <div class="header-text">
           <h1>Programas y Herramientas</h1>
-          <p>Software utilitario e instaladores recomendados para el aprendizaje pr&aacute;ctico.</p>
+          <p>Software utilitario, instaladores y recursos de diseño animado para el aprendizaje práctico.</p>
         </div>
         <button id="theme-toggle" aria-label="Cambiar modo oscuro/claro" class="theme-btn">☾</button>
       </div>
@@ -33,14 +33,76 @@
 
     <main class="container">
       <section class="module-section" data-module="herramientas">
-        <h2>Cat&aacute;logo de Software y Herramientas</h2>
+        <h2>Catálogo de Software y Herramientas</h2>
         <input
           type="text"
           id="buscador-index"
           class="buscador-index"
-          placeholder=" Buscar programa por nombre o palabra clave..."
+          placeholder=" Buscar programa por nombre o palabra clave... (ej: Cavalry, MecaSamType, animación)"
         />
         <ul class="item-list" data-module="herramientas">
+          <!-- Cavalry -->
+          <li>
+            <div style="background: var(--bg-body); border: 1px solid var(--border-light); border-radius: var(--radius); padding: 1.2rem; transition: var(--transition);">
+              <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.6rem;">
+                <h3 style="font-family: var(--font-heading); font-size: 1.2rem; color: var(--title-main); margin: 0; display: flex; align-items: center; gap: 0.5rem;">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-herramientas);">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    <rect x="2" y="2" width="20" height="20" rx="2" stroke-opacity="0.35"></rect>
+                    <circle cx="12" cy="12" r="3" fill="currentColor" fill-opacity="0.12"></circle>
+                  </svg>
+                  Cavalry — Diseño Animado 2D
+                </h3>
+                <span class="badge" style="background: var(--color-herramientas); color: #FFF;">Animación / Motion</span>
+              </div>
+
+              <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 0.8rem; line-height: 1.5;">
+                Software profesional de <strong>animación 2D procedural en tiempo real</strong>, gratuito para particulares vía cuenta Canva. Alternativa liviana a After Effects para motion con shapes, texto, duplicator, rigs y exportación Lottie/MP4. Ideal para introducir animación sin licencias.
+                <a href="https://cavalry.studio/es_419/" target="_blank" rel="noopener" style="color: var(--color-herramientas); font-weight: 600;">cavalry.studio</a>
+              </p>
+
+              <!-- Mini teoría -->
+              <div style="background: var(--bg-content); border: 1px solid var(--border-light); border-left: 3px solid var(--color-herramientas); border-radius: var(--radius); padding: 0.8rem 1rem; margin-bottom: 0.9rem;">
+                <strong style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--title-main); display: block; margin-bottom: 0.4rem;">Principios básicos (mini-teoría)</strong>
+                <ul style="margin: 0; padding-left: 1.1rem; font-size: 0.88rem; color: var(--text-muted); line-height: 1.5;">
+                  <li><strong>Procedural:</strong> una sola modificación propaga sistemas completos (rigs, duplicadores, falloffs).</li>
+                  <li><strong>Tiempo real:</strong> viewport GPU acelerado, sin espera de preview.</li>
+                  <li><strong>Datos en movimiento:</strong> vincula CSV/hoja de cálculo y genera animaciones a escala.</li>
+                  <li><strong>Export:</strong> Lottie, secuencia PNG, MP4 — listo para web/redes.</li>
+                </ul>
+              </div>
+
+              <!-- Requisitos - enfocado a PCs del instituto -->
+              <div style="background: var(--bg-content); border: 1px solid var(--border-light); border-radius: var(--radius); padding: 0.8rem 1rem; margin-bottom: 0.9rem;">
+                <strong style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--title-main); display: block; margin-bottom: 0.4rem;">Requisitos y compatibilidad (PCs del instituto)</strong>
+                <ul style="margin: 0; padding-left: 1.1rem; font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">
+                  <li><strong>Oficial:</strong> Windows 10+, 512 MB RAM mínimo, GPU OpenGL 4.1, Intel Gen 12 Alder Lake o superior, internet para login Canva (<a href="https://cavalry.studio/docs/getting-started/requirements/" target="_blank" rel="noopener" style="color: var(--color-herramientas);">docs/requirements</a>).</li>
+                  <li><strong>Real en i3 4GB integrada:</strong> suficiente para fundamentos (shapes, texto, duplicator, &lt;15 capas en 1080p). Proyectos complejos pueden dar viewport blanco o lag si la iGPU no soporta OpenGL 4.1 — actualizar driver Intel y probar <em>Help &gt; System Diagnostics</em> antes del curso.</li>
+                  <li><strong>Cuenta:</strong> gratuita con Canva (no hay versión de pago desde v2.7). Si falla, plan B: Synfig / Blender Grease Pencil.</li>
+                </ul>
+              </div>
+
+              <div style="display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap; margin-bottom: 0.7rem;">
+                <a href="https://cavalry.studio/downloads/latest/Cavalry.msi" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--color-herramientas); color: #FFF; text-decoration: none; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.88rem; font-weight: 600; transition: var(--transition);">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                  Descargar Cavalry para Windows (.msi)
+                </a>
+                <a href="https://cavalry.studio/downloads/latest/Cavalry.dmg" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--bg-content); color: var(--text-main); text-decoration: none; padding: 0.5rem 1rem; border: 1px solid var(--border-light); border-radius: var(--radius); font-size: 0.88rem; font-weight: 600; transition: var(--transition);">
+                  Descargar para macOS (.dmg)
+                </a>
+                <span style="font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-code);">Gratis · requiere cuenta Canva</span>
+              </div>
+
+              <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; font-size: 0.82rem;">
+                <a href="https://cavalry.studio/docs/" target="_blank" rel="noopener" style="color: var(--color-herramientas); font-weight: 600; text-decoration: none; border: 1px solid var(--border-light); padding: 0.3rem 0.6rem; border-radius: var(--radius); background: var(--bg-content);">📘 Documentación</a>
+                <a href="https://cavalry.studio/docs/getting-started/example-files/" target="_blank" rel="noopener" style="color: var(--color-herramientas); font-weight: 600; text-decoration: none; border: 1px solid var(--border-light); padding: 0.3rem 0.6rem; border-radius: var(--radius); background: var(--bg-content);">📂 Archivos de ejemplo</a>
+                <a href="https://www.youtube.com/playlist?list=PL3ZRk7VwZVnizMpkOm2No2FoeitDIaf8f" target="_blank" rel="noopener" style="color: var(--color-herramientas); font-weight: 600; text-decoration: none; border: 1px solid var(--border-light); padding: 0.3rem 0.6rem; border-radius: var(--radius); background: var(--bg-content);">▶ Primeros pasos (YT)</a>
+                <a href="https://cavalry.studio/es_419/support/" target="_blank" rel="noopener" style="color: var(--text-muted); text-decoration: none; border: 1px solid var(--border-light); padding: 0.3rem 0.6rem; border-radius: var(--radius); background: var(--bg-content);">Soporte</a>
+              </div>
+            </div>
+          </li>
+
+          <!-- MecaSamType (conservado) -->
           <li>
             <div style="background: var(--bg-body); border: 1px solid var(--border-light); border-radius: var(--radius); padding: 1.2rem; transition: var(--transition);">
               <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.6rem;">
@@ -51,13 +113,13 @@
                   </svg>
                   MecaSamType
                 </h3>
-                <span class="badge" style="background: var(--color-herramientas); color: #FFF;">Software de Mecanograf&iacute;a</span>
+                <span class="badge" style="background: var(--color-herramientas); color: #FFF;">Software de Mecanografía</span>
               </div>
               <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.5;">
-                Aplicaci&oacute;n ejecutable para la pr&aacute;ctica intensiva de mecanograf&iacute;a en computadora. Es una r&eacute;plica moderna e intuitiva inspirada en el m&iacute;tico software <strong>MecaNet</strong>, diseñada para ayudar a los estudiantes a mejorar su velocidad (Palabras Por Minuto), postura y precisi&oacute;n al escribir con el teclado.
+                Aplicación ejecutable para la práctica intensiva de mecanografía en computadora. Es una réplica moderna e intuitiva inspirada en el mítico software <strong>MecaNet</strong>, diseñada para ayudar a los estudiantes a mejorar su velocidad (Palabras Por Minuto), postura y precisión al escribir con el teclado.
               </p>
               <div style="display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap;">
-                <a href="instaladores-herramientas/MecaSamType_Installer.exe" download style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--color-herramientas); color: #FFF; text-decoration: none; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.88rem; font-weight: 600; transition: var(--transition);">
+                <a href="MecaSamType_Installer.exe" download style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--color-herramientas); color: #FFF; text-decoration: none; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.88rem; font-weight: 600; transition: var(--transition);">
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                     <polyline points="7 10 12 15 17 10"></polyline>
@@ -65,7 +127,7 @@
                   </svg>
                   Descargar MecaSamType_Installer.exe
                 </a>
-                <span style="font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-code);">Versi&oacute;n Windows (.exe) &bull; 10.7 MB</span>
+                <span style="font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-code);">Versión Windows (.exe) • 10.7 MB</span>
               </div>
             </div>
           </li>
@@ -75,7 +137,7 @@
 
     <footer>
       <p>
-        &copy; 2026 - Instituto Nueva Tecnolog&iacute;a | Prof. Samuel Dur&aacute;n | Ofim&aacute;tica
+        &copy; 2026 - Instituto Nueva Tecnología | Prof. Samuel Durán | Ofimática
       </p>
     </footer>
 
