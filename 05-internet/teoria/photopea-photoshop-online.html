@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Photopea - Photoshop Online Gratuito - Prof. Samuel Durán</title>
+    <link rel="stylesheet" href="../../main-style.css" />
+    <style>
+      .box-internet { border-left-color: #03a9f4; background-color: #e1f5fe; }
+      [data-theme="dark"] .box-internet { background: #1a2a33; color: #a8d8ff; }
+    </style>
+    <script>
+      (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.setAttribute('data-theme','dark')}})();
+    </script>
+  </head>
+  <body>
+    <div class="print-header">
+      <div class="print-header-left">Prof. Samuel William Durán Quispe</div>
+      <div class="print-header-center"></div>
+      <div class="print-header-right">Instituto Nueva Tecnología &mdash; Ofimática &mdash; Internet &mdash; 2026</div>
+    </div>
+
+    <nav class="breadcrumb-nav">
+      <a href="../../index.html"><svg class="icon-svg-home" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -1px; margin-right: 4px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>Inicio</a> >
+      <a href="../index-teoria.html">Internet</a> >
+      <span>Photopea</span>
+      <button id="theme-toggle" aria-label="Cambiar modo oscuro/claro" class="theme-btn">☾</button>
+    </nav>
+
+    <main class="content">
+      <header class="lesson-header">
+        <span class="date">Clase — Herramientas Online</span>
+        <h1>Photopea: Photoshop Online Gratuito en el Navegador</h1>
+        <p class="subtitle">Edición profesional sin instalar nada — ideal para PCs de 4GB del instituto</p>
+      </header>
+
+      <section class="lesson-body">
+        <h2>1. ¿Qué es Photopea?</h2>
+        <p>
+          <strong>Photopea</strong> (<code>www.photopea.com</code>) es un editor de imágenes <strong>100% online y gratuito</strong> que replica la interfaz y funciones de Adobe Photoshop. No requiere instalación, cuenta ni equipo potente: funciona dentro del navegador (Chrome, Edge, Firefox) incluso en las PCs <strong>i3 con 4GB</strong> del instituto. Es perfecto cuando no hay Photoshop licenciado o no puedes instalar programas.
+        </p>
+        <div class="box box-internet">
+          <span class="box-title">Idea clave</span>
+          <p style="margin-bottom:0">Si Photoshop es un taller completo que debes instalar, <strong>Photopea es el mismo taller pero en la nube</strong>: abres <code>photopea.com</code>, arrastras tu foto y editas al instante.</p>
+        </div>
+
+        <h2>2. Por qué Photopea es ideal para el instituto</h2>
+        <table class="wiki-table">
+          <thead><tr><th>Característica</th><th>Photopea</th><th>Photoshop tradicional</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Instalación</strong></td><td>Ninguna — solo navegador</td><td>~4GB descarga + licencia</td></tr>
+            <tr><td><strong>Costo</strong></td><td>Gratis (con anuncios discretos, se quitan con uBlock)</td><td>Suscripción mensual</td></tr>
+            <tr><td><strong>Formatos</strong></td><td>PSD, PSB, XD, Sketch, XCF, RAW, JPG, PNG, SVG, PDF</td><td>PSD nativo</td></tr>
+            <tr><td><strong>Rendimiento 4GB</strong></td><td>Ligero, corre en pestaña; cierra otras pestañas si se ralentiza</td><td>Exige más RAM y GPU</td></tr>
+            <tr><td><strong>Capas y máscaras</strong></td><td>Sí — capas, máscaras, estilos, filtros, texto</td><td>Sí</td></tr>
+          </tbody>
+        </table>
+
+        <!-- Diagrama interfaz -->
+        <div class="svg-window-container" style="margin: 1.5rem 0; width: 100%; overflow-x: auto;">
+          <svg viewBox="0 0 760 240" width="100%" height="auto" fill="none" xmlns="http://www.w3.org/2000/svg" style="border: 1px solid var(--border-light); border-radius: 6px; background: var(--bg-content); padding: 10px; box-shadow: var(--shadow-sm); font-family: var(--font-sans);">
+            <text x="380" y="18" text-anchor="middle" font-size="11" font-weight="700" fill="#03a9f4" font-family="var(--font-heading)">Interfaz Photopea — 5 zonas clave</text>
+            <rect x="15" y="28" width="730" height="195" rx="6" fill="var(--bg-body)" stroke="var(--border-light)"/>
+            <!-- Barra superior -->
+            <rect x="15" y="28" width="730" height="18" rx="6" fill="#03a9f4"/>
+            <text x="380" y="40" text-anchor="middle" font-size="7" font-weight="700" fill="#fff">Archivo  Editar  Imagen  Capa  Filtro  Ventana  Ayuda  —  photopea.com</text>
+            <!-- Herramientas izq -->
+            <rect x="15" y="46" width="50" height="155" fill="var(--bg-content)" stroke="var(--border-light)"/>
+            <text x="40" y="60" text-anchor="middle" font-size="6" font-weight="700" fill="var(--text-muted)">HERRAM.</text>
+            <text x="40" y="75" text-anchor="middle" font-size="10">✂️</text><text x="40" y="85" text-anchor="middle" font-size="5" fill="var(--text-muted)">Recorte</text>
+            <text x="40" y="105" text-anchor="middle" font-size="10">🖌️</text><text x="40" y="115" text-anchor="middle" font-size="5" fill="var(--text-muted)">Pincel</text>
+            <text x="40" y="135" text-anchor="middle" font-size="10">🔤</text><text x="40" y="145" text-anchor="middle" font-size="5" fill="var(--text-muted)">Texto</text>
+            <!-- Lienzo centro -->
+            <rect x="70" y="50" width="380" height="145" rx="4" fill="#fff" stroke="var(--border-light)" stroke-dasharray="4 3"/>
+            <text x="260" y="90" text-anchor="middle" font-size="9" font-weight="600" fill="var(--text-main)">Lienzo</text>
+            <text x="260" y="102" text-anchor="middle" font-size="7" fill="var(--text-muted)">Arrastra aquí tu JPG/PNG/PSD</text>
+            <rect x="160" y="115" width="200" height="40" rx="4" fill="var(--bg-body)" stroke="#03a9f4"/><text x="260" y="132" text-anchor="middle" font-size="7" fill="#03a9f4">Imagen + capas + guías</text>
+            <!-- Capas der -->
+            <rect x="460" y="50" width="140" height="145" fill="var(--bg-content)" stroke="var(--border-light)"/>
+            <text x="530" y="64" text-anchor="middle" font-size="7" font-weight="700" fill="var(--text-main)">Capas</text>
+            <rect x="470" y="72" width="120" height="18" rx="3" fill="#03a9f4" fill-opacity="0.15" stroke="#03a9f4"/><text x="480" y="83" font-size="6.5" fill="#03a9f4">◆ Capa Texto</text>
+            <rect x="470" y="94" width="120" height="18" rx="3" fill="var(--bg-body)" stroke="var(--border-light)"/><text x="480" y="105" font-size="6.5" fill="var(--text-muted)">◎ Imagen</text>
+            <rect x="470" y="116" width="120" height="18" rx="3" fill="var(--bg-body)" stroke="var(--border-light)"/><text x="480" y="127" font-size="6.5" fill="var(--text-muted)">◎ Fondo</text>
+            <text x="530" y="155" text-anchor="middle" font-size="6" fill="var(--text-muted)">Propiedades / Ajustes</text>
+            <!-- Historial abajo der -->
+            <rect x="610" y="50" width="125" height="145" fill="var(--bg-body)" stroke="var(--border-light)"/>
+            <text x="672" y="64" text-anchor="middle" font-size="7" font-weight="700" fill="var(--text-muted)">Historial</text>
+            <text x="672" y="85" text-anchor="middle" font-size="6" fill="var(--text-muted)">↩ Abierto</text>
+            <text x="672" y="100" text-anchor="middle" font-size="6" fill="var(--text-muted)">✂ Recortado</text>
+            <text x="672" y="115" text-anchor="middle" font-size="6" fill="var(--text-muted)">🎨 Brillo</text>
+            <text x="672" y="135" text-anchor="middle" font-size="6" fill="#1E5E3A">💾 Exportar JPG/PNG</text>
+          </svg>
+        </div>
+
+        <h2>3. Qué puedes hacer (y qué no)</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin: 1rem 0;">
+          <div style="background: #e8f5e9; border: 1px solid #a5d6a7; border-radius: var(--radius); padding: 0.8rem;">
+            <strong style="color:#1E5E3A; font-size:0.9rem;">✅ Sí — Perfecto para clase</strong>
+            <ul style="margin:0.4rem 0 0 1rem; font-size:0.85rem; color: var(--text-muted);">
+              <li>Recortar, redimensionar, rotar</li>
+              <li>Ajustes: brillo/contraste, saturación, niveles</li>
+              <li>Capas, máscaras, texto, formas</li>
+              <li>Filtros y retoque (tampón de clonar)</li>
+              <li>Exportar JPG, PNG transparente, PSD, PDF</li>
+            </ul>
+          </div>
+          <div style="background: #fce4ec; border: 1px solid #ef9a9a; border-radius: var(--radius); padding: 0.8rem;">
+            <strong style="color:#9E3B2B; font-size:0.9rem;">⚠️ Limitaciones</strong>
+            <ul style="margin:0.4rem 0 0 1rem; font-size:0.85rem; color: var(--text-muted);">
+              <li>Necesita internet (no es offline)</li>
+              <li>Anuncios laterales (usa uBlock Origin)</li>
+              <li>Archivos muy grandes (+50MB) pueden tardar en 4GB</li>
+              <li>Sin plugins de Photoshop de terceros</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2>4. Flujo básico en 4 pasos</h2>
+        <ol>
+          <li><strong>Abrir:</strong> entra a <code>www.photopea.com</code> → <em>Archivo → Abrir</em> o arrastra un JPG de Pixabay.</li>
+          <li><strong>Editar:</strong> usa herramientas a la izquierda y capas a la derecha (como en Photoshop).</li>
+          <li><strong>Ajustar:</strong> <em>Imagen → Ajustes</em> para brillo/contraste; <em>Filtro</em> para desenfoque/nitidez.</li>
+          <li><strong>Exportar:</strong> <em>Archivo → Exportar como → JPG/PNG/PSD</em> → elige calidad → <em>Guardar</em>. No uses “Guardar como PSD” si solo necesitas imagen final.</li>
+        </ol>
+
+        <div class="box box-internet">
+          <span class="box-title">Conexión con otras herramientas del curso</span>
+          <ul style="margin-bottom:0">
+            <li><strong>Pixabay → Photopea → Word/PowerPoint:</strong> descarga imagen → recorta/ajusta en Photopea → inserta en Word/PowerPoint.</li>
+            <li><strong>uBlock Origin:</strong> deja Photopea sin anuncios molestos para concentrarte.</li>
+            <li><strong>Navegador:</strong> Photopea funciona mejor en Chrome/Edge actualizados (ver clase anterior).</li>
+          </ul>
+        </div>
+
+        <h2>5. Consejos para PCs de 4GB</h2>
+        <ul>
+          <li>Cierra pestañas y programas antes de abrir Photopea.</li>
+          <li>Trabaja con imágenes de <strong>1920 px máximo</strong> (suficiente para ofimática); evita RAW de 20MP.</li>
+          <li>Guarda seguido: <em>Archivo → Guardar como PSD</em> para no perder capas.</li>
+          <li>Si se congela, recarga con <code>F5</code> y reabre desde <em>Recientes</em>.</li>
+        </ul>
+
+        <div class="box" style="border-left-color: #03a9f4;">
+          <span class="box-title">Siguiente</span>
+          <p style="margin-bottom:0">Continúa con la <a href="../guias/guia-photopea-basico.html"><strong>Guía 1: Interfaz y edición básica</strong></a> y <a href="../guias/guia-photopea-capas-exportar.html"><strong>Guía 2: Capas, texto y exportación</strong></a>, luego las <strong>2 prácticas guiadas</strong>.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 - Instituto Nueva Tecnología | Prof. Samuel Durán | Ofimática</p>
+    </footer>
+
+    <script>!function(){var h=document.querySelector('.lesson-header h1,.guide-header h1');var c=document.querySelector('.print-header-center');if(h&&c)c.textContent=h.textContent}()</script>
+    <script>
+      document.getElementById("theme-toggle")?.addEventListener("click",function(){var t=document.documentElement.getAttribute("data-theme");t=t==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",t);localStorage.setItem("theme",t);this.textContent=t==="dark"?"\u2600":"\u263E"});
+      (function(){var t=localStorage.getItem("theme");var b=document.getElementById("theme-toggle");if(b){b.textContent=t==="dark"?"\u2600":"\u263E"}})();
+    </script>
+    <div class="print-footer"></div>
+  </body>
+</html>

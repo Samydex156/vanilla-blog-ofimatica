@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Práctica Photopea Básica - Prof. Samuel Durán</title>
+    <link rel="stylesheet" href="../../main-style.css" />
+    <style>
+      .box-internet { border-left-color: #03a9f4; background-color: #e1f5fe; }
+      [data-theme="dark"] .box-internet { background: #1a2a33; color: #a8d8ff; }
+    </style>
+    <script>
+      (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.setAttribute('data-theme','dark')}})();
+    </script>
+  </head>
+  <body>
+    <div class="print-header">
+      <div class="print-header-left">Prof. Samuel William Durán Quispe</div>
+      <div class="print-header-center"></div>
+      <div class="print-header-right">Instituto Nueva Tecnología &mdash; Ofimática &mdash; Internet &mdash; 2026</div>
+    </div>
+
+    <nav class="breadcrumb-nav">
+      <a href="../../index.html"><svg class="icon-svg-home" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -1px; margin-right: 4px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>Inicio</a> >
+      <a href="../index-practicas.html">Internet</a> >
+      <span>Práctica Photopea Básica</span>
+      <button id="theme-toggle" aria-label="Cambiar modo oscuro/claro" class="theme-btn">☾</button>
+    </nav>
+
+    <main class="content">
+      <header class="lesson-header">
+        <span class="date">Práctica 04 — Photopea</span>
+        <h1>Edición Básica con Photopea: Recorte y Corrección</h1>
+        <p class="subtitle">De una foto de Pixabay a una imagen lista para Word/PowerPoint en 10 minutos</p>
+      </header>
+
+      <section class="lesson-body">
+        <div class="box box-internet">
+          <span class="box-title">Objetivo</span>
+          <p style="margin-bottom:0">Aplicar recorte 16:9, ajuste de brillo/contraste y redimensionado a 1920 px con Photopea, sin instalar nada, y exportar en JPG optimizado.</p>
+        </div>
+
+        <h2>Material</h2>
+        <p>Descarga una foto horizontal de <a href="../teoria/herramienta-pixabay.html">Pixabay</a> (tema “oficina” o “estudio”) y guárdala en <code>Descargas</code> como <code>original.jpg</code>.</p>
+
+        <h2>Instrucciones paso a paso</h2>
+        <ol>
+          <li><strong>Abrir Photopea:</strong> <code>www.photopea.com</code> → <em>Archivo → Abrir</em> → selecciona <code>original.jpg</code>. Verifica que aparece una capa en el panel derecho.</li>
+          <li><strong>Recortar 16:9:</strong> Herramienta <strong>C (Recortar)</strong> → en la barra superior elige proporción <strong>16:9</strong> → arrastra para encuadrar el sujeto → <code>Enter</code>.</li>
+          <li><strong>Corregir luz:</strong> <em>Imagen → Ajustes → Brillo/Contraste</em> → Brillo +12, Contraste +10 → <em>Aceptar</em>. Si la foto está amarillenta, prueba <em>Imagen → Ajustes → Equilibrio de color</em>.</li>
+          <li><strong>Redimensionar:</strong> <em>Imagen → Tamaño de imagen</em> → ancho <strong>1920</strong>, alto automático, remuestreo <em>Bicúbico</em> → <em>Aceptar</em>.</li>
+          <li><strong>Enfocar suave:</strong> <em>Filtro → Enfocar → Máscara de enfoque</em> → Cantidad 40%, Radio 1.0 → <em>Aceptar</em>.</li>
+          <li><strong>Exportar:</strong> <em>Archivo → Exportar como → JPG</em> → calidad <strong>85%</strong> → <em>Guardar</em> como <code>foto-editada-basica.jpg</code> en <code>Descargas</code>.</li>
+        </ol>
+
+        <div class="box" style="border-left-color: #03a9f4;">
+          <span class="box-title">Checklist de entrega</span>
+          <ul style="margin-bottom:0">
+            <li>Captura de Photopea con la imagen recortada (antes/después).</li>
+            <li><code>foto-editada-basica.jpg</code> (1920 px, 16:9, peso ~400-800KB).</li>
+            <li>Breve nota: ¿qué mejoró con brillo/contraste?</li>
+          </ul>
+        </div>
+
+        <div class="box box-internet">
+          <span class="box-title">Tip 4GB</span>
+          <p style="margin-bottom:0">Si Photopea va lento, cierra pestañas, deja solo <code>photopea.com</code> y la foto. Evita abrir 2 fotos de 10MB a la vez.</p>
+        </div>
+
+        <div class="box" style="border-left-color: #d63031;">
+          <span class="box-title" style="color: #d63031;">Entregable</span>
+          <p style="margin-bottom:0">Sube a la plataforma: <code>foto-editada-basica.jpg</code> + captura del historial de Photopea. Inserta luego la foto en <a href="../../01-word/practicas/practica-03-articulo-periodistico-clase.html">Word (artículo)</a> o <a href="../../02-powerpoint/practicas/practica-01-presentacion-base.html">PowerPoint (portada)</a>.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 - Instituto Nueva Tecnología | Prof. Samuel Durán | Ofimática</p>
+    </footer>
+
+    <script>!function(){var h=document.querySelector('.lesson-header h1,.guide-header h1');var c=document.querySelector('.print-header-center');if(h&&c)c.textContent=h.textContent}()</script>
+    <script>
+      document.getElementById("theme-toggle")?.addEventListener("click",function(){var t=document.documentElement.getAttribute("data-theme");t=t==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",t);localStorage.setItem("theme",t);this.textContent=t==="dark"?"\u2600":"\u263E"});
+      (function(){var t=localStorage.getItem("theme");var b=document.getElementById("theme-toggle");if(b){b.textContent=t==="dark"?"\u2600":"\u263E"}})();
+    </script>
+    <div class="print-footer"></div>
+  </body>
+</html>

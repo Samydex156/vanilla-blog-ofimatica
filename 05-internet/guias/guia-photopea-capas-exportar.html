@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guía Photopea Capas y Exportar - Prof. Samuel Durán</title>
+    <link rel="stylesheet" href="../../main-style.css" />
+    <style>
+      .box-internet { border-left-color: #03a9f4; background-color: #e1f5fe; }
+      [data-theme="dark"] .box-internet { background: #1a2a33; color: #a8d8ff; }
+    </style>
+    <script>
+      (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.setAttribute('data-theme','dark')}})();
+    </script>
+  </head>
+  <body>
+    <div class="print-header">
+      <div class="print-header-left">Prof. Samuel William Durán Quispe</div>
+      <div class="print-header-center"></div>
+      <div class="print-header-right">Instituto Nueva Tecnología &mdash; Ofimática &mdash; Internet &mdash; 2026</div>
+    </div>
+
+    <nav class="breadcrumb-nav">
+      <a href="../../index.html"><svg class="icon-svg-home" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -1px; margin-right: 4px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>Inicio</a> >
+      <a href="../index-guias.html">Internet</a> >
+      <span>Guía Photopea Capas</span>
+      <button id="theme-toggle" aria-label="Cambiar modo oscuro/claro" class="theme-btn">☾</button>
+    </nav>
+
+    <main class="content">
+      <header class="lesson-header">
+        <span class="date">Guía 05 — Photopea</span>
+        <h1>Photopea: Capas, Texto y Exportación Profesional</h1>
+        <p class="subtitle">De una foto plana a un montaje con capas y exportación perfecta para Word/PowerPoint</p>
+      </header>
+
+      <section class="lesson-body">
+        <div class="box box-internet">
+          <span class="box-title">Objetivo</span>
+          <p style="margin-bottom:0">Dominar <strong>capas</strong>, añadir <strong>texto y formas</strong>, aplicar un <strong>filtro</strong> y exportar en el formato correcto (JPG, PNG transparente o PSD editable).</p>
+        </div>
+
+        <h2>Paso a Paso</h2>
+        <ol>
+          <li>
+            <strong>Duplicar capa base:</strong> En panel <em>Capas</em>, clic derecho sobre “Fondo” → <em>Duplicar capa</em>. Trabaja siempre sobre copia para no perder el original (candado).
+          </li>
+          <li>
+            <strong>Añadir texto:</strong> Herramienta <strong>T (Texto)</strong> → clic en el lienzo → escribe “Instituto Nueva Tecnología”. En la barra superior cambia fuente a <strong>Inter / Arial Bold</strong>, tamaño 48px, color blanco. Añade sombra: clic derecho en capa de texto → <em>Opciones de fusión → Sombra paralela</em> (opacidad 40%).
+          </li>
+          <li>
+            <strong>Forma y color:</strong> Herramienta <strong>Rectángulo (U)</strong> → dibuja un rectángulo detrás del texto → en <em>Propiedades</em> elige relleno <strong>#03A9F4</strong> (azul internet) y opacidad 85%. Arrástralo debajo de la capa de texto en el panel.
+          </li>
+          <li>
+            <strong>Máscara rápida (quitar fondo simple):</strong> Selecciona capa de imagen → herramienta <strong>Varita mágica (W)</strong> → clic en fondo blanco → <code>Supr</code> para borrar. Si queda borde, usa <em>Seleccionar → Perfeccionar borde</em>.
+          </li>
+          <li>
+            <strong>Filtro sutil:</strong> Selecciona la capa de foto → <em>Filtro → Desenfoque → Desenfoque gaussiano</em> 2px solo para el fondo (si usaste máscara, el sujeto queda nítido). O prueba <em>Filtro → Enfocar → Máscara de enfoque</em> para resaltar.
+          </li>
+          <li>
+            <strong>Orden y opacidad:</strong> Reordena capas arrastrando; baja opacidad de la forma a 70% para que la foto se asome. Usa <code>Ctrl+T</code> (transformación libre) para escalar/mover con <code>Shift</code> para proporción.
+          </li>
+          <li>
+            <strong>Guardar editable:</strong> <em>Archivo → Guardar como PSD</em> → se descarga <code>montaje.psd</code> con capas intactas (por si debes corregir en clase).
+          </li>
+          <li>
+            <strong>Exportar final:</strong>
+            <ul>
+              <li><strong>Para Word/PowerPoint (fondo blanco):</strong> <em>Archivo → Exportar como → JPG</em> → calidad 90% → <em>Guardar</em>.</li>
+              <li><strong>Para logo/sticker (fondo transparente):</strong> oculta capa “Fondo” (ojo) → <em>Exportar como → PNG</em> → marca <em>Transparencia</em>.</li>
+              <li><strong>Para web:</strong> <em>Exportar como → PDF</em> si el docente pide vector.</li>
+            </ul>
+          </li>
+        </ol>
+
+        <div class="box" style="border-left-color: #03a9f4;">
+          <span class="box-title">Tabla: ¿Qué formato exportar?</span>
+          <table class="wiki-table" style="margin-bottom:0">
+            <thead><tr><th>Formato</th><th>Cuándo usar</th><th>Transparencia</th></tr></thead>
+            <tbody>
+              <tr><td><strong>JPG</strong></td><td>Fotos para Word/PowerPoint, fondo blanco</td><td>No</td></tr>
+              <tr><td><strong>PNG</strong></td><td>Logos, recortes con fondo transparente</td><td>Sí</td></tr>
+              <tr><td><strong>PSD</strong></td><td>Proyecto editable con capas (entrega al docente)</td><td>Sí</td></tr>
+              <tr><td><strong>PDF</strong></td><td>Impresión sin pérdida</td><td>Según contenido</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="box box-internet">
+          <span class="box-title">Atajo clave de capas</span>
+          <ul style="margin-bottom:0">
+            <li><code>Ctrl+J</code> duplica capa, <code>Ctrl+T</code> transforma, <code>Ctrl+G</code> agrupa.</li>
+            <li>Ojo = mostrar/ocultar, candado = bloquear. Arrastra para reordenar.</li>
+            <li>Si te equivocas: <em>Historial</em> a la derecha → clic en estado anterior.</li>
+          </ul>
+        </div>
+
+        <h2>Checklist antes de exportar</h2>
+        <ul>
+          <li>¿Texto legible? (contraste con fondo, sombra si hace falta)</li>
+          <li>¿Bordes limpios? (zoom 100% para revisar)</li>
+          <li>¿Tamaño final 1920 px ancho máximo (ofimática)?</li>
+          <li>¿Guardaste PSD + JPG/PNG?</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 - Instituto Nueva Tecnología | Prof. Samuel Durán | Ofimática</p>
+    </footer>
+
+    <script>!function(){var h=document.querySelector('.lesson-header h1,.guide-header h1');var c=document.querySelector('.print-header-center');if(h&&c)c.textContent=h.textContent}()</script>
+    <script>
+      document.getElementById("theme-toggle")?.addEventListener("click",function(){var t=document.documentElement.getAttribute("data-theme");t=t==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",t);localStorage.setItem("theme",t);this.textContent=t==="dark"?"\u2600":"\u263E"});
+      (function(){var t=localStorage.getItem("theme");var b=document.getElementById("theme-toggle");if(b){b.textContent=t==="dark"?"\u2600":"\u263E"}})();
+    </script>
+    <div class="print-footer"></div>
+  </body>
+</html>

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Práctica Photopea Montaje - Prof. Samuel Durán</title>
+    <link rel="stylesheet" href="../../main-style.css" />
+    <style>
+      .box-internet { border-left-color: #03a9f4; background-color: #e1f5fe; }
+      [data-theme="dark"] .box-internet { background: #1a2a33; color: #a8d8ff; }
+    </style>
+    <script>
+      (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.setAttribute('data-theme','dark')}})();
+    </script>
+  </head>
+  <body>
+    <div class="print-header">
+      <div class="print-header-left">Prof. Samuel William Durán Quispe</div>
+      <div class="print-header-center"></div>
+      <div class="print-header-right">Instituto Nueva Tecnología &mdash; Ofimática &mdash; Internet &mdash; 2026</div>
+    </div>
+
+    <nav class="breadcrumb-nav">
+      <a href="../../index.html"><svg class="icon-svg-home" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -1px; margin-right: 4px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>Inicio</a> >
+      <a href="../index-practicas.html">Internet</a> >
+      <span>Práctica Photopea Montaje</span>
+      <button id="theme-toggle" aria-label="Cambiar modo oscuro/claro" class="theme-btn">☾</button>
+    </nav>
+
+    <main class="content">
+      <header class="lesson-header">
+        <span class="date">Práctica 05 — Photopea</span>
+        <h1>Montaje con Capas: Texto + Imagen + Exportación</h1>
+        <p class="subtitle">Crea una portada para PowerPoint combinando 2 fotos de Pixabay, texto y forma</p>
+      </header>
+
+      <section class="lesson-body">
+        <div class="box box-internet">
+          <span class="box-title">Objetivo</span>
+          <p style="margin-bottom:0">Combinar 2 imágenes en capas, añadir texto con sombra y forma de color, y exportar en <strong>JPG (fondo blanco)</strong> y <strong>PNG transparente</strong> + PSD editable.</p>
+        </div>
+
+        <h2>Material</h2>
+        <ul>
+          <li>Foto A (fondo): paisaje o oficina de Pixabay, horizontal.</li>
+          <li>Foto B (sujeto): objeto/persona con fondo claro para recorte fácil.</li>
+        </ul>
+
+        <h2>Instrucciones</h2>
+        <ol>
+          <li><strong>Lienzo base:</strong> Photopea → <em>Archivo → Nuevo</em> → 1920×1080 px, 72 dpi, fondo blanco → <em>Crear</em>.</li>
+          <li><strong>Traer Foto A:</strong> <em>Archivo → Abrir y colocar</em> → foto A → <code>Enter</code> para confirmar. Cubre el lienzo con <code>Ctrl+T</code> si hace falta.</li>
+          <li><strong>Traer Foto B:</strong> <em>Archivo → Abrir y colocar</em> → foto B → con <code>Ctrl+T</code> redúcela a 1/3 del lienzo y colócala abajo a la derecha.</li>
+          <li><strong>Quitar fondo de Foto B (si es necesario):</strong> Selecciona su capa → <strong>W (Varita)</strong> → clic en fondo blanco → <code>Supr</code>. Si el borde queda duro, <em>Seleccionar → Perfeccionar borde</em> 1px.</li>
+          <li><strong>Texto:</strong> <strong>T</strong> → escribe “Aprende Ofimática” arriba al centro → fuente <strong>Inter Bold 72px</strong>, blanco → capa texto → <em>Opciones de fusión → Sombra paralela</em> opacidad 35%, distancia 4px.</li>
+          <li><strong>Forma detrás del texto:</strong> <strong>U (Rectángulo)</strong> → dibuja rectángulo detrás del texto → relleno <strong>#03A9F4</strong>, opacidad 80% → arrastra la capa debajo del texto.</li>
+          <li><strong>Ajuste final:</strong> Selecciona capa Foto A → <em>Filtro → Desenfoque gaussiano</em> 2px para que el texto resalte (opcional).</li>
+          <li><strong>Guardar editable:</strong> <em>Archivo → Guardar como PSD</em> → <code>montaje-capas.psd</code> (conserva capas).</li>
+          <li><strong>Exportar JPG:</strong> Ojo de fondo activado → <em>Exportar como → JPG</em> 90% → <code>portada-powerpoint.jpg</code>.</li>
+          <li><strong>Exportar PNG transparente (extra):</strong> Oculta capa Fondo (clic en ojo) → <em>Exportar como → PNG</em> con transparencia → <code>logo-recorte.png</code>.</li>
+        </ol>
+
+        <div class="box" style="border-left-color: #03a9f4;">
+          <span class="box-title">Criterio de evaluación</span>
+          <ul style="margin-bottom:0">
+            <li>Capas ordenadas (fondo → foto B → forma → texto arriba).</li>
+            <li>Texto legible con contraste/sombra.</li>
+            <li>Bordes limpios en el recorte (zoom 100%).</li>
+            <li>Tres archivos: <code>montaje-capas.psd</code>, <code>portada-powerpoint.jpg</code>, <code>logo-recorte.png</code> (opcional).</li>
+          </ul>
+        </div>
+
+        <div class="box" style="border-left-color: #d63031;">
+          <span class="box-title" style="color: #d63031;">Entregable</span>
+          <p style="margin-bottom:0">Entrega <code>portada-powerpoint.jpg</code> insertándola como portada en <a href="../../02-powerpoint/practicas/practica-01-presentacion-base.html">PowerPoint Práctica 01</a>. Si el docente lo pide, adjunta también el <code>.psd</code> para revisar capas.</p>
+        </div>
+
+        <div class="box box-internet">
+          <span class="box-title">Tip uBlock + Photopea</span>
+          <p style="margin-bottom:0">Con uBlock Origin activo, Photopea no muestra anuncios laterales que tapan el lienzo en 1366×768. Combina ambas clases para un flujo limpio.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 - Instituto Nueva Tecnología | Prof. Samuel Durán | Ofimática</p>
+    </footer>
+
+    <script>!function(){var h=document.querySelector('.lesson-header h1,.guide-header h1');var c=document.querySelector('.print-header-center');if(h&&c)c.textContent=h.textContent}()</script>
+    <script>
+      document.getElementById("theme-toggle")?.addEventListener("click",function(){var t=document.documentElement.getAttribute("data-theme");t=t==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",t);localStorage.setItem("theme",t);this.textContent=t==="dark"?"\u2600":"\u263E"});
+      (function(){var t=localStorage.getItem("theme");var b=document.getElementById("theme-toggle");if(b){b.textContent=t==="dark"?"\u2600":"\u263E"}})();
+    </script>
+    <div class="print-footer"></div>
+  </body>
+</html>

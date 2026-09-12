@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guía Photopea Básico - Prof. Samuel Durán</title>
+    <link rel="stylesheet" href="../../main-style.css" />
+    <style>
+      .box-internet { border-left-color: #03a9f4; background-color: #e1f5fe; }
+      [data-theme="dark"] .box-internet { background: #1a2a33; color: #a8d8ff; }
+    </style>
+    <script>
+      (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.setAttribute('data-theme','dark')}})();
+    </script>
+  </head>
+  <body>
+    <div class="print-header">
+      <div class="print-header-left">Prof. Samuel William Durán Quispe</div>
+      <div class="print-header-center"></div>
+      <div class="print-header-right">Instituto Nueva Tecnología &mdash; Ofimática &mdash; Internet &mdash; 2026</div>
+    </div>
+
+    <nav class="breadcrumb-nav">
+      <a href="../../index.html"><svg class="icon-svg-home" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -1px; margin-right: 4px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>Inicio</a> >
+      <a href="../index-guias.html">Internet</a> >
+      <span>Guía Photopea Básico</span>
+      <button id="theme-toggle" aria-label="Cambiar modo oscuro/claro" class="theme-btn">☾</button>
+    </nav>
+
+    <main class="content">
+      <header class="lesson-header">
+        <span class="date">Guía 04 — Photopea</span>
+        <h1>Photopea Básico: Abrir, Interfaz y Primeros Ajustes</h1>
+        <p class="subtitle">De pixabay.com a tu primera edición sin instalar nada</p>
+      </header>
+
+      <section class="lesson-body">
+        <div class="box box-internet">
+          <span class="box-title">Objetivo</span>
+          <p style="margin-bottom:0">Abrir Photopea, reconocer su interfaz y hacer tu primera edición: recorte + brillo/contraste + redimensionado.</p>
+        </div>
+
+        <h2>Paso a Paso</h2>
+        <ol>
+          <li>
+            <strong>Abrir Photopea:</strong> En Edge/Chrome ve a <code>www.photopea.com</code>. Espera que cargue (barra azul). Si hay anuncio lateral, ciérralo con la X. <em>Tip 4GB: cierra otras pestañas.</em>
+          </li>
+          <li>
+            <strong>Abrir imagen:</strong> Descarga antes una foto de <a href="../teoria/herramienta-pixabay.html">Pixabay</a> (ej. “oficina”). En Photopea: <em>Archivo → Abrir</em> o arrastra el JPG al lienzo. Verás la imagen en el centro y una <strong>capa</strong> a la derecha.
+          </li>
+          <li>
+            <strong>Reconocer la interfaz (5 zonas):</strong>
+            <ul>
+              <li><strong>Menú superior:</strong> Archivo, Editar, Imagen, Capa, Filtro.</li>
+              <li><strong>Herramientas (izquierda):</strong> Recortar (C), Mover (V), Pincel (B), Texto (T), Zoom (Z).</li>
+              <li><strong>Lienzo (centro):</strong> tu foto con guías y zoom (<code>Ctrl + ruedita</code>).</li>
+              <li><strong>Capas (derecha):</strong> cada elemento es una capa; el candado indica fondo bloqueado.</li>
+              <li><strong>Historial / Propiedades:</strong> deshace con <code>Ctrl+Z</code> paso a paso.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Recortar:</strong> Selecciona herramienta <strong>Recortar (C)</strong> → arrastra un rectángulo → presiona <code>Enter</code>. Para práctica: deja proporción <strong>16:9</strong> (ideal para PowerPoint).
+          </li>
+          <li>
+            <strong>Ajuste básico:</strong> <em>Imagen → Ajustes → Brillo/Contraste</em> → sube Brillo +10, Contraste +15 → <em>Aceptar</em>. Prueba también <em>Imagen → Ajustes → Intensidad</em> (saturación).
+          </li>
+          <li>
+            <strong>Redimensionar:</strong> <em>Imagen → Tamaño de imagen</em> → ancho <strong>1920 px</strong> (alto se ajusta solo) → <em>Aceptar</em>. Es suficiente para ofimática y no satura 4GB.
+          </li>
+          <li>
+            <strong>Guardar rápido:</strong> <em>Archivo → Exportar como → JPG</em> → calidad 85% → <em>Guardar</em>. Se descarga a <code>Descargas</code>. Renómbrala <code>foto-editada-01.jpg</code>.
+          </li>
+        </ol>
+
+        <div class="box" style="border-left-color: #03a9f4;">
+          <span class="box-title">Atajos que ahorran tiempo</span>
+          <table class="wiki-table" style="margin-bottom:0">
+            <thead><tr><th>Atajo</th><th>Acción</th></tr></thead>
+            <tbody>
+              <tr><td><code>Ctrl+Z</code> / <code>Ctrl+Shift+Z</code></td><td>Deshacer / Rehacer</td></tr>
+              <tr><td><code>Ctrl++</code> / <code>Ctrl+-</code></td><td>Zoom in / out</td></tr>
+              <tr><td><code>V</code> / <code>C</code> / <code>T</code></td><td>Mover / Recortar / Texto</td></tr>
+              <tr><td><code>Espacio + arrastrar</code></td><td>Mover lienzo (mano)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="box box-internet">
+          <span class="box-title">Error común en el aula</span>
+          <p style="margin-bottom:0">“No veo la imagen después de abrir” → revisa el <strong>zoom</strong> (<code>Ctrl+0</code> ajusta a pantalla) o la <strong>capa está oculta</strong> (ojo tachado en panel Capas → clic para mostrar).</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 - Instituto Nueva Tecnología | Prof. Samuel Durán | Ofimática</p>
+    </footer>
+
+    <script>!function(){var h=document.querySelector('.lesson-header h1,.guide-header h1');var c=document.querySelector('.print-header-center');if(h&&c)c.textContent=h.textContent}()</script>
+    <script>
+      document.getElementById("theme-toggle")?.addEventListener("click",function(){var t=document.documentElement.getAttribute("data-theme");t=t==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",t);localStorage.setItem("theme",t);this.textContent=t==="dark"?"\u2600":"\u263E"});
+      (function(){var t=localStorage.getItem("theme");var b=document.getElementById("theme-toggle");if(b){b.textContent=t==="dark"?"\u2600":"\u263E"}})();
+    </script>
+    <div class="print-footer"></div>
+  </body>
+</html>
