@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Práctica 06: Generar Datos Excel con OpenCode - Prof. Samuel Durán</title>
+    <link rel="stylesheet" href="../../main-style.css" />
+    <style>
+      .box-ia { border-left-color: var(--color-ia); background-color: #f5eef8; }
+      [data-theme="dark"] .box-ia { background: #2a1f33; color: #e0c8f0; }
+      .prompt-wrap { position: relative; }
+      .copy-btn {
+        position: absolute; top: 6px; right: 6px;
+        background: var(--bg-content); border: 1px solid var(--border-light);
+        border-radius: var(--radius); padding: 0.25rem 0.5rem;
+        font-family: var(--font-code); font-size: 0.75rem; cursor: pointer;
+        color: var(--text-muted); transition: var(--transition);
+      }
+      .copy-btn:hover { background: var(--border-light); color: var(--text-main); }
+      .copy-btn.copied { background: var(--color-success); color: #fff; border-color: var(--color-success); }
+    </style>
+    <script>
+      (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.setAttribute('data-theme','dark')}})();
+    </script>
+  </head>
+  <body>
+    <div class="print-header">
+      <div class="print-header-left">Prof. Samuel William Durán Quispe</div>
+      <div class="print-header-center"></div>
+      <div class="print-header-right">Instituto Nueva Tecnología &mdash; Ofimática &mdash; IA &mdash; 2026</div>
+    </div>
+
+    <nav class="breadcrumb-nav">
+      <a href="../../index.html"><svg class="icon-svg-home" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -1px; margin-right: 4px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>Inicio</a> >
+      <a href="../index-practicas.html">Inteligencia Artificial</a> >
+      <span>Práctica 06 — Excel Datos</span>
+      <button id="theme-toggle" aria-label="Cambiar modo oscuro/claro" class="theme-btn">☾</button>
+    </nav>
+
+    <main class="content">
+      <header class="lesson-header">
+        <span class="date">Práctica 06 — Guiada</span>
+        <h1>Generar Datos Sintéticos para Excel con OpenCode</h1>
+        <p class="subtitle">Tamaño carta — Escritorio\documentos-ia — Node.js + npm + exceljs</p>
+      </header>
+
+      <section class="lesson-body">
+        <div class="box box-ia">
+          <span class="box-title">Objetivo</span>
+          <p style="margin-bottom:0">Usar <strong>OpenCode + Node.js + dependencia <code>exceljs</code></strong> para generar un <strong>libro Excel con datos sintéticos realistas</strong> (4 hojas tipo bdTienda), guardado en <code>Escritorio\documentos-ia\</code>, listo para importar/migrar a Access.</p>
+        </div>
+
+        <div class="box" style="border-left-color: var(--color-ia);">
+          <span class="box-title">Ubicación obligatoria</span>
+          <pre style="background: var(--color-code-bg); border: 1px solid var(--border-light); padding: 0.8rem; border-radius: var(--radius); overflow-x: auto; font-family: var(--font-code); font-size: 0.85rem;"><code>mkdir "%USERPROFILE%\Desktop\documentos-ia"
+mkdir "%USERPROFILE%\Desktop\documentos-ia\excel-datos"</code></pre>
+          <p style="font-size:0.85rem; color: var(--text-muted); margin-bottom:0;"><code>C:\Users\TuUsuario\Desktop\documentos-ia\excel-datos\</code></p>
+        </div>
+
+        <h2>Pre-requisitos</h2>
+        <ul>
+          <li>Node.js LTS + OpenCode (<a href="../guias/guia-opencode-instalacion-windows.html">Guía Windows</a>). Verifica <code>node --version</code>, <code>npm --version</code>, <code>opencode --version</code>.</li>
+          <li>Excel para abrir y verificar. Repasa <a href="../../07-Access/practicas/practica-01-base-clientes.html">estructura bdTienda/bdFarmacia</a>.</li>
+        </ul>
+
+        <h2>Paso 1 — Plan con OpenCode (Tab)</h2>
+        <pre style="background: var(--color-code-bg); border: 1px solid var(--border-light); padding: 0.8rem; border-radius: var(--radius); overflow-x: auto; font-family: var(--font-code); font-size: 0.85rem;"><code>cd "%USERPROFILE%\Desktop\documentos-ia\excel-datos"
+opencode</code></pre>
+        <p>Entra a <strong>Plan</strong> (<code>Tab</code>) y copia:</p>
+        <div class="prompt-wrap">
+          <button class="copy-btn" onclick="copyPrompt('prompt-excel-datos-plan')">📋 Copiar prompt</button>
+          <pre style="background: var(--color-code-bg); border: 1px solid var(--border-light); padding: 0.8rem; border-radius: var(--radius); overflow-x: auto; font-family: var(--font-code); font-size: 0.85rem; padding-top: 2rem;"><code id="prompt-excel-datos-plan">Actúa como analista de datos del Instituto Nueva Tecnología.
+
+TAREA: Genera un libro Excel con datos sintéticos realistas usando Node.js y npm con la dependencia exceljs (npm install exceljs). El libro debe imitar la estructura de bdTienda-v1.xlsx y servir para practicar migración a Access.
+
+HOJAS Y VOLUMEN (tamaño carta, impresión horizontal):
+- VENDEDOR: 10 filas. Columnas: IdVendedor (1..10), Nombre, Apellido, Zona (La Paz/Cochabamba/Santa Cruz), Telefono (7xx-xxxx)
+- PRODUCTO: 30 filas. Columnas: IdProducto, Descripcion, Categoria (4 categorías), PrecioUnitario (50-500 Bs), StockActual (10-100), StockMinimo (5-15)
+- VENTA: 100 filas. Columnas: IdVenta, Fecha (ene-mar 2026 aleatoria), IdVendedor (FK), MetodoPago (Efectivo/QR/Transferencia)
+- DETALLE_VENTA: 250 filas. Columnas: IdDetalle, IdVenta (FK), IdProducto (FK), Cantidad (1-5), PrecioVenta (=PrecioUnitario)
+
+TECNOLOGÍA OBLIGATORIA: Node.js + npm + exceljs. Configura impresión tamaño CARTA (Letter) y márgenes 0.7" en cada hoja, con encabezados en negrita y filtros automáticos. Propón primero el plan: archivos en "%USERPROFILE%\Desktop\documentos-ia\excel-datos\" (package.json, generate.js), cómo generarás datos aleatorios coherentes (FK válidas) y validaciones, sin generar aún.</code></pre>
+        </div>
+        <p>Revisa el plan → <code>Tab</code> a <strong>Build</strong>.</p>
+
+        <h2>Paso 2 — Generar el .xlsx con exceljs</h2>
+        <div class="prompt-wrap">
+          <button class="copy-btn" onclick="copyPrompt('prompt-excel-datos-build')">📋 Copiar prompt</button>
+          <pre style="background: var(--color-code-bg); border: 1px solid var(--border-light); padding: 0.8rem; border-radius: var(--radius); overflow-x: auto; font-family: var(--font-code); font-size: 0.85rem; padding-top: 2rem;"><code id="prompt-excel-datos-build">Genera en "%USERPROFILE%\Desktop\documentos-ia\excel-datos\" el proyecto Node.js:
+- package.json con dependencia exceljs
+- generate.js que use exceljs para crear DatosTienda_Sintetico_TuNombre.xlsx TAMAÑO CARTA (pageSetup.paperSize = Letter, margins 0.7, orientation landscape donde convenga) con las 4 hojas y datos sintéticos coherentes (FKs válidas, sin huérfanos). Añade filtros y congela fila 1.
+Indica comandos: npm install y node generate.js. Valida que el xlsx abre en Excel y que VENTA/DETALLE respetan integridad.</code></pre>
+        </div>
+        <pre style="background: var(--color-code-bg); border: 1px solid var(--border-light); padding: 0.8rem; border-radius: var(--radius); overflow-x: auto; font-family: var(--font-code); font-size: 0.85rem;"><code>npm install
+node generate.js</code></pre>
+        <p>Abre <code>DatosTienda_Sintetico_TuNombre.xlsx</code> en Excel: verifica 4 hojas, filtros, y que <code>DETALLE_VENTA.IdVenta</code> existe en <code>VENTA</code>.</p>
+
+        <div class="box" style="border-left-color: var(--color-ia);">
+          <span class="box-title">Variación</span>
+          <p style="margin-bottom:0; font-size:0.9rem;">Pide: <em>“Ahora genera una variante bdFarmacia sintética con 15 empleados y 40 medicamentos, mismo esquema docx pero con exceljs”</em> — practica reuso del prompt cambiando dominio.</p>
+        </div>
+
+        <h2>Paso 3 — Verificación tamaño carta</h2>
+        <ol>
+          <li>Excel → <strong>Diseño de página → Tamaño → Carta</strong> → Orientación Horizontal (si la tabla es ancha) → Márgenes 0.7″.</li>
+          <li>Vista preliminar (<code>Ctrl+P</code>) debe mostrar 1 página ancho × N alto, sin cortes de columnas.</li>
+          <li>Si sale en A4, corrige en <em>generate.js</em> con <code>worksheet.pageSetup.paperSize = 1 // Letter</code> y regenera.</li>
+        </ol>
+
+        <div class="box box-ia">
+          <span class="box-title">Check con OpenCode</span>
+          <div class="prompt-wrap">
+            <button class="copy-btn" onclick="copyPrompt('prompt-excel-datos-check')">📋 Copiar prompt</button>
+            <pre style="background: var(--color-code-bg); border: 1px solid var(--border-light); padding: 0.8rem; border-radius: var(--radius); overflow-x: auto; font-family: var(--font-code); font-size: 0.85rem; padding-top: 2rem;"><code id="prompt-excel-datos-check">Revisa "%USERPROFILE%\Desktop\documentos-ia\excel-datos\DatosTienda_Sintetico_TuNombre.xlsx" y valida: 1) 4 hojas con columnas correctas, 2) Tamaño carta, 3) Filtros y fila congelada, 4) FKs sin huérfanos, 5) Generado con Node.js+exceljs. Dame 2 mejoras.</code></pre>
+          </div>
+        </div>
+
+        <div class="box" style="border-left-color: #d63031;">
+          <span class="box-title" style="color: #d63031;">Entregable (Escritorio\documentos-ia\excel-datos\)</span>
+          <ol style="margin-bottom:0">
+            <li><code>generate.js</code> + <code>package.json</code> (exceljs).</li>
+            <li><code>DatosTienda_Sintetico_TuNombre.xlsx</code> tamaño carta + su <code>.pdf</code> de impresión.</li>
+            <li>Link <code>/share</code> de Plan → Build.</li>
+          </ol>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 - Instituto Nueva Tecnología | Prof. Samuel Durán | Ofimática</p>
+    </footer>
+
+    <script>!function(){var h=document.querySelector('.lesson-header h1,.guide-header h1');var c=document.querySelector('.print-header-center');if(h&&c)c.textContent=h.textContent}()</script>
+    <script>
+      function copyPrompt(id){var el=document.getElementById(id);var text=el.innerText;if(navigator.clipboard){navigator.clipboard.writeText(text).then(function(){toast(id)});}else{var ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);toast(id);} }
+      function toast(id){var btn=document.querySelector('button[onclick="copyPrompt(\''+id+'\')"]');if(!btn)return;var old=btn.textContent;btn.textContent='✅ Copiado';btn.classList.add('copied');setTimeout(function(){btn.textContent=old;btn.classList.remove('copied');},1500);}
+      document.getElementById("theme-toggle")?.addEventListener("click",function(){var t=document.documentElement.getAttribute("data-theme");t=t==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",t);localStorage.setItem("theme",t);this.textContent=t==="dark"?"\u2600":"\u263E"});
+      (function(){var t=localStorage.getItem("theme");var b=document.getElementById("theme-toggle");if(b){b.textContent=t==="dark"?"\u2600":"\u263E"}})();
+    </script>
+    <div class="print-footer"></div>
+  </body>
+</html>

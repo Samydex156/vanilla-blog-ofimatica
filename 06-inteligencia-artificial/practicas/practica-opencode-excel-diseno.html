@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Práctica 07: Planilla con Diseño Excel con OpenCode - Prof. Samuel Durán</title>
+    <link rel="stylesheet" href="../../main-style.css" />
+    <style>
+      .box-ia { border-left-color: var(--color-ia); background-color: #f5eef8; }
+      [data-theme="dark"] .box-ia { background: #2a1f33; color: #e0c8f0; }
+      .prompt-wrap { position: relative; }
+      .copy-btn {
+        position: absolute; top: 6px; right: 6px;
+        background: var(--bg-content); border: 1px solid var(--border-light);
+        border-radius: var(--radius); padding: 0.25rem 0.5rem;
+        font-family: var(--font-code); font-size: 0.75rem; cursor: pointer;
+        color: var(--text-muted); transition: var(--transition);
+      }
+      .copy-btn:hover { background: var(--border-light); color: var(--text-main); }
+      .copy-btn.copied { background: var(--color-success); color: #fff; border-color: var(--color-success); }
+    </style>
+    <script>
+      (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.setAttribute('data-theme','dark')}})();
+    </script>
+  </head>
+  <body>
+    <div class="print-header">
+      <div class="print-header-left">Prof. Samuel William Durán Quispe</div>
+      <div class="print-header-center"></div>
+      <div class="print-header-right">Instituto Nueva Tecnología &mdash; Ofimática &mdash; IA &mdash; 2026</div>
+    </div>
+
+    <nav class="breadcrumb-nav">
+      <a href="../../index.html"><svg class="icon-svg-home" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -1px; margin-right: 4px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>Inicio</a> >
+      <a href="../index-practicas.html">Inteligencia Artificial</a> >
+      <span>Práctica 07 — Excel Diseño</span>
+      <button id="theme-toggle" aria-label="Cambiar modo oscuro/claro" class="theme-btn">☾</button>
+    </nav>
+
+    <main class="content">
+      <header class="lesson-header">
+        <span class="date">Práctica 07 — Guiada</span>
+        <h1>Planilla con Diseño y Estilo Profesional en Excel con OpenCode</h1>
+        <p class="subtitle">Tamaño carta — Escritorio\documentos-ia — Node.js + npm + exceljs con formato</p>
+      </header>
+
+      <section class="lesson-body">
+        <div class="box box-ia">
+          <span class="box-title">Objetivo</span>
+          <p style="margin-bottom:0">Usar <strong>OpenCode + Node.js + exceljs</strong> para generar una <strong>planilla de control de notas/ventas con diseño profesional</strong> (colores institucionales, bordes, filtros, fórmulas y formato condicional) lista para imprimir en <strong>tamaño carta</strong>.</p>
+        </div>
+
+        <div class="box" style="border-left-color: var(--color-ia);">
+          <span class="box-title">Ubicación obligatoria</span>
+          <pre style="background: var(--color-code-bg); border: 1px solid var(--border-light); padding: 0.8rem; border-radius: var(--radius); overflow-x: auto; font-family: var(--font-code); font-size: 0.85rem;"><code>mkdir "%USERPROFILE%\Desktop\documentos-ia"
+mkdir "%USERPROFILE%\Desktop\documentos-ia\excel-diseno"</code></pre>
+          <p style="font-size:0.85rem; color: var(--text-muted); margin-bottom:0;"><code>C:\Users\TuUsuario\Desktop\documentos-ia\excel-diseno\</code></p>
+        </div>
+
+        <h2>Pre-requisitos</h2>
+        <ul>
+          <li>Node.js + OpenCode (<a href="../guias/guia-opencode-instalacion-windows.html">Guía</a>) y Excel.</li>
+          <li>Repaso <a href="../../03-excel/teoria/2026-01-24-formato-celdas.html">Formato de celdas</a> y <a href="../../03-excel/practicas/practica-01-planilla-notas.html">Planilla de Notas</a>.</li>
+        </ul>
+
+        <h2>Paso 1 — Plan con OpenCode (Tab)</h2>
+        <pre style="background: var(--color-code-bg); border: 1px solid var(--border-light); padding: 0.8rem; border-radius: var(--radius); overflow-x: auto; font-family: var(--font-code); font-size: 0.85rem;"><code>cd "%USERPROFILE%\Desktop\documentos-ia\excel-diseno"
+opencode</code></pre>
+        <p><code>Tab</code> → Plan y copia:</p>
+        <div class="prompt-wrap">
+          <button class="copy-btn" onclick="copyPrompt('prompt-diseno-plan')">📋 Copiar prompt</button>
+          <pre style="background: var(--color-code-bg); border: 1px solid var(--border-light); padding: 0.8rem; border-radius: var(--radius); overflow-x: auto; font-family: var(--font-code); font-size: 0.85rem; padding-top: 2rem;"><code id="prompt-diseno-plan">Actúa como diseñador de planillas del Instituto Nueva Tecnología.
+
+TAREA: Genera una planilla Excel con diseño profesional usando Node.js y npm con la dependencia exceljs (npm install exceljs), tamaño de impresión CARTA.
+
+CONTENIDO: Hoja "NOTAS" con 15 estudiantes, columnas: Nro, Apellidos y Nombres, Nota1 (0-100), Nota2 (0-100), Nota3 (0-100), Promedio (fórmula =AVERAGE(C2:E2)), Estado (fórmula =IF(F2>=61,"Aprobado","Reprobado")). Datos realistas.
+
+DISEÑO OBLIGATORIO (usa exceljs):
+- Título en A1:G1 combinado, "Planilla de Notas — Ofimática 2026", Calibri 14 negrita, color fondo #5B3A70 (color IA), font blanco, centrado.
+- Encabezados A2:G2 con fondo #D9D7CE, negrita, bordes finos, filtros automáticos y fila congelada.
+- Bordes finos en todo el rango de datos, cebra suave (fila par #F7F6F3), alineación centrada en notas/promedio.
+- Formato condicional en Promedio: verde si >=61, rojo si <61 (usa exceljs conditional formatting o fill según valor).
+- Ancho de columnas optimizado y altura de fila 18.
+- Configuración de impresión: tamaño CARTA (Letter), márgenes 0.7", orientación vertical, encabezado/pie con "Instituto Nueva Tecnología" y numeración, ajustar a 1 página ancho.
+
+TECNOLOGÍA: Node.js + npm + exceljs. Propón el plan: archivos en "%USERPROFILE%\Desktop\documentos-ia\excel-diseno\" (package.json, generate.js), cómo aplicarás estilos, fórmulas y validaciones, sin generar aún.</code></pre>
+        </div>
+        <p>Revisa plan → <code>Tab</code> a Build.</p>
+
+        <h2>Paso 2 — Generar el .xlsx con estilo</h2>
+        <div class="prompt-wrap">
+          <button class="copy-btn" onclick="copyPrompt('prompt-diseno-build')">📋 Copiar prompt</button>
+          <pre style="background: var(--color-code-bg); border: 1px solid var(--border-light); padding: 0.8rem; border-radius: var(--radius); overflow-x: auto; font-family: var(--font-code); font-size: 0.85rem; padding-top: 2rem;"><code id="prompt-diseno-build">Genera en "%USERPROFILE%\Desktop\documentos-ia\excel-diseno\":
+- package.json con exceljs
+- generate.js que cree Planilla_Notas_Diseno_TuNombre.xlsx TAMAÑO CARTA con la hoja NOTAS, fórmulas, estilos, filtros, bordes y formato condicional descrito. Usa exceljs: workbook, worksheet, font, fill, border, alignment, numFmt.
+Indica comandos: npm install y node generate.js. Valida que fórmulas calculan y que la impresión es carta.</code></pre>
+        </div>
+        <pre style="background: var(--color-code-bg); border: 1px solid var(--border-light); padding: 0.8rem; border-radius: var(--radius); overflow-x: auto; font-family: var(--font-code); font-size: 0.85rem;"><code>npm install
+node generate.js</code></pre>
+        <p>Abre el <code>.xlsx</code> en Excel: verifica que <code>Promedio</code> calcula, <code>Estado</code> cambia, y el diseño se ve como en la guía.</p>
+
+        <h2>Paso 3 — Verificar tamaño carta y retoques finales</h2>
+        <ol>
+          <li><strong>Diseño de página → Tamaño → Carta</strong> → Márgenes 0.7″ → Orientación Vertical → <em>Ajustar a 1 página ancho × 1 alto</em>.</li>
+          <li>Imprimir (<code>Ctrl+P</code>) debe mostrar título, encabezados y 15 filas sin corte.</li>
+          <li>Si el docente pide, añade una segunda hoja “RESUMEN” con <code>=PROMEDIO(F3:F17)</code> y <code>=CONTAR.SI(G3:G17,"Aprobado")</code> usando el mismo script exceljs.</li>
+        </ol>
+
+        <div class="box box-ia">
+          <span class="box-title">Check con OpenCode</span>
+          <div class="prompt-wrap">
+            <button class="copy-btn" onclick="copyPrompt('prompt-diseno-check')">📋 Copiar prompt</button>
+            <pre style="background: var(--color-code-bg); border: 1px solid var(--border-light); padding: 0.8rem; border-radius: var(--radius); overflow-x: auto; font-family: var(--font-code); font-size: 0.85rem; padding-top: 2rem;"><code id="prompt-diseno-check">Revisa "%USERPROFILE%\Desktop\documentos-ia\excel-diseno\Planilla_Notas_Diseno_TuNombre.xlsx" y valida: 1) Tamaño carta, 2) Título combinado con color #5B3A70, 3) Filtros y bordes, 4) Fórmulas Promedio/Estado, 5) Formato condicional, 6) Generado con Node.js+exceljs. Dame 2 mejoras de estilo.</code></pre>
+          </div>
+        </div>
+
+        <div class="box" style="border-left-color: #d63031;">
+          <span class="box-title" style="color: #d63031;">Entregable (Escritorio\documentos-ia\excel-diseno\)</span>
+          <ol style="margin-bottom:0">
+            <li><code>generate.js</code> + <code>package.json</code> (exceljs).</li>
+            <li><code>Planilla_Notas_Diseno_TuNombre.xlsx</code> tamaño carta + <code>.pdf</code>.</li>
+            <li>Link <code>/share</code> de la sesión.</li>
+          </ol>
+        </div>
+
+        <h2>Extensión</h2>
+        <p>Pide a OpenCode: <em>“Reusa la planilla y añade una hoja INVENTARIO con 20 productos, stock y formato condicional rojo si Stock&lt;StockMinimo, manteniendo tamaño carta y exceljs”</em>.</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 - Instituto Nueva Tecnología | Prof. Samuel Durán | Ofimática</p>
+    </footer>
+
+    <script>!function(){var h=document.querySelector('.lesson-header h1,.guide-header h1');var c=document.querySelector('.print-header-center');if(h&&c)c.textContent=h.textContent}()</script>
+    <script>
+      function copyPrompt(id){var el=document.getElementById(id);var text=el.innerText;if(navigator.clipboard){navigator.clipboard.writeText(text).then(function(){toast(id)});}else{var ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);toast(id);} }
+      function toast(id){var btn=document.querySelector('button[onclick="copyPrompt(\''+id+'\')"]');if(!btn)return;var old=btn.textContent;btn.textContent='✅ Copiado';btn.classList.add('copied');setTimeout(function(){btn.textContent=old;btn.classList.remove('copied');},1500);}
+      document.getElementById("theme-toggle")?.addEventListener("click",function(){var t=document.documentElement.getAttribute("data-theme");t=t==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",t);localStorage.setItem("theme",t);this.textContent=t==="dark"?"\u2600":"\u263E"});
+      (function(){var t=localStorage.getItem("theme");var b=document.getElementById("theme-toggle");if(b){b.textContent=t==="dark"?"\u2600":"\u263E"}})();
+    </script>
+    <div class="print-footer"></div>
+  </body>
+</html>
