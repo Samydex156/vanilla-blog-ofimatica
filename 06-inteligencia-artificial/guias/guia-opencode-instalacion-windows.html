@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guía: Instalar OpenCode en Windows - Prof. Samuel Durán</title>
+    <link rel="stylesheet" href="../../main-style.css" />
+    <style>
+      .box-ia { border-left-color: var(--color-ia); background-color: #f5eef8; }
+      [data-theme="dark"] .box-ia { background: #2a1f33; color: #e0c8f0; }
+      code { word-break: break-all; }
+    </style>
+    <script>
+      (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.setAttribute('data-theme','dark')}})();
+    </script>
+  </head>
+  <body>
+    <div class="print-header">
+      <div class="print-header-left">Prof. Samuel William Durán Quispe</div>
+      <div class="print-header-center"></div>
+      <div class="print-header-right">Instituto Nueva Tecnología &mdash; Ofimática &mdash; IA &mdash; 2026</div>
+    </div>
+
+    <nav class="breadcrumb-nav">
+      <a href="../../index.html"><svg class="icon-svg-home" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -1px; margin-right: 4px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>Inicio</a> >
+      <a href="../index-guias.html">Inteligencia Artificial</a> >
+      <span>Guía OpenCode Windows</span>
+      <button id="theme-toggle" aria-label="Cambiar modo oscuro/claro" class="theme-btn">☾</button>
+    </nav>
+
+    <main class="content is-wide">
+      <header class="lesson-header">
+        <span class="date">Guía 03 — Windows 10/11</span>
+        <h1>Instalar OpenCode en Windows: CLI y Desktop</h1>
+        <p class="subtitle">Desde cero con PowerShell — npm, Scoop, Chocolatey, WinGet y app de escritorio</p>
+      </header>
+
+      <section class="lesson-body">
+        <div class="box box-ia">
+          <span class="box-title">Objetivo</span>
+          <p style="margin-bottom:0">Al finalizar tendrás <strong>OpenCode CLI</strong> funcionando con <code>opencode --version</code> y opcionalmente la <strong>Desktop App</strong>, listos para abrir cualquier carpeta con <code>opencode</code> y conectar tu proveedor LLM.</p>
+        </div>
+
+        <h2>0. Requisitos previos</h2>
+        <ul>
+          <li>Windows 10 (1809+) o Windows 11, 64-bit.</li>
+          <li>PowerShell o Windows Terminal (no ejecutar como administrador salvo que se indique).</li>
+          <li>Conexión a internet para descargar Node.js y OpenCode.</li>
+        </ul>
+
+        <h2>1. Instalar Node.js LTS (necesario para CLI nativo)</h2>
+        <p>OpenCode CLI en Windows se instala vía <strong>npm</strong>, que viene con Node.js.</p>
+
+        <h4>Opción A — WinGet (recomendada en Windows 10/11)</h4>
+        <pre style="background: var(--color-code-bg); border: 1px solid var(--border-light); padding: 0.8rem; border-radius: var(--radius); overflow-x: auto; font-family: var(--font-code); font-size: 0.85rem;"><code>winget install OpenJS.NodeJS.LTS --accept-package-agreements --accept-source-agreements</code></pre>
+        <p style="font-size:0.88rem; color: var(--text-muted);">Cierra y reabre PowerShell después de instalar para que <code>node</code> y <code>npm</code> entren al PATH.</p>
+
+        <h4>Opción B — Descarga manual</h4>
+        <p>Descarga el LTS desde <a href="https://nodejs.org" target="_blank" rel="noopener">nodejs.org</a> → instalador .msi → siguiente/siguiente. Verifica:</p>
+        <pre style="background: var(--color-code-bg); border: 1px solid var(--border-light); padding: 0.8rem; border-radius: var(--radius); overflow-x: auto; font-family: var(--font-code); font-size: 0.85rem;"><code>node --version
+npm --version</code></pre>
+
+        <h2>2. Instalar OpenCode CLI — Elige UNA vía</h2>
+        <p>Todas instalan el mismo binario. Elige la que ya uses en clase.</p>
+
+        <h4>Vía 1 — npm (más universal)</h4>
+        <pre style="background: var(--color-code-bg); border: 1px solid var(--border-light); padding: 0.8rem; border-radius: var(--radius); overflow-x: auto; font-family: var(--font-code); font-size: 0.85rem;"><code>npm install -g opencode-ai</code></pre>
+        <p>Para actualizar luego: <code>npm install -g opencode-ai@latest</code></p>
+
+        <h4>Vía 2 — Scoop</h4>
+        <pre style="background: var(--color-code-bg); border: 1px solid var(--border-light); padding: 0.8rem; border-radius: var(--radius); overflow-x: auto; font-family: var(--font-code); font-size: 0.85rem;"><code>scoop install opencode</code></pre>
+
+        <h4>Vía 3 — Chocolatey (requiere PowerShell admin)</h4>
+        <pre style="background: var(--color-code-bg); border: 1px solid var(--border-light); padding: 0.8rem; border-radius: var(--radius); overflow-x: auto; font-family: var(--font-code); font-size: 0.85rem;"><code>choco install opencode</code></pre>
+
+        <h4>Vía 4 — Script oficial (Git Bash / WSL)</h4>
+        <pre style="background: var(--color-code-bg); border: 1px solid var(--border-light); padding: 0.8rem; border-radius: var(--radius); overflow-x: auto; font-family: var(--font-code); font-size: 0.85rem;"><code>curl -fsSL https://opencode.ai/install | bash</code></pre>
+        <p style="font-size:0.85rem; color: var(--text-muted);">En Windows nativo prefiere npm/scoop. El script es ideal para WSL/Linux.</p>
+
+        <h4>Verificar instalación CLI</h4>
+        <pre style="background: var(--color-code-bg); border: 1px solid var(--border-light); padding: 0.8rem; border-radius: var(--radius); overflow-x: auto; font-family: var(--font-code); font-size: 0.85rem;"><code>opencode --version
+opencode --help</code></pre>
+        <p>Si PowerShell dice “no se reconoce”, cierra y reabre la terminal (el PATH se actualiza al reiniciar).</p>
+
+        <div class="box" style="border-left-color: var(--color-ia);">
+          <span class="box-title">Nota para el instituto (4GB RAM, i3 integrada)</span>
+          <p style="margin-bottom:0; font-size:0.9rem;">CLI nativo es lo recomendado: consume menos RAM que Desktop y no necesita OpenGL 4.1. Si tu proyecto depende de toolchains Linux, usa <strong>WSL2</strong> (ver <a href="https://opencode.ai/docs/windows-wsl" target="_blank" rel="noopener">docs/windows-wsl</a>): instala Node dentro de WSL y repite <code>npm install -g opencode-ai</code> allí.</p>
+        </div>
+
+        <h2>3. Instalar OpenCode Desktop (app gráfica) — Opcional</h2>
+        <p>La Desktop orquesta varias sesiones CLI con interfaz visual (BETA). Puedes tener CLI y Desktop a la vez.</p>
+
+        <h4>Opción A — Descarga directa (EXE)</h4>
+        <ol>
+          <li>Ve a <a href="https://opencode.ai/download" target="_blank" rel="noopener">opencode.ai/download</a> o <a href="https://github.com/anomalyco/opencode/releases" target="_blank" rel="noopener">Releases en GitHub</a>.</li>
+          <li>Descarga <code>opencode-desktop-windows-x64.exe</code> → doble clic → instalar.</li>
+          <li>Silencioso (para laboratorio): <code>opencode-desktop-windows-x64.exe /S</code></li>
+        </ol>
+
+        <h4>Opción B — WinGet</h4>
+        <pre style="background: var(--color-code-bg); border: 1px solid var(--border-light); padding: 0.8rem; border-radius: var(--radius); overflow-x: auto; font-family: var(--font-code); font-size: 0.85rem;"><code>winget install --id SST.OpenCodeDesktop --exact
+# versión fija:
+winget install --id SST.OpenCodeDesktop --exact --version 1.18.20
+# silencioso para despliegue:
+winget install --id SST.OpenCodeDesktop --exact --silent --accept-package-agreements --accept-source-agreements</code></pre>
+
+        <h4>Opción C — Scoop</h4>
+        <pre style="background: var(--color-code-bg); border: 1px solid var(--border-light); padding: 0.8rem; border-radius: var(--radius); overflow-x: auto; font-family: var(--font-code); font-size: 0.85rem;"><code>scoop bucket add extras
+scoop install extras/opencode-desktop</code></pre>
+
+        <h2>4. Primer arranque: conectar proveedor y crear AGENTS.md</h2>
+        <ol>
+          <li>Abre PowerShell en la carpeta de tu proyecto (ej. <code>vanilla-blog-ofimatica</code>):
+            <pre style="background: var(--color-code-bg); border: 1px solid var(--border-light); padding: 0.8rem; border-radius: var(--radius); overflow-x: auto; font-family: var(--font-code); font-size: 0.85rem;"><code>cd C:\dev\vanilla\vanilla-blog-ofimatica
+opencode</code></pre>
+          </li>
+          <li>Dentro de OpenCode ejecuta <code>/connect</code> → elige proveedor (recomendado para clase: <strong>OpenCode Zen</strong> en <a href="https://opencode.ai/auth" target="_blank" rel="noopener">opencode.ai/auth</a> → crea cuenta, copia API key y pégala en la TUI).</li>
+          <li>Inicializa el proyecto:
+            <pre style="background: var(--color-code-bg); border: 1px solid var(--border-light); padding: 0.8rem; border-radius: var(--radius); overflow-x: auto; font-family: var(--font-code); font-size: 0.85rem;"><code>/init</code></pre>
+            Genera <code>AGENTS.md</code> en la raíz (haz <code>git add AGENTS.md</code>). Este archivo le dice a OpenCode cómo es tu proyecto vanilla Jamstack.
+          </li>
+        </ol>
+
+        <div class="box box-ia">
+          <span class="box-title">Tip de uso en clase</span>
+          <ul style="margin-bottom:0">
+            <li><code>Tab</code> alterna <strong>Plan</strong> (solo propone) y <strong>Build</strong> (ejecuta). Para tareas de ofimática, pide primero el plan: “Migra bdTienda-v1.xlsx a Access y crea formulario VENTA”.</li>
+            <li><code>@</code> referencia archivos: <code>Explica @07-Access/practicas/archivos/bdTienda-v1.xlsx</code></li>
+            <li><code>/undo</code> revierte el último cambio, <code>/share</code> genera link para el docente.</li>
+          </ul>
+        </div>
+
+        <h2>5. Solución de problemas comunes (Windows)</h2>
+        <table class="wiki-table">
+          <thead><tr><th>Síntoma</th><th>Causa</th><th>Solución</th></tr></thead>
+          <tbody>
+            <tr><td><code>opencode: no se reconoce</code></td><td>PATH no actualizado</td><td>Cierra y reabre PowerShell; verifica <code>npm --version</code>. Reinstala con <code>npm install -g opencode-ai</code>.</td></tr>
+            <tr><td><code>npm ERR! EACCES</code></td><td>Permisos globales</td><td>No uses admin a la fuerza. Reinstala Node.js con instalador oficial (configura carpeta global en tu perfil).</td></tr>
+            <tr><td>Desktop no abre</td><td>Antivirus bloquea NSIS</td><td>Permite en Windows Defender / reinstala con <code>/S</code>. Alternativa: usa CLI.</td></tr>
+            <tr><td>Lentitud en 4GB</td><td>Desktop + Chrome + Office</td><td>Cierra apps, usa CLI nativo, limita a 1 sesión OpenCode. WSL consume más RAM — evita en 4GB.</td></tr>
+          </tbody>
+        </table>
+
+        <h2>6. Qué sigue</h2>
+        <p>Con OpenCode instalado, continúa con <a href="../teoria/opencode-introduccion.html">Teoría: qué es OpenCode</a> y la <a href="../practicas/practica-opencode-primer-proyecto.html">Práctica: tu primer proyecto con OpenCode</a> donde pedirás que te explique y migre el módulo Access.</p>
+
+        <p style="font-size:0.85rem; color: var(--text-muted); margin-top:1.2rem;">Fuentes: <a href="https://opencode.ai/docs" target="_blank" rel="noopener">opencode.ai/docs</a>, <a href="https://github.com/anomalyco/opencode" target="_blank" rel="noopener">anomalyco/opencode</a>, <a href="https://opencode.ai/download" target="_blank" rel="noopener">opencode.ai/download</a>.</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 - Instituto Nueva Tecnología | Prof. Samuel Durán | Ofimática</p>
+    </footer>
+
+    <script>!function(){var h=document.querySelector('.lesson-header h1,.guide-header h1');var c=document.querySelector('.print-header-center');if(h&&c)c.textContent=h.textContent}()</script>
+    <script>
+      document.getElementById("theme-toggle")?.addEventListener("click",function(){var t=document.documentElement.getAttribute("data-theme");t=t==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",t);localStorage.setItem("theme",t);this.textContent=t==="dark"?"\u2600":"\u263E"});
+      (function(){var t=localStorage.getItem("theme");var b=document.getElementById("theme-toggle");if(b){b.textContent=t==="dark"?"\u2600":"\u263E"}})();
+    </script>
+    <div class="print-footer"></div>
+  </body>
+</html>

@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OpenCode: Agente de Código con IA - Prof. Samuel Durán</title>
+    <link rel="stylesheet" href="../../main-style.css" />
+    <style>
+      .box-ia { border-left-color: var(--color-ia); background-color: #f5eef8; }
+      [data-theme="dark"] .box-ia { background: #2a1f33; color: #e0c8f0; }
+    </style>
+    <script>
+      (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.setAttribute('data-theme','dark')}})();
+    </script>
+  </head>
+  <body>
+    <div class="print-header">
+      <div class="print-header-left">Prof. Samuel William Durán Quispe</div>
+      <div class="print-header-center"></div>
+      <div class="print-header-right">Instituto Nueva Tecnología &mdash; Ofimática &mdash; Inteligencia Artificial &mdash; 2026</div>
+    </div>
+
+    <nav class="breadcrumb-nav">
+      <a href="../../index.html"><svg class="icon-svg-home" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -1px; margin-right: 4px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>Inicio</a> >
+      <a href="../index-teoria.html">Inteligencia Artificial</a> >
+      <span>OpenCode</span>
+      <button id="theme-toggle" aria-label="Cambiar modo oscuro/claro" class="theme-btn">☾</button>
+    </nav>
+
+    <main class="content">
+      <header class="lesson-header">
+        <span class="date">Clase 03 — Nuevo 2026</span>
+        <h1>OpenCode: Tu Agente de Código con IA en la Terminal y Escritorio</h1>
+        <p class="subtitle">Qué es, por qué usarlo en ofimática y diferencia CLI vs Desktop en Windows</p>
+      </header>
+
+      <section class="lesson-body">
+        <h2>Resumen</h2>
+        <p>
+          <strong>OpenCode</strong> (<a href="https://opencode.ai" target="_blank" rel="noopener">opencode.ai</a>) es un <strong>agente de programación open-source</strong> creado por el equipo de <strong>SST / AnomalyCo</strong>. No es un chatbot genérico: vive dentro de tu proyecto, lee tus archivos, propone planes, escribe código, ejecuta comandos y aprende con <code>AGENTS.md</code>. Está disponible como <strong>TUI en la terminal (CLI)</strong>, <strong>app de escritorio</strong> y extensión para VS Code.
+        </p>
+        <p>
+          En ofimática te sirve para automatizar tareas que antes eran manuales: generar plantillas de Word/Excel, crear scripts para migrar <code>bdTienda/bdFarmacia</code> a Access, documentar procedimientos y validar entregas — todo conversando en español, como si le hablaras a un colega junior.
+        </p>
+
+        <div class="box box-ia">
+          <span class="box-title">Idea clave</span>
+          <p style="margin-bottom:0">Con OpenCode no copias-pegas respuestas: <strong>le pides que actúe dentro de tu carpeta</strong> (<code>opencode</code>), revisa el código real y te propone cambios que puedes aceptar, deshacer (<code>/undo</code>) o compartir (<code>/share</code>).</p>
+        </div>
+
+        <h2>1. ¿Qué puede hacer por ti?</h2>
+        <ul>
+          <li><strong>Explicar código:</strong> <code>¿Cómo se calcula el promedio en @03-excel/practicas/...</code> usando <code>@</code> para referenciar archivos.</li>
+          <li><strong>Planificar antes de codificar:</strong> modo <em>Plan</em> (tecla <code>Tab</code>) — propone cómo implementará sin tocar archivos hasta que apruebes.</li>
+          <li><strong>Automatizar ofimática:</strong> “Genera un .docx con carta modelo usando la estructura de <code>01-word/practicas/...</code>” o “Crea un script Node que convierta <code>bdTienda-v1.xlsx</code> en tablas Access”.</li>
+          <li><strong>Trabajo seguro:</strong> <code>/undo</code> y <code>/redo</code> reversibles, permisos configurables, sin exponer contraseñas.</li>
+        </ul>
+
+        <h2>2. CLI (TUI en terminal) vs Desktop — ¿Cuál elegir en Windows?</h2>
+        <table class="wiki-table">
+          <thead>
+            <tr><th>Aspecto</th><th>CLI / TUI (terminal)</th><th>Desktop (app BETA)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Qué es</strong></td><td>Interfaz de texto que se abre con <code>opencode</code> dentro de la carpeta del proyecto. Ligera, rápida, ideal para i3/4GB.</td><td>Ventana gráfica que orquesta varias sesiones de OpenCode a la vez. Más visual, consume algo más de RAM.</td></tr>
+            <tr><td><strong>Instalación Windows</strong></td><td><code>npm install -g opencode-ai</code> (o <code>scoop/choco</code>) — solo necesitas Node.js LTS.</td><td><code>opencode-desktop-windows-x64.exe</code> desde <a href="https://opencode.ai/download" target="_blank" rel="noopener">opencode.ai/download</a> o <code>winget install SST.OpenCodeDesktop</code> / <code>scoop install extras/opencode-desktop</code>.</td></tr>
+            <tr><td><strong>Cuándo usar</strong></td><td>Clases, prácticas rápidas, PCs de 4GB, trabajo con Git y terminal. Recomendado para el instituto.</td><td>Cuando quieras supervisar 2-3 proyectos/terminales en paralelo con GUI, o prefieras no usar PowerShell.</td></tr>
+            <tr><td><strong>Requisitos</strong></td><td>Windows 10/11 64-bit + Node.js LTS + terminal (PowerShell/Windows Terminal) + API key de un proveedor (Anthropic/OpenAI/Google o local).</td><td>Mismos, más ~300 MB de disco para la app. Ambas variantes pueden coexistir.</td></tr>
+          </tbody>
+        </table>
+
+        <div class="box" style="border-left-color: var(--color-ia);">
+          <span class="box-title">Recomendación para el instituto (i3, 4GB, integrada)</span>
+          <p style="margin-bottom:0"><strong>Empieza por CLI nativo</strong> (PowerShell + npm). Es el camino de menor fricción y mejor rendimiento en 4GB. WSL2 solo si tu proyecto depende de toolchains Linux (no es el caso de vanilla-blog-ofimatica). Desktop lo dejas como segunda fase para equipos con más RAM o para el docente que gestiona varios grupos a la vez.</p>
+        </div>
+
+        <h2>3. Cómo trabaja: el ciclo básico</h2>
+        <div class="svg-diagram-container" style="margin: 1.5rem 0; width: 100%; text-align: center;">
+          <svg viewBox="0 0 760 180" width="100%" height="auto" fill="none" xmlns="http://www.w3.org/2000/svg" style="border: 1px solid var(--border-light); border-radius: 6px; background: var(--bg-content); padding: 10px; box-shadow: var(--shadow-sm); font-family: var(--font-sans);">
+            <text x="380" y="18" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-ia)" font-family="var(--font-heading)">Ciclo OpenCode: Preguntar → Planificar → Construir → Deshacer</text>
+            <rect x="15" y="32" width="730" height="130" rx="6" fill="var(--bg-body)" stroke="var(--border-light)"/>
+            <!-- Preguntar -->
+            <circle cx="90" cy="80" r="26" fill="var(--bg-content)" stroke="var(--color-ia)" stroke-width="1.5"/>
+            <text x="90" y="86" text-anchor="middle" font-size="16">💬</text>
+            <text x="90" y="115" text-anchor="middle" font-size="8" font-weight="700" fill="var(--color-ia)">Preguntar</text>
+            <text x="90" y="126" text-anchor="middle" font-size="7" fill="var(--text-muted)">explica @archivo</text>
+            <path d="M120 80 L165 80" stroke="var(--color-ia)" stroke-width="1.8" stroke-dasharray="4 3"/><polygon points="170,80 162,76 162,84" fill="var(--color-ia)"/>
+            <!-- Plan -->
+            <circle cx="220" cy="80" r="26" fill="#5B3A70" stroke="#fff" stroke-width="1.5"/>
+            <text x="220" y="86" text-anchor="middle" font-size="14" fill="#fff">Tab</text>
+            <text x="220" y="115" text-anchor="middle" font-size="8" font-weight="700" fill="#5B3A70">Plan (Tab)</text>
+            <text x="220" y="126" text-anchor="middle" font-size="7" fill="var(--text-muted)">solo propone</text>
+            <path d="M250 80 L295 80" stroke="var(--color-ia)" stroke-width="1.8" stroke-dasharray="4 3"/><polygon points="300,80 292,76 292,84" fill="var(--color-ia)"/>
+            <!-- Build -->
+            <circle cx="350" cy="80" r="26" fill="var(--bg-content)" stroke="var(--color-ia)" stroke-width="1.5"/>
+            <text x="350" y="86" text-anchor="middle" font-size="16">🔨</text>
+            <text x="350" y="115" text-anchor="middle" font-size="8" font-weight="700" fill="var(--color-ia)">Build (Tab)</text>
+            <text x="350" y="126" text-anchor="middle" font-size="7" fill="var(--text-muted)">ejecuta cambios</text>
+            <path d="M380 80 L425 80" stroke="var(--color-ia)" stroke-width="1.8"/><polygon points="430,80 422,76 422,84" fill="var(--color-ia)"/>
+            <!-- Undo/Share -->
+            <circle cx="480" cy="80" r="26" fill="var(--bg-content)" stroke="var(--border-light)" stroke-width="1.2"/>
+            <text x="480" y="86" text-anchor="middle" font-size="12">↩︎</text>
+            <text x="480" y="115" text-anchor="middle" font-size="8" font-weight="700" fill="var(--text-muted)">/undo /redo</text>
+            <path d="M510 80 L555 80" stroke="var(--border-light)" stroke-width="1.8" stroke-dasharray="4 3"/><polygon points="560,80 552,76 552,84" fill="var(--border-light)"/>
+            <!-- Share -->
+            <circle cx="610" cy="80" r="26" fill="var(--bg-content)" stroke="var(--border-light)"/>
+            <text x="610" y="86" text-anchor="middle" font-size="14">🔗</text>
+            <text x="610" y="115" text-anchor="middle" font-size="8" font-weight="700" fill="var(--text-muted)">/share</text>
+            <text x="680" y="86" font-size="7" fill="var(--text-muted)">AGENTS.md</text>
+            <rect x="665" y="32" width="80" height="26" rx="4" fill="var(--bg-content)" stroke="var(--border-light)"/><text x="705" y="49" text-anchor="middle" font-size="7" font-weight="600" fill="var(--text-muted)">AGENTS.md</text>
+          </svg>
+        </div>
+
+        <h2>4. Qué necesitas antes de instalar (Windows)</h2>
+        <ul>
+          <li><strong>Sistema:</strong> Windows 10 (1809+) o Windows 11 64-bit.</li>
+          <li><strong>Terminal:</strong> PowerShell o Windows Terminal (ya vienen en Windows).</li>
+          <li><strong>Node.js LTS</strong> (incluye npm) — se verifica con <code>node --version</code> y <code>npm --version</code>.</li>
+          <li><strong>Proveedor LLM:</strong> cuenta/API key de Anthropic, OpenAI, Google o modelo local. OpenCode es agnóstico; con <code>/connect</code> eliges uno. Tip del curso: <strong>OpenCode Zen</strong> (<code>opencode.ai/zen</code>) trae modelos curados para empezar.</li>
+          <li><strong>Internet:</strong> para login inicial y descargar modelos.</li>
+        </ul>
+
+        <div class="box box-ia">
+          <span class="box-title">Siguiente paso</span>
+          <p style="margin-bottom:0">Continúa con la <a href="../guias/guia-opencode-instalacion-windows.html"><strong>Guía de instalación en Windows (CLI y Desktop)</strong></a> para instalarlo paso a paso con PowerShell, WinGet, Scoop y Chocolatey, y luego la <a href="../practicas/practica-opencode-primer-proyecto.html">Práctica: tu primer proyecto con OpenCode</a>.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 - Instituto Nueva Tecnología | Prof. Samuel Durán | Ofimática</p>
+    </footer>
+
+    <script>!function(){var h=document.querySelector('.lesson-header h1,.guide-header h1');var c=document.querySelector('.print-header-center');if(h&&c)c.textContent=h.textContent}()</script>
+    <script>
+      document.getElementById("theme-toggle")?.addEventListener("click",function(){var t=document.documentElement.getAttribute("data-theme");t=t==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",t);localStorage.setItem("theme",t);this.textContent=t==="dark"?"\u2600":"\u263E"});
+      (function(){var t=localStorage.getItem("theme");var b=document.getElementById("theme-toggle");if(b){b.textContent=t==="dark"?"\u2600":"\u263E"}})();
+    </script>
+    <div class="print-footer"></div>
+  </body>
+</html>
