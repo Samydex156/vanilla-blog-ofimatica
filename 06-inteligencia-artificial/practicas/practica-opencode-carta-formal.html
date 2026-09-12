@@ -8,6 +8,16 @@
     <style>
       .box-ia { border-left-color: var(--color-ia); background-color: #f5eef8; }
       [data-theme="dark"] .box-ia { background: #2a1f33; color: #e0c8f0; }
+      .prompt-wrap { position: relative; }
+      .copy-btn {
+        position: absolute; top: 6px; right: 6px;
+        background: var(--bg-content); border: 1px solid var(--border-light);
+        border-radius: var(--radius); padding: 0.25rem 0.5rem;
+        font-family: var(--font-code); font-size: 0.75rem; cursor: pointer;
+        color: var(--text-muted); transition: var(--transition);
+      }
+      .copy-btn:hover { background: var(--border-light); color: var(--text-main); }
+      .copy-btn.copied { background: var(--color-success); color: #fff; border-color: var(--color-success); }
     </style>
     <script>
       (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.setAttribute('data-theme','dark')}})();
@@ -31,67 +41,93 @@
       <header class="lesson-header">
         <span class="date">Práctica 08 — Guiada</span>
         <h1>Generar una Carta Formal con OpenCode y Word</h1>
-        <p class="subtitle">De la idea al .docx listo para imprimir — prompt → plan → generación → formato en Word</p>
+        <p class="subtitle">Tamaño carta — carpeta Escritorio\documentos-ia — generación con Node.js + docx</p>
       </header>
 
       <section class="lesson-body">
         <div class="box box-ia">
           <span class="box-title">Objetivo</span>
-          <p style="margin-bottom:0">Usar <strong>OpenCode (CLI o Desktop)</strong> para generar el contenido de una <strong>carta formal modelo</strong>, exportarlo a <code>.md</code>/<code>.docx</code> y darle formato profesional en <strong>Word</strong> según el módulo 01 (márgenes, estilos, sangrías, firma).</p>
+          <p style="margin-bottom:0">Usar <strong>OpenCode (CLI o Desktop)</strong> para generar una <strong>carta formal tamaño carta</strong> con <strong>Node.js + npm + dependencia <code>docx</code></strong>, guardada en <code>Escritorio\documentos-ia\</code>, y validarla en Word.</p>
+        </div>
+
+        <div class="box" style="border-left-color: var(--color-ia);">
+          <span class="box-title">Ubicación de trabajo obligatoria</span>
+          <p style="margin-bottom:0.4rem">Todas las prácticas de IA se guardan en el <strong>Escritorio</strong> para evitar rutas largas y facilitar la entrega. Crea la carpeta una sola vez:</p>
+          <pre style="background: var(--color-code-bg); border: 1px solid var(--border-light); padding: 0.8rem; border-radius: var(--radius); overflow-x: auto; font-family: var(--font-code); font-size: 0.85rem;"><code>mkdir "%USERPROFILE%\Desktop\documentos-ia"
+mkdir "%USERPROFILE%\Desktop\documentos-ia\carta-constancia"</code></pre>
+          <p style="font-size:0.85rem; color: var(--text-muted); margin-bottom:0;">Equivale a <code>C:\Users\TuUsuario\Desktop\documentos-ia\</code>. Si ya existe, omite el primer <code>mkdir</code>.</p>
         </div>
 
         <h2>Pre-requisitos</h2>
         <ul>
-          <li>OpenCode instalado (<a href="../guias/guia-opencode-instalacion-windows.html">Guía Windows</a>) y proveedor conectado (<code>/connect</code>).</li>
-          <li>Word instalado. Repasa <a href="../../01-word/teoria/anatomia-documento-formal.html">Anatomía del documento formal</a> y <a href="../../01-word/guias/fuente-y-tamano.html">Fuente y tamaño</a>.</li>
+          <li>OpenCode instalado (<a href="../guias/guia-opencode-instalacion-windows.html">Guía Windows</a>) + Node.js LTS verificado con <code>node --version</code> y <code>npm --version</code>.</li>
+          <li>Word para verificar el <code>.docx</code> final (impresión tamaño carta).</li>
         </ul>
 
-        <h2>Paso 1 — Abrir el proyecto y pedir el plan (Tab)</h2>
-        <pre style="background: var(--color-code-bg); border: 1px solid var(--border-light); padding: 0.8rem; border-radius: var(--radius); overflow-x: auto; font-family: var(--font-code); font-size: 0.85rem;"><code>cd C:\dev\vanilla\vanilla-blog-ofimatica
+        <h2>Paso 1 — Abrir OpenCode y pedir el plan (Tab)</h2>
+        <pre style="background: var(--color-code-bg); border: 1px solid var(--border-light); padding: 0.8rem; border-radius: var(--radius); overflow-x: auto; font-family: var(--font-code); font-size: 0.85rem;"><code>cd "%USERPROFILE%\Desktop\documentos-ia\carta-constancia"
 opencode</code></pre>
-        <p>Presiona <code>Tab</code> para entrar a <strong>Plan</strong> (verás “Plan mode” abajo a la derecha) y pega este prompt guiado:</p>
-        <pre style="background: var(--color-code-bg); border: 1px solid var(--border-light); padding: 0.8rem; border-radius: var(--radius); overflow-x: auto; font-family: var(--font-code); font-size: 0.85rem;"><code>Actúa como asistente administrativo del Instituto Nueva Tecnología. Necesito una carta formal en español, en formato A4, de una página, con tono respetuoso y claro.
+        <p>Presiona <code>Tab</code> para entrar a <strong>Plan</strong> y pega este prompt (usa el botón Copiar para evitar errores):</p>
 
-Contexto: solicitud de constancia de estudios para presentar a una empresa. Destinatario: Jefe de Recursos Humanos. Remitente: estudiante de Ofimática (deja placeholders [NOMBRE], [CARNET], [FECHA], [EMPRESA]).
+        <div class="prompt-wrap">
+          <button class="copy-btn" onclick="copyPrompt('prompt-carta-plan')">📋 Copiar prompt</button>
+          <pre style="background: var(--color-code-bg); border: 1px solid var(--border-light); padding: 0.8rem; border-radius: var(--radius); overflow-x: auto; font-family: var(--font-code); font-size: 0.85rem; padding-top: 2rem;"><code id="prompt-carta-plan">Actúa como asistente administrativo del Instituto Nueva Tecnología.
 
-Estructura obligatoria: membrete, lugar y fecha, destinatario, asunto (Asunto: Solicitud de constancia de estudios), saludo, 3 párrafos (presentación + motivo + compromiso/agradecimiento), despedida, firma con cargo, pie con contacto. Usa lenguaje formal boliviano.
+TAREA: Genera una carta formal en español, TAMAÑO CARTA (Letter 8.5" x 11" = 21.59 x 27.94 cm), de una página, tono respetuoso y claro, usando Node.js y npm con la dependencia docx (npm install docx). El script debe crear el .docx programáticamente, no copiar texto manual.
 
-Propón primero el plan: qué archivos crearás y qué validaciones harás, sin generar aún el documento.</code></pre>
-        <p>Revisa el plan que propone OpenCode. Si te gusta, presiona <code>Tab</code> de nuevo para pasar a <strong>Build</strong>.</p>
+CONTEXTO: Solicitud de constancia de estudios para presentar a una empresa. Destinatario: Jefe de Recursos Humanos. Remitente: estudiante de Ofimática (deja placeholders [NOMBRE], [CARNET], [FECHA], [EMPRESA]).
 
-        <h2>Paso 2 — Generar el borrador con OpenCode</h2>
-        <p>En Build, confirma:</p>
-        <pre style="background: var(--color-code-bg); border: 1px solid var(--border-light); padding: 0.8rem; border-radius: var(--radius); overflow-x: auto; font-family: var(--font-code); font-size: 0.85rem;"><code>Perfecto, genera ahora el archivo 06-inteligencia-artificial/practicas/archivos/carta-constancia-borrador.md con la carta completa y placeholders visibles.</code></pre>
-        <p>Abre el <code>.md</code> generado. Verifica con el docente que tenga los 7 elementos de una carta formal (membrete, fecha, destinatario, asunto, cuerpo, despedida, firma).</p>
+ESTRUCTURA OBLIGATORIA (tamaño carta): membrete "Instituto Nueva Tecnología — Ofimática", lugar y fecha, destinatario con cargo, asunto (Asunto: Solicitud de constancia de estudios), saludo, 3 párrafos (presentación + motivo + compromiso/agradecimiento), despedida, firma con cargo, pie con contacto. Usa lenguaje formal boliviano. Configura la sección del docx a tamaño carta con márgenes 2.54 cm.
+
+TECNOLOGÍA OBLIGATORIA: Node.js + npm + docx. Propón primero el plan: qué archivos crearás en "%USERPROFILE%\Desktop\documentos-ia\carta-constancia\" (package.json, generate.js), cómo configurarás PageSize LETTER y qué validaciones harás, sin generar aún el documento.</code></pre>
+        </div>
+        <p>Revisa el plan. Si te gusta, presiona <code>Tab</code> para pasar a <strong>Build</strong>.</p>
+
+        <h2>Paso 2 — Generar el .docx con Node.js + docx</h2>
+        <p>En Build, pega:</p>
+        <div class="prompt-wrap">
+          <button class="copy-btn" onclick="copyPrompt('prompt-carta-build')">📋 Copiar prompt</button>
+          <pre style="background: var(--color-code-bg); border: 1px solid var(--border-light); padding: 0.8rem; border-radius: var(--radius); overflow-x: auto; font-family: var(--font-code); font-size: 0.85rem; padding-top: 2rem;"><code id="prompt-carta-build">Perfecto, genera ahora en "%USERPROFILE%\Desktop\documentos-ia\carta-constancia\" el proyecto Node.js:
+- package.json con dependencia docx
+- generate.js que use docx (Document, Packer, Paragraph, TextRun, PageSize, convertInchesToTwip) para crear Carta_Constancia_TuNombre.docx TAMAÑO CARTA (PageSize LETTER 12240x15840 twip, márgenes 1440 twip = 2.54cm) con la carta completa y placeholders visibles.
+- Luego indica los comandos exactos: npm install y node generate.js
+Valida que el docx abre en Word y que la configuración de página es carta.</code></pre>
+        </div>
+        <p>Ejecuta lo que indique OpenCode (normalmente):</p>
+        <pre style="background: var(--color-code-bg); border: 1px solid var(--border-light); padding: 0.8rem; border-radius: var(--radius); overflow-x: auto; font-family: var(--font-code); font-size: 0.85rem;"><code>npm install
+node generate.js</code></pre>
+        <p>Abre <code>Carta_Constancia_TuNombre.docx</code> en Word → <em>Diseño → Tamaño → Carta</em> debe estar seleccionado, márgenes 2.54 cm y 7 elementos de carta (membrete, fecha, destinatario, asunto, cuerpo 3 párrafos, despedida, firma).</p>
 
         <div class="box" style="border-left-color: var(--color-ia);">
-          <span class="box-title">Variación del prompt (para practicar)</span>
-          <p style="margin-bottom:0; font-size:0.9rem;">Cambia el motivo a “solicitud de práctica pre-profesional” o “carta de recomendación”. Observa cómo el mismo prompt estructurado (rol + tarea + formato + tono) genera resultados distintos sin reescribir todo.</p>
+          <span class="box-title">Variación guiada</span>
+          <p style="margin-bottom:0; font-size:0.9rem;">Pide: <em>“Cambia el motivo a solicitud de práctica pre-profesional usando el mismo script docx y regenera el .docx”</em>. Copia el nuevo prompt con el botón y observa cómo OpenCode reutiliza Node.js/docx.</p>
         </div>
 
-        <h2>Paso 3 — Pasar a Word y aplicar formato profesional</h2>
+        <h2>Paso 3 — Verificar tamaño carta e imprimir</h2>
         <ol>
-          <li>Copia el contenido del <code>.md</code> a un nuevo <strong>Word</strong> (<code>Carta_Constancia_TuNombre.docx</code>).</li>
-          <li>Aplica del módulo Word: fuente <strong>Calibri 11 o Arial 12</strong>, interlineado <strong>1.15</strong>, alineación justificada en cuerpo, sangría primera línea 1.27 cm, márgenes 2.54 cm.</li>
-          <li>Encabezado con logo/membrete “Instituto Nueva Tecnología — Ofimática”, pie con teléfono y correo (usa <em>Insertar → Encabezado/Pie</em>).</li>
-          <li>Reemplaza placeholders <code>[NOMBRE]</code>, <code>[FECHA]</code> con tus datos y guarda.</li>
-          <li>Exporta a PDF con <code>Archivo → Exportar → Crear PDF</code> para verificar vista de impresión (usa <code>Ctrl+P</code> del portal como referencia).</li>
+          <li>En Word: <strong>Diseño → Tamaño → Carta (21.59 × 27.94 cm)</strong> → <strong>Márgenes → Normal (2.54 cm)</strong> → fuente Calibri 11, interlineado 1.15, justificado, sangría primera línea 1.27 cm. Si OpenCode ya lo hizo vía docx, solo verifica.</li>
+          <li>Membrete en encabezado y pie con contacto (Insertar → Encabezado).</li>
+          <li>Reemplaza <code>[NOMBRE]</code>, <code>[FECHA]</code> con tus datos y guarda.</li>
+          <li><code>Archivo → Exportar → Crear PDF</code> y comprueba en vista previa que sigue siendo carta (no A4).</li>
         </ol>
 
-        <h2>Paso 4 — Verificar con OpenCode (opcional pero recomendado)</h2>
-        <pre style="background: var(--color-code-bg); border: 1px solid var(--border-light); padding: 0.8rem; border-radius: var(--radius); overflow-x: auto; font-family: var(--font-code); font-size: 0.85rem;"><code>Revisa @06-inteligencia-artificial/practicas/archivos/carta-constancia-borrador.md y dime si cumple con: asunto explícito, 3 párrafos, tono formal y placeholders. Sugiere 2 mejoras sin reescribir todo.</code></pre>
-        <p>Usa <code>/undo</code> si alguna edición no te convence y <code>/share</code> para generar el link de entrega.</p>
+        <h2>Paso 4 — Verificar con OpenCode</h2>
+        <div class="prompt-wrap">
+          <button class="copy-btn" onclick="copyPrompt('prompt-carta-check')">📋 Copiar prompt</button>
+          <pre style="background: var(--color-code-bg); border: 1px solid var(--border-light); padding: 0.8rem; border-radius: var(--radius); overflow-x: auto; font-family: var(--font-code); font-size: 0.85rem; padding-top: 2rem;"><code id="prompt-carta-check">Revisa "%USERPROFILE%\Desktop\documentos-ia\carta-constancia\Carta_Constancia_TuNombre.docx" (o el .md intermedio si existe) y dime si cumple: tamaño carta, asunto explícito, 3 párrafos, tono formal, placeholders. Sugiere 2 mejoras sin reescribir todo.</code></pre>
+        </div>
+        <p>Usa <code>/undo</code> si algo no te convence y <code>/share</code> para entregar el link.</p>
 
         <div class="box" style="border-left-color: #d63031;">
-          <span class="box-title" style="color: #d63031;">Entregable</span>
+          <span class="box-title" style="color: #d63031;">Entregable (en Escritorio\documentos-ia\carta-constancia\)</span>
           <ol style="margin-bottom:0">
-            <li><code>carta-constancia-borrador.md</code> generado por OpenCode (en <code>06-inteligencia-artificial/practicas/archivos/</code> o captura del chat).</li>
-            <li><code>Carta_Constancia_TuNombre.docx</code> y <code>.pdf</code> con formato Word aplicado.</li>
-            <li>Link <code>/share</code> de la conversación Plan → Build.</li>
+            <li><code>generate.js</code> + <code>package.json</code> (proyecto Node.js + docx).</li>
+            <li><code>Carta_Constancia_TuNombre.docx</code> <strong>tamaño carta</strong> y su <code>.pdf</code>.</li>
+            <li>Link <code>/share</code> de Plan → Build.</li>
           </ol>
         </div>
 
-        <p style="font-size:0.85rem; color: var(--text-muted);">Tip Desktop: mismos pasos en <strong>OpenCode Desktop</strong> → <em>Open Project</em> → terminal integrada → <code>opencode</code>.</p>
+        <p style="font-size:0.85rem; color: var(--text-muted);">Tip Desktop: mismos pasos en <strong>OpenCode Desktop</strong> → <em>Open Project</em> → selecciona <code>...\Desktop\documentos-ia\carta-constancia</code>.</p>
       </section>
     </main>
 
@@ -101,6 +137,8 @@ Propón primero el plan: qué archivos crearás y qué validaciones harás, sin 
 
     <script>!function(){var h=document.querySelector('.lesson-header h1,.guide-header h1');var c=document.querySelector('.print-header-center');if(h&&c)c.textContent=h.textContent}()</script>
     <script>
+      function copyPrompt(id){var el=document.getElementById(id);var text=el.innerText;if(navigator.clipboard){navigator.clipboard.writeText(text).then(function(){toast(id)});}else{var ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);toast(id);} }
+      function toast(id){var btn=document.querySelector('button[onclick="copyPrompt(\''+id+'\')"]');if(!btn)return;var old=btn.textContent;btn.textContent='✅ Copiado';btn.classList.add('copied');setTimeout(function(){btn.textContent=old;btn.classList.remove('copied');},1500);}
       document.getElementById("theme-toggle")?.addEventListener("click",function(){var t=document.documentElement.getAttribute("data-theme");t=t==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",t);localStorage.setItem("theme",t);this.textContent=t==="dark"?"\u2600":"\u263E"});
       (function(){var t=localStorage.getItem("theme");var b=document.getElementById("theme-toggle");if(b){b.textContent=t==="dark"?"\u2600":"\u263E"}})();
     </script>
