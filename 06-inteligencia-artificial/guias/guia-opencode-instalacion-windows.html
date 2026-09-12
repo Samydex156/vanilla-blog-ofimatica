@@ -82,6 +82,15 @@ npm --version</code></pre>
 opencode --help</code></pre>
         <p>Si PowerShell dice “no se reconoce”, cierra y reabre la terminal (el PATH se actualiza al reiniciar).</p>
 
+        <div class="box" style="border-left-color: #d63031; background: #fef2f2;">
+          <span class="box-title" style="color: #d63031;">Caso real del Prof. Samuel — OpenCode se deshabilita a los días</span>
+          <p style="font-size:0.9rem; margin-bottom:0.6rem;">En algunos equipos con Node.js, <code>opencode</code> funciona unos días y luego deja de responder (el binario queda bloqueado porque los <em>scripts postinstall</em> de npm fueron ignorados por la política de seguridad del sistema o del antivirus).</p>
+          <p style="font-size:0.9rem; margin-bottom:0.6rem;"><strong>Solución que funciona en el aula:</strong> reinstalar permitiendo los scripts del paquete:</p>
+          <pre style="background: var(--color-code-bg); border: 1px solid var(--border-light); padding: 0.8rem; border-radius: var(--radius); overflow-x: auto; font-family: var(--font-code); font-size: 0.85rem;"><code>npm i -g --allow-scripts=opencode-ai opencode-ai
+opencode --version</code></pre>
+          <p style="font-size:0.85rem; color: var(--text-muted); margin-bottom:0;">Si usas <code>npm install -g opencode-ai</code> sin <code>--allow-scripts</code> y tu <code>npm</code> o antivirus bloquea scripts, el binario de OpenCode no se extrae/actualiza bien y “desaparece”. El flag <code>--allow-scripts=opencode-ai</code> autoriza solo los scripts de ese paquete y restaura la instalación. Alternativa: <code>scoop install opencode</code> / <code>choco install opencode</code> (no dependen de npm) o <code>npm install -g opencode-ai@latest --allow-scripts=opencode-ai</code> para forzar la última versión.</p>
+        </div>
+
         <div class="box" style="border-left-color: var(--color-ia);">
           <span class="box-title">Nota para el instituto (4GB RAM, i3 integrada)</span>
           <p style="margin-bottom:0; font-size:0.9rem;">CLI nativo es lo recomendado: consume menos RAM que Desktop y no necesita OpenGL 4.1. Si tu proyecto depende de toolchains Linux, usa <strong>WSL2</strong> (ver <a href="https://opencode.ai/docs/windows-wsl" target="_blank" rel="noopener">docs/windows-wsl</a>): instala Node dentro de WSL y repite <code>npm install -g opencode-ai</code> allí.</p>
@@ -136,6 +145,7 @@ opencode</code></pre>
           <tbody>
             <tr><td><code>opencode: no se reconoce</code></td><td>PATH no actualizado</td><td>Cierra y reabre PowerShell; verifica <code>npm --version</code>. Reinstala con <code>npm install -g opencode-ai</code>.</td></tr>
             <tr><td><code>npm ERR! EACCES</code></td><td>Permisos globales</td><td>No uses admin a la fuerza. Reinstala Node.js con instalador oficial (configura carpeta global en tu perfil).</td></tr>
+            <tr><td><code>opencode</code> funciona días y luego “desaparece”</td><td>npm bloqueó <code>postinstall</code> (política / antivirus)</td><td>Ejecuta <code>npm i -g --allow-scripts=opencode-ai opencode-ai</code> y verifica <code>opencode --version</code>. Es el fix usado por el Prof. Samuel. Alternativa sin npm: <code>scoop/choco</code>.</td></tr>
             <tr><td>Desktop no abre</td><td>Antivirus bloquea NSIS</td><td>Permite en Windows Defender / reinstala con <code>/S</code>. Alternativa: usa CLI.</td></tr>
             <tr><td>Lentitud en 4GB</td><td>Desktop + Chrome + Office</td><td>Cierra apps, usa CLI nativo, limita a 1 sesión OpenCode. WSL consume más RAM — evita en 4GB.</td></tr>
           </tbody>
