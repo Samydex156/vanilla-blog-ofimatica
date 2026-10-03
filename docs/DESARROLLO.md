@@ -67,7 +67,7 @@ npx vercel --prod
 | Síntoma / Problema | Causa Raíz | Solución Paso a Paso |
 | :--- | :--- | :--- |
 | **Parpadeo blanco al cargar en Modo Oscuro (FOUC)** | Falta el script bloqueante en la cabecera `<head>` del HTML. | Copiar e inyectar en el `<head>` del HTML la IIFE síncrona: `<script>(function(){var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme:dark)").matches)){document.documentElement.setAttribute("data-theme","dark")}})();</script>`. Excepción conocida: `01-word/validador-web/index.html` no la incluye a propósito. |
-| **El buscador no filtra los elementos** | El ID del input no coincide o la estructura `<li>` no tiene la clase `.item-list`. | Verificar que el `<input>` tenga alguno de los IDs válidos (`buscador-clases`, `buscador-guias`, `buscador-practicas`, `buscador-index`) y que la lista `<ul>` tenga la clase `.item-list`. `busqueda.js` acepta cualquiera de los cuatro IDs (por eso índices de teoría/prácticas de Word y PowerPoint usan `buscador-guias` y siguen funcionando). |
+| **El buscador no filtra los elementos** | El ID del input no coincide o la estructura `<li>` no tiene la clase `.item-list`. | Verificar que el `<input>` tenga alguno de los IDs válidos (`buscador-clases`, `buscador-guias`, `buscador-practicas`, `buscador-evaluaciones`, `buscador-index`) y que la lista `<ul>` tenga la clase `.item-list`. `busqueda.js` acepta cualquiera de los cinco IDs. |
 | **El encabezado de impresión aparece en blanco en la columna central** | Falta el script que copia el `<h1>`. | En páginas de contenido (`teoria/`, `guias/`, `practicas/`) se usa un script inline antes de `</body>`: `<script>!function(){var h=document.querySelector('.lesson-header h1,.guide-header h1');var c=document.querySelector('.print-header-center');if(h&&c)c.textContent=h.textContent}()</script>`. En índices lo hace `busqueda.js`. |
 | **El toggle de tema no funciona en una página de contenido** | La página no carga `busqueda.js` (solo se carga en índices) y no tiene el script inline de toggle. | Las páginas de contenido incluyen su propio script inline de toggle + sync de ícono (ver Receta 2). No agregar `busqueda.js` en contenido; ese script está reservado para índices. |
 | **Los íconos SVG no cambian de color en modo oscuro** | El archivo SVG tiene colores codificados de forma fija (`fill="#000000"`). | Abrir el archivo `.svg` en `imgs/svg/` y reemplazar los valores hexadecimales de `stroke` o `fill` por `currentColor`. |
@@ -145,7 +145,6 @@ npx vercel --prod
 ---
 
 ### 🎨 Receta 3: Cómo Agregar un Nuevo Diagrama Vectorial SVG
-
 Para incluir un diagrama técnico que se adapte al modo oscuro automáticamente:
 
 ```html
@@ -157,3 +156,18 @@ Para incluir un diagrama técnico que se adapte al modo oscuro automáticamente:
   </svg>
 </div>
 ```
+
+---
+
+### 📝 Receta 4: Cómo Añadir una Evaluación o Pregunta (solo Word por ahora)
+
+1. Para un test nuevo, copiar `01-word/evaluaciones/test-fundamentos-word.html` como `test-nuevo.html` (mantener los `id`: `student-name`, `registration-form`, `quiz-screen`, `question-counter`, `progress-fill`, `question-container`, `question-text`, `options-grid`, `result-screen`, `student-name-display`, `final-score`, `feedback-text`).
+2. Editar el array de preguntas (10 objetos). Cada pregunta soporta `explicacion` para la retroalimentación en clase:
+   ```js
+   { pregunta: "...", opciones: ["A", "B", "C", "D"], respuesta: 0, tipo: "multiple", explicacion: "Por qué es correcta..." }
+   // o verdadero/falso:
+   { pregunta: "...", opciones: [], respuesta: 0, tipo: "vf", explicacion: "..." }
+   ```
+3. Registrar el test en `01-word/index-evaluaciones.html` dentro de `<ul class="item-list">` (el `input#buscador-evaluaciones` lo filtra vía `busqueda.js`).
+4. No tocar `evaluaciones/js/quiz-core.js` salvo para cambiar reglas de nota o textos de `feedback-text` (usa variables `main-style.css`: `--color-word`, `--bg-content`, `--border-light`; funciona en dark mode).
+5. Para reactivar el validador antiguo: en `01-word/index-practicas.html` quitar `hidden` y `display:none` de la sección `Validador de Documentos Word`.

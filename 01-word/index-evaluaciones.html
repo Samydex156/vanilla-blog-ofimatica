@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Módulo Word Evaluaciones - Prof. Samuel Durán - Ofimática</title>
+    <link rel="stylesheet" href="../main-style.css" />
+    <script>
+      (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.setAttribute('data-theme','dark')}})();
+    </script>
+  </head>
+
+  <body>
+    <header>
+      <div class="header-row">
+        <div class="header-text">
+          <h1>Evaluaciones - Módulo Word</h1>
+          <p>Tests interactivos para medir tu avance y debatir en clase.</p>
+        </div>
+        <button id="theme-toggle" aria-label="Cambiar modo oscuro/claro" class="theme-btn">☾</button>
+      </div>
+    </header>
+    <nav class="breadcrumb-nav">
+      <a href="../index.html"><svg class="icon-svg-home" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -1px; margin-right: 4px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>Inicio</a> > <span>Evaluaciones de Word</span>
+    </nav>
+    <main class="container">
+      <section class="module-section" data-module="word">
+        <h2>Tests Disponibles</h2>
+        <p style="margin-bottom:1rem;color:var(--text-muted);">Cada test consta de 10 preguntas. Al finalizar verás tu nota sobre 100 y el resumen con explicaciones para la retroalimentación en clase.</p>
+        <input
+          type="text"
+          id="buscador-evaluaciones"
+          class="buscador-index"
+          placeholder=" Buscar evaluación por título o palabra clave..."
+        />
+        <ul class="item-list" data-module="word">
+          <li>
+            <a href="evaluaciones/test-fundamentos-word.html">
+              <span class="item-date"><span class="badge">Test 01</span><span class="badge">10 preguntas</span></span>
+              <span class="item-title">Fundamentos de Word: interfaz, documentos y archivos</span>
+            </a>
+          </li>
+          <li>
+            <a href="evaluaciones/test-formato-texto.html">
+              <span class="item-date"><span class="badge">Test 02</span><span class="badge">10 preguntas</span></span>
+              <span class="item-title">Formato de texto y párrafo: fuente, estilos, interlineado</span>
+            </a>
+          </li>
+          <li>
+            <a href="evaluaciones/test-documentos-apa.html">
+              <span class="item-date"><span class="badge">Test 03</span><span class="badge">10 preguntas</span></span>
+              <span class="item-title">Documentos formales y norma APA 7ma ed.</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+    </main>
+    <footer>
+      <p>
+        &copy; 2026 - Instituto Nueva Tecnología | Prof. Samuel Durán | Ofimática
+      </p>
+    </footer>
+
+    <script src="../busqueda.js"></script>
+  </body>
+</html>

@@ -13,11 +13,12 @@ El **Portal Educativo de Ofimática** es una plataforma web estática desarrolla
 ### 🛡️ Alcance y Límites del Sistema
 - **Dentro del Alcance**:
   - Presentación interactiva de 7 módulos temáticos (Windows, Word, PowerPoint, Excel, Publisher, Internet e Inteligencia Artificial) más un catálogo de herramientas descargables (Módulo 07: Programas y Herramientas).
-  - Índices dinámicos de clases teóricas, guías metodológicas y ejercicios prácticos.
-  - Motor de búsqueda síncrono client-side en tiempo real para todas las listas.
+  - Índices dinámicos de clases teóricas, guías metodológicas, ejercicios prácticos y —solo en Word por ahora— evaluaciones interactivas.
+  - Motor de búsqueda síncrono client-side en tiempo real para todas las listas (`buscador-clases`, `buscador-guias`, `buscador-practicas`, `buscador-evaluaciones`, `buscador-index`).
   - Sistema de temas visuales (Claro / Oscuro) con persistencia y ejecución Anti-FOUC.
   - Enlaces de descarga directa de archivos base (`.docx`, `.xlsx`, `.pdf`).
   - Maquetación especial de impresión con encabezado y pie de página institucionales.
+  - Evaluaciones estáticas de Word (`01-word/evaluaciones/`): 3 tests de 10 preguntas con nota sobre 100 y resumen con explicaciones para retroalimentación en clase. Estado en memoria, sin backend.
 - **Fuera del Alcance**:
   - Autenticación de usuarios o gestión de sesiones.
   - Base de datos relacional o persistencia en servidor backend.
@@ -74,9 +75,15 @@ vanilla-blog-ofimatica/
 ├── 01-word/                          # [Módulo 01] Microsoft Word
 │   ├── index-teoria.html             # Índice teórico del módulo Word.
 │   ├── index-guias.html              # Índice de guías paso a paso del módulo Word.
-│   ├── index-practicas.html          # Índice de ejercicios prácticos del módulo Word.
+│   ├── index-practicas.html          # Índice de ejercicios prácticos del módulo Word (Prácticas 01-08; sección Validador oculta con hidden).
+│   ├── index-evaluaciones.html       # Índice de evaluaciones interactivas (3 tests, buscador-evaluaciones).
+│   ├── evaluaciones/                 # [Evaluaciones Interactivas] Tests estáticos con quiz-core.js (sin CDN ni backend).
+│   │   ├── test-fundamentos-word.html# Test 01: interfaz, documentos formales y archivos (10 preguntas + explicacion).
+│   │   ├── test-formato-texto.html   # Test 02: fuente, estilos, alineación, interlineado (10 preguntas + explicacion).
+│   │   ├── test-documentos-apa.html  # Test 03: documentos formales y norma APA 7ma ed. (10 preguntas + explicacion).
+│   │   └── js/quiz-core.js           # Motor: shuffle, registro, progreso, nota /100, resumen con explicaciones.
 │   ├── lista/                        # [Índice Auxiliar] lista-guias.txt: borrador de temas de guías pendientes.
-│   ├── validador-web/                # [Herramienta Exclusiva] Word-eSports: validador gamificado de .docx en el navegador.
+│   ├── validador-web/                # [Herramienta Exclusiva] Word-eSports: validador gamificado de .docx en el navegador (OCULTO temporalmente en index-practicas.html, no eliminado).
 │   │   ├── index.html                # Interfaz de subida/validación (sin main-style.css ni IIFE Anti-FOUC).
 │   │   ├── css/styles.css            # Estilos propios de la herramienta.
 │   │   └── js/                       # core.js, app.js y validador-caso-{01,02,05,06,07,08}.js (usa JSZip y fast-xml-parser vía CDN).
@@ -100,7 +107,7 @@ vanilla-blog-ofimatica/
 │   │   ├── smartart-jerarquia.html   # Gráficos SmartArt y organigramas.
 │   │   ├── vinetas-y-numeracion.html # Listas multinivel y viñetas custom.
 │   │   └── word-guias-imgs/          # [Imágenes] Capturas de pasos para las guías (word-*.png).
-│   └── practicas/                    # [7 Prácticas y Ejercicios]
+│   └── practicas/                    # [8 Prácticas y Ejercicios]
 │       ├── practica-01-formato-base.html
 │       ├── practica-02-modelo-carta.html
 │       ├── practica-03-articulo-periodistico-clase.html
@@ -108,7 +115,8 @@ vanilla-blog-ofimatica/
 │       ├── practica-05-recetario-nutricion.html
 │       ├── practica-06-registro-personal.html
 │       ├── practica-07-informe-evaluacion.html
-│       ├── ejercicios/               # [Recursos Descargables] Plantillas .docx, .xlsx e imágenes base.
+│       ├── practica-08-monografia-china-apa.html # Caso Monografía APA 7ma ed. (márgenes 2.54, Times 12, doble, sangría 1.27).
+│       ├── ejercicios/               # [Recursos Descargables] Plantillas .docx, .xlsx e imágenes base (incluye monografía-china-2026-base-01.docx).
 │       └── imgs-practicas/           # [Imágenes] Previsualizaciones de soluciones de las prácticas.
 │
 ├── 02-powerpoint/                    # [Módulo 02] Microsoft PowerPoint
@@ -248,7 +256,8 @@ vanilla-blog-ofimatica/
 | :--- | :--- | :--- | :--- |
 | **Estructura Web** | HTML5 Semántico | W3C Standard | Garantiza accesibilidad nativa, SEO optimizado y compatibilidad universal con navegadores sin compilación. |
 | **Diseño y Estilos** | CSS3 Vanilla | CSS Grid / Flexbox | Control fino sobre variables de diseño (`:root`), rendimiento acelerado por GPU y media queries de impresión (`@media print`). |
-| **Lógica Client-Side** | JavaScript Vanilla | ES5 en `busqueda.js` (índices) y ES2020 en scripts inline de contenido | `busqueda.js` (páginas índice) usa sintaxis ES5 sin transpiladores; las páginas de contenido llevan scripts inline propios que emplean *optional chaining* (`?.`). |
+| **Lógica Client-Side** | JavaScript Vanilla | ES5 en `busqueda.js` y `evaluaciones/js/quiz-core.js` | `busqueda.js` (índices + toggle en tests) usa ES5 sin transpiladores; `quiz-core.js` (Word) gestiona shuffle, progreso, nota /100 y resumen con `explicacion`; contenido usa scripts inline ES2020 (`?.`). |
+| **Evaluaciones Word** | JS Vanilla sin CDN | `01-word/evaluaciones/` | 3 tests estáticos de 10 preguntas (`multiple`/`vf`) con estado en memoria; sin backend ni `localStorage` (solo `theme`). |
 | **Tipografía Digital** | Google Fonts API | Source Serif 4 & Inter | Combinación perfecta entre elegancia editorial para títulos y máxima legibilidad sans-serif para cuerpos de texto. |
 | **Iconografía Vectorial** | SVG Nativos | XML/SVG 1.1 | Cero latencia de red adicional, escalabilidad infinita en pantallas Retina/4K y adaptación automática al modo oscuro. |
 | **Persistencia de Tema** | Web Storage API | `localStorage` | Almacenamiento key-value local sin cookies, liviano y accesible de manera síncrona en la carga del sitio. |

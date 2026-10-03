@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test 03: Documentos Formales y APA 7 - Prof. Samuel Durán</title>
+    <link rel="stylesheet" href="../../main-style.css" />
+    <script>
+      (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.setAttribute('data-theme','dark')}})();
+    </script>
+    <style>
+      .quiz-container{max-width:800px;margin:1.2rem auto;background:var(--bg-content);border-radius:4px;padding:1.8rem;border:1px solid var(--border-light);box-shadow:var(--shadow-sm);}
+      .quiz-header{margin-bottom:1rem;border-bottom:1px solid var(--border-light);padding-bottom:1rem;}
+      .progress-bar{height:6px;background:var(--bg-body);border:1px solid var(--border-light);border-radius:10px;margin-bottom:2rem;overflow:hidden;}
+      .progress-fill{height:100%;background:var(--color-word);width:0%;transition:width .4s ease;}
+      .question-text{font-family:var(--font-heading);font-size:1.25rem;font-weight:700;margin-bottom:1.5rem;color:var(--title-main);}
+      .options-grid{display:grid;gap:.8rem;}
+      .option-btn{padding:.9rem 1rem;border-radius:4px;background:var(--bg-body);border:1px solid var(--border-light);text-align:left;font-size:.95rem;font-weight:500;cursor:pointer;transition:var(--transition);display:flex;align-items:center;gap:.8rem;color:var(--text-color);font-family:var(--font-sans);}
+      .option-btn:hover{background:var(--bg-content);border-left:3px solid var(--color-word);box-shadow:var(--shadow-sm);}
+      .option-btn span{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;background:var(--border-light);color:var(--text-muted);font-weight:700;}
+      .hidden{display:none!important;}
+      .animate-fade{animation:fadeIn .4s ease forwards;}
+      @keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+      .form-group{margin-bottom:1.5rem;}
+      .form-input{width:100%;padding:.6rem .8rem;border-radius:4px;border:1px solid var(--border-light);font-size:.95rem;background:var(--bg-body);color:var(--text-main);font-family:var(--font-sans);}
+      .btn-primary{background:var(--color-word);color:#fff;border:none;padding:.9rem 1.5rem;border-radius:4px;font-weight:600;cursor:pointer;width:100%;font-size:.95rem;}
+      .btn-primary:hover{opacity:.92;}
+      .result-screen{text-align:center;}
+      .score-circle{width:150px;height:150px;border-radius:50%;border:8px solid var(--color-word);display:flex;flex-direction:column;align-items:center;justify-content:center;margin:2rem auto;}
+    </style>
+  </head>
+  <body>
+    <nav class="breadcrumb-nav">
+      <a href="../../index.html">Inicio</a> >
+      <a href="../index-evaluaciones.html">Evaluaciones Word</a> >
+      <span>Test 03 APA</span>
+      <button id="theme-toggle" aria-label="Cambiar modo oscuro/claro" class="theme-btn">☾</button>
+    </nav>
+
+    <main class="container">
+      <div class="quiz-container">
+        <header style="margin-bottom:2rem;text-align:center">
+          <a href="../index-evaluaciones.html" style="text-decoration:none;color:var(--color-word);font-weight:600">← Volver a evaluaciones</a>
+          <h1 id="test-title" style="margin-top:1rem;font-family:var(--font-heading);">Test 03: Documentos Formales y APA 7</h1>
+          <p style="color:var(--text-muted);">Márgenes, portada, saltos, SmartArt y casos. 10 preguntas.</p>
+        </header>
+
+        <section id="registration-form" class="animate-fade">
+          <h2 style="margin-bottom:1rem;">Identificación</h2>
+          <p style="margin-bottom:2rem;color:var(--text-muted);">Ingresa tu nombre para comenzar. Usa el resultado para el debate en clase.</p>
+          <div class="form-group">
+            <label style="display:block;margin-bottom:.5rem;font-weight:500">Nombre y Apellido</label>
+            <input type="text" id="student-name" class="form-input" placeholder="Ej. Samuel Durán" required />
+          </div>
+          <button type="button" onclick="startQuiz()" class="btn-primary">Empezar Evaluación</button>
+        </section>
+
+        <section id="quiz-screen" class="hidden animate-fade">
+          <div class="quiz-header">
+            <div id="question-counter" style="font-size:.85rem;color:var(--text-muted);font-family:var(--font-code);">Pregunta 1 de 10</div>
+          </div>
+          <div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
+          <div id="question-container">
+            <div class="question-text" id="question-text">Cargando...</div>
+            <div class="options-grid" id="options-grid"></div>
+          </div>
+        </section>
+
+        <section id="result-screen" class="result-screen hidden animate-fade">
+          <div style="font-size:3rem;margin-bottom:1rem">🎉</div>
+          <h2>¡Evaluación Completada!</h2>
+          <p id="student-name-display" style="font-size:1.1rem;font-weight:600;margin-top:1rem;"></p>
+          <div class="score-circle">
+            <div class="score-value" id="final-score" style="font-size:3rem;font-weight:700;color:var(--color-word)">0</div>
+            <div style="color:var(--text-muted)">de 100</div>
+          </div>
+          <p id="feedback-text" style="font-size:1rem;color:var(--text-muted);margin-bottom:1.5rem;"></p>
+          <button onclick="location.href='../index-evaluaciones.html'" class="btn-primary" style="max-width:250px">Finalizar y Salir</button>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 - Instituto Nueva Tecnología | Prof. Samuel Durán | Ofimática</p>
+    </footer>
+
+    <script src="js/quiz-core.js"></script>
+    <script>
+      var preguntasTest03 = [
+        { pregunta: "Según APA 7ma ed., ¿cuáles son los márgenes correctos?", opciones: ["2.54 cm en los cuatro lados", "1 cm superior y 5 cm inferior", "Sin márgenes", "3 cm a la izquierda y 2 cm los lados restantes"], respuesta: 0, tipo: "multiple", explicacion: "APA exige 2.54 cm (1 pulgada) en superior, inferior, izquierdo y derecho. Aunque la persona o institución puede determinar otra medida según sus normas internas requeridas." },
+        { pregunta: "¿Qué fuente y tamaño acepta APA 7ma ed. como genérico en clase?", opciones: ["Times New Roman 12", "Comic Sans 18", "Cualquiera con colores", "Arial 8"], respuesta: 0, tipo: "multiple", explicacion: "Usamos Times New Roman 12 negro como base. APA también acepta Arial 11 o Calibri 11, pero en clase unificamos a Times 12." },
+        { pregunta: "¿Qué interlineado y espaciado exige APA en todo el documento?", opciones: ["Doble (2.0) y 0 pt anterior/posterior", "Sencillo con 24 pt posteriores", "Sin interlineado", "Triple con colores"], respuesta: 0, tipo: "multiple", explicacion: "Doble en todo, sin espacios extra. Por eso prohibimos Enter repetidos y usamos Párrafo > Espaciado 0 pt." },
+        { pregunta: "¿Cómo va la alineación y sangría del cuerpo en APA?", opciones: ["Izquierda + sangría primera línea 1.27 cm", "Justificada sin sangría", "Centrada toda", "Derecha toda"], respuesta: 0, tipo: "multiple", explicacion: "Cuerpo a la izquierda con sangría de 1.27 cm en la primera línea. Solo portada y títulos nivel 1 van centrados." },
+        { pregunta: "¿Para qué sirve un salto de página?", opciones: ["Para iniciar una nueva página sin Enter repetidos", "Para borrar el documento", "Para cambiar el idioma", "Para imprimir fotos"], respuesta: 0, tipo: "multiple", explicacion: "Insertar > Salto de página mueve el contenido siguiente a una hoja nueva de forma limpia, ideal para portada e índice." },
+        { pregunta: "¿Para qué sirve SmartArt de Jerarquía?", opciones: ["Para crear organigramas automáticamente", "Para insertar imágenes", "Para cambiar el fondo de Windows", "Para insertar Enlaces"], respuesta: 0, tipo: "multiple", explicacion: "Insertar > SmartArt > Jerarquía crea organigramas ajustando texto y formas solos, sin dibujar cuadro por cuadro." },
+        { pregunta: "La portada APA lleva título centrado y datos de autor/institución.", opciones: [], respuesta: 0, tipo: "vf", explicacion: "Verdadero. Portada centrada con título, nombre, instituto y fecha; el cuerpo va aparte con formato distinto." },
+        { pregunta: "En APA se debe dejar una línea en blanco presionando Enter entre párrafos.", opciones: [], respuesta: 1, tipo: "vf", explicacion: "Falso. Se usa sangría y doble interlineado, no líneas en blanco. Los Enter extra rompen la norma." },
+        { pregunta: "Un salto de sección permite tener orientaciones distintas en un mismo documento.", opciones: [], respuesta: 0, tipo: "vf", explicacion: "Verdadero. Con saltos de sección puedes mezclar vertical y horizontal, útil en anexos con tablas anchas." },
+        { pregunta: "El entregable de la monografía debe guardarse como P08-MonografiaAPA-TuNombre.docx", opciones: [], respuesta: 0, tipo: "vf", explicacion: "Verdadero. Ese nombre identifica práctica, tema y estudiante para la revisión rápida en clase." }
+      ];
+      document.addEventListener("DOMContentLoaded", function () { initQuiz(preguntasTest03); });
+    </script>
+    <script src="../../busqueda.js"></script>
+  </body>
+</html>

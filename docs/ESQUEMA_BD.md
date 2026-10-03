@@ -4,7 +4,7 @@
 
 El proyecto **Vanilla Blog Ofimática** opera bajo una arquitectura **Serverless & DB-less (Sin Base de Datos Relacional ni Backend)**. La información no requiere almacenamiento en motores como PostgreSQL, MySQL o MongoDB; en su lugar, se estructura mediante dos capas de persistencia y modelado client-side:
 
-1. **Persistencia Local en Navegador (Client-Side Storage)**: Manejada a través de la **Web Storage API (`localStorage`)**. Se utiliza para almacenar las preferencias de interfaz del usuario (tema claro/oscuro) entre sesiones de navegación.
+1. **Persistencia Local en Navegador (Client-Side Storage)**: Manejada a través de la **Web Storage API (`localStorage`)**. Se utiliza para almacenar las preferencias de interfaz del usuario (tema claro/oscuro) entre sesiones de navegación. Las evaluaciones de Word **no** usan `localStorage`: nombre, respuestas y nota viven solo en memoria JS durante el test.
 2. **Modelo de Datos Estático Pre-renderizado (DOM-Based Model)**: La información pedagógica (módulos, clases, guías, prácticas, descargables) está modelada en documentos HTML5 estáticos enriquecidos con **Data Attributes (`data-module`, `data-theme`)** y micro-clases semánticas.
 
 ---
@@ -16,14 +16,15 @@ Aunque no existe una base de datos relacional activa, el modelo conceptual de da
 ```text
 +-----------------------+          1:N          +-----------------------+
 |        MÓDULO         | --------------------> |        SECCIÓN        |
-|  (data-module="win")  |                       | (Teoría/Guías/Práct.) |
+|  (data-module="win")  |                       | (Teoría/Guías/Práct./ |
+|                       |                       |  Evaluac. solo Word)  |
 +-----------+-----------+                       +-----------+-----------+
             |                                               |
             |                                               | 1:N
             | 1:1                                           v
             v                                   +-----------------------+
 +-----------------------+                       |       LECCIÓN /       |
-|    RECURSOS SVG /     |                       |       CONTENIDO       |
+|    RECURSOS SVG /     |                       |  CONTENIDO o TEST     |
 |    ICONOGRAFÍA        |                       |   (HTML Document)     |
 +-----------------------+                       +-----------+-----------+
                                                             |
@@ -68,12 +69,13 @@ Campos requeridos en la maquetación HTML de cualquier lección o guía pedagóg
 | Nombre del Campo / Elemento | Selector / Clase CSS | Tipo HTML | Restricción | Descripción |
 | :--- | :--- | :--- | :--- | :--- |
 | **ID de Tema Toggle** | `#theme-toggle` | `<button>` | Obligatorio | Botón interactivo que conmuta el estado de `localStorage`. En páginas índice lo gestiona `busqueda.js`; en páginas de contenido se implementa con un script inline propio. |
-| **Buscador de Índice** | `#buscador-*` | `<input>` | Requerido en Índices | Campo de texto que activa la búsqueda en vivo vía `busqueda.js`. |
+| **Buscador de Índice** | `#buscador-*` | `<input>` | Requerido en Índices | Campo de texto que activa la búsqueda en vivo vía `busqueda.js`. IDs válidos: `buscador-clases`, `buscador-guias`, `buscador-practicas`, `buscador-evaluaciones`, `buscador-index`. |
 | **Lista de Contenidos** | `.item-list` | `<ul>` / `<ol>` | Requerido en Índices | Contenedor principal de los enlaces a clases. |
 | **Ítem de Lista** | `.item-list li` | `<li>` | Multiplicidad N | Elemento evaluado dinámicamente por la búsqueda en vivo. |
 | **Título de Lección** | `.lesson-header h1`, `.guide-header h1` | `<h1>` | Único por Página | Título principal copiado al encabezado de impresión (script inline en contenido, `busqueda.js` en índices). |
 | **Cabecera Impresión Centro** | `.print-header-center` | `<div>` | Requerido para Impresión | Recibe el contenido textual del `<h1>` mediante script inline / `busqueda.js`. |
 | **Modal de Imagen** | `#imageModal` | `<div>` | Opcional (guías de atajos de Word y Excel) | Contenedor overlay para ampliación de capturas. Solo existe en `01-word/guias/atajos-esenciales.html` y `03-excel/guias/atajos-esenciales.html`, con lógica inline (`openModal`/`closeModal`). |
+| **Quiz Word (memoria)** | `#quiz-screen`, `#options-grid`, `#result-screen`, `#quiz-summary` | `<section>`/`<div>` | Solo en `01-word/evaluaciones/test-*.html` | Estado en memoria en `quiz-core.js` (`questions`, `userAnswers`, `studentName`): 10 preguntas `multiple`/`vf` + `explicacion`, shuffle Fisher-Yates, nota sobre 100, resumen correcto/incorrecto con explicación. Sin persistencia. |
 | **Pie de Impresión** | `.print-footer` | `<div>` | No implementado | Existen reglas CSS (`counter(page)`) pero ningún HTML incluye el elemento actualmente, por lo que la numeración de páginas no se renderiza. |
 
 ---
@@ -82,6 +84,6 @@ Campos requeridos en la maquetación HTML de cualquier lección o guía pedagóg
 
 Al no existir un motor de base de datos relacional, la **estrategia de indexación** se traslada al procesamiento en memoria del navegador:
 
-1. **Búsqueda DOM Directa O(N)**: El script `busqueda.js` (cargado únicamente en las 23 páginas índice) ejecuta un selector masivo `document.querySelectorAll(".item-list li")` al cargar la página. Al filtrar, realiza búsquedas de subcadenas (`indexOf`) en memoria sobre el arreglo cargado, logrando tiempos de respuesta de **< 2 milisegundos**.
+1. **Búsqueda DOM Directa O(N)**: El script `busqueda.js` (cargado en las páginas índice + tests de Word solo para toggle/print) ejecuta un selector masivo `document.querySelectorAll(".item-list li")` al cargar la página. Al filtrar, realiza búsquedas de subcadenas (`indexOf`) en memoria sobre el arreglo cargado, logrando tiempos de respuesta de **< 2 milisegundos**.
 2. **Caché Estático en CDN (Vercel)**: Los archivos estáticos cuentan con cabeceras HTTP de caché optimizadas para minimizar la latencia de red en cargas consecutivas.
 3. **Optimización de Assets Vectoriales**: El uso de íconos en formato `.svg` elimina la necesidad de tablas de metadatos de imágenes pesadas y llamadas adicionales a bases de datos.

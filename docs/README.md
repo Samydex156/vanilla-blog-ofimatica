@@ -4,7 +4,7 @@
 [![Licencia](https://img.shields.io/badge/Licencia-Educativa-green.svg)](#licencia)
 [![Despliegue Vercel](https://img.shields.io/badge/Despliegue-Vercel-black.svg)](https://vercel.com)
 
-> Portal web educativo de alto rendimiento diseñado para centralizar el material de enseñanza del curso de **Ofimática** en el **Instituto Nueva Tecnología**, impartido por el **Prof. Samuel Durán**. Proporciona un entorno estructurado con clases de teoría, guías metodológicas paso a paso, diagramas técnicos vectoriales y ejercicios descargables de aplicación real.
+> Portal web educativo de alto rendimiento diseñado para centralizar el material de enseñanza del curso de **Ofimática** en el **Instituto Nueva Tecnología**, impartido por el **Prof. Samuel Durán**. Proporciona un entorno estructurado con clases de teoría, guías metodológicas paso a paso, diagramas técnicos vectoriales, ejercicios descargables de aplicación real y evaluaciones interactivas con retroalimentación en clase.
 
 ---
 
@@ -12,7 +12,7 @@
 
 ### 📖 Módulos Educativos Especializados
 - 🖥️ **00 Windows**: Conceptos fundamentales del sistema operativo, gestión eficiente de archivos y carpetas, y atajos de teclado esenciales.
-- 📝 **01 Word**: Anatomía de documentos formales, formato avanzado, estilos, saltos de página/sección, recetarios y modelos de cartas.
+- 📝 **01 Word**: Anatomía de documentos formales, formato avanzado, estilos, saltos de página/sección, recetarios y modelos de cartas. Incluye 8 prácticas (hasta monografía APA 7ma ed.) y 3 evaluaciones interactivas con retroalimentación.
 - 📊 **02 PowerPoint**: Arte de la exposición, teoría del color (regla 60-30-10), composición tipográfica, transiciones, animaciones y storytelling visual.
 - 📈 **03 Excel**: Estructura de celdas, operaciones y fórmulas matemáticas, funciones financieras y planillas de cálculo automatizadas.
 - 📰 **04 Publisher**: Maquetación editorial, diseño de publicaciones impresas, tarjetas formales y piezas publicitarias.
@@ -24,10 +24,11 @@
 - 📜 **Warm Paper & Obsidian Terminal**: Estilo visual retro-elegante inspirado en publicaciones editoriales clásicas y consolas modernas, respaldado por la tipografía Serif `Source Serif 4` e `Inter`.
 - 🖼️ **Iconografía e Ilustración 100% SVG**: Gráficos e íconos vectoriales nativos escalables que se adaptan automáticamente a cualquier resolución y esquema de color.
 - 📊 **Diagramas Teóricos en SVG**: Maquetación interactiva de interfaces de usuario (ventanas de aplicaciones Office, esquemas de color y gráficos de datos) renderizados completamente en código SVG.
-- 🔍 **Buscador en Vivo Unificado**: Motor de búsqueda síncrono del lado del cliente para filtrar contenidos e índices en tiempo real de forma instantánea.
+- 🔍 **Buscador en Vivo Unificado**: Motor de búsqueda síncrono del lado del cliente para filtrar contenidos e índices en tiempo real de forma instantánea (`buscador-clases`, `buscador-guias`, `buscador-practicas`, `buscador-evaluaciones`, `buscador-index`).
+- 📝 **Evaluaciones Interactivas (Word)**: 3 tests de 10 preguntas (`01-word/evaluaciones/`) con registro de estudiante, orden aleatorio, barra de progreso, nota sobre 100 y resumen con explicaciones para debate en clase. Motor `quiz-core.js` 100% Vanilla sin dependencias ni backend.
 - 🌙 **Modo Oscuro Anti-FOUC**: Cambio cromático fluido entre temas Claro y Oscuro con persistencia en `localStorage` y ejecución síncrona en `<head>` para evitar parpadeos visuales (*Flash of Unstyled Content*).
 - 🖨️ **Modo Impresión Institucional**: Hojas de estilo dedicadas (`@media print`) que generan un encabezado institucional de 3 columnas y formato carta limpio sin elementos superfluos. *(Las reglas para numeración de páginas con `.print-footer` existen en CSS pero aún no se renderizan en ningún HTML.)*
-- ⚡ **Arquitectura Cero-Dependencias**: Desarrollado con tecnología nativa (Vanilla HTML5, CSS3 y JS sin frameworks ni bundlers), garantizando tiempo de carga instantáneo y cero costo de mantenimiento. *(Excepción: el validador `01-word/validador-web/` carga JSZip y fast-xml-parser desde CDN.)*
+- ⚡ **Arquitectura Cero-Dependencias**: Desarrollado con tecnología nativa (Vanilla HTML5, CSS3 y JS sin frameworks ni bundlers), garantizando tiempo de carga instantáneo y cero costo de mantenimiento. *(Excepciones: el validador `01-word/validador-web/` —actualmente oculto en `index-practicas.html` con `hidden`— carga JSZip y fast-xml-parser desde CDN. El nuevo motor `01-word/evaluaciones/js/quiz-core.js` no usa CDN.)*
 
 ---
 
@@ -39,6 +40,7 @@
 | **Búsqueda Rápida** | Tipear en `<input id="buscador-*">` | Filtra dinámicamente las lecciones y ejercicios en las páginas índice. |
 | **Ampliar Imagen** | Clic en imagen `.shortcut-thumbnail` | Abre el modal de zoom a pantalla completa en las guías de atajos de Word y Excel (`#imageModal`). |
 | **Cerrar Zoom** | Tecla `Escape` o clic fuera del modal | Oculta el modal de zoom de imagen de forma inmediata (guías de atajos). |
+| **Responder evaluación** | Clic en opción `A/B/C…` o `Verdadero/Falso` | Registra la respuesta y avanza con `Siguiente →` / `Finalizar Evaluación` en `01-word/evaluaciones/test-*.html`. |
 | **Imprimir / Exportar PDF** | `Ctrl + P` / `Cmd + P` | Genera una vista de impresión optimizada en formato carta con encabezado institucional. |
 
 ---

@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     // 1. Buscador en vivo (soporta múltiples listas .item-list)
-    var buscador = document.getElementById("buscador-clases") || document.getElementById("buscador-guias") || document.getElementById("buscador-practicas") || document.getElementById("buscador-index");
+    var buscador = document.getElementById("buscador-clases") || document.getElementById("buscador-guias") || document.getElementById("buscador-practicas") || document.getElementById("buscador-evaluaciones") || document.getElementById("buscador-index");
     if (buscador) {
         var listaItems = document.querySelectorAll(".item-list li");
         if (listaItems.length > 0) {
