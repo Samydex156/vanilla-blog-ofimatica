@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="MecaSamType Web: entrenador de mecanografía en español con lecciones guiadas, progreso privado y sprint competitivo de 60 segundos. Portal de Ofimática del Instituto Nueva Tecnología." />
+    <meta name="theme-color" content="#06090e" />
+    <title>MecaSamType Web · Mecanografía | Ofimática</title>
+    <link rel="icon" type="image/png" href="../imgs/img-favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/app.css" />
+    <script type="module" src="js/app.js"></script>
+  </head>
+  <body>
+    <!-- ============================================================
+         Sprite de iconos (24×24, trazo 1.8, sin emojis)
+         ============================================================ -->
+    <svg class="svg-sprite" aria-hidden="true" width="0" height="0" focusable="false">
+      <defs>
+        <symbol id="i-keyboard" viewBox="0 0 24 24">
+          <rect x="2" y="6" width="20" height="13" rx="3" />
+          <path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M6 14h.01M10 14h.01M14 14h.01M18 14h.01M8 17h8" />
+        </symbol>
+        <symbol id="i-trophy" viewBox="0 0 24 24">
+          <path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4Z" />
+          <path d="M7 6H4v2a3 3 0 0 0 3 3M17 6h3v2a3 3 0 0 1-3 3" />
+        </symbol>
+        <symbol id="i-flame" viewBox="0 0 24 24">
+          <path d="M12 22c4 0 7-2.7 7-6.8 0-2.8-1.6-5-3.8-7.2-.2 2-1 3.3-2.2 4.3.1-3-1-6.1-3-8.3.1 3.2-1.7 5.2-3 7.2C5.6 12.7 5 14.6 5 16.2 5 20 8 22 12 22Z" />
+        </symbol>
+        <symbol id="i-target" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9" />
+          <circle cx="12" cy="12" r="5" />
+          <circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none" />
+        </symbol>
+        <symbol id="i-gauge" viewBox="0 0 24 24">
+          <path d="M4.5 18a8.5 8.5 0 1 1 15 0" />
+          <path d="m12 14 4.5-4.5" />
+          <circle cx="12" cy="14" r="1.4" fill="currentColor" stroke="none" />
+        </symbol>
+        <symbol id="i-star" viewBox="0 0 24 24">
+          <path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3Z" />
+        </symbol>
+        <symbol id="i-lock" viewBox="0 0 24 24">
+          <rect x="4" y="10" width="16" height="11" rx="2.5" />
+          <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+          <circle cx="12" cy="15" r="1.3" fill="currentColor" stroke="none" />
+          <path d="M12 16.3V18" />
+        </symbol>
+        <symbol id="i-check" viewBox="0 0 24 24">
+          <path d="m5 12.5 4.5 4.5L19 7" />
+        </symbol>
+        <symbol id="i-arrow-left" viewBox="0 0 24 24">
+          <path d="M19 12H5" />
+          <path d="m11 18-6-6 6-6" />
+        </symbol>
+        <symbol id="i-arrow-right" viewBox="0 0 24 24">
+          <path d="M5 12h14" />
+          <path d="m13 6 6 6-6 6" />
+        </symbol>
+        <symbol id="i-logout" viewBox="0 0 24 24">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+          <path d="m16 17 5-5-5-5" />
+          <path d="M21 12H9" />
+        </symbol>
+        <symbol id="i-user" viewBox="0 0 24 24">
+          <circle cx="12" cy="8" r="4" />
+          <path d="M4 21a8 8 0 0 1 16 0" />
+        </symbol>
+        <symbol id="i-clock" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9" />
+          <path d="M12 7v5l3 2" />
+        </symbol>
+        <symbol id="i-play" viewBox="0 0 24 24">
+          <path d="M8 5.5v13l11-6.5-11-6.5Z" />
+        </symbol>
+        <symbol id="i-pause" viewBox="0 0 24 24">
+          <path d="M9 5v14M15 5v14" />
+        </symbol>
+        <symbol id="i-rotate" viewBox="0 0 24 24">
+          <path d="M21 12a9 9 0 1 1-2.6-6.4" />
+          <path d="M21 4v5h-5" />
+        </symbol>
+        <symbol id="i-volume" viewBox="0 0 24 24">
+          <path d="M11 5 6 9H3v6h3l5 4V5Z" />
+          <path d="M15.5 8.5a5 5 0 0 1 0 7" />
+          <path d="M18.5 5.5a9 9 0 0 1 0 13" />
+        </symbol>
+        <symbol id="i-volume-off" viewBox="0 0 24 24">
+          <path d="M11 5 6 9H3v6h3l5 4V5Z" />
+          <path d="m16 9 5 6M21 9l-5 6" />
+        </symbol>
+        <symbol id="i-zap" viewBox="0 0 24 24">
+          <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" />
+        </symbol>
+        <symbol id="i-medal" viewBox="0 0 24 24">
+          <circle cx="12" cy="9" r="5" />
+          <path d="m8.5 13-2 8 5.5-3 5.5 3-2-8" />
+        </symbol>
+        <symbol id="i-crown" viewBox="0 0 24 24">
+          <path d="m3 7 4.5 4L12 5l4.5 6L21 7l-1.5 12h-15L3 7Z" />
+        </symbol>
+        <symbol id="i-eye" viewBox="0 0 24 24">
+          <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z" />
+          <circle cx="12" cy="12" r="2.5" />
+        </symbol>
+        <symbol id="i-eye-off" viewBox="0 0 24 24">
+          <path d="m3 3 18 18" />
+          <path d="M10.6 6.2A10.8 10.8 0 0 1 12 6c6.5 0 10 6 10 6a16.4 16.4 0 0 1-3.2 4.1M6.5 6.7A16.6 16.6 0 0 0 2 12s3.5 6 10 6a10 10 0 0 0 4.2-.9" />
+          <path d="M9.9 9.9a3 3 0 0 0 4.2 4.2" />
+        </symbol>
+        <symbol id="i-alert" viewBox="0 0 24 24">
+          <path d="M12 3 2.5 20h19L12 3Z" />
+          <path d="M12 9v5" />
+          <circle cx="12" cy="17" r=".9" fill="currentColor" stroke="none" />
+        </symbol>
+        <symbol id="i-chart" viewBox="0 0 24 24">
+          <path d="M4 20V10M10 20V4M16 20v-7M22 20H2" />
+        </symbol>
+        <symbol id="i-spark" viewBox="0 0 24 24">
+          <path d="M12 2c.6 5 4.4 8.8 9.4 9.4-5 .6-8.8 4.4-9.4 9.4-.6-5-4.4-8.8-9.4-9.4C7.6 10.8 11.4 7 12 2Z" />
+        </symbol>
+        <symbol id="i-home" viewBox="0 0 24 24">
+          <path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V10Z" />
+          <path d="M9 21V12h6v9" />
+        </symbol>
+        <symbol id="i-chevron-right" viewBox="0 0 24 24">
+          <path d="m9 5 7 7-7 7" />
+        </symbol>
+        <symbol id="i-info" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9" />
+          <path d="M12 11v5" />
+          <circle cx="12" cy="8" r=".9" fill="currentColor" stroke="none" />
+        </symbol>
+        <symbol id="i-calendar" viewBox="0 0 24 24">
+          <rect x="3" y="5" width="18" height="16" rx="3" />
+          <path d="M8 3v4M16 3v4M3 10h18" />
+        </symbol>
+      </defs>
+    </svg>
+
+    <!-- ============================================================
+         PANTALLA DE ACCESO
+         ============================================================ -->
+    <section id="authScreen" class="auth">
+      <div class="auth-glow auth-glow-a" aria-hidden="true"></div>
+      <div class="auth-glow auth-glow-b" aria-hidden="true"></div>
+
+      <div class="auth-left">
+        <a class="brand brand-auth" href="../index.html" aria-label="Volver al portal de Ofimática">
+          <span class="brand-mark">
+            <svg class="icon" aria-hidden="true"><use href="#i-keyboard"></use></svg>
+          </span>
+          <span class="brand-name">MecaSamType <em>web</em></span>
+        </a>
+
+        <div class="auth-copy">
+          <span class="eyebrow"><span class="pulse-dot"></span> Entrenador de mecanografía · teclado ES</span>
+          <h1>Escribe más rápido.<br /><span class="grad">Piensa menos.</span></h1>
+          <p class="auth-lead">
+            El entrenador de mecanografía del portal de Ofimática. Lecciones cortas,
+            teclado español y un sprint de 60 segundos para medirte con tu grupo.
+          </p>
+
+          <ul class="feature-list">
+            <li>
+              <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-keyboard"></use></svg></span>
+              <div><strong>17 lecciones guiadas</strong><span>De la fila guía al párrafo real, sin saltos.</span></div>
+            </li>
+            <li>
+              <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-target"></use></svg></span>
+              <div><strong>Progreso privado</strong><span>Tus marcas solo las ves tú. El ranking es del sprint.</span></div>
+            </li>
+            <li>
+              <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-trophy"></use></svg></span>
+              <div><strong>Sprint de 1 minuto</strong><span>Texto aleatorio y un top 10 para competir.</span></div>
+            </li>
+          </ul>
+
+          <div class="auth-stage" aria-hidden="true">
+            <div class="stage-card">
+              <div class="stage-top">
+                <span class="stage-dot"></span>
+                <span>práctica · fila guía</span>
+                <span class="stage-live">en vivo</span>
+              </div>
+              <p class="stage-text">
+                <span class="ok">escribir</span> <span class="ok">sin</span>
+                <span class="cur">mirar</span> el teclado
+              </p>
+              <div class="stage-stats">
+                <div><b>42</b><span>ppm</span></div>
+                <div><b>98%</b><span>precisión</span></div>
+                <div><b>01:00</b><span>sprint</span></div>
+              </div>
+            </div>
+            <div class="keycap keycap-f">F</div>
+            <div class="keycap keycap-j">J</div>
+            <div class="keycap keycap-n">Ñ</div>
+            <div class="keycap keycap-space">espacio</div>
+            <div class="stage-badge">
+              <svg class="icon" aria-hidden="true"><use href="#i-flame"></use></svg>
+              racha de 6 días
+            </div>
+          </div>
+        </div>
+
+        <p class="auth-foot">
+          Un proyecto del Prof. Samuel Durán · Instituto Nueva Tecnología
+        </p>
+      </div>
+
+      <div class="auth-right">
+        <div class="auth-card">
+          <div class="auth-card-head">
+            <span class="eyebrow">Acceso al curso</span>
+            <h2 id="authTitle">Entrar</h2>
+            <p id="authSubtitle">Tu progreso, tus marcas y el ranking del grupo.</p>
+          </div>
+
+          <div class="auth-tabs" role="tablist" aria-label="Entrar o crear cuenta">
+            <button type="button" class="auth-tab is-active" data-auth-tab="login" role="tab" aria-selected="true">Entrar</button>
+            <button type="button" class="auth-tab" data-auth-tab="register" role="tab" aria-selected="false">Crear cuenta</button>
+          </div>
+
+          <form id="authForm" novalidate>
+            <label class="field" id="nameField" hidden>
+              <span>Nombre y apellido</span>
+              <input id="authName" type="text" autocomplete="name" placeholder="Ana López" maxlength="48" />
+            </label>
+
+            <label class="field">
+              <span>Usuario</span>
+              <input
+                id="authUsername"
+                type="text"
+                autocomplete="username"
+                placeholder="ana.lopez"
+                autocapitalize="none"
+                spellcheck="false"
+                maxlength="24"
+                required
+              />
+              <small>Minúsculas, números, punto, guion o guion bajo.</small>
+            </label>
+
+            <label class="field">
+              <span>Contraseña</span>
+              <span class="pass-wrap">
+                <input
+                  id="authPassword"
+                  type="password"
+                  autocomplete="current-password"
+                  placeholder="Mínimo 8 caracteres"
+                  minlength="8"
+                  required
+                />
+                <button type="button" class="pass-toggle" id="passToggle" aria-label="Mostrar contraseña">
+                  <svg class="icon" aria-hidden="true"><use href="#i-eye"></use></svg>
+                </button>
+              </span>
+            </label>
+
+            <p class="form-error" id="authError" role="alert"></p>
+
+            <button type="submit" class="btn btn-primary btn-block" id="authSubmit">
+              Entrar
+              <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
+            </button>
+          </form>
+
+          <div class="auth-demo" id="demoBox" hidden>
+            <div class="auth-demo-head">
+              <span class="badge badge-amber">Modo demo</span>
+              <span>Supabase sin configurar</span>
+            </div>
+            <p>Prueba lecciones, teclado y sprint con progreso guardado solo en este navegador.</p>
+            <button type="button" class="btn btn-ghost btn-block" id="demoBtn">
+              <svg class="icon" aria-hidden="true"><use href="#i-play"></use></svg>
+              Entrar en modo demo
+            </button>
+          </div>
+
+          <p class="auth-legal">
+            ¿Olvidaste la contraseña? El profesor puede restablecerla desde Supabase.
+            Las cuentas son de uso educativo.
+          </p>
+        </div>
+
+        <a class="back-portal" href="../index.html">
+          <svg class="icon" aria-hidden="true"><use href="#i-arrow-left"></use></svg>
+          Volver al portal de Ofimática
+        </a>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         APLICACIÓN
+         ============================================================ -->
+    <section id="appScreen" class="app" hidden>
+      <header class="topbar">
+        <div class="topbar-inner">
+          <a class="brand brand-sm" href="#/" aria-label="MecaSamType Web, ir a lecciones">
+            <span class="brand-mark">
+              <svg class="icon" aria-hidden="true"><use href="#i-keyboard"></use></svg>
+            </span>
+            <span class="brand-name">MecaSamType <em>web</em></span>
+          </a>
+
+          <nav class="main-nav" aria-label="Secciones">
+            <a href="#/" data-nav="lessons">
+              <svg class="icon" aria-hidden="true"><use href="#i-keyboard"></use></svg>
+              Lecciones
+            </a>
+            <a href="#/sprint" data-nav="sprint">
+              <svg class="icon" aria-hidden="true"><use href="#i-zap"></use></svg>
+              Sprint
+            </a>
+            <a href="#/ranking" data-nav="ranking">
+              <svg class="icon" aria-hidden="true"><use href="#i-trophy"></use></svg>
+              Ranking
+            </a>
+          </nav>
+
+          <div class="topbar-user">
+            <span class="badge badge-amber demo-pill" id="demoPill" hidden>Demo</span>
+            <span class="user-chip">
+              <span class="avatar" id="userAvatar">A</span>
+              <span class="user-meta">
+                <strong id="userName">Alumno</strong>
+                <small id="userHandle">@usuario</small>
+              </span>
+            </span>
+            <button type="button" class="icon-btn" data-action="logout" title="Cerrar sesión" aria-label="Cerrar sesión">
+              <svg class="icon" aria-hidden="true"><use href="#i-logout"></use></svg>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <main id="view" class="view" tabindex="-1"></main>
+
+      <nav class="bottom-nav" aria-label="Navegación móvil">
+        <a href="#/" data-nav="lessons">
+          <svg class="icon" aria-hidden="true"><use href="#i-keyboard"></use></svg>
+          <span>Lecciones</span>
+        </a>
+        <a href="#/sprint" data-nav="sprint">
+          <svg class="icon" aria-hidden="true"><use href="#i-zap"></use></svg>
+          <span>Sprint</span>
+        </a>
+        <a href="#/ranking" data-nav="ranking">
+          <svg class="icon" aria-hidden="true"><use href="#i-trophy"></use></svg>
+          <span>Ranking</span>
+        </a>
+      </nav>
+    </section>
+
+    <div id="toasts" class="toasts" aria-live="polite" aria-atomic="false"></div>
+
+    <noscript>
+      <div class="noscript">MecaSamType Web necesita JavaScript para funcionar.</div>
+    </noscript>
+  </body>
+</html>
