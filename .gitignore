@@ -1,0 +1,23 @@
+# Dependencias
+node_modules/
+
+# Vercel
+.vercel/
+
+# Variables de entorno (nunca subir claves secretas)
+.env
+.env.*
+!.env.example
+
+# Estado local de Supabase CLI
+supabase/.temp/
+
+# Artefactos de pruebas y permisos
+.dsh-acl-report/
+*.bak
+*.log
+
+# Sistema operativo y editor
+Thumbs.db
+Desktop.ini
+.DS_Store
