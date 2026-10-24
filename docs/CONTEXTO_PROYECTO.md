@@ -5,260 +5,265 @@
 El **Portal Educativo de Ofimática** es una plataforma web estática desarrollada para el **Instituto Nueva Tecnología**, bajo la dirección docente del **Prof. Samuel Durán**. Su objetivo principal es resolver la fragmentación del material pedagógico y la falta de estandarización en la enseñanza de herramientas de ofimática y productividad digital.
 
 ### 🎯 Problema de Negocio Atendido
-- 📄 **Dispersión de Contenidos**: Anteriormente, los estudiantes dependían de archivos PDF aislados, guías impresas en papel y enlaces externos inconsistentes.
-- ⏳ **Pérdida de Tiempo en Soporte**: Exceso de consultas repetitivas sobre procedimientos básicos de configuración en aplicaciones Office.
-- 🖨️ **Costos de Impresión Impredecibles**: Falta de un formato estandarizado que permitiera imprimir guías de clase de forma limpia y legible sin desperdiciar papel ni tinta.
-- 🌐 **Incompatibilidad de Dispositivos**: Dificultades para consultar el material pedagógico desde teléfonos móviles o tabletas durante sesiones de estudio nocturno.
+
+- 📄 **Dispersión de contenidos**: anteriormente los estudiantes dependían de archivos PDF aislados, guías impresas en papel y enlaces externos inconsistentes.
+- ⏳ **Pérdida de tiempo en soporte**: exceso de consultas repetitivas sobre procedimientos básicos de configuración en aplicaciones Office.
+- 🖨️ **Costos de impresión impredecibles**: falta de un formato estandarizado que permitiera imprimir guías de clase de forma limpia y legible sin desperdiciar papel ni tinta.
+- 🌐 **Incompatibilidad de dispositivos**: dificultades para consultar el material pedagógico desde teléfonos móviles o tabletas durante sesiones de estudio nocturno.
+- 🧮 **Progreso invisible en mecanografía**: el entrenamiento de tecleo se hacía en un programa de escritorio sin registro centralizado, de modo que el docente no podía saber quién practicaba ni cuánto mejoraba.
 
 ### 🛡️ Alcance y Límites del Sistema
-- **Dentro del Alcance**:
-  - Presentación interactiva de 7 módulos temáticos (Windows, Word, PowerPoint, Excel, Publisher, Internet e Inteligencia Artificial) más un catálogo de herramientas descargables (Módulo 07: Programas y Herramientas).
-  - Índices dinámicos de clases teóricas, guías metodológicas, ejercicios prácticos y —solo en Word por ahora— evaluaciones interactivas.
-  - Motor de búsqueda síncrono client-side en tiempo real para todas las listas (`buscador-clases`, `buscador-guias`, `buscador-practicas`, `buscador-evaluaciones`, `buscador-index`).
-  - Sistema de temas visuales (Claro / Oscuro) con persistencia y ejecución Anti-FOUC.
-  - Enlaces de descarga directa de archivos base (`.docx`, `.xlsx`, `.pdf`).
-  - Maquetación especial de impresión con encabezado y pie de página institucionales.
-  - Evaluaciones estáticas de Word (`01-word/evaluaciones/`): 3 tests de 10 preguntas con nota sobre 100 y resumen con explicaciones para retroalimentación en clase. Estado en memoria, sin backend.
-- **Fuera del Alcance**:
-  - Autenticación de usuarios o gestión de sesiones.
-  - Base de datos relacional o persistencia en servidor backend.
-  - Envío o calificación en línea de tareas/ejercicios (los archivos se descargan y se entregan por canales institucionales externos).
+
+**Dentro del alcance:**
+
+- Presentación interactiva de **10 tarjetas** en la portada: ocho módulos temáticos (00 Windows, 01 Word, 02 PowerPoint, 03 Excel, 04 Publisher, 05 Internet, 06 Inteligencia Artificial, 07 Access), un catálogo de herramientas (08 Programas y Herramientas) y una aplicación independiente (09 Mecanografía).
+- Índices dinámicos de clases teóricas, guías metodológicas y ejercicios prácticos, más un índice de evaluaciones exclusivo de Word.
+- Motor de búsqueda síncrono client-side en todas las listas (`.item-list`) mediante cinco identificadores de entrada.
+- Sistema de temas visuales (Claro / Oscuro) con persistencia en `localStorage` y ejecución Anti-FOUC.
+- Enlaces de descarga directa de archivos base (`.docx`, `.xlsx`, `.pptx`, `.pdf`, `.exe`).
+- Maquetación especial de impresión con encabezado institucional de tres columnas y pie con numeración de página.
+- Evaluaciones estáticas de Word (`01-word/evaluaciones/`): 3 tests de 10 preguntas con nota sobre 100 y resumen con explicaciones para retroalimentación en clase. Estado en memoria, sin backend.
+- **MecaSamType Web** (`mecanografia/`): entrenador de mecanografía con cuentas propias, progreso privado por alumno, sprint competitivo y ranking, persistido en el esquema `mecanografia` de Supabase.
+- **Modo demo** de la aplicación de mecanografía, que funciona sin credenciales y guarda en `localStorage`.
+
+**Fuera del alcance:**
+
+- Autenticación de usuarios para el portal: los módulos 00–08 se consultan sin registro.
+- Calificación en línea de tareas o ejercicios: los archivos se descargan y se entregan por canales institucionales externos.
+- Panel de administración docente: el progreso de mecanografía se consulta desde el *Table Editor* o el *SQL Editor* de Supabase.
+- Envío de correo electrónico, recuperación de contraseña por correo o verificación de identidad real (las cuentas de mecanografía no tienen correo).
+- Aplicación móvil nativa, notificaciones push o integración con un LMS institucional.
 
 ---
 
 ## 📂 Estructura de Directorios
 
-Árbol jerárquico exhaustivo del repositorio con la responsabilidad técnica detallada de cada archivo y carpeta:
+Árbol del repositorio con la responsabilidad técnica de cada carpeta. Los conteos corresponden al estado de octubre de 2026.
 
 ```text
 vanilla-blog-ofimatica/
 │
-├── index.html                        # [Entry Point] Portal principal con cuadrícula de 8 tarjetas (7 módulos + herramientas), badges SVG y toggle de tema.
-├── main-style.css                    # [Estilos Globales] Tokens Warm Paper & Obsidian Terminal, reset compactado, tipografía Serif/Sans/Mono, diagramas SVG y @media print.
-├── busqueda.js                       # [Lógica Client-Side de Índices] Búsqueda en vivo multi-lista y toggle de tema (solo se carga en páginas índice).
-├── vercel.json                       # [Configuración CDN] Parámetros de despliegue en Vercel (cleanUrls y trailingSlash).
+├── index.html                        # [Portada] Cuadrícula de 10 tarjetas, badges SVG y toggle de tema.
+├── main-style.css                    # [Estilos globales] 1 165 líneas: tokens Warm Paper / Obsidian, tarjetas,
+│                                     #   tablas, cajas, diagramas SVG, modal y bloque @media print.
+├── busqueda.js                       # [Lógica client-side] Búsqueda en vivo multi-lista + toggle de tema.
+│                                     #   Se carga en 30 páginas índice (no en páginas de contenido).
+├── vercel.json                       # [Despliegue] cleanUrls: true, trailingSlash: false.
+├── .gitignore                        # Ignora node_modules, .vercel, .env*, supabase/.temp, *.log, *.bak.
 │
-├── imgs/                             # [Recursos Visuales] Íconos vectoriales SVG e ilustraciones estáticas del sistema.
-│   ├── img-favicon.png               # Ícono de pestaña del navegador (Favicon).
-│   ├── img-excel.png                 # Banner/imagen de presentación para el módulo Excel.
-│   ├── img-ia-internet.png           # Banner ilustrativo para Inteligencia Artificial e Internet.
-│   ├── img-powerpoint.png            # Banner de presentación para PowerPoint.
-│   ├── img-publisher.png             # Banner de presentación para Publisher.
-│   ├── img-windows.png               # Banner ilustrativo para Windows.
-│   ├── img-word.png                  # Banner ilustrativo para Word.
-│   └── svg/                          # [Íconos Vectoriales SVG Nativo]
-│       ├── icon-excel.svg            # Ícono vectorial del módulo Excel.
-│       ├── icon-herramientas.svg     # Ícono vectorial del módulo 07 Programas y Herramientas.
-│       ├── icon-home.svg             # Ícono de miga de pan (Breadcrumb Home).
-│       ├── icon-ia.svg               # Ícono vectorial del módulo Inteligencia Artificial.
-│       ├── icon-internet.svg         # Ícono vectorial del módulo Internet.
-│       ├── icon-powerpoint.svg       # Ícono vectorial del módulo PowerPoint.
-│       ├── icon-publisher.svg        # Ícono vectorial del módulo Publisher.
-│       ├── icon-windows.svg          # Ícono vectorial del módulo Windows.
-│       └── icon-word.svg             # Ícono vectorial del módulo Word.
+├── imgs/                             # [Recursos visuales del portal]
+│   ├── img-favicon.png               # Favicon de la pestaña.
+│   ├── img-windows.png               # Banner del módulo Windows.
+│   ├── img-word.png                  # Banner del módulo Word.
+│   ├── img-powerpoint.png            # Banner del módulo PowerPoint.
+│   ├── img-excel.png                 # Banner del módulo Excel.
+│   ├── img-publisher.png             # Banner del módulo Publisher.
+│   ├── img-ia-internet.png           # Banner compartido de IA e Internet.
+│   └── svg/                          # [11 íconos vectoriales] icon-{windows,word,powerpoint,excel,
+│                                     #   publisher,internet,ia,access,herramientas,mecanografia,home}.svg
 │
-├── 00-windows/                       # [Módulo 00] Sistema Operativo Windows
-│   ├── index-teoria.html             # Índice de clases teóricas de Windows con buscador.
-│   ├── index-guias.html              # Índice de guías metodológicas de Windows.
-│   ├── index-practicas.html          # Índice de actividades prácticas de Windows.
-│   ├── teoria/                       # [Lecciones Teóricas]
-│   │   ├── conceptos-basicos.html    # Lección: Hardware, Software y Escritorio de Windows.
-│   │   └── gestion-carpetas.html     # Lección: Estructura jerárquica de archivos y directorios.
-│   ├── guias/                        # [Guías de Procedimiento]
-│   │   ├── atajos-esenciales.html    # Guía: Tabla de atajos de teclado Windows 10/11.
-│   │   ├── guia-gestion-carpetas.html# Guía paso a paso de creación de estructuras.
-│   │   └── guia-uso-mouse.html       # Guía de operaciones fundamentales del ratón.
-│   └── practicas/                    # [Ejercicios Prácticos]
-│       ├── practica-carpetas.html    # Práctica: Creación de árbol de carpetas institucional.
-│       └── practica-gestion-carpetas.html # Práctica avanzada de organización de archivos.
+├── 00-windows/                       # [Módulo 00] Sistema operativo Windows — 2 teoría · 3 guías · 2 prácticas
+│   ├── index-teoria.html             # Índice teórico con buscador-clases.
+│   ├── index-guias.html              # Índice de guías con buscador-guias.
+│   ├── index-practicas.html          # Índice de prácticas con buscador-practicas.
+│   ├── teoria/
+│   │   ├── conceptos-basicos.html    # Clase 01: computadora, hardware, software y escritorio.
+│   │   └── gestion-carpetas.html     # Clase 02: jerarquía de carpetas, nombres y papelera.
+│   ├── guias/
+│   │   ├── atajos-esenciales.html    # Tabla de atajos de teclado de Windows 10/11.
+│   │   ├── guia-gestion-carpetas.html# Creación y organización de estructuras de carpetas.
+│   │   └── guia-uso-mouse.html       # Operaciones fundamentales del ratón.
+│   └── practicas/
+│       ├── practica-carpetas.html    # Práctica 01: escritorio y creación de carpetas.
+│       └── practica-gestion-carpetas.html # Práctica 02: limpieza, nombres y atajos.
 │
-├── 01-word/                          # [Módulo 01] Microsoft Word
-│   ├── index-teoria.html             # Índice teórico del módulo Word.
-│   ├── index-guias.html              # Índice de guías paso a paso del módulo Word.
-│   ├── index-practicas.html          # Índice de ejercicios prácticos del módulo Word (Prácticas 01-08; sección Validador oculta con hidden).
-│   ├── index-evaluaciones.html       # Índice de evaluaciones interactivas (3 tests, buscador-evaluaciones).
-│   ├── evaluaciones/                 # [Evaluaciones Interactivas] Tests estáticos con quiz-core.js (sin CDN ni backend).
-│   │   ├── test-fundamentos-word.html# Test 01: interfaz, documentos formales y archivos (10 preguntas + explicacion).
-│   │   ├── test-formato-texto.html   # Test 02: fuente, estilos, alineación, interlineado (10 preguntas + explicacion).
-│   │   ├── test-documentos-apa.html  # Test 03: documentos formales y norma APA 7ma ed. (10 preguntas + explicacion).
-│   │   └── js/quiz-core.js           # Motor: shuffle, registro, progreso, nota /100, resumen con explicaciones.
-│   ├── lista/                        # [Índice Auxiliar] lista-guias.txt: borrador de temas de guías pendientes.
-│   ├── validador-web/                # [Herramienta Exclusiva] Word-eSports: validador gamificado de .docx en el navegador (OCULTO temporalmente en index-practicas.html, no eliminado).
-│   │   ├── index.html                # Interfaz de subida/validación (sin main-style.css ni IIFE Anti-FOUC).
-│   │   ├── css/styles.css            # Estilos propios de la herramienta.
-│   │   └── js/                       # core.js, app.js y validador-caso-{01,02,05,06,07,08}.js (usa JSZip y fast-xml-parser vía CDN).
-│   ├── teoria/                       # [5 Clases Teóricas]
-│   │   ├── anatomia-documento-formal.html # Estructura y márgenes de documentos institucionales.
-│   │   ├── espacio-en-blanco.html    # Principios de composición y legibilidad.
-│   │   ├── formatos-de-papel.html    # Dimensiones estándar (Carta, A4, Oficio).
-│   │   ├── formatos-docx-vs-pdf.html # Diferencias operativas y casos de uso.
-│   │   ├── introduccion-word.html    # Interfaz de cinta de opciones y entorno.
-│   │   └── word-clases-imgs/         # [Imágenes] Infografías y capturas de las lecciones (word-*.png).
-│   ├── guias/                        # [11 Guías Metodológicas]
-│   │   ├── alineaciones-de-texto.html# Configuración de alineación y justificación.
-│   │   ├── atajos-esenciales.html    # Atajos de teclado en Microsoft Word (incluye modal #imageModal).
-│   │   ├── como-corregir-errores.html# Ortografía, gramática y diccionario.
-│   │   ├── copiar-cortar-pegar.html  # Portapapeles y pegado especial.
-│   │   ├── espaciado-interlineado.html# Párrafo, interlineado y sangrías.
-│   │   ├── estilos-de-texto.html     # Aplicación de estilos de título y jerarquía.
-│   │   ├── fuente-y-tamano.html      # Tipografía y atributos de texto.
-│   │   ├── mayusculas-minusculas.html# Cambio de caja y capitalización.
-│   │   ├── saltos.html               # Saltos de página y de sección.
-│   │   ├── smartart-jerarquia.html   # Gráficos SmartArt y organigramas.
-│   │   ├── vinetas-y-numeracion.html # Listas multinivel y viñetas custom.
-│   │   └── word-guias-imgs/          # [Imágenes] Capturas de pasos para las guías (word-*.png).
-│   └── practicas/                    # [8 Prácticas y Ejercicios]
-│       ├── practica-01-formato-base.html
-│       ├── practica-02-modelo-carta.html
-│       ├── practica-03-articulo-periodistico-clase.html
-│       ├── practica-04-conminatoria-tarea.html
-│       ├── practica-05-recetario-nutricion.html
-│       ├── practica-06-registro-personal.html
-│       ├── practica-07-informe-evaluacion.html
-│       ├── practica-08-monografia-china-apa.html # Caso Monografía APA 7ma ed. (márgenes 2.54, Times 12, doble, sangría 1.27).
-│       ├── ejercicios/               # [Recursos Descargables] Plantillas .docx, .xlsx e imágenes base (incluye monografía-china-2026-base-01.docx).
-│       └── imgs-practicas/           # [Imágenes] Previsualizaciones de soluciones de las prácticas.
+├── 01-word/                          # [Módulo 01] Microsoft Word — 5 teoría · 11 guías · 8 prácticas · 3 tests
+│   ├── index-teoria.html             # Índice teórico (buscador-clases).
+│   ├── index-guias.html              # Índice de guías (buscador-guias). Enlaza 7 de las 11 existentes.
+│   ├── index-practicas.html          # Índice de prácticas 01-08 + sección Validador oculta (hidden).
+│   ├── index-evaluaciones.html       # Índice de evaluaciones (buscador-evaluaciones).
+│   ├── evaluaciones/                 # [Evaluaciones interactivas]
+│   │   ├── test-fundamentos-word.html# Test 01: interfaz, documentos y archivos (10 preguntas).
+│   │   ├── test-formato-texto.html   # Test 02: fuente, estilos, alineación, interlineado (10 preguntas).
+│   │   ├── test-documentos-apa.html  # Test 03: documentos formales y APA 7.ª ed. (10 preguntas).
+│   │   └── js/quiz-core.js           # Motor: shuffle, progreso, nota /100 y resumen con explicaciones.
+│   ├── teoria/                       # 5 clases + word-clases-imgs/ (6 infografías)
+│   ├── guias/                        # 11 guías + word-guias-imgs/ (18 capturas)
+│   │   ├── alineaciones-de-texto.html
+│   │   ├── atajos-esenciales.html    # Incluye modal #imageModal.
+│   │   ├── como-corregir-errores.html
+│   │   ├── copiar-cortar-pegar.html  # Sin enlace desde el índice.
+│   │   ├── espaciado-interlineado.html # Sin enlace desde el índice.
+│   │   ├── estilos-de-texto.html
+│   │   ├── fuente-y-tamano.html
+│   │   ├── mayusculas-minusculas.html
+│   │   ├── saltos.html               # Sin enlace desde el índice.
+│   │   ├── smartart-jerarquia.html
+│   │   ├── vinetas-y-numeracion.html # Enlazada solo en un bloque comentado.
+│   │   └── atajos-word-imgs/         # Carpeta vacía (reservada).
+│   ├── practicas/                    # 8 prácticas
+│   │   ├── practica-01-formato-base.html
+│   │   ├── practica-02-modelo-carta.html
+│   │   ├── practica-03-articulo-periodistico-clase.html
+│   │   ├── practica-04-conminatoria-tarea.html
+│   │   ├── practica-05-recetario-nutricion.html
+│   │   ├── practica-06-registro-personal.html
+│   │   ├── practica-07-informe-evaluacion.html
+│   │   ├── practica-08-monografia-china-apa.html # Monografía APA: Times 12, doble espacio, sangría 1.27 cm.
+│   │   ├── ejercicios/               # 19 archivos: plantillas .docx, soluciones .jpg y guías de resolución.
+│   │   └── imgs-practicas/           # 8 previsualizaciones de soluciones.
+│   ├── lista/lista-guias.txt         # Borrador de temas de guías pendientes.
+│   └── validador-web/                # [Herramienta aislada] Word-eSports: validador de .docx en el navegador.
+│       ├── index.html                # Interfaz propia; no usa busqueda.js.
+│       ├── css/styles.css
+│       └── js/                       # core.js, app.js y validador-caso-{01,02,05,06,07,08}.js.
+│                                     #   Depende de JSZip y fast-xml-parser por CDN.
 │
-├── 02-powerpoint/                    # [Módulo 02] Microsoft PowerPoint
-│   ├── index-teoria.html             # Índice teórico de presentaciones efectivas.
-│   ├── index-guias.html              # Índice de guías teatrales, multimedia y de diseño.
-│   ├── index-practicas.html          # Índice de prácticas de diapositivas.
-│   ├── archivos/                     # [Material Soporte] Presentaciones .pptx, documentos .pdf y skill de generación con pptxgenjs.
-│   ├── teoria/                       # [6 Clases Teóricas]
-│   │   ├── diseno-maquetacion-tipografia.html # Regla 60-30-10 y jerarquía tipográfica.
-│   │   ├── el-arte-de-exponer.html   # Técnicas de oratoria y apoyo visual.
-│   │   ├── introduccion-powerpoint.html # Interfaz y vistas de la aplicación.
-│   │   ├── storytelling.html         # Narrativa visual aplicada a datos.
-│   │   ├── teoria-del-color.html     # Paletas cromáticas y contraste accesible.
-│   │   ├── visualizacion-de-datos.html# Transformación de datos en gráficos claros.
-│   │   └── clases.css                # [Estilo Local] Ajustes específicos de las clases teóricas.
-│   ├── guias/                        # [9 Guías Metodológicas]
-│   │   ├── album-de-fotografias.html
-│   │   ├── atajos-esenciales.html
-│   │   ├── exportar-a-video.html
-│   │   ├── insertar-audio-fondo.html
-│   │   ├── insertar-cuadro-de-texto.html # Guía interactiva SVG de cajas de texto.
-│   │   ├── insertar-formas.html          # Guía interactiva SVG de formas vectoriales.
-│   │   ├── insertar-imagenes.html        # Guía interactiva SVG de inserción y marco de imágenes.
-│   │   ├── transiciones-y-animaciones.html
-│   │   ├── uso-de-zoomit.html
-│   │   ├── guias.css                # [Estilo Local] Estilos de las guías del módulo.
-│   │   └── ppt-guias-imgs/          # [Imágenes] Capturas de guías (ej. zoomit-interfaz.png).
-│   └── practicas/                    # [7 Ejercicios Prácticos]
-│       ├── practica-01-presentacion-base.html
-│       ├── practica-02-multimedia-animacion.html
-│       ├── practica-03-calentamiento-global.html
-│       ├── practica-04-metabolismo.html
-│       ├── practica-05-animacion-graficos.html
-│       ├── practica-06-impacto-coca-cola.html
-│       ├── practica-07-diapositivas-ia.html
-│       └── practicas.css             # [Estilo Local] Estilos de las páginas de prácticas.
+├── 02-powerpoint/                    # [Módulo 02] PowerPoint — 6 teoría · 9 guías · 7 prácticas
+│   ├── index-teoria.html · index-guias.html · index-practicas.html
+│   ├── teoria/                       # 6 clases + clases.css + ppt-clases-imgs/ (vacía)
+│   ├── guias/                        # 9 guías + guias.css + ppt-guias-imgs/ (vacía)
+│   ├── practicas/                    # 7 prácticas + practicas.css
+│   └── archivos/                     # 2 .pptx, 2 .pdf de apoyo y skill-pptxgenjs-decks-portable.md.
 │
-├── 03-excel/                         # [Módulo 03] Microsoft Excel
-│   ├── index-teoria.html             # Índice de hojas de cálculo y fórmulas.
-│   ├── index-guias.html              # Índice de guías de procedimientos Excel.
-│   ├── index-practicas.html          # Índice de ejercicios de planillas.
-│   ├── teoria/                       # [4 Clases Teóricas]
-│   │   ├── 2026-01-17-introduccion.html       # Filas, columnas, celdas y referencias.
-│   │   ├── 2026-01-24-formato-celdas.html     # Tipos de datos y formato numérico.
-│   │   ├── 2026-01-31-operaciones-formulas.html # Sintaxis de fórmulas y operadores.
-│   │   ├── 2026-02-07-calculo-beneficio.html  # Fórmulas de aplicación financiera.
-│   │   ├── excel-imgs/               # [Imágenes] Capturas de la interfaz de las clases.
-│   │   └── excel-calculo-beneficio/  # [Imágenes] Secuencia de capturas de la clase de cálculo de beneficio.
-│   ├── guias/                        # [1 Guía]
-│   │   ├── atajos-esenciales.html    # Atajos de navegación en cuadrículas de Excel (incluye modal #imageModal).
-│   │   └── atajos-excel-imgs/        # [Imágenes] Capturas de cada atajo de teclado (excel_*.png).
-│   └── practicas/                    # [5 Prácticas]
-│       ├── practica-01-planilla-notas.html
-│       ├── practica-02-ejercicios-datos-base.html
-│       ├── practica-03-miscelaneas.html
-│       ├── practica-04-combinar-correspondencia.html
-│       ├── practica-05-funciones-basicas.html
-│       └── ejercicios/               # [Recursos Descargables] Plantillas .xlsx, .docx y .pdf base.
+├── 03-excel/                         # [Módulo 03] Excel — 4 teoría · 1 guía · 5 prácticas
+│   ├── index-teoria.html · index-guias.html · index-practicas.html
+│   ├── teoria/                       # 4 clases fechadas + excel-imgs/ + excel-calculo-beneficio/
+│   ├── guias/atajos-esenciales.html  # Atajos de navegación (modal #imageModal) + atajos-excel-imgs/ (15 capturas).
+│   └── practicas/                    # 5 prácticas + ejercicios/ (14 archivos .xlsx, .docx y .pdf).
 │
-├── 04-publisher/                     # [Módulo 04] Microsoft Publisher
-│   ├── index-teoria.html             # Índice de publicaciones y maquetación.
-│   ├── index-guias.html              # Índice de guías de maquetación de Publisher.
-│   ├── index-practicas.html          # Índice de ejercicios de diseño impreso.
-│   ├── teoria/                       # [1 Clase]
-│   │   ├── 2026-02-07-introduccion.html # Lienzo de trabajo y guías de impresión.
-│   │   └── publisher-imgs/           # [Imágenes] Capturas del entorno de trabajo y creación de publicaciones.
-│   ├── guias/                        # [1 Guía]
-│   │   └── conceptos-basicos.html    # Operación de objetos y cajas de texto.
-│   └── practicas/                    # [1 Práctica]
-│       └── practica-01-tarjeta.html  # Diseños de tarjetas institucionales.
+├── 04-publisher/                     # [Módulo 04] Publisher — 1 teoría · 1 guía · 1 práctica
+│   ├── index-teoria.html · index-guias.html · index-practicas.html
+│   ├── teoria/2026-02-07-introduccion.html
+│   ├── guias/conceptos-basicos.html
+│   └── practicas/practica-01-tarjeta.html
 │
-├── 05-internet/                      # [Módulo 05] Internet y Recursos Digitales
-│   ├── index-teoria.html             # Índice de tecnología de red y medios.
-│   ├── index-guias.html              # Índice de guías de bancos de recursos.
-│   ├── index-practicas.html          # Índice de actividades en línea.
-│   ├── teoria/                       # [3 Clases]
-│   │   ├── herramienta-pixabay.html  # Exploración de recursos Creative Commons / Pixabay.
-│   │   ├── musica-pixabay.html       # Descarga y licencias de audio.
-│   │   └── videos-pixabay.html       # Uso de recursos de video stock.
-│   ├── guias/                        # [3 Guías]
-│   │   ├── guia-pixabay.html
-│   │   ├── guia-musica-pixabay.html
-│   │   ├── guia-videos-pixabay.html
-│   │   └── img-guias/guia-pixabay/   # [Imágenes] Capturas de pasos de la guía de Pixabay.
-│   └── practicas/                    # [3 Prácticas]
-│       ├── practica-pixabay.html
-│       ├── practica-musica-pixabay.html
-│       └── practica-videos-pixabay.html
+├── 05-internet/                      # [Módulo 05] Internet — 6 teoría · 5 guías · 5 prácticas
+│   ├── index-teoria.html · index-guias.html · index-practicas.html
+│   ├── teoria/                       # Navegadores, uBlock Origin, Pixabay (imagen, música, video) y Photopea.
+│   ├── guias/                        # 3 guías de Pixabay + 2 de Photopea + img-guias/guia-pixabay/ (8 capturas).
+│   └── practicas/                    # pixabay, musica-pixabay, videos-pixabay, photopea-basica, photopea-montaje.
 │
-├── 06-inteligencia-artificial/       # [Módulo 06] Inteligencia Artificial
-│   ├── index-teoria.html             # Índice de modelos de lenguaje e IA.
-│   ├── index-guias.html              # Índice de guías de prompting técnico.
-│   ├── index-practicas.html          # Índice de actividades con Gemini y herramientas.
-│   ├── teoria/                       # [2 Clases]
-│   │   ├── gemini-texto.html         # Fundamentos de LLMs y Google Gemini.
-│   │   └── nanobanana-imagenes.html  # Generación asistida de imágenes.
-│   ├── guias/                        # [2 Guías]
-│   │   ├── guia-gemini-texto.html
-│   │   └── guia-nanobanana-imagenes.html
-│   └── practicas/                    # [3 Prácticas]
-│       ├── practica-gemini-texto.html
-│       ├── practica-generar-diapositivas.html
-│       ├── practica-nanobanana-imagenes.html
-│       └── archivos/                 # [Recursos Descargables] System Prompt Generar Diapositivas.docx.
+├── 06-inteligencia-artificial/       # [Módulo 06] IA — 3 teoría · 3 guías · 7 prácticas
+│   ├── index-teoria.html · index-guias.html · index-practicas.html
+│   ├── teoria/                       # gemini-texto, nanobanana-imagenes, opencode-introduccion.
+│   ├── guias/                        # guia-gemini-texto, guia-nanobanana-imagenes, guia-opencode-instalacion-windows.
+│   └── practicas/                    # 3 de Gemini/Nano Banana + 4 guiadas con OpenCode
+│       └── archivos/                 # System Prompt Generar Diapositivas.docx
 │
-├── instaladores-herramientas/        # [Módulo 07] Programas y Herramientas Utilitarias
-│   ├── index.html                    # Catálogo de herramientas descargables de ofimática y mecanografía.
-│   └── MecaSamType_Installer.exe     # Instalador ejecutable del programa de práctica de mecanografía MecaSamType.
+├── 07-Access/                        # [Módulo 07] Access — 1 teoría · 1 guía · 1 práctica
+│   ├── index-teoria.html · index-guias.html · index-practicas.html
+│   ├── teoria/2026-03-01-introduccion-access.html  # Base de datos, entorno y objetos de Access.
+│   ├── guias/crear-tabla.html        # Vista Diseño, tipos de datos y clave principal.
+│   └── practicas/
+│       ├── practica-01-base-clientes.html # Migración Excel → Access con bdTienda y bdFarmacia.
+│       ├── archivos/                 # bdTienda-v1.xlsx y bdFarmacia-v1.xlsx (orígenes de datos).
+│       └── ejercicios/               # README.txt con las convenciones de descarga (.accdb/.xlsx/.pdf).
 │
-└── docs/                             # [Documentación Técnica y Comercial]
-    ├── README.md                     # Manual principal e introducción pública.
-    ├── CONTEXTO_PROYECTO.md         # Contexto de negocio, alcance y árbol comentado.
-    ├── ARQUITECTURA_GLOBAL.md        # Patrones conceptuales, diagramas ASCII y ADRs.
-    ├── ESQUEMA_BD.md                 # Estrategia de persistencia en cliente y esquema DOM.
-    ├── DESARROLLO.md                 # Guía operativa de mantenimiento y recetas.
-    ├── PROPUESTA_COMERCIAL.md        # Análisis de ROI y propuesta de valor de negocio.
-    └── PROMPT_AGENTE.md              # Master prompt autocontenido para réplica con IA.
+├── instaladores-herramientas/        # [Módulo 08] Catálogo de software
+│   ├── index.html                    # Catálogo: Cavalry (enlaces oficiales) y MecaSamType.
+│   └── MecaSamType_Installer.exe     # Instalador de escritorio (11,4 MB).
+│
+├── mecanografia/                     # [Módulo 09] MecaSamType Web — SPA con Supabase
+│   ├── index.html                    # Pantallas de acceso y de aplicación; rutas absolutas a CSS/JS.
+│   ├── css/app.css                   # Sistema visual propio (fondo #06090e, teal #32e6c4, Space Grotesk).
+│   ├── js/
+│   │   ├── app.js                    # Arranque, router por hash, autenticación y acciones.
+│   │   ├── api.js                    # Adaptadores Supabase y demo; carga el SDK por import dinámico.
+│   │   ├── config.js                 # URL, anon key, esquema y constantes (SPRINT_SECONDS = 60).
+│   │   ├── engine.js                 # Motor de tecleo: WPM, precisión, pausa y Backspace.
+│   │   ├── keyboard.js               # Teclado virtual español ES por dedos.
+│   │   ├── ui.js                     # Utilidades, avatares y ranking.
+│   │   ├── views.js                  # Dashboard, lección y resultado.
+│   │   ├── sprint-views.js           # Sprint y ranking.
+│   │   └── data/
+│   │       ├── lessons.js            # 17 lecciones en 5 unidades.
+│   │       └── sprint-texts.js       # 12 textos locales de respaldo.
+│   ├── sql/setup.sql                 # Esquema `mecanografia`: 6 tablas, 13 funciones y 12 textos.
+│   └── README.md                     # Puesta en marcha, seguridad y uso docente.
+│
+├── docs/                             # [Documentación técnica y comercial]
+│   ├── README.md                     # Manual principal e inventario documental.
+│   ├── CONTEXTO_PROYECTO.md          # Este documento: negocio, alcance y árbol comentado.
+│   ├── ARQUITECTURA_GLOBAL.md        # Patrones, diagramas de los dos subsistemas y ADRs.
+│   ├── ESQUEMA_BD.md                 # localStorage, atributos del DOM y esquema Postgres.
+│   ├── DESARROLLO.md                 # Guía operativa, troubleshooting y recetas.
+│   ├── PROMPT_AGENTE.md              # Master prompt autocontenido para replicar con IA.
+│   ├── SUPABASE_ESQUEMAS.md          # Guía reutilizable de Supabase con esquemas.
+│   └── PROPUESTA_COMERCIAL.md        # Análisis de ROI y propuesta de valor.
+│
+└── .commandcode/                     # [Configuración de agentes del editor] Permisos y preferencias.
 ```
 
 ---
 
 ## 📖 Glosario de Dominio
 
-- **Anti-FOUC (*Flash of Unstyled Content*)**: Técnica de optimización que ejecuta un script bloqueante e in-line en el `<head>` antes del renderizado inicial de la página para aplicar el tema de color deseado desde el primer frame, evitando destellos blancos en modo oscuro.
-- **Warm Paper**: Palette de colores en modo claro caracterizada por tonos crema marfil (`#F7F6F3`) y tipografía Serif, imitando la textura de libros y publicaciones de alta calidad.
-- **Obsidian Terminal**: Palette cromática de modo oscuro inspirada en consolas de código (`#121212`), con contrastes atenuados para reducir el cansancio visual durante sesiones nocturnas.
-- **Jamstack Estático**: Enfoque de desarrollo basado en HTML desacoplado, cargado directamente desde una red de distribución de contenidos (CDN) sin depender de servidores de aplicaciones dinámicos.
-- **Iconografía SVG Nativa**: Uso de etiquetas de gráficos vectoriales donde las propiedades cromáticas se controlan dinámicamente con `currentColor` y variables CSS sin solicitar activos adicionales por red.
-- **Print-Header-Center**: Elemento estructural dinámico en el DOM que extrae el título de la lección (`<h1>`) mediante JavaScript al momento de imprimir y lo posiciona en la columna central del encabezado de hoja carta.
-- **Data Attribute (`data-module` / `data-theme`)**: Atributo HTML5 personalizado que habilita la selección de reglas CSS específicas por módulo ofimático o tema cromático sin contaminar el nombre de las clases.
+- **Anti-FOUC (*Flash of Unstyled Content*)**: técnica de optimización que ejecuta un script bloqueante e inline en el `<head>` antes del renderizado inicial para aplicar el tema de color desde el primer frame.
+- **Warm Paper**: paleta del modo claro, con tonos crema marfil (`#F7F6F3`) y tipografía serif, que imita la textura del papel editorial.
+- **Obsidian Terminal**: paleta del modo oscuro inspirada en consolas (`#121212`), con contrastes atenuados para reducir el cansancio visual.
+- **Jamstack Estático**: enfoque basado en HTML desacoplado, servido desde una CDN sin servidores de aplicación dinámicos.
+- **Iconografía SVG nativa**: uso de gráficos vectoriales cuyas propiedades cromáticas se controlan con `currentColor` y variables CSS, sin peticiones adicionales.
+- **Print-Header-Center**: columna central del encabezado de impresión que recibe por JavaScript el texto del `<h1>` de la lección.
+- **Print-Footer**: pie fijo de impresión que imprime `Página N` mediante `counter(page)`; está presente en las 98 páginas de contenido.
+- **Data Attribute (`data-module` / `data-theme`)**: atributo HTML5 que habilita reglas CSS por módulo o tema sin ensuciar los nombres de clase.
+- **SPA con router por hash**: aplicación de una sola página que cambia de vista leyendo `location.hash` (`#/`, `#/leccion/:id`, `#/sprint`, `#/ranking`) sin recargar el documento.
+- **Esquema de Postgres**: contenedor de objetos dentro de una base; aquí `mecanografia` aísla las tablas del módulo 09 del resto del proyecto de Supabase.
+- **`SECURITY DEFINER`**: función que se ejecuta con los privilegios de quien la creó; permite cerrar las tablas a `anon` y exponer solo las RPC controladas.
+- **RLS (*Row Level Security*)**: política de filas de Postgres. Las tablas del módulo la tienen activa **y sin políticas**, de modo que solo las funciones `SECURITY DEFINER` pueden leerlas.
+- **Token de sesión**: UUID de 122 bits emitido por `login_student`, guardado en `localStorage` bajo `mecasamtype.token.v1` y renovado a 60 días en cada uso.
+- **bcrypt**: función de derivación de claves usada por `pgcrypto` (`gen_salt('bf', 10)`) para no almacenar contraseñas en texto plano.
+- **Modo demo**: adaptador de `api.js` que sustituye a Supabase cuando no hay credenciales, con datos en `localStorage` bajo `mecasamtype.demo.v2`.
 
 ---
 
 ## 🛠️ Stack Tecnológico Detallado
 
-| Capa / Componente | Tecnología Seleccionada | Versión / Estándar | Razón de Selección |
+| Capa / Componente | Tecnología | Versión / Estándar | Razón de Selección |
 | :--- | :--- | :--- | :--- |
-| **Estructura Web** | HTML5 Semántico | W3C Standard | Garantiza accesibilidad nativa, SEO optimizado y compatibilidad universal con navegadores sin compilación. |
-| **Diseño y Estilos** | CSS3 Vanilla | CSS Grid / Flexbox | Control fino sobre variables de diseño (`:root`), rendimiento acelerado por GPU y media queries de impresión (`@media print`). |
-| **Lógica Client-Side** | JavaScript Vanilla | ES5 en `busqueda.js` y `evaluaciones/js/quiz-core.js` | `busqueda.js` (índices + toggle en tests) usa ES5 sin transpiladores; `quiz-core.js` (Word) gestiona shuffle, progreso, nota /100 y resumen con `explicacion`; contenido usa scripts inline ES2020 (`?.`). |
-| **Evaluaciones Word** | JS Vanilla sin CDN | `01-word/evaluaciones/` | 3 tests estáticos de 10 preguntas (`multiple`/`vf`) con estado en memoria; sin backend ni `localStorage` (solo `theme`). |
-| **Tipografía Digital** | Google Fonts API | Source Serif 4 & Inter | Combinación perfecta entre elegancia editorial para títulos y máxima legibilidad sans-serif para cuerpos de texto. |
-| **Iconografía Vectorial** | SVG Nativos | XML/SVG 1.1 | Cero latencia de red adicional, escalabilidad infinita en pantallas Retina/4K y adaptación automática al modo oscuro. |
-| **Persistencia de Tema** | Web Storage API | `localStorage` | Almacenamiento key-value local sin cookies, liviano y accesible de manera síncrona en la carga del sitio. |
-| **Distribución / CDN** | Vercel Static Hosting | Global Edge Network | Enrutamiento estático de alta velocidad con reescritura de URLs limpias sin costo de infraestructura. |
+| **Estructura web** | HTML5 semántico | W3C | Accesibilidad nativa, SEO y compatibilidad sin compilación. |
+| **Diseño y estilos** | CSS3 Vanilla | Grid / Flexbox / Custom Properties | Control fino de tokens, rendimiento GPU y `@media print`. |
+| **Lógica client-side del portal** | JavaScript Vanilla | ES5 en `busqueda.js`; ES2020 en scripts inline | Compatibilidad amplia en el motor de búsqueda; sintaxis moderna en las páginas de contenido. |
+| **Motor de evaluaciones** | JS Vanilla sin CDN | `01-word/evaluaciones/js/quiz-core.js` | 3 tests de 10 preguntas con estado en memoria; sin backend ni persistencia. |
+| **Aplicación de mecanografía** | JavaScript ES Modules | `type="module"` | Organización por responsabilidades (motor, teclado, vistas, API) sin bundler. |
+| **Persistencia del módulo 09** | PostgreSQL + PostgREST (Supabase) | Esquema `mecanografia` | Progreso compartido entre dispositivos y ranking del grupo sin servidor propio. |
+| **Seguridad del módulo 09** | pgcrypto + RPC `SECURITY DEFINER` + RLS | bcrypt coste 10, tokens de 60 días | Las tablas quedan cerradas a `anon`; la API expone únicamente funciones validadas. |
+| **SDK de datos** | `@supabase/supabase-js@2` vía jsDelivr | Import dinámico ESM | Se descarga solo cuando hay credenciales; el modo demo no toca la red. |
+| **Tipografía** | Google Fonts API | Source Serif 4, Inter, JetBrains Mono (portal); Space Grotesk (mecanografía) | Elegancia editorial en títulos, legibilidad sans en cuerpos y monoespaciada para código. |
+| **Iconografía** | SVG nativos | XML/SVG 1.1 | Cero latencia extra, nitidez en Retina/4K y adaptación al modo oscuro. |
+| **Persistencia de preferencias** | Web Storage API | `localStorage` | Key-value local, síncrono y sin cookies. |
+| **Distribución** | Vercel Static Hosting | CDN global | URLs limpias, caché de borde y cero costo de infraestructura. |
+
+---
+
+## 📊 Inventario de Contenidos
+
+| Métrica | Valor |
+| :--- | :--- |
+| Tarjetas en la portada | 10 |
+| Módulos con estructura `teoria/` · `guias/` · `practicas/` | 8 |
+| Páginas de teoría | 28 |
+| Páginas de guía | 34 (30 enlazadas desde índices) |
+| Páginas de práctica | 36 |
+| Evaluaciones interactivas | 3 (30 preguntas en total) |
+| Páginas de contenido | 98 |
+| Índices de módulo | 25 (8 módulos × 3 + `index-evaluaciones.html`) |
+| Archivos HTML totales | 130 |
+| Hojas de estilo | 6 |
+| Archivos JavaScript | 20 |
+| Descargables (`.docx`, `.xlsx`, `.pptx`, `.pdf`, `.exe`) | 34 (18 `.docx`, 9 `.xlsx`, 4 `.pdf`, 2 `.pptx`, 1 `.exe`) |
+| Lecciones de mecanografía | 17 en 5 unidades |
+
+---
+
+## ⚠️ Estado Conocido y Deuda Técnica
+
+Observaciones del inventario que **no** implican un fallo funcional, pero conviene tener presentes:
+
+1. **Cuatro guías de Word sin enlace en el índice.** `copiar-cortar-pegar.html`, `espaciado-interlineado.html` y `saltos.html` no se referencian desde ningún punto del sitio; `vinetas-y-numeracion.html` solo aparece dentro de un bloque comentado en `01-word/index-guias.html`. El contenido existe y es accesible por URL directa.
+2. **La tarjeta 09 no tiene color de módulo.** No existe `--color-meca` ni reglas `.card[data-module="meca"]` en `main-style.css`, a diferencia de las otras nueve tarjetas, que sí llevan borde superior y badge con su color. La tarjeta se renderiza con el estilo base.
+3. **Validador de Word oculto.** La sección está marcada con `hidden` y `style="display:none"` en `01-word/index-practicas.html`; sigue cargando JSZip y fast-xml-parser desde CDN al abrir la página.
+4. **Carpetas vacías.** `01-word/guias/atajos-word-imgs/`, `02-powerpoint/guias/ppt-guias-imgs/` y `02-powerpoint/teoria/ppt-clases-imgs/` están reservadas pero sin contenido.
+5. **Duplicación de imágenes de solución.** Las capturas `Caso_*_Solucion_page-*.jpg` existen en `practicas/ejercicios/` y en `practicas/imgs-practicas/`.
+6. **Registro abierto en mecanografía.** Cualquiera con la URL puede crear cuenta; no hay verificación docente.
+7. **La `anon public key` está en el repositorio** (`mecanografia/js/config.js`). Es pública por diseño; la seguridad depende de las RPC y de que la `service_role` nunca se exponga.
