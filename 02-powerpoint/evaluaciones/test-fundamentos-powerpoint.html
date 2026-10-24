@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test 01: Fundamentos de PowerPoint - Prof. Samuel Durán</title>
+    <link rel="stylesheet" href="../../main-style.css" />
+    <script>
+      (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.setAttribute('data-theme','dark')}})();
+    </script>
+    <style>
+      .quiz-container{max-width:800px;margin:1.2rem auto;background:var(--bg-content);border-radius:4px;padding:1.8rem;border:1px solid var(--border-light);box-shadow:var(--shadow-sm);}
+      .quiz-header{margin-bottom:1rem;border-bottom:1px solid var(--border-light);padding-bottom:1rem;}
+      .progress-bar{height:6px;background:var(--bg-body);border:1px solid var(--border-light);border-radius:10px;margin-bottom:2rem;overflow:hidden;}
+      .progress-fill{height:100%;background:var(--color-ppt);width:0%;transition:width .4s ease;}
+      .question-text{font-family:var(--font-heading);font-size:1.25rem;font-weight:700;margin-bottom:1.5rem;color:var(--title-main);}
+      .options-grid{display:grid;gap:.8rem;}
+      .option-btn{padding:.9rem 1rem;border-radius:4px;background:var(--bg-body);border:1px solid var(--border-light);text-align:left;font-size:.95rem;font-weight:500;cursor:pointer;transition:var(--transition);display:flex;align-items:center;gap:.8rem;color:var(--text-color);font-family:var(--font-sans);}
+      .option-btn:hover{background:var(--bg-content);border-left:3px solid var(--color-ppt);box-shadow:var(--shadow-sm);}
+      .option-btn span{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;background:var(--border-light);color:var(--text-muted);font-weight:700;}
+      .hidden{display:none!important;}
+      .animate-fade{animation:fadeIn .4s ease forwards;}
+      @keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+      .form-group{margin-bottom:1.5rem;}
+      .form-input{width:100%;padding:.6rem .8rem;border-radius:4px;border:1px solid var(--border-light);font-size:.95rem;background:var(--bg-body);color:var(--text-main);font-family:var(--font-sans);}
+      .btn-primary{background:var(--color-ppt);color:#fff;border:none;padding:.9rem 1.5rem;border-radius:4px;font-weight:600;cursor:pointer;width:100%;font-size:.95rem;}
+      .btn-primary:hover{opacity:.92;}
+      .result-screen{text-align:center;}
+      .score-circle{width:150px;height:150px;border-radius:50%;border:8px solid var(--color-ppt);display:flex;flex-direction:column;align-items:center;justify-content:center;margin:2rem auto;}
+    </style>
+  </head>
+  <body>
+    <nav class="breadcrumb-nav">
+      <a href="../../index.html">Inicio</a> >
+      <a href="../index-evaluaciones.html">Evaluaciones PowerPoint</a> >
+      <span>Test 01 Fundamentos</span>
+      <button id="theme-toggle" aria-label="Cambiar modo oscuro/claro" class="theme-btn">☾</button>
+    </nav>
+
+    <main class="container">
+      <div class="quiz-container">
+        <header style="margin-bottom:2rem;text-align:center">
+          <a href="../index-evaluaciones.html" style="text-decoration:none;color:var(--color-ppt);font-weight:600">← Volver a evaluaciones</a>
+          <h1 id="test-title" style="margin-top:1rem;font-family:var(--font-heading);">Test 01: Fundamentos de PowerPoint</h1>
+          <p style="color:var(--text-muted);">Interfaz, ventana principal y vistas. 10 preguntas.</p>
+        </header>
+
+        <section id="registration-form" class="animate-fade">
+          <h2 style="margin-bottom:1rem;">Identificación</h2>
+          <p style="margin-bottom:2rem;color:var(--text-muted);">Ingresa tu nombre para comenzar. Usa el resultado para el debate en clase.</p>
+          <div class="form-group">
+            <label style="display:block;margin-bottom:.5rem;font-weight:500">Nombre y Apellido</label>
+            <input type="text" id="student-name" class="form-input" placeholder="Ej. Samuel Durán" required />
+          </div>
+          <button type="button" onclick="startQuiz()" class="btn-primary">Empezar Evaluación</button>
+        </section>
+
+        <section id="quiz-screen" class="hidden animate-fade">
+          <div class="quiz-header">
+            <div id="question-counter" style="font-size:.85rem;color:var(--text-muted);font-family:var(--font-code);">Pregunta 1 de 10</div>
+          </div>
+          <div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
+          <div id="question-container">
+            <div class="question-text" id="question-text">Cargando...</div>
+            <div class="options-grid" id="options-grid"></div>
+          </div>
+        </section>
+
+        <section id="result-screen" class="result-screen hidden animate-fade">
+          <div style="font-size:3rem;margin-bottom:1rem">🎉</div>
+          <h2>¡Evaluación Completada!</h2>
+          <p id="student-name-display" style="font-size:1.1rem;font-weight:600;margin-top:1rem;"></p>
+          <div class="score-circle">
+            <div class="score-value" id="final-score" style="font-size:3rem;font-weight:700;color:var(--color-ppt)">0</div>
+            <div style="color:var(--text-muted)">de 100</div>
+          </div>
+          <p id="feedback-text" style="font-size:1rem;color:var(--text-muted);margin-bottom:1.5rem;"></p>
+          <button onclick="location.href='../index-evaluaciones.html'" class="btn-primary" style="max-width:250px">Finalizar y Salir</button>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 - Instituto Nueva Tecnología | Prof. Samuel Durán | Ofimática</p>
+    </footer>
+
+    <script src="js/quiz-core.js"></script>
+    <script>
+      var preguntasTest01 = [
+        { pregunta: "¿Qué es Microsoft PowerPoint?", opciones: ["Un procesador de textos", "Un programa para crear presentaciones con diapositivas y multimedia", "Una hoja de cálculo", "Un gestor de bases de datos"], respuesta: 1, tipo: "multiple", explicacion: "PowerPoint es un programa de presentación: sirve para crear diapositivas con texto, imágenes, animaciones y multimedia para exposiciones, clases y reuniones." },
+        { pregunta: "¿Cuál es la función de la barra de título?", opciones: ["Mostrar el nombre de la presentación y los botones de control de la ventana", "Cambiar el color de las diapositivas", "Insertar imágenes y formas", "Reproducir la presentación"], respuesta: 0, tipo: "multiple", explicacion: "La barra de título (parte superior) muestra el nombre del archivo, como «Presentación1 - Microsoft PowerPoint», junto con los botones de minimizar, maximizar y cerrar." },
+        { pregunta: "¿Qué parte de la ventana agrupa los comandos organizados en fichas o pestañas?", opciones: ["El panel de notas", "La barra de menús", "La barra de estado", "El área de trabajo"], respuesta: 1, tipo: "multiple", explicacion: "La cinta de opciones (ribbon) reúne los comandos de PowerPoint agrupados por fichas: Inicio, Insertar, Diseño, Transiciones, Animaciones, etc." },
+        { pregunta: "¿Dónde se ubica el panel de miniaturas y para qué sirve?", opciones: ["A la derecha; cambia el tema de la presentación", "A la izquierda; ver, organizar y reordenar las diapositivas", "Abajo; escribir las notas del orador", "Arriba; cerrar la aplicación"], respuesta: 1, tipo: "multiple", explicacion: "El panel de navegación o de miniaturas está a la izquierda y permite ver todas las diapositivas, seleccionarlas y cambiar su orden arrastrándolas." },
+        { pregunta: "¿Para qué sirve el panel de notas?", opciones: ["Para que la audiencia lea el discurso completo", "Para escribir apuntes que solo el expositor verá durante la presentación", "Para insertar animaciones y transiciones", "Para cambiar el tamaño de la diapositiva"], respuesta: 1, tipo: "multiple", explicacion: "Las notas del orador son apuntes privados del expositor: se ven en la vista Presentador o al imprimirlas, pero no se proyectan a la audiencia." },
+        { pregunta: "¿Qué información muestra la barra de estado?", opciones: ["Solo el nombre del archivo", "El número de diapositiva actual, los botones de vista y el zoom", "La lista de fuentes instaladas", "El historial de cambios del documento"], respuesta: 1, tipo: "multiple", explicacion: "La barra de estado, en la parte inferior, indica en qué diapositiva vas, ofrece los botones de vista (normal, clasificador, lectura, presentación) y controla el zoom." },
+        { pregunta: "El área de trabajo o lienzo de PowerPoint es…", opciones: ["El lugar donde se edita la diapositiva en tamaño real", "La lista de diapositivas de la izquierda", "El menú Archivo", "La barra de tareas de Windows"], respuesta: 0, tipo: "multiple", explicacion: "El área de trabajo es el lienzo central donde agregas y acomodas el título, el texto, las imágenes y los demás elementos de cada diapositiva." },
+        { pregunta: "Las pestañas Inicio, Insertar, Diseño, Transiciones y Animaciones forman parte de la barra de menús de PowerPoint.", opciones: [], respuesta: 0, tipo: "vf", explicacion: "Verdadero. Esas pestañas organizan los comandos por categorías y se recorren desde la barra de menús, debajo de la barra de título." },
+        { pregunta: "El panel de notas es visible para la audiencia mientras se proyecta la presentación.", opciones: [], respuesta: 1, tipo: "vf", explicacion: "Falso. Las notas son un apoyo privado del expositor; la audiencia ve únicamente la diapositiva proyectada." },
+        { pregunta: "Una presentación de PowerPoint sirve únicamente para proyectar texto, sin imágenes ni multimedia.", opciones: [], respuesta: 1, tipo: "vf", explicacion: "Falso. PowerPoint permite combinar texto, imágenes, gráficos, audio, video, animaciones y transiciones para apoyar la exposición." }
+      ];
+      document.addEventListener("DOMContentLoaded", function () { initQuiz(preguntasTest01); });
+    </script>
+    <script src="../../busqueda.js"></script>
+  </body>
+</html>

@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test 02: Diseño, Color y Tipografía - Prof. Samuel Durán</title>
+    <link rel="stylesheet" href="../../main-style.css" />
+    <script>
+      (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.setAttribute('data-theme','dark')}})();
+    </script>
+    <style>
+      .quiz-container{max-width:800px;margin:1.2rem auto;background:var(--bg-content);border-radius:4px;padding:1.8rem;border:1px solid var(--border-light);box-shadow:var(--shadow-sm);}
+      .quiz-header{margin-bottom:1rem;border-bottom:1px solid var(--border-light);padding-bottom:1rem;}
+      .progress-bar{height:6px;background:var(--bg-body);border:1px solid var(--border-light);border-radius:10px;margin-bottom:2rem;overflow:hidden;}
+      .progress-fill{height:100%;background:var(--color-ppt);width:0%;transition:width .4s ease;}
+      .question-text{font-family:var(--font-heading);font-size:1.25rem;font-weight:700;margin-bottom:1.5rem;color:var(--title-main);}
+      .options-grid{display:grid;gap:.8rem;}
+      .option-btn{padding:.9rem 1rem;border-radius:4px;background:var(--bg-body);border:1px solid var(--border-light);text-align:left;font-size:.95rem;font-weight:500;cursor:pointer;transition:var(--transition);display:flex;align-items:center;gap:.8rem;color:var(--text-color);font-family:var(--font-sans);}
+      .option-btn:hover{background:var(--bg-content);border-left:3px solid var(--color-ppt);box-shadow:var(--shadow-sm);}
+      .option-btn span{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;background:var(--border-light);color:var(--text-muted);font-weight:700;}
+      .hidden{display:none!important;}
+      .animate-fade{animation:fadeIn .4s ease forwards;}
+      @keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+      .form-group{margin-bottom:1.5rem;}
+      .form-input{width:100%;padding:.6rem .8rem;border-radius:4px;border:1px solid var(--border-light);font-size:.95rem;background:var(--bg-body);color:var(--text-main);font-family:var(--font-sans);}
+      .btn-primary{background:var(--color-ppt);color:#fff;border:none;padding:.9rem 1.5rem;border-radius:4px;font-weight:600;cursor:pointer;width:100%;font-size:.95rem;}
+      .btn-primary:hover{opacity:.92;}
+      .result-screen{text-align:center;}
+      .score-circle{width:150px;height:150px;border-radius:50%;border:8px solid var(--color-ppt);display:flex;flex-direction:column;align-items:center;justify-content:center;margin:2rem auto;}
+    </style>
+  </head>
+  <body>
+    <nav class="breadcrumb-nav">
+      <a href="../../index.html">Inicio</a> >
+      <a href="../index-evaluaciones.html">Evaluaciones PowerPoint</a> >
+      <span>Test 02 Diseño y Tipografía</span>
+      <button id="theme-toggle" aria-label="Cambiar modo oscuro/claro" class="theme-btn">☾</button>
+    </nav>
+
+    <main class="container">
+      <div class="quiz-container">
+        <header style="margin-bottom:2rem;text-align:center">
+          <a href="../index-evaluaciones.html" style="text-decoration:none;color:var(--color-ppt);font-weight:600">← Volver a evaluaciones</a>
+          <h1 id="test-title" style="margin-top:1rem;font-family:var(--font-heading);">Test 02: Diseño, Color y Tipografía</h1>
+          <p style="color:var(--text-muted);">Maquetación, armonías cromáticas y jerarquía visual. 10 preguntas.</p>
+        </header>
+
+        <section id="registration-form" class="animate-fade">
+          <h2 style="margin-bottom:1rem;">Identificación</h2>
+          <p style="margin-bottom:2rem;color:var(--text-muted);">Ingresa tu nombre para comenzar. Usa el resultado para el debate en clase.</p>
+          <div class="form-group">
+            <label style="display:block;margin-bottom:.5rem;font-weight:500">Nombre y Apellido</label>
+            <input type="text" id="student-name" class="form-input" placeholder="Ej. Samuel Durán" required />
+          </div>
+          <button type="button" onclick="startQuiz()" class="btn-primary">Empezar Evaluación</button>
+        </section>
+
+        <section id="quiz-screen" class="hidden animate-fade">
+          <div class="quiz-header">
+            <div id="question-counter" style="font-size:.85rem;color:var(--text-muted);font-family:var(--font-code);">Pregunta 1 de 10</div>
+          </div>
+          <div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
+          <div id="question-container">
+            <div class="question-text" id="question-text">Cargando...</div>
+            <div class="options-grid" id="options-grid"></div>
+          </div>
+        </section>
+
+        <section id="result-screen" class="result-screen hidden animate-fade">
+          <div style="font-size:3rem;margin-bottom:1rem">🎉</div>
+          <h2>¡Evaluación Completada!</h2>
+          <p id="student-name-display" style="font-size:1.1rem;font-weight:600;margin-top:1rem;"></p>
+          <div class="score-circle">
+            <div class="score-value" id="final-score" style="font-size:3rem;font-weight:700;color:var(--color-ppt)">0</div>
+            <div style="color:var(--text-muted)">de 100</div>
+          </div>
+          <p id="feedback-text" style="font-size:1rem;color:var(--text-muted);margin-bottom:1.5rem;"></p>
+          <button onclick="location.href='../index-evaluaciones.html'" class="btn-primary" style="max-width:250px">Finalizar y Salir</button>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 - Instituto Nueva Tecnología | Prof. Samuel Durán | Ofimática</p>
+    </footer>
+
+    <script src="js/quiz-core.js"></script>
+    <script>
+      var preguntasTest02 = [
+        { pregunta: "¿Qué son los colores complementarios?", opciones: ["Colores vecinos en la rueda de color", "Colores opuestos en la rueda de color, con alto contraste", "Tonalidades del mismo color", "Únicamente blanco y negro"], respuesta: 1, tipo: "multiple", explicacion: "Los complementarios están enfrentados en el círculo cromático (azul y naranja, rojo y verde). Su alto contraste sirve para destacar títulos, botones o datos importantes." },
+        { pregunta: "¿Qué armonía utiliza colores vecinos y transmite tranquilidad y una estética corporativa elegante?", opciones: ["La armonía complementaria", "La armonía análoga", "La armonía de alto contraste", "La paleta arcoíris"], respuesta: 1, tipo: "multiple", explicacion: "Los colores análogos son vecinos en la rueda (azules oscuros, azules claros y cian). Generan una apariencia serena y coherente." },
+        { pregunta: "En la regla 60-30-10, ¿a qué corresponde el 10%?", opciones: ["Al fondo dominante", "Al color de acento para destacar un dato, botón o palabra clave", "Al texto principal", "Al logotipo institucional"], respuesta: 1, tipo: "multiple", explicacion: "El 60% es el fondo dominante, el 30% el color secundario (texto y formas) y el 10% el acento que dirige la mirada a lo más importante." },
+        { pregunta: "¿Cuál es el error de contraste más común en una diapositiva?", opciones: ["Usar texto oscuro sobre fondo claro", "Usar texto claro sobre fondo claro o texto oscuro sobre fondo oscuro", "Usar fuentes sans-serif", "Dejar espacio en blanco"], respuesta: 1, tipo: "multiple", explicacion: "El «pecado capital» del diseño es el bajo contraste: obliga a la audiencia a forzar la vista. Texto y fondo deben contrastar claramente." },
+        { pregunta: "Si la diapositiva tiene un fondo oscuro, ¿qué color de texto conviene usar?", opciones: ["Negro puro", "Gris muy oscuro", "Blanco o gris muy claro", "Amarillo sobre blanco"], respuesta: 2, tipo: "multiple", explicacion: "Sobre fondos oscuros se usa texto blanco o gris muy claro. Esto además evita deslumbrar en salones con poca luz." },
+        { pregunta: "Según la psicología del color, ¿qué transmite el azul?", opciones: ["Urgencia y peligro", "Confianza, profesionalismo y tecnología", "Creatividad y juventud", "Naturaleza y finanzas"], respuesta: 1, tipo: "multiple", explicacion: "El azul se asocia con confianza, seriedad y tecnología; por eso domina en presentaciones empresariales, bancos y empresas tecnológicas." },
+        { pregunta: "¿Qué indica la regla 6x6 para maquetar una diapositiva?", opciones: ["Usar 6 colores y 6 fuentes por diapositiva", "No más de 6 viñetas por diapositiva ni más de 6 palabras por línea", "Mostrar 6 diapositivas por minuto", "Insertar 6 imágenes en cada diapositiva"], respuesta: 1, tipo: "multiple", explicacion: "La regla 6x6 limita el texto para que la diapositiva sea apoyo visual y no un guion que la audiencia tenga que leer." },
+        { pregunta: "¿Qué propone la regla de los tercios?", opciones: ["Dividir la diapositiva en una cuadrícula de 3x3 y ubicar lo importante en las intersecciones", "Usar solo tres colores en toda la presentación", "Escribir tres ideas por diapositiva", "Hablar tres minutos por cada diapositiva"], respuesta: 0, tipo: "multiple", explicacion: "La regla de los tercios imagina una cuadrícula de 3x3; colocar imágenes u objetos clave en las intersecciones crea composiciones más equilibradas y atractivas." },
+        { pregunta: "Las fuentes sans-serif (Arial, Calibri, Segoe UI) son las recomendadas para el cuerpo de texto en diapositivas.", opciones: [], respuesta: 0, tipo: "vf", explicacion: "Verdadero. Sus bordes limpios se leen mejor desde lejos y a través de un proyector. Las serif se reservan para documentos impresos o títulos muy formales." },
+        { pregunta: "El tamaño mínimo recomendado para el cuerpo de texto (viñetas) es de 24 puntos, con 18 pt como mínimo absoluto.", opciones: [], respuesta: 0, tipo: "vf", explicacion: "Verdadero. Los títulos van de 36 a 44 pt, los subtítulos de 28 a 32 pt y el cuerpo a 24 pt; por debajo de 18 pt nadie de las últimas filas podrá leer." }
+      ];
+      document.addEventListener("DOMContentLoaded", function () { initQuiz(preguntasTest02); });
+    </script>
+    <script src="../../busqueda.js"></script>
+  </body>
+</html>

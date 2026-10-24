@@ -126,7 +126,7 @@ Campos obligatorios de una lección, guía o práctica del portal:
 | **Pie de impresión** | `.print-footer` | `<div>` | Presente en las 98 páginas de contenido | El CSS le añade `Página N` con `counter(page)`. |
 | **Modal de imagen** | `#imageModal` | `<div>` | Opcional | Solo en `01-word/guias/atajos-esenciales.html` y `03-excel/guias/atajos-esenciales.html`, con `openModal`/`closeModal` inline y cierre con `Escape`. |
 
-### 🧪 Tabla 5: Contrato de una evaluación (`01-word/evaluaciones/`)
+### 🧪 Tabla 5: Contrato de una evaluación (`01-word/evaluaciones/` y `02-powerpoint/evaluaciones/`)
 
 | Elemento | ID / selector | Tipo | Descripción |
 | :--- | :--- | :--- | :--- |

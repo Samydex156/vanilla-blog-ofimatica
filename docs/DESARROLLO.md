@@ -282,9 +282,9 @@ Usar siempre `currentColor` o variables CSS: así el gráfico se adapta al modo 
 
 ---
 
-### 📝 Receta 4: Añadir una evaluación (solo Word por ahora)
+### 📝 Receta 4: Añadir una evaluación (Word o PowerPoint)
 
-1. Copiar `01-word/evaluaciones/test-fundamentos-word.html` como `test-nuevo.html`.
+1. Copiar `01-word/evaluaciones/test-fundamentos-word.html` (o `02-powerpoint/evaluaciones/test-fundamentos-powerpoint.html`) como `test-nuevo.html` dentro de la carpeta `evaluaciones/` del módulo correspondiente.
 2. Conservar los IDs: `student-name`, `registration-form`, `quiz-screen`, `question-counter`, `progress-fill`, `question-container`, `question-text`, `options-grid`, `result-screen`, `student-name-display`, `final-score`, `feedback-text`, `quiz-summary`.
 3. Editar el arreglo de 10 preguntas con su `explicacion`:
 
@@ -293,8 +293,8 @@ Usar siempre `currentColor` o variables CSS: así el gráfico se adapta al modo 
    { pregunta: "…", opciones: [], respuesta: 0, tipo: "vf", explicacion: "…" }
    ```
 
-4. Registrar el test en `01-word/index-evaluaciones.html` dentro de `<ul class="item-list">`.
-5. No modificar `evaluaciones/js/quiz-core.js` salvo para cambiar reglas de nota o el texto de `feedback-text`.
+4. Registrar el test en el `index-evaluaciones.html` del módulo (`01-word/` o `02-powerpoint/`) dentro de `<ul class="item-list">`.
+5. No modificar `evaluaciones/js/quiz-core.js` salvo para cambiar reglas de nota o el texto de `feedback-text`. Cada módulo tiene su copia del motor con su propio color (`--color-word` o `--color-ppt`).
 
 ---
 

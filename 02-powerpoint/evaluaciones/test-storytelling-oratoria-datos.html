@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test 03: Storytelling, Oratoria y Datos - Prof. Samuel Durán</title>
+    <link rel="stylesheet" href="../../main-style.css" />
+    <script>
+      (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.setAttribute('data-theme','dark')}})();
+    </script>
+    <style>
+      .quiz-container{max-width:800px;margin:1.2rem auto;background:var(--bg-content);border-radius:4px;padding:1.8rem;border:1px solid var(--border-light);box-shadow:var(--shadow-sm);}
+      .quiz-header{margin-bottom:1rem;border-bottom:1px solid var(--border-light);padding-bottom:1rem;}
+      .progress-bar{height:6px;background:var(--bg-body);border:1px solid var(--border-light);border-radius:10px;margin-bottom:2rem;overflow:hidden;}
+      .progress-fill{height:100%;background:var(--color-ppt);width:0%;transition:width .4s ease;}
+      .question-text{font-family:var(--font-heading);font-size:1.25rem;font-weight:700;margin-bottom:1.5rem;color:var(--title-main);}
+      .options-grid{display:grid;gap:.8rem;}
+      .option-btn{padding:.9rem 1rem;border-radius:4px;background:var(--bg-body);border:1px solid var(--border-light);text-align:left;font-size:.95rem;font-weight:500;cursor:pointer;transition:var(--transition);display:flex;align-items:center;gap:.8rem;color:var(--text-color);font-family:var(--font-sans);}
+      .option-btn:hover{background:var(--bg-content);border-left:3px solid var(--color-ppt);box-shadow:var(--shadow-sm);}
+      .option-btn span{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;background:var(--border-light);color:var(--text-muted);font-weight:700;}
+      .hidden{display:none!important;}
+      .animate-fade{animation:fadeIn .4s ease forwards;}
+      @keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+      .form-group{margin-bottom:1.5rem;}
+      .form-input{width:100%;padding:.6rem .8rem;border-radius:4px;border:1px solid var(--border-light);font-size:.95rem;background:var(--bg-body);color:var(--text-main);font-family:var(--font-sans);}
+      .btn-primary{background:var(--color-ppt);color:#fff;border:none;padding:.9rem 1.5rem;border-radius:4px;font-weight:600;cursor:pointer;width:100%;font-size:.95rem;}
+      .btn-primary:hover{opacity:.92;}
+      .result-screen{text-align:center;}
+      .score-circle{width:150px;height:150px;border-radius:50%;border:8px solid var(--color-ppt);display:flex;flex-direction:column;align-items:center;justify-content:center;margin:2rem auto;}
+    </style>
+  </head>
+  <body>
+    <nav class="breadcrumb-nav">
+      <a href="../../index.html">Inicio</a> >
+      <a href="../index-evaluaciones.html">Evaluaciones PowerPoint</a> >
+      <span>Test 03 Storytelling y Datos</span>
+      <button id="theme-toggle" aria-label="Cambiar modo oscuro/claro" class="theme-btn">☾</button>
+    </nav>
+
+    <main class="container">
+      <div class="quiz-container">
+        <header style="margin-bottom:2rem;text-align:center">
+          <a href="../index-evaluaciones.html" style="text-decoration:none;color:var(--color-ppt);font-weight:600">← Volver a evaluaciones</a>
+          <h1 id="test-title" style="margin-top:1rem;font-family:var(--font-heading);">Test 03: Storytelling, Oratoria y Datos</h1>
+          <p style="color:var(--text-muted);">Estructura narrativa, exposición y gráficos. 10 preguntas.</p>
+        </header>
+
+        <section id="registration-form" class="animate-fade">
+          <h2 style="margin-bottom:1rem;">Identificación</h2>
+          <p style="margin-bottom:2rem;color:var(--text-muted);">Ingresa tu nombre para comenzar. Usa el resultado para el debate en clase.</p>
+          <div class="form-group">
+            <label style="display:block;margin-bottom:.5rem;font-weight:500">Nombre y Apellido</label>
+            <input type="text" id="student-name" class="form-input" placeholder="Ej. Samuel Durán" required />
+          </div>
+          <button type="button" onclick="startQuiz()" class="btn-primary">Empezar Evaluación</button>
+        </section>
+
+        <section id="quiz-screen" class="hidden animate-fade">
+          <div class="quiz-header">
+            <div id="question-counter" style="font-size:.85rem;color:var(--text-muted);font-family:var(--font-code);">Pregunta 1 de 10</div>
+          </div>
+          <div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
+          <div id="question-container">
+            <div class="question-text" id="question-text">Cargando...</div>
+            <div class="options-grid" id="options-grid"></div>
+          </div>
+        </section>
+
+        <section id="result-screen" class="result-screen hidden animate-fade">
+          <div style="font-size:3rem;margin-bottom:1rem">🎉</div>
+          <h2>¡Evaluación Completada!</h2>
+          <p id="student-name-display" style="font-size:1.1rem;font-weight:600;margin-top:1rem;"></p>
+          <div class="score-circle">
+            <div class="score-value" id="final-score" style="font-size:3rem;font-weight:700;color:var(--color-ppt)">0</div>
+            <div style="color:var(--text-muted)">de 100</div>
+          </div>
+          <p id="feedback-text" style="font-size:1rem;color:var(--text-muted);margin-bottom:1.5rem;"></p>
+          <button onclick="location.href='../index-evaluaciones.html'" class="btn-primary" style="max-width:250px">Finalizar y Salir</button>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 - Instituto Nueva Tecnología | Prof. Samuel Durán | Ofimática</p>
+    </footer>
+
+    <script src="js/quiz-core.js"></script>
+    <script>
+      var preguntasTest03 = [
+        { pregunta: "¿Cuál es la estructura clásica en tres actos de una presentación?", opciones: ["Inicio, Nudo y Desenlace", "Título, Índice y Cierre", "Introducción, Bibliografía y Anexos", "Saludo, Lectura y Despedida"], respuesta: 0, tipo: "multiple", explicacion: "Toda presentación narrativa sigue el arco dramático: Acto 1 (gancho), Acto 2 (nudo o conflicto) y Acto 3 (desenlace y llamado a la acción)." },
+        { pregunta: "¿Cuál es el objetivo del Acto 1 o «El Gancho»?", opciones: ["Presentar la bibliografía completa", "Atrapar la atención de la audiencia en los primeros 30 segundos", "Mostrar todos los datos de la investigación", "Repartir copias del material"], respuesta: 1, tipo: "multiple", explicacion: "El Acto 1 busca captar la atención de inmediato con una pregunta retórica, un dato impactante o una anécdota breve." },
+        { pregunta: "¿Qué es la «Regla de 3» en el nudo de la presentación?", opciones: ["Usar tres colores por diapositiva", "Agrupar el contenido en tríos porque el cerebro los retiene mejor", "Hablar tres minutos por diapositiva", "Utilizar tres fuentes tipográficas distintas"], respuesta: 1, tipo: "multiple", explicacion: "Agrupar las ideas en tríos (tres causas, tres pilares, tres pasos) facilita la retención y ordena el desarrollo del tema." },
+        { pregunta: "¿Qué es un Call to Action (CTA)?", opciones: ["Un tipo de gráfico estadístico", "El llamado a la acción dirigido al público al finalizar", "Una animación de entrada", "Un atajo de teclado de PowerPoint"], respuesta: 1, tipo: "multiple", explicacion: "El CTA cierra la presentación indicando qué debe hacer la audiencia con la información recibida; por ejemplo, revisar una etiqueta antes de comprar." },
+        { pregunta: "¿Por qué se recomienda evitar la diapositiva de «Índice»?", opciones: ["Porque ocupa demasiado espacio en pantalla", "Porque hace spoiler de la estructura; conviene usar diapositivas de transición", "Porque PowerPoint no permite crearla", "Porque no se puede imprimir"], respuesta: 1, tipo: "multiple", explicacion: "Anunciar todo el recorrido elimina la sorpresa. Es mejor usar diapositivas de transición con títulos grandes que marquen el paso a cada subtema." },
+        { pregunta: "Según la clase de oratoria, las diapositivas deben funcionar como…", opciones: ["Un teleprómpter con el discurso completo", "Un apoyo visual con palabras clave, gráficos e imágenes", "El elemento más importante de la exposición", "Una copia exacta de la teoría"], respuesta: 1, tipo: "multiple", explicacion: "La atención debe estar en el expositor. Las diapositivas refuerzan visualmente lo que se explica; leerlas completas hace que la audiencia desconecte." },
+        { pregunta: "¿Qué técnica ayuda a evitar las muletillas al exponer?", opciones: ["Hablar cada vez más rápido", "Hacer pausas de 2 o 3 segundos en lugar de decir «ehh» o «mmm»", "Mirar únicamente la pantalla", "Leer todo el texto de la diapositiva"], respuesta: 1, tipo: "multiple", explicacion: "El silencio breve proyecta seguridad, da tiempo para pensar y permite que la audiencia procese la idea anterior." },
+        { pregunta: "¿Para qué sirve un gráfico de líneas?", opciones: ["Mostrar porcentajes que suman 100%", "Mostrar tendencias a lo largo del tiempo", "Comparar nombres largos de categorías", "Resaltar un único dato con máximo impacto"], respuesta: 1, tipo: "multiple", explicacion: "Las líneas conectan valores en el tiempo y hacen visible una tendencia; el circular se usa para porcentajes y las barras para comparar categorías." },
+        { pregunta: "Una tabla de Excel con cientos de celdas es la mejor opción para proyectar en una diapositiva.", opciones: [], respuesta: 1, tipo: "vf", explicacion: "Falso. En una proyección breve una tabla extensa es ruido visual. Conviene mostrar un número clave en grande o un gráfico que resuma la comparación." },
+        { pregunta: "Para destacar una barra en un gráfico conviene pintar el resto en tonos neutros y solo el dato clave con un color brillante.", opciones: [], respuesta: 0, tipo: "vf", explicacion: "Verdadero. El color debe dirigir la mirada al dato que estás explicando; pintar todas las barras de colores distintos dispersa la atención." }
+      ];
+      document.addEventListener("DOMContentLoaded", function () { initQuiz(preguntasTest03); });
+    </script>
+    <script src="../../busqueda.js"></script>
+  </body>
+</html>

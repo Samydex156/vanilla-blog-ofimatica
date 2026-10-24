@@ -7,7 +7,8 @@ el portal de Ofimática como módulo **09 Mecanografía**.
 ## Qué incluye
 
 - 17 lecciones guiadas en español, organizadas en 5 unidades y desbloqueadas por
-  progreso.
+  progreso. Cada texto tiene entre 590 y 670 caracteres (aprox. 10-12 líneas),
+  para que el WPM y el cronómetro sean representativos.
 - Teclado virtual con distribución **español ES**, colores por dedo y pista de
   la siguiente tecla, incluyendo `Shift`, `AltGr` y tildes.
 - Motor de tecleo con WPM, precisión, errores, pausa, reanudación y corrección
@@ -261,6 +262,22 @@ update mecanografia.students set is_active = true where username = 'ana.lopez';
 -- Borrar definitivamente (arrastra su progreso y sus marcas)
 delete from mecanografia.students where username = 'ana.lopez';
 ```
+
+### Cambiar el texto de una lección
+
+Edita el campo `text` de la lección en `js/data/lessons.js`:
+
+- Mantén el mismo `id` (`u1-l1`, `u5-l4`, etc.) para conservar el progreso ya
+  guardado en Supabase, porque ese id es la clave.
+- Usa solo las teclas que la lección ya presentó. La progresión es acumulativa:
+  `u1` trabaja fila guía y primeras letras; `u2` completa el teclado; `u3` añade
+  números y símbolos; `u4`, la ñ, tildes y signos; `u5`, textos libres.
+- Apunta a 590-670 caracteres por texto (unas 10-12 líneas). Un texto demasiado
+  corto hace que el cronómetro y el cálculo de WPM sean poco representativos.
+- No insertes saltos de línea (`\n`): el motor ignora `Enter` y el texto se
+  acomoda solo dentro del panel de práctica.
+- Los acentos, la ñ, `¿`, `¡` y las comillas se escriben con la tecla muerta o
+  `Shift`; el motor ya los compara normalizados.
 
 ### Cambiar o añadir textos del sprint
 

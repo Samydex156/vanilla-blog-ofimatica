@@ -83,7 +83,7 @@ Esta separación es deliberada: el material didáctico debe funcionar aunque no 
                        del botón #theme-toggle: ☀ en oscuro, ☾ en claro.
 ```
 
-Aplica a **129 de las 130 páginas**. La excepción es `mecanografia/index.html`, que no usa `main-style.css` ni el tema del portal: su interfaz es oscura de forma permanente.
+Aplica a **133 de las 134 páginas**. La excepción es `mecanografia/index.html`, que no usa `main-style.css` ni el tema del portal: su interfaz es oscura de forma permanente.
 
 ### 🔍 Pipeline 2: Motor de búsqueda en vivo
 
@@ -95,7 +95,7 @@ Aplica a **129 de las 130 páginas**. La excepción es `mecanografia/index.html`
 
 Sin índice invertido ni *debounce*: con las listas actuales (máximo 9 ítems por índice) el coste es despreciable y el comportamiento es instantáneo.
 
-### 📝 Pipeline 3: Evaluación interactiva (módulo 01)
+### 📝 Pipeline 3: Evaluación interactiva (módulos 01 y 02)
 
 ```text
 [Formulario #registration-form] ──> nombre del alumno (#student-name)
@@ -114,6 +114,8 @@ Sin índice invertido ni *debounce*: con las listas actuales (máximo 9 ítems p
 ```
 
 Todo el estado (`questions`, `userAnswers`, `studentName`) vive en memoria del documento. Recargar la página reinicia el test; no hay `localStorage` ni envío al servidor.
+
+Word y PowerPoint usan el mismo motor con una copia por módulo: `01-word/evaluaciones/js/quiz-core.js` (tema azul `--color-word`) y `02-powerpoint/evaluaciones/js/quiz-core.js` (tema terracota `--color-ppt`). Así cada módulo conserva su paleta sin compartir dependencias entre carpetas.
 
 ### 🖨️ Pipeline 4: Impresión institucional
 
@@ -178,7 +180,7 @@ El cliente nunca lee tablas: `anon` no tiene privilegios sobre ellas y RLS está
 - **Decisión**: inyectar una IIFE minificada e inline en el `<head>` de cada documento, antes de la hoja de estilos externa.
 - **Consecuencias**:
   - **Positivas**: el tema correcto se aplica antes del *First Contentful Paint*.
-  - **Negativas**: bloqueo mínimo del parser (< 1 ms) y duplicación del snippet en 129 archivos.
+  - **Negativas**: bloqueo mínimo del parser (< 1 ms) y duplicación del snippet en 133 archivos.
   - **Excepción**: `mecanografia/index.html` no lo necesita porque su tema es fijo.
 
 ---
@@ -244,9 +246,10 @@ El cliente nunca lee tablas: `anon` no tiene privilegios sobre ellas y RLS está
 | Artefacto | Responsabilidad | Lo usan |
 | :--- | :--- | :--- |
 | `main-style.css` | Tokens de color, tipografía, tarjetas, tablas, cajas, modal y reglas de impresión del portal. | Todas las páginas 00–08 y el catálogo. |
-| `busqueda.js` | Filtrado de listas y toggle de tema en páginas índice; copia del `<h1>` al encabezado de impresión. | Portada, 25 índices, catálogo y 3 tests. |
+| `busqueda.js` | Filtrado de listas y toggle de tema en páginas índice; copia del `<h1>` al encabezado de impresión. | Portada, 26 índices, catálogo y 6 tests. |
 | Scripts inline | Toggle de tema, copia del título y modal de zoom en páginas de contenido. | 98 páginas de contenido. |
 | `01-word/evaluaciones/js/quiz-core.js` | Motor de evaluación: orden aleatorio, progreso, nota y resumen. | 3 tests de Word. |
+| `02-powerpoint/evaluaciones/js/quiz-core.js` | Motor de evaluación: orden aleatorio, progreso, nota y resumen. | 3 tests de PowerPoint. |
 | `mecanografia/js/app.js` | Arranque, rutas, autenticación y acciones de la aplicación. | `mecanografia/index.html`. |
 | `mecanografia/js/api.js` | Contrato de datos con dos adaptadores (Supabase y demo). | `app.js`, `views.js`, `sprint-views.js`. |
 | `mecanografia/sql/setup.sql` | Esquema, tablas, RLS, permisos, funciones y textos iniciales. | Supabase (ejecución manual). |

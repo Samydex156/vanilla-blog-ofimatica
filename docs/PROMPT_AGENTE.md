@@ -69,7 +69,7 @@ Ofimática con DOS subsistemas:
 | :--- | :--- | :--- |
 | 00 Windows | `win` | — |
 | 01 Word | `word` | `index-evaluaciones.html` |
-| 02 PowerPoint | `ppt` | — |
+| 02 PowerPoint | `ppt` | `index-evaluaciones.html` |
 | 03 Excel | `xls` | — |
 | 04 Publisher | `pub` | — |
 | 05 Internet | `net` | — |
@@ -177,7 +177,7 @@ IDs de buscador admitidos: `buscador-clases`, `buscador-guias`, `buscador-practi
 
 ## 5. Motor de Búsqueda y Tema (`busqueda.js`)
 
-Archivo único en la raíz, ES5, cargado en **30 páginas** (portada, 25 índices, catálogo y 3 tests):
+Archivo único en la raíz, ES5, cargado en **34 páginas** (portada, 26 índices, catálogo y 6 tests):
 
 ```javascript
 document.addEventListener("DOMContentLoaded", function () {
@@ -328,9 +328,9 @@ Cada módulo con color necesita **cuatro** reglas: borde de tarjeta, badge, fond
 
 ---
 
-## 7. Evaluaciones Interactivas (módulo 01)
+## 7. Evaluaciones Interactivas (módulos 01 y 02)
 
-Tres tests de 10 preguntas con el motor `01-word/evaluaciones/js/quiz-core.js`:
+Tres tests de 10 preguntas por módulo con los motores `01-word/evaluaciones/js/quiz-core.js` y `02-powerpoint/evaluaciones/js/quiz-core.js`:
 
 - Estructura de pregunta:
 

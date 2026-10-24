@@ -21,7 +21,7 @@ La portada (`index.html`) presenta **10 tarjetas**: ocho módulos temáticos con
 | :-: | :--- | :--- | :--- | :-: | :-: | :-: | :--- |
 | 00 | 🖥️ Windows | `00-windows/` | `win` | 2 | 3 | 2 | — |
 | 01 | 📝 Word | `01-word/` | `word` | 5 | 11 | 8 | 3 evaluaciones interactivas + validador oculto |
-| 02 | 📊 PowerPoint | `02-powerpoint/` | `ppt` | 6 | 9 | 7 | — |
+| 02 | 📊 PowerPoint | `02-powerpoint/` | `ppt` | 6 | 9 | 7 | 3 evaluaciones interactivas |
 | 03 | 📈 Excel | `03-excel/` | `xls` | 4 | 1 | 5 | — |
 | 04 | 📰 Publisher | `04-publisher/` | `pub` | 1 | 1 | 1 | — |
 | 05 | 🌐 Internet | `05-internet/` | `net` | 6 | 5 | 5 | Pixabay, Photopea y uBlock Origin |
@@ -29,11 +29,11 @@ La portada (`index.html`) presenta **10 tarjetas**: ocho módulos temáticos con
 | 07 | 🗃️ Access | `07-Access/` | `access` | 1 | 1 | 1 | Migración desde Excel |
 | 08 | 🧰 Programas y Herramientas | `instaladores-herramientas/` | `herramientas` | — | — | — | Catálogo + `MecaSamType_Installer.exe` |
 | 09 | ⌨️ Mecanografía | `mecanografia/` | `meca` | — | — | — | Aplicación SPA + Supabase |
-| | **Totales** | | | **28** | **34** | **36** | **98 páginas de contenido + 3 tests** |
+| | **Totales** | | | **28** | **34** | **36** | **98 páginas de contenido + 6 tests** |
 
 - 🖥️ **00 Windows**: sistema operativo, escritorio, gestión de archivos y carpetas, atajos de teclado.
 - 📝 **01 Word**: anatomía del documento formal, formatos de papel, estilos, saltos de página y sección; 8 prácticas que culminan en la monografía con norma APA 7.ª edición.
-- 📊 **02 PowerPoint**: oratoria, teoría del color, regla 60-30-10, composición tipográfica, storytelling, transiciones y animación.
+- 📊 **02 PowerPoint**: oratoria, teoría del color, regla 60-30-10, composición tipográfica, storytelling, transiciones y animación; 3 evaluaciones interactivas.
 - 📈 **03 Excel**: estructura de celdas, formato numérico, operadores, fórmulas y un caso financiero de cálculo de beneficio.
 - 📰 **04 Publisher**: maquetación editorial y diseño de piezas impresas.
 - 🌐 **05 Internet**: navegadores, extensiones, bancos de recursos libres (Pixabay) y edición de imagen en línea con Photopea.
@@ -60,9 +60,9 @@ El detalle de puesta en marcha vive en [`mecanografia/README.md`](../mecanografi
 - 📜 **Warm Paper & Obsidian Terminal**: estilo visual retro-elegante inspirado en publicaciones editoriales clásicas y consolas modernas, con `Source Serif 4`, `Inter` y `JetBrains Mono`.
 - 🖼️ **Iconografía 100% SVG**: 11 íconos en `imgs/svg/` que heredan el color con `currentColor` y se adaptan al modo oscuro sin activos adicionales.
 - 📊 **Diagramas teóricos en SVG**: ventanas de aplicaciones Office, esquemas de color y gráficos de datos dibujados en código.
-- 🔍 **Buscador en vivo unificado**: motor síncrono client-side sobre las listas `.item-list`, con cinco identificadores admitidos (`buscador-clases`, `buscador-guias`, `buscador-practicas`, `buscador-evaluaciones`, `buscador-index`). Se carga en **30 páginas**: portada, 25 índices de módulo, catálogo de herramientas y los 3 tests.
-- 📝 **Evaluaciones interactivas**: 3 tests de 10 preguntas en `01-word/evaluaciones/` con registro de nombre, orden aleatorio, barra de progreso, nota sobre 100 y resumen con explicaciones para debate en clase. Motor `quiz-core.js` sin backend ni `localStorage`.
-- 🌙 **Modo oscuro Anti-FOUC**: IIFE bloqueante en el `<head>` de las 129 páginas del portal (la única excepción es `mecanografia/index.html`, que tiene su propio tema oscuro fijo).
+- 🔍 **Buscador en vivo unificado**: motor síncrono client-side sobre las listas `.item-list`, con cinco identificadores admitidos (`buscador-clases`, `buscador-guias`, `buscador-practicas`, `buscador-evaluaciones`, `buscador-index`). Se carga en **34 páginas**: portada, 26 índices de módulo, catálogo de herramientas y los 6 tests.
+- 📝 **Evaluaciones interactivas**: 3 tests de 10 preguntas en `01-word/evaluaciones/` y 3 en `02-powerpoint/evaluaciones/`, con registro de nombre, orden aleatorio, barra de progreso, nota sobre 100 y resumen con explicaciones para debate en clase. Cada módulo tiene su propio `quiz-core.js` sin backend ni `localStorage`.
+- 🌙 **Modo oscuro Anti-FOUC**: IIFE bloqueante en el `<head>` de las 133 páginas del portal (la única excepción es `mecanografia/index.html`, que tiene su propio tema oscuro fijo).
 - 🖨️ **Modo impresión institucional**: `@media print` genera un encabezado de 3 columnas (profesor · título · institución) y un pie con numeración `Página N`. El marcado `.print-header` y `.print-footer` está presente en las **98** páginas de contenido.
 - ⚡ **Arquitectura cero-dependencias (con excepciones declaradas)**:
   - El portal no usa frameworks, bundlers ni `npm install`.
@@ -164,13 +164,13 @@ vanilla-blog-ofimatica/
 ├── busqueda.js                   Búsqueda en vivo + toggle de tema
 ├── vercel.json                   cleanUrls / trailingSlash
 ├── imgs/                         7 banners PNG + 11 íconos SVG
-├── 00-windows/ … 07-Access/      Ocho módulos con teoria/ · guias/ · practicas/
+├── 00-windows/ … 07-Access/      Ocho módulos con teoria/ · guias/ · practicas/ (+ evaluaciones en Word y PowerPoint)
 ├── instaladores-herramientas/    Catálogo 08 + instalador MecaSamType
 ├── mecanografia/                 App 09 (SPA + Supabase)
 └── docs/                         Documentación técnica y comercial
 ```
 
-Estado del inventario: **130 archivos HTML, 6 hojas de estilo y 20 archivos JavaScript**. El árbol comentado completo está en [`CONTEXTO_PROYECTO.md`](CONTEXTO_PROYECTO.md).
+Estado del inventario: **134 archivos HTML, 6 hojas de estilo y 21 archivos JavaScript**. El árbol comentado completo está en [`CONTEXTO_PROYECTO.md`](CONTEXTO_PROYECTO.md).
 
 ---
 

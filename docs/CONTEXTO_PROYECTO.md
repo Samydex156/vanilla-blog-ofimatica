@@ -17,12 +17,12 @@ El **Portal Educativo de Ofimática** es una plataforma web estática desarrolla
 **Dentro del alcance:**
 
 - Presentación interactiva de **10 tarjetas** en la portada: ocho módulos temáticos (00 Windows, 01 Word, 02 PowerPoint, 03 Excel, 04 Publisher, 05 Internet, 06 Inteligencia Artificial, 07 Access), un catálogo de herramientas (08 Programas y Herramientas) y una aplicación independiente (09 Mecanografía).
-- Índices dinámicos de clases teóricas, guías metodológicas y ejercicios prácticos, más un índice de evaluaciones exclusivo de Word.
+- Índices dinámicos de clases teóricas, guías metodológicas y ejercicios prácticos, más índices de evaluaciones para Word y PowerPoint.
 - Motor de búsqueda síncrono client-side en todas las listas (`.item-list`) mediante cinco identificadores de entrada.
 - Sistema de temas visuales (Claro / Oscuro) con persistencia en `localStorage` y ejecución Anti-FOUC.
 - Enlaces de descarga directa de archivos base (`.docx`, `.xlsx`, `.pptx`, `.pdf`, `.exe`).
 - Maquetación especial de impresión con encabezado institucional de tres columnas y pie con numeración de página.
-- Evaluaciones estáticas de Word (`01-word/evaluaciones/`): 3 tests de 10 preguntas con nota sobre 100 y resumen con explicaciones para retroalimentación en clase. Estado en memoria, sin backend.
+- Evaluaciones estáticas de Word (`01-word/evaluaciones/`) y PowerPoint (`02-powerpoint/evaluaciones/`): 3 tests de 10 preguntas por módulo con nota sobre 100 y resumen con explicaciones para retroalimentación en clase. Estado en memoria, sin backend.
 - **MecaSamType Web** (`mecanografia/`): entrenador de mecanografía con cuentas propias, progreso privado por alumno, sprint competitivo y ranking, persistido en el esquema `mecanografia` de Supabase.
 - **Modo demo** de la aplicación de mecanografía, que funciona sin credenciales y guarda en `localStorage`.
 
@@ -47,7 +47,7 @@ vanilla-blog-ofimatica/
 ├── main-style.css                    # [Estilos globales] 1 165 líneas: tokens Warm Paper / Obsidian, tarjetas,
 │                                     #   tablas, cajas, diagramas SVG, modal y bloque @media print.
 ├── busqueda.js                       # [Lógica client-side] Búsqueda en vivo multi-lista + toggle de tema.
-│                                     #   Se carga en 30 páginas índice (no en páginas de contenido).
+│                                     #   Se carga en 34 páginas (portada, 26 índices, catálogo y 6 tests).
 ├── vercel.json                       # [Despliegue] cleanUrls: true, trailingSlash: false.
 ├── .gitignore                        # Ignora node_modules, .vercel, .env*, supabase/.temp, *.log, *.bak.
 │
@@ -119,11 +119,17 @@ vanilla-blog-ofimatica/
 │       └── js/                       # core.js, app.js y validador-caso-{01,02,05,06,07,08}.js.
 │                                     #   Depende de JSZip y fast-xml-parser por CDN.
 │
-├── 02-powerpoint/                    # [Módulo 02] PowerPoint — 6 teoría · 9 guías · 7 prácticas
+├── 02-powerpoint/                    # [Módulo 02] PowerPoint — 6 teoría · 9 guías · 7 prácticas · 3 tests
 │   ├── index-teoria.html · index-guias.html · index-practicas.html
+│   ├── index-evaluaciones.html       # Índice de evaluaciones (buscador-evaluaciones).
 │   ├── teoria/                       # 6 clases + clases.css + ppt-clases-imgs/ (vacía)
 │   ├── guias/                        # 9 guías + guias.css + ppt-guias-imgs/ (vacía)
 │   ├── practicas/                    # 7 prácticas + practicas.css
+│   ├── evaluaciones/                 # [Evaluaciones interactivas]
+│   │   ├── test-fundamentos-powerpoint.html      # Test 01: interfaz, ventana y vistas (10 preguntas).
+│   │   ├── test-diseno-color-tipografia.html     # Test 02: color, maquetación y tipografía (10 preguntas).
+│   │   ├── test-storytelling-oratoria-datos.html # Test 03: narrativa, oratoria y gráficos (10 preguntas).
+│   │   └── js/quiz-core.js           # Motor: shuffle, progreso, nota /100 y resumen con explicaciones.
 │   └── archivos/                     # 2 .pptx, 2 .pdf de apoyo y skill-pptxgenjs-decks-portable.md.
 │
 ├── 03-excel/                         # [Módulo 03] Excel — 4 teoría · 1 guía · 5 prácticas
@@ -224,7 +230,7 @@ vanilla-blog-ofimatica/
 | **Estructura web** | HTML5 semántico | W3C | Accesibilidad nativa, SEO y compatibilidad sin compilación. |
 | **Diseño y estilos** | CSS3 Vanilla | Grid / Flexbox / Custom Properties | Control fino de tokens, rendimiento GPU y `@media print`. |
 | **Lógica client-side del portal** | JavaScript Vanilla | ES5 en `busqueda.js`; ES2020 en scripts inline | Compatibilidad amplia en el motor de búsqueda; sintaxis moderna en las páginas de contenido. |
-| **Motor de evaluaciones** | JS Vanilla sin CDN | `01-word/evaluaciones/js/quiz-core.js` | 3 tests de 10 preguntas con estado en memoria; sin backend ni persistencia. |
+| **Motor de evaluaciones** | JS Vanilla sin CDN | `01-word/evaluaciones/js/quiz-core.js` y `02-powerpoint/evaluaciones/js/quiz-core.js` | 6 tests de 10 preguntas con estado en memoria; sin backend ni persistencia. |
 | **Aplicación de mecanografía** | JavaScript ES Modules | `type="module"` | Organización por responsabilidades (motor, teclado, vistas, API) sin bundler. |
 | **Persistencia del módulo 09** | PostgreSQL + PostgREST (Supabase) | Esquema `mecanografia` | Progreso compartido entre dispositivos y ranking del grupo sin servidor propio. |
 | **Seguridad del módulo 09** | pgcrypto + RPC `SECURITY DEFINER` + RLS | bcrypt coste 10, tokens de 60 días | Las tablas quedan cerradas a `anon`; la API expone únicamente funciones validadas. |
@@ -245,12 +251,12 @@ vanilla-blog-ofimatica/
 | Páginas de teoría | 28 |
 | Páginas de guía | 34 (30 enlazadas desde índices) |
 | Páginas de práctica | 36 |
-| Evaluaciones interactivas | 3 (30 preguntas en total) |
+| Evaluaciones interactivas | 6 (60 preguntas en total) |
 | Páginas de contenido | 98 |
-| Índices de módulo | 25 (8 módulos × 3 + `index-evaluaciones.html`) |
-| Archivos HTML totales | 130 |
+| Índices de módulo | 26 (8 módulos × 3 + 2 índices de evaluaciones) |
+| Archivos HTML totales | 134 |
 | Hojas de estilo | 6 |
-| Archivos JavaScript | 20 |
+| Archivos JavaScript | 21 |
 | Descargables (`.docx`, `.xlsx`, `.pptx`, `.pdf`, `.exe`) | 34 (18 `.docx`, 9 `.xlsx`, 4 `.pdf`, 2 `.pptx`, 1 `.exe`) |
 | Lecciones de mecanografía | 17 en 5 unidades |
 
