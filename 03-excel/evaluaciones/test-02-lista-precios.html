@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test 04: Lista de Precios y Referencias Absolutas (Práctica 02) - Prof. Samuel Durán</title>
+    <link rel="icon" type="image/png" href="../../imgs/img-favicon.png" />
+    <link rel="stylesheet" href="../../main-style.css" />
+    <script>
+      (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.setAttribute('data-theme','dark')}})();
+    </script>
+    <style>
+      .quiz-container{max-width:800px;margin:1.2rem auto;background:var(--bg-content);border-radius:4px;padding:1.8rem;border:1px solid var(--border-light);box-shadow:var(--shadow-sm);}
+      .quiz-header{margin-bottom:1rem;border-bottom:1px solid var(--border-light);padding-bottom:1rem;}
+      .progress-bar{height:6px;background:var(--bg-body);border:1px solid var(--border-light);border-radius:10px;margin-bottom:2rem;overflow:hidden;}
+      .progress-fill{height:100%;background:var(--color-excel);width:0%;transition:width .4s ease;}
+      .question-text{font-family:var(--font-heading);font-size:1.25rem;font-weight:700;margin-bottom:1.5rem;color:var(--title-main);}
+      .options-grid{display:grid;gap:.8rem;}
+      .option-btn{padding:.9rem 1rem;border-radius:4px;background:var(--bg-body);border:1px solid var(--border-light);text-align:left;font-size:.95rem;font-weight:500;cursor:pointer;transition:var(--transition);display:flex;align-items:center;gap:.8rem;color:var(--text-color);font-family:var(--font-sans);}
+      .option-btn:hover{background:var(--bg-content);border-left:3px solid var(--color-excel);box-shadow:var(--shadow-sm);}
+      .option-btn span{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;background:var(--border-light);color:var(--text-muted);font-weight:700;}
+      .hidden{display:none!important;}
+      .animate-fade{animation:fadeIn .4s ease forwards;}
+      @keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+      .form-group{margin-bottom:1.5rem;}
+      .form-input{width:100%;padding:.6rem .8rem;border-radius:4px;border:1px solid var(--border-light);font-size:.95rem;background:var(--bg-body);color:var(--text-main);font-family:var(--font-sans);}
+      .btn-primary{background:var(--color-excel);color:#fff;border:none;padding:.9rem 1.5rem;border-radius:4px;font-weight:600;cursor:pointer;width:100%;font-size:.95rem;}
+      .btn-primary:hover{opacity:.92;}
+      .result-screen{text-align:center;}
+      .score-circle{width:150px;height:150px;border-radius:50%;border:8px solid var(--color-excel);display:flex;flex-direction:column;align-items:center;justify-content:center;margin:2rem auto;}
+      .practice-hint{display:block;margin-top:.75rem;text-align:center;font-size:.9rem;color:var(--text-muted);}
+      .practice-hint a{color:var(--color-excel);font-weight:600;}
+    </style>
+  </head>
+  <body>
+    <nav class="breadcrumb-nav">
+      <a href="../../index.html">Inicio</a> >
+      <a href="../index-evaluaciones.html">Evaluaciones Excel</a> >
+      <span>Test 04 Lista de Precios</span>
+      <button id="theme-toggle" aria-label="Cambiar modo oscuro/claro" class="theme-btn">☾</button>
+    </nav>
+
+    <main class="container">
+      <div class="quiz-container">
+        <header style="margin-bottom:2rem;text-align:center">
+          <a href="../index-evaluaciones.html" style="text-decoration:none;color:var(--color-excel);font-weight:600">← Volver a evaluaciones</a>
+          <h1 id="test-title" style="margin-top:1rem;font-family:var(--font-heading);">Test 04: Lista de Precios y Referencias Absolutas (Práctica 02)</h1>
+          <p style="color:var(--text-muted);">El signo $, IVA, descuentos, CONTAR, MAX y MIN. 10 preguntas.</p>
+          <span class="practice-hint">Basado en la <a href="../practicas/finanzas-02-lista-precios.html">Práctica Finanzas 02</a></span>
+        </header>
+
+        <section id="registration-form" class="animate-fade">
+          <h2 style="margin-bottom:1rem;">Identificación</h2>
+          <p style="margin-bottom:2rem;color:var(--text-muted);">Ingresa tu nombre para comenzar. Usa el resultado para el debate en clase.</p>
+          <div class="form-group">
+            <label style="display:block;margin-bottom:.5rem;font-weight:500">Nombre y Apellido</label>
+            <input type="text" id="student-name" class="form-input" placeholder="Ej. Samuel Durán" required />
+          </div>
+          <button type="button" onclick="startQuiz()" class="btn-primary">Empezar Evaluación</button>
+        </section>
+
+        <section id="quiz-screen" class="hidden animate-fade">
+          <div class="quiz-header">
+            <div id="question-counter" style="font-size:.85rem;color:var(--text-muted);font-family:var(--font-code);">Pregunta 1 de 10</div>
+          </div>
+          <div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
+          <div id="question-container">
+            <div class="question-text" id="question-text">Cargando...</div>
+            <div class="options-grid" id="options-grid"></div>
+          </div>
+        </section>
+
+        <section id="result-screen" class="result-screen hidden animate-fade">
+          <div style="font-size:3rem;margin-bottom:1rem">🎉</div>
+          <h2>¡Evaluación Completada!</h2>
+          <p id="student-name-display" style="font-size:1.1rem;font-weight:600;margin-top:1rem;"></p>
+          <div class="score-circle">
+            <div class="score-value" id="final-score" style="font-size:3rem;font-weight:700;color:var(--color-excel)">0</div>
+            <div style="color:var(--text-muted)">de 100</div>
+          </div>
+          <p id="feedback-text" style="font-size:1rem;color:var(--text-muted);margin-bottom:1.5rem;"></p>
+          <button onclick="location.href='../index-evaluaciones.html'" class="btn-primary" style="max-width:250px">Finalizar y Salir</button>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 - Instituto Nueva Tecnología | Prof. Samuel Durán | Ofimática</p>
+    </footer>
+
+    <script src="js/quiz-core.js"></script>
+    <script>
+      var preguntasTest04 = [
+  {
+    "pregunta": "¿Qué significa la referencia $C$9 en una fórmula?",
+    "opciones": [
+      "Un formato de moneda aplicado a C9",
+      "Una referencia absoluta que fija la columna C y la fila 9",
+      "Una función de texto que lee C9",
+      "Una celda combinada del rango C9"
+    ],
+    "respuesta": 1,
+    "tipo": "multiple",
+    "explicacion": "Los dos signos $ fijan columna y fila: al arrastrar la fórmula, la referencia sigue apuntando siempre a C9."
+  },
+  {
+    "pregunta": "¿Qué tecla permite fijar una referencia con $ mientras editas la fórmula?",
+    "opciones": [
+      "F2",
+      "Ctrl + $",
+      "F4",
+      "Alt + F4"
+    ],
+    "respuesta": 2,
+    "tipo": "multiple",
+    "explicacion": "Con el cursor sobre la referencia, F4 alterna entre relativa, absoluta y mixta. En algunos teclados portátiles se usa Fn + F4."
+  },
+  {
+    "pregunta": "Si olvidas el signo $ en C7 y arrastras la fórmula hacia abajo, ¿qué ocurre?",
+    "opciones": [
+      "El formato cambia a porcentaje",
+      "Las filas siguientes toman otras celdas y los cálculos salen incorrectos",
+      "Se borra la fórmula de la fila 13",
+      "Excel corrige la referencia automáticamente"
+    ],
+    "respuesta": 1,
+    "tipo": "multiple",
+    "explicacion": "La referencia relativa baja una fila por cada fila arrastrada. En las filas 14 a 20 dejaría de apuntar a la tasa de IVA y el marcador daría 0 puntos."
+  },
+  {
+    "pregunta": "En E13 se calcula el precio antes de IVA aplicando el margen de C9. ¿Cuál es la fórmula correcta para arrastrarla?",
+    "opciones": [
+      "=D13+$C$9",
+      "=D13*(1+$C$9)",
+      "=D13*$C$9",
+      "=D13*(1+C9)"
+    ],
+    "respuesta": 1,
+    "tipo": "multiple",
+    "explicacion": "Se multiplica el costo por (1 + margen) y se fija C9 con $ para que el margen no se desplace al arrastrar."
+  },
+  {
+    "pregunta": "¿Qué fórmula calcula el IVA en F13?",
+    "opciones": [
+      "=E13/$C$7",
+      "=E13*$C$7",
+      "=E13+$C$7",
+      "=E13-$C$7"
+    ],
+    "respuesta": 1,
+    "tipo": "multiple",
+    "explicacion": "El IVA es el precio antes de impuesto multiplicado por la tasa fija de C7."
+  },
+  {
+    "pregunta": "¿Qué fórmula calcula el precio para cliente frecuente VIP en H13?",
+    "opciones": [
+      "=G13/$C$8",
+      "=G13-$C$8",
+      "=G13*(1-$C$8)",
+      "=G13*(1+$C$8)"
+    ],
+    "respuesta": 2,
+    "tipo": "multiple",
+    "explicacion": "Al precio final se le resta el descuento VIP: se multiplica por (1 - descuento) con C8 fijada."
+  },
+  {
+    "pregunta": "¿Qué función cuenta la cantidad de productos del menú en F7?",
+    "opciones": [
+      "=PROMEDIO(D13:D20)",
+      "=SUMA(D13:D20)",
+      "=CONTAR(D13:D20)",
+      "=MAX(D13:D20)"
+    ],
+    "respuesta": 2,
+    "tipo": "multiple",
+    "explicacion": "CONTAR cuenta las celdas con valores numéricos en el rango; es la función del resumen del menú."
+  },
+  {
+    "pregunta": "=MAX(G13:G20) devuelve el precio final más alto del catálogo.",
+    "opciones": [],
+    "respuesta": 0,
+    "tipo": "vf",
+    "explicacion": "Verdadero. MAX recorre el rango y devuelve el valor máximo; en este caso, el precio final más alto."
+  },
+  {
+    "pregunta": "Al arrastrar una fórmula, las referencias relativas se ajustan y las absolutas con $ se mantienen fijas.",
+    "opciones": [],
+    "respuesta": 0,
+    "tipo": "vf",
+    "explicacion": "Verdadero. Esa es precisamente la diferencia: la relativa cambia de fila o columna, la absoluta queda anclada."
+  },
+  {
+    "pregunta": "Escribir la tasa de IVA dentro de cada fórmula es más mantenible que referenciar la celda C7.",
+    "opciones": [],
+    "respuesta": 1,
+    "tipo": "vf",
+    "explicacion": "Falso. Si la tasa cambia, habría que editar todas las fórmulas; con C7 se actualiza una sola celda y todo el catálogo se recalcula."
+  }
+];
+      document.addEventListener("DOMContentLoaded", function () { initQuiz(preguntasTest04); });
+    </script>
+    <script src="../../busqueda.js"></script>
+  </body>
+</html>

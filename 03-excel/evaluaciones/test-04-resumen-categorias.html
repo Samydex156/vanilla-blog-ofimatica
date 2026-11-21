@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test 06: Funciones Condicionales de Resumen (Práctica 04) - Prof. Samuel Durán</title>
+    <link rel="icon" type="image/png" href="../../imgs/img-favicon.png" />
+    <link rel="stylesheet" href="../../main-style.css" />
+    <script>
+      (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.setAttribute('data-theme','dark')}})();
+    </script>
+    <style>
+      .quiz-container{max-width:800px;margin:1.2rem auto;background:var(--bg-content);border-radius:4px;padding:1.8rem;border:1px solid var(--border-light);box-shadow:var(--shadow-sm);}
+      .quiz-header{margin-bottom:1rem;border-bottom:1px solid var(--border-light);padding-bottom:1rem;}
+      .progress-bar{height:6px;background:var(--bg-body);border:1px solid var(--border-light);border-radius:10px;margin-bottom:2rem;overflow:hidden;}
+      .progress-fill{height:100%;background:var(--color-excel);width:0%;transition:width .4s ease;}
+      .question-text{font-family:var(--font-heading);font-size:1.25rem;font-weight:700;margin-bottom:1.5rem;color:var(--title-main);}
+      .options-grid{display:grid;gap:.8rem;}
+      .option-btn{padding:.9rem 1rem;border-radius:4px;background:var(--bg-body);border:1px solid var(--border-light);text-align:left;font-size:.95rem;font-weight:500;cursor:pointer;transition:var(--transition);display:flex;align-items:center;gap:.8rem;color:var(--text-color);font-family:var(--font-sans);}
+      .option-btn:hover{background:var(--bg-content);border-left:3px solid var(--color-excel);box-shadow:var(--shadow-sm);}
+      .option-btn span{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;background:var(--border-light);color:var(--text-muted);font-weight:700;}
+      .hidden{display:none!important;}
+      .animate-fade{animation:fadeIn .4s ease forwards;}
+      @keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+      .form-group{margin-bottom:1.5rem;}
+      .form-input{width:100%;padding:.6rem .8rem;border-radius:4px;border:1px solid var(--border-light);font-size:.95rem;background:var(--bg-body);color:var(--text-main);font-family:var(--font-sans);}
+      .btn-primary{background:var(--color-excel);color:#fff;border:none;padding:.9rem 1.5rem;border-radius:4px;font-weight:600;cursor:pointer;width:100%;font-size:.95rem;}
+      .btn-primary:hover{opacity:.92;}
+      .result-screen{text-align:center;}
+      .score-circle{width:150px;height:150px;border-radius:50%;border:8px solid var(--color-excel);display:flex;flex-direction:column;align-items:center;justify-content:center;margin:2rem auto;}
+      .practice-hint{display:block;margin-top:.75rem;text-align:center;font-size:.9rem;color:var(--text-muted);}
+      .practice-hint a{color:var(--color-excel);font-weight:600;}
+    </style>
+  </head>
+  <body>
+    <nav class="breadcrumb-nav">
+      <a href="../../index.html">Inicio</a> >
+      <a href="../index-evaluaciones.html">Evaluaciones Excel</a> >
+      <span>Test 06 Resumen por Categorías</span>
+      <button id="theme-toggle" aria-label="Cambiar modo oscuro/claro" class="theme-btn">☾</button>
+    </nav>
+
+    <main class="container">
+      <div class="quiz-container">
+        <header style="margin-bottom:2rem;text-align:center">
+          <a href="../index-evaluaciones.html" style="text-decoration:none;color:var(--color-excel);font-weight:600">← Volver a evaluaciones</a>
+          <h1 id="test-title" style="margin-top:1rem;font-family:var(--font-heading);">Test 06: Funciones Condicionales de Resumen (Práctica 04)</h1>
+          <p style="color:var(--text-muted);">CONTAR.SI, SUMAR.SI y PROMEDIO.SI aplicados a un registro. 10 preguntas.</p>
+          <span class="practice-hint">Basado en la <a href="../practicas/finanzas-04-resumen-categorias.html">Práctica Finanzas 04</a></span>
+        </header>
+
+        <section id="registration-form" class="animate-fade">
+          <h2 style="margin-bottom:1rem;">Identificación</h2>
+          <p style="margin-bottom:2rem;color:var(--text-muted);">Ingresa tu nombre para comenzar. Usa el resultado para el debate en clase.</p>
+          <div class="form-group">
+            <label style="display:block;margin-bottom:.5rem;font-weight:500">Nombre y Apellido</label>
+            <input type="text" id="student-name" class="form-input" placeholder="Ej. Samuel Durán" required />
+          </div>
+          <button type="button" onclick="startQuiz()" class="btn-primary">Empezar Evaluación</button>
+        </section>
+
+        <section id="quiz-screen" class="hidden animate-fade">
+          <div class="quiz-header">
+            <div id="question-counter" style="font-size:.85rem;color:var(--text-muted);font-family:var(--font-code);">Pregunta 1 de 10</div>
+          </div>
+          <div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
+          <div id="question-container">
+            <div class="question-text" id="question-text">Cargando...</div>
+            <div class="options-grid" id="options-grid"></div>
+          </div>
+        </section>
+
+        <section id="result-screen" class="result-screen hidden animate-fade">
+          <div style="font-size:3rem;margin-bottom:1rem">🎉</div>
+          <h2>¡Evaluación Completada!</h2>
+          <p id="student-name-display" style="font-size:1.1rem;font-weight:600;margin-top:1rem;"></p>
+          <div class="score-circle">
+            <div class="score-value" id="final-score" style="font-size:3rem;font-weight:700;color:var(--color-excel)">0</div>
+            <div style="color:var(--text-muted)">de 100</div>
+          </div>
+          <p id="feedback-text" style="font-size:1rem;color:var(--text-muted);margin-bottom:1.5rem;"></p>
+          <button onclick="location.href='../index-evaluaciones.html'" class="btn-primary" style="max-width:250px">Finalizar y Salir</button>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 - Instituto Nueva Tecnología | Prof. Samuel Durán | Ofimática</p>
+    </footer>
+
+    <script src="js/quiz-core.js"></script>
+    <script>
+      var preguntasTest06 = [
+  {
+    "pregunta": "¿Qué calcula =CONTAR.SI($D$7:$D$18; G7)?",
+    "opciones": [
+      "Cuenta todas las celdas del registro, sin filtrar",
+      "Cuenta las celdas del rango que coinciden con la categoría indicada en G7",
+      "Calcula el promedio de los montos de la categoría",
+      "Suma los montos de la categoría indicada en G7"
+    ],
+    "respuesta": 1,
+    "tipo": "multiple",
+    "explicacion": "CONTAR.SI cuenta cuántas celdas cumplen el criterio; no suma ni promedia los montos."
+  },
+  {
+    "pregunta": "En SUMAR.SI, ¿qué representa el tercer argumento?",
+    "opciones": [
+      "El criterio de búsqueda",
+      "El rango que contiene los valores que se van a sumar",
+      "El encabezado de la tabla",
+      "El formato de moneda del resultado"
+    ],
+    "respuesta": 1,
+    "tipo": "multiple",
+    "explicacion": "SUMAR.SI(rango_criterio; criterio; rango_suma): el tercer argumento es el rango de montos que se suma cuando se cumple el criterio."
+  },
+  {
+    "pregunta": "¿Por qué se fijan con $ los rangos $D$7:$D$18 y $E$7:$E$18 antes de arrastrar?",
+    "opciones": [
+      "Para aplicar color a las celdas",
+      "Para que el rango no se desplace y no se pierdan registros en las filas siguientes",
+      "Para convertir el rango en una Tabla de Excel",
+      "Para ordenar la tabla alfabéticamente"
+    ],
+    "respuesta": 1,
+    "tipo": "multiple",
+    "explicacion": "Sin los $, al arrastrar hacia abajo el rango se desplaza y deja fuera las filas superiores; los totales quedan incompletos."
+  },
+  {
+    "pregunta": "¿Por qué se usa la celda G7 como criterio en lugar de escribir \"Diseño Web\" entre comillas?",
+    "opciones": [
+      "Porque el texto entre comillas no funciona en CONTAR.SI",
+      "Porque G7 es una celda combinada",
+      "Porque al arrastrar cada fila toma su propia categoría y el tablero se actualiza si cambia",
+      "Porque BUSCARV lo exige"
+    ],
+    "respuesta": 2,
+    "tipo": "multiple",
+    "explicacion": "Con una referencia relativa, H7 usa G7, H8 usa G8, etc. Si cambia el nombre de una categoría, el resumen se adapta."
+  },
+  {
+    "pregunta": "En J11 se usa =PROMEDIO($E$7:$E$18) en lugar del promedio de J7:J10. ¿Por qué?",
+    "opciones": [
+      "Porque PROMEDIO no acepta rangos",
+      "Porque J7:J10 están vacías",
+      "Porque el formato Moneda lo impide",
+      "Porque el promedio de promedios no pondera la cantidad de movimientos de cada categoría"
+    ],
+    "respuesta": 3,
+    "tipo": "multiple",
+    "explicacion": "El promedio real se calcula sobre los 12 montos originales. Promediar los promedios daría el mismo peso a categorías con distinta cantidad de movimientos."
+  },
+  {
+    "pregunta": "¿Qué resultado debe dar =SUMA(H7:H10) en el total de cantidad?",
+    "opciones": [
+      "12, el total de movimientos registrados",
+      "100, el puntaje del marcador",
+      "4, el número de categorías",
+      "2,710, el total en dinero"
+    ],
+    "respuesta": 0,
+    "tipo": "multiple",
+    "explicacion": "H7:H10 cuenta los movimientos por categoría; la suma de esas cantidades debe coincidir con los 12 movimientos del registro."
+  },
+  {
+    "pregunta": "¿Qué devuelve PROMEDIO.SI($D$7:$D$18; G7; $E$7:$E$18)?",
+    "opciones": [
+      "La suma de los montos de la categoría",
+      "El promedio de los montos de la categoría indicada en G7",
+      "La cantidad de movimientos de la categoría",
+      "El monto máximo de la categoría"
+    ],
+    "respuesta": 1,
+    "tipo": "multiple",
+    "explicacion": "PROMEDIO.SI promedia solo los montos que cumplen el criterio, es decir, los de una categoría concreta."
+  },
+  {
+    "pregunta": "En SUMAR.SI, el rango de criterios y el rango de suma pueden ser distintos.",
+    "opciones": [],
+    "respuesta": 0,
+    "tipo": "vf",
+    "explicacion": "Verdadero. Por eso la función tiene tres argumentos: se evalúa un rango (categorías) y se suman los valores de otro rango (montos)."
+  },
+  {
+    "pregunta": "Si arrastras sin fijar los rangos con $, las filas inferiores siguen incluyendo todos los registros.",
+    "opciones": [],
+    "respuesta": 1,
+    "tipo": "vf",
+    "explicacion": "Falso. Los rangos se desplazan hacia abajo y pierden las filas superiores; por eso se fijan con $ antes de arrastrar."
+  },
+  {
+    "pregunta": "CONTAR.SI suma los montos de las celdas que cumplen el criterio.",
+    "opciones": [],
+    "respuesta": 1,
+    "tipo": "vf",
+    "explicacion": "Falso. CONTAR.SI solo cuenta celdas; para sumar montos se usa SUMAR.SI."
+  }
+];
+      document.addEventListener("DOMContentLoaded", function () { initQuiz(preguntasTest06); });
+    </script>
+    <script src="../../busqueda.js"></script>
+  </body>
+</html>

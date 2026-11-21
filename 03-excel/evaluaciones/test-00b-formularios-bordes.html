@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test 02: Formularios y Bordes Especiales (Práctica 00B) - Prof. Samuel Durán</title>
+    <link rel="icon" type="image/png" href="../../imgs/img-favicon.png" />
+    <link rel="stylesheet" href="../../main-style.css" />
+    <script>
+      (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.setAttribute('data-theme','dark')}})();
+    </script>
+    <style>
+      .quiz-container{max-width:800px;margin:1.2rem auto;background:var(--bg-content);border-radius:4px;padding:1.8rem;border:1px solid var(--border-light);box-shadow:var(--shadow-sm);}
+      .quiz-header{margin-bottom:1rem;border-bottom:1px solid var(--border-light);padding-bottom:1rem;}
+      .progress-bar{height:6px;background:var(--bg-body);border:1px solid var(--border-light);border-radius:10px;margin-bottom:2rem;overflow:hidden;}
+      .progress-fill{height:100%;background:var(--color-excel);width:0%;transition:width .4s ease;}
+      .question-text{font-family:var(--font-heading);font-size:1.25rem;font-weight:700;margin-bottom:1.5rem;color:var(--title-main);}
+      .options-grid{display:grid;gap:.8rem;}
+      .option-btn{padding:.9rem 1rem;border-radius:4px;background:var(--bg-body);border:1px solid var(--border-light);text-align:left;font-size:.95rem;font-weight:500;cursor:pointer;transition:var(--transition);display:flex;align-items:center;gap:.8rem;color:var(--text-color);font-family:var(--font-sans);}
+      .option-btn:hover{background:var(--bg-content);border-left:3px solid var(--color-excel);box-shadow:var(--shadow-sm);}
+      .option-btn span{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;background:var(--border-light);color:var(--text-muted);font-weight:700;}
+      .hidden{display:none!important;}
+      .animate-fade{animation:fadeIn .4s ease forwards;}
+      @keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+      .form-group{margin-bottom:1.5rem;}
+      .form-input{width:100%;padding:.6rem .8rem;border-radius:4px;border:1px solid var(--border-light);font-size:.95rem;background:var(--bg-body);color:var(--text-main);font-family:var(--font-sans);}
+      .btn-primary{background:var(--color-excel);color:#fff;border:none;padding:.9rem 1.5rem;border-radius:4px;font-weight:600;cursor:pointer;width:100%;font-size:.95rem;}
+      .btn-primary:hover{opacity:.92;}
+      .result-screen{text-align:center;}
+      .score-circle{width:150px;height:150px;border-radius:50%;border:8px solid var(--color-excel);display:flex;flex-direction:column;align-items:center;justify-content:center;margin:2rem auto;}
+      .practice-hint{display:block;margin-top:.75rem;text-align:center;font-size:.9rem;color:var(--text-muted);}
+      .practice-hint a{color:var(--color-excel);font-weight:600;}
+    </style>
+  </head>
+  <body>
+    <nav class="breadcrumb-nav">
+      <a href="../../index.html">Inicio</a> >
+      <a href="../index-evaluaciones.html">Evaluaciones Excel</a> >
+      <span>Test 02 Formularios y Bordes</span>
+      <button id="theme-toggle" aria-label="Cambiar modo oscuro/claro" class="theme-btn">☾</button>
+    </nav>
+
+    <main class="container">
+      <div class="quiz-container">
+        <header style="margin-bottom:2rem;text-align:center">
+          <a href="../index-evaluaciones.html" style="text-decoration:none;color:var(--color-excel);font-weight:600">← Volver a evaluaciones</a>
+          <h1 id="test-title" style="margin-top:1rem;font-family:var(--font-heading);">Test 02: Formularios y Bordes Especiales (Práctica 00B)</h1>
+          <p style="color:var(--text-muted);">Combinar rangos, sangría, borde doble, línea de firma e impresión centrada. 10 preguntas.</p>
+          <span class="practice-hint">Basado en la <a href="../practicas/finanzas-00b-diseno-boleta.html">Práctica Finanzas 00B</a></span>
+        </header>
+
+        <section id="registration-form" class="animate-fade">
+          <h2 style="margin-bottom:1rem;">Identificación</h2>
+          <p style="margin-bottom:2rem;color:var(--text-muted);">Ingresa tu nombre para comenzar. Usa el resultado para el debate en clase.</p>
+          <div class="form-group">
+            <label style="display:block;margin-bottom:.5rem;font-weight:500">Nombre y Apellido</label>
+            <input type="text" id="student-name" class="form-input" placeholder="Ej. Samuel Durán" required />
+          </div>
+          <button type="button" onclick="startQuiz()" class="btn-primary">Empezar Evaluación</button>
+        </section>
+
+        <section id="quiz-screen" class="hidden animate-fade">
+          <div class="quiz-header">
+            <div id="question-counter" style="font-size:.85rem;color:var(--text-muted);font-family:var(--font-code);">Pregunta 1 de 10</div>
+          </div>
+          <div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
+          <div id="question-container">
+            <div class="question-text" id="question-text">Cargando...</div>
+            <div class="options-grid" id="options-grid"></div>
+          </div>
+        </section>
+
+        <section id="result-screen" class="result-screen hidden animate-fade">
+          <div style="font-size:3rem;margin-bottom:1rem">🎉</div>
+          <h2>¡Evaluación Completada!</h2>
+          <p id="student-name-display" style="font-size:1.1rem;font-weight:600;margin-top:1rem;"></p>
+          <div class="score-circle">
+            <div class="score-value" id="final-score" style="font-size:3rem;font-weight:700;color:var(--color-excel)">0</div>
+            <div style="color:var(--text-muted)">de 100</div>
+          </div>
+          <p id="feedback-text" style="font-size:1rem;color:var(--text-muted);margin-bottom:1.5rem;"></p>
+          <button onclick="location.href='../index-evaluaciones.html'" class="btn-primary" style="max-width:250px">Finalizar y Salir</button>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 - Instituto Nueva Tecnología | Prof. Samuel Durán | Ofimática</p>
+    </footer>
+
+    <script src="js/quiz-core.js"></script>
+    <script>
+      var preguntasTest02 = [
+  {
+    "pregunta": "En el encabezado del formulario, ¿para qué se combinan B2:E2 y F2:G2 por separado?",
+    "opciones": [
+      "Para impedir que el encabezado se imprima",
+      "Para unir todo el encabezado en una sola celda grande",
+      "Para crear dos bloques independientes: la identidad del negocio y los datos de la orden",
+      "Para aplicar el mismo relleno a toda la fila"
+    ],
+    "respuesta": 2,
+    "tipo": "multiple",
+    "explicacion": "El encabezado tiene dos zonas con funciones distintas (negocio y orden de servicio). Combinarlas por separado permite títulos, colores y alineaciones diferentes sin perder información."
+  },
+  {
+    "pregunta": "¿Dónde se encuentra el botón «Aumentar sangría»?",
+    "opciones": [
+      "Vista > Mostrar",
+      "Datos > Herramientas de datos",
+      "Inicio > Alineación",
+      "Insertar > Texto"
+    ],
+    "respuesta": 2,
+    "tipo": "multiple",
+    "explicacion": "Aumentar sangría está en Inicio > grupo Alineación y desplaza el contenido hacia la derecha un nivel por clic."
+  },
+  {
+    "pregunta": "¿Por qué conviene aplicar sangría en las descripciones en lugar de escribir espacios con la barra espaciadora?",
+    "opciones": [
+      "Porque con espacios no se puede imprimir",
+      "Porque la sangría mantiene el texto alineado aunque cambie la fuente o el ancho de la columna",
+      "Porque los espacios cambian el color del texto",
+      "Porque la sangría suma los valores de la celda"
+    ],
+    "respuesta": 1,
+    "tipo": "multiple",
+    "explicacion": "Los espacios son caracteres: al cambiar la fuente o el ancho de la columna, la alineación se rompe. La sangría es una propiedad del párrafo y se mantiene estable."
+  },
+  {
+    "pregunta": "En la celda del Total a Pagar, ¿qué combinación de bordes crea el estilo contable?",
+    "opciones": [
+      "Solo relleno, sin ningún borde",
+      "Borde punteado en los cuatro lados",
+      "Borde exterior grueso en todo el formulario",
+      "Borde superior fino y borde inferior doble"
+    ],
+    "respuesta": 3,
+    "tipo": "multiple",
+    "explicacion": "El total se separa con un borde superior fino y se cierra con un borde inferior doble: es la convención visual de los documentos contables."
+  },
+  {
+    "pregunta": "¿Dónde se desmarcan las líneas de cuadrícula de la hoja?",
+    "opciones": [
+      "Fórmulas > Auditoría de fórmulas",
+      "Vista > Mostrar > Líneas de cuadrícula",
+      "Inicio > Fuente > Bordes",
+      "Disposición de página > Márgenes"
+    ],
+    "respuesta": 1,
+    "tipo": "multiple",
+    "explicacion": "Las líneas de cuadrícula se controlan en la pestaña Vista, grupo Mostrar. Ocultarlas deja solo los bordes aplicados y da aspecto de formulario impreso."
+  },
+  {
+    "pregunta": "¿Cómo se centra el formulario horizontalmente en la página al imprimir?",
+    "opciones": [
+      "Combinar todas las celdas de la hoja",
+      "Disposición de página > Configurar página > Márgenes > Centrar en la página",
+      "Inicio > Alineación > Centrar",
+      "Vista > Zoom al 100 %"
+    ],
+    "respuesta": 1,
+    "tipo": "multiple",
+    "explicacion": "El centrado de impresión no es una alineación de celdas: se configura en Márgenes, marcando «Centrar en la página» horizontalmente (y opcionalmente en vertical)."
+  },
+  {
+    "pregunta": "¿Cuál es el orden correcto para aplicar los bordes del formulario?",
+    "opciones": [
+      "Solo el exterior grueso, sin bordes internos",
+      "Primero el punteado y luego el doble en toda la hoja",
+      "Primero el exterior grueso y luego «Todos los bordes»",
+      "Primero «Todos los bordes» y al final el «Borde exterior grueso»"
+    ],
+    "respuesta": 3,
+    "tipo": "multiple",
+    "explicacion": "«Todos los bordes» sobrescribe los bordes anteriores. Por eso el borde exterior grueso debe aplicarse al final, cuando ya están los bordes internos finos."
+  },
+  {
+    "pregunta": "El borde punteado o fino en la fila de firmas sirve para simular la línea donde se firma.",
+    "opciones": [],
+    "respuesta": 0,
+    "tipo": "vf",
+    "explicacion": "Verdadero. Es un recurso visual: una línea de borde superior fina o punteada sobre la celda combinada simula el espacio de firma."
+  },
+  {
+    "pregunta": "Si aplicas «Todos los bordes» después de un borde exterior grueso, el borde grueso se conserva.",
+    "opciones": [],
+    "respuesta": 1,
+    "tipo": "vf",
+    "explicacion": "Falso. «Todos los bordes» reemplaza los bordes de la selección, incluido el exterior grueso. La guía recomienda aplicar el borde exterior grueso al final."
+  },
+  {
+    "pregunta": "Ocultar las líneas de cuadrícula elimina también los bordes que aplicaste a las celdas.",
+    "opciones": [],
+    "respuesta": 1,
+    "tipo": "vf",
+    "explicacion": "Falso. Ocultar la cuadrícula solo esconde las líneas guía de la hoja; los bordes aplicados con el botón Bordes siguen visibles e imprimibles."
+  }
+];
+      document.addEventListener("DOMContentLoaded", function () { initQuiz(preguntasTest02); });
+    </script>
+    <script src="../../busqueda.js"></script>
+  </body>
+</html>

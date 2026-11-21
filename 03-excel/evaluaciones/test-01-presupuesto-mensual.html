@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test 03: Presupuesto Mensual (Práctica 01) - Prof. Samuel Durán</title>
+    <link rel="icon" type="image/png" href="../../imgs/img-favicon.png" />
+    <link rel="stylesheet" href="../../main-style.css" />
+    <script>
+      (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.setAttribute('data-theme','dark')}})();
+    </script>
+    <style>
+      .quiz-container{max-width:800px;margin:1.2rem auto;background:var(--bg-content);border-radius:4px;padding:1.8rem;border:1px solid var(--border-light);box-shadow:var(--shadow-sm);}
+      .quiz-header{margin-bottom:1rem;border-bottom:1px solid var(--border-light);padding-bottom:1rem;}
+      .progress-bar{height:6px;background:var(--bg-body);border:1px solid var(--border-light);border-radius:10px;margin-bottom:2rem;overflow:hidden;}
+      .progress-fill{height:100%;background:var(--color-excel);width:0%;transition:width .4s ease;}
+      .question-text{font-family:var(--font-heading);font-size:1.25rem;font-weight:700;margin-bottom:1.5rem;color:var(--title-main);}
+      .options-grid{display:grid;gap:.8rem;}
+      .option-btn{padding:.9rem 1rem;border-radius:4px;background:var(--bg-body);border:1px solid var(--border-light);text-align:left;font-size:.95rem;font-weight:500;cursor:pointer;transition:var(--transition);display:flex;align-items:center;gap:.8rem;color:var(--text-color);font-family:var(--font-sans);}
+      .option-btn:hover{background:var(--bg-content);border-left:3px solid var(--color-excel);box-shadow:var(--shadow-sm);}
+      .option-btn span{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;background:var(--border-light);color:var(--text-muted);font-weight:700;}
+      .hidden{display:none!important;}
+      .animate-fade{animation:fadeIn .4s ease forwards;}
+      @keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+      .form-group{margin-bottom:1.5rem;}
+      .form-input{width:100%;padding:.6rem .8rem;border-radius:4px;border:1px solid var(--border-light);font-size:.95rem;background:var(--bg-body);color:var(--text-main);font-family:var(--font-sans);}
+      .btn-primary{background:var(--color-excel);color:#fff;border:none;padding:.9rem 1.5rem;border-radius:4px;font-weight:600;cursor:pointer;width:100%;font-size:.95rem;}
+      .btn-primary:hover{opacity:.92;}
+      .result-screen{text-align:center;}
+      .score-circle{width:150px;height:150px;border-radius:50%;border:8px solid var(--color-excel);display:flex;flex-direction:column;align-items:center;justify-content:center;margin:2rem auto;}
+      .practice-hint{display:block;margin-top:.75rem;text-align:center;font-size:.9rem;color:var(--text-muted);}
+      .practice-hint a{color:var(--color-excel);font-weight:600;}
+    </style>
+  </head>
+  <body>
+    <nav class="breadcrumb-nav">
+      <a href="../../index.html">Inicio</a> >
+      <a href="../index-evaluaciones.html">Evaluaciones Excel</a> >
+      <span>Test 03 Presupuesto Mensual</span>
+      <button id="theme-toggle" aria-label="Cambiar modo oscuro/claro" class="theme-btn">☾</button>
+    </nav>
+
+    <main class="container">
+      <div class="quiz-container">
+        <header style="margin-bottom:2rem;text-align:center">
+          <a href="../index-evaluaciones.html" style="text-decoration:none;color:var(--color-excel);font-weight:600">← Volver a evaluaciones</a>
+          <h1 id="test-title" style="margin-top:1rem;font-family:var(--font-heading);">Test 03: Presupuesto Mensual (Práctica 01)</h1>
+          <p style="color:var(--text-muted);">SUMA, PROMEDIO, porcentajes y enlaces entre celdas. 10 preguntas.</p>
+          <span class="practice-hint">Basado en la <a href="../practicas/finanzas-01-presupuesto-mensual.html">Práctica Finanzas 01</a></span>
+        </header>
+
+        <section id="registration-form" class="animate-fade">
+          <h2 style="margin-bottom:1rem;">Identificación</h2>
+          <p style="margin-bottom:2rem;color:var(--text-muted);">Ingresa tu nombre para comenzar. Usa el resultado para el debate en clase.</p>
+          <div class="form-group">
+            <label style="display:block;margin-bottom:.5rem;font-weight:500">Nombre y Apellido</label>
+            <input type="text" id="student-name" class="form-input" placeholder="Ej. Samuel Durán" required />
+          </div>
+          <button type="button" onclick="startQuiz()" class="btn-primary">Empezar Evaluación</button>
+        </section>
+
+        <section id="quiz-screen" class="hidden animate-fade">
+          <div class="quiz-header">
+            <div id="question-counter" style="font-size:.85rem;color:var(--text-muted);font-family:var(--font-code);">Pregunta 1 de 10</div>
+          </div>
+          <div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
+          <div id="question-container">
+            <div class="question-text" id="question-text">Cargando...</div>
+            <div class="options-grid" id="options-grid"></div>
+          </div>
+        </section>
+
+        <section id="result-screen" class="result-screen hidden animate-fade">
+          <div style="font-size:3rem;margin-bottom:1rem">🎉</div>
+          <h2>¡Evaluación Completada!</h2>
+          <p id="student-name-display" style="font-size:1.1rem;font-weight:600;margin-top:1rem;"></p>
+          <div class="score-circle">
+            <div class="score-value" id="final-score" style="font-size:3rem;font-weight:700;color:var(--color-excel)">0</div>
+            <div style="color:var(--text-muted)">de 100</div>
+          </div>
+          <p id="feedback-text" style="font-size:1rem;color:var(--text-muted);margin-bottom:1.5rem;"></p>
+          <button onclick="location.href='../index-evaluaciones.html'" class="btn-primary" style="max-width:250px">Finalizar y Salir</button>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 - Instituto Nueva Tecnología | Prof. Samuel Durán | Ofimática</p>
+    </footer>
+
+    <script src="js/quiz-core.js"></script>
+    <script>
+      var preguntasTest03 = [
+  {
+    "pregunta": "Para obtener el Total de Ingresos en D10, ¿cuál es la fórmula correcta?",
+    "opciones": [
+      "=PROMEDIO(D7:D9)",
+      "=D7+D8",
+      "=SUMA(D7:D9)",
+      "=SUMA(D7:D10)"
+    ],
+    "respuesta": 2,
+    "tipo": "multiple",
+    "explicacion": "Se suma el rango completo de ingresos (D7:D9). Incluir D10 en el rango crearía una referencia circular."
+  },
+  {
+    "pregunta": "En G7 escribes =D10. ¿Qué ocurre en el Resumen Financiero?",
+    "opciones": [
+      "Inserta una imagen del total",
+      "Copia el texto «D10» en la celda",
+      "Muestra el valor de D10 y se actualiza automáticamente cuando D10 cambia",
+      "Borra el contenido de D10"
+    ],
+    "respuesta": 2,
+    "tipo": "multiple",
+    "explicacion": "G7 queda enlazada a D10 por referencia: si cambia el total de ingresos, el resumen se recalcula solo."
+  },
+  {
+    "pregunta": "¿Qué fórmula calcula el Saldo Disponible (ahorro) en G9?",
+    "opciones": [
+      "=G8-G7",
+      "=G7-G8",
+      "=SUMA(G7:G8)",
+      "=G7+G8"
+    ],
+    "respuesta": 1,
+    "tipo": "multiple",
+    "explicacion": "El saldo disponible es Total de Ingresos menos Total de Gastos: G7 - G8."
+  },
+  {
+    "pregunta": "¿Cómo se obtiene el % de Gasto sobre Ingresos en G10?",
+    "opciones": [
+      "=G8/G7 y aplicar formato Porcentaje",
+      "=G8*100 y aplicar formato Moneda",
+      "=G7/G8 y aplicar formato Moneda",
+      "=G7-G8 y aplicar formato Porcentaje"
+    ],
+    "respuesta": 0,
+    "tipo": "multiple",
+    "explicacion": "Se divide el gasto entre el ingreso (=G8/G7) y se aplica el botón %. Multiplicar por 100 devuelve un número, no un porcentaje con formato."
+  },
+  {
+    "pregunta": "¿Cuál es el atajo de teclado de Autosuma?",
+    "opciones": [
+      "Alt + =",
+      "Ctrl + Mayús + 4",
+      "F12",
+      "Ctrl + T"
+    ],
+    "respuesta": 0,
+    "tipo": "multiple",
+    "explicacion": "Alt + = inserta una función SUMA con el rango contiguo detectado automáticamente."
+  },
+  {
+    "pregunta": "¿Cuál es el atajo para aplicar el formato Porcentaje?",
+    "opciones": [
+      "Ctrl + Mayús + 4",
+      "Alt + =",
+      "Ctrl + Mayús + 5",
+      "Ctrl + P"
+    ],
+    "respuesta": 2,
+    "tipo": "multiple",
+    "explicacion": "Ctrl + Mayús + 5 aplica el formato Porcentaje; Ctrl + Mayús + 4 aplica Moneda."
+  },
+  {
+    "pregunta": "¿Por qué no conviene escribir el resultado 950 directamente en D10?",
+    "opciones": [
+      "Porque Excel no acepta números enteros en esa celda",
+      "Porque D10 está combinada con otra celda",
+      "Porque el marcador exige fórmulas reales y el valor no se actualizaría al cambiar los datos",
+      "Porque el formato Moneda lo impide"
+    ],
+    "respuesta": 2,
+    "tipo": "multiple",
+    "explicacion": "El Marcador de Cálculos da 0 puntos si escribes el número a mano. Una celda con fórmula se recalcula sola cuando cambian los ingresos o gastos."
+  },
+  {
+    "pregunta": "Toda fórmula en Excel debe comenzar con el signo igual (=).",
+    "opciones": [],
+    "respuesta": 0,
+    "tipo": "vf",
+    "explicacion": "Verdadero. El signo = le indica a Excel que el contenido es una fórmula; si lo omites, se guarda como texto."
+  },
+  {
+    "pregunta": "=PROMEDIO(D14:D21) calcula la suma de los gastos, no su promedio.",
+    "opciones": [],
+    "respuesta": 1,
+    "tipo": "vf",
+    "explicacion": "Falso. PROMEDIO suma los valores del rango y los divide entre la cantidad de datos; para sumar se usa SUMA."
+  },
+  {
+    "pregunta": "Si cambias «Alimentación y mercado» de 240 a 300, el total de gastos y el saldo disponible se recalculan automáticamente.",
+    "opciones": [],
+    "respuesta": 0,
+    "tipo": "vf",
+    "explicacion": "Verdadero. El total usa =SUMA(D14:D21) y el saldo depende del total; al editar un gasto, las fórmulas encadenadas se actualizan solas."
+  }
+];
+      document.addEventListener("DOMContentLoaded", function () { initQuiz(preguntasTest03); });
+    </script>
+    <script src="../../busqueda.js"></script>
+  </body>
+</html>

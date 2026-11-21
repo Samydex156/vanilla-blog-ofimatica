@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test 01: Formato de Planillas (Práctica 00A) - Prof. Samuel Durán</title>
+    <link rel="icon" type="image/png" href="../../imgs/img-favicon.png" />
+    <link rel="stylesheet" href="../../main-style.css" />
+    <script>
+      (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.setAttribute('data-theme','dark')}})();
+    </script>
+    <style>
+      .quiz-container{max-width:800px;margin:1.2rem auto;background:var(--bg-content);border-radius:4px;padding:1.8rem;border:1px solid var(--border-light);box-shadow:var(--shadow-sm);}
+      .quiz-header{margin-bottom:1rem;border-bottom:1px solid var(--border-light);padding-bottom:1rem;}
+      .progress-bar{height:6px;background:var(--bg-body);border:1px solid var(--border-light);border-radius:10px;margin-bottom:2rem;overflow:hidden;}
+      .progress-fill{height:100%;background:var(--color-excel);width:0%;transition:width .4s ease;}
+      .question-text{font-family:var(--font-heading);font-size:1.25rem;font-weight:700;margin-bottom:1.5rem;color:var(--title-main);}
+      .options-grid{display:grid;gap:.8rem;}
+      .option-btn{padding:.9rem 1rem;border-radius:4px;background:var(--bg-body);border:1px solid var(--border-light);text-align:left;font-size:.95rem;font-weight:500;cursor:pointer;transition:var(--transition);display:flex;align-items:center;gap:.8rem;color:var(--text-color);font-family:var(--font-sans);}
+      .option-btn:hover{background:var(--bg-content);border-left:3px solid var(--color-excel);box-shadow:var(--shadow-sm);}
+      .option-btn span{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;background:var(--border-light);color:var(--text-muted);font-weight:700;}
+      .hidden{display:none!important;}
+      .animate-fade{animation:fadeIn .4s ease forwards;}
+      @keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+      .form-group{margin-bottom:1.5rem;}
+      .form-input{width:100%;padding:.6rem .8rem;border-radius:4px;border:1px solid var(--border-light);font-size:.95rem;background:var(--bg-body);color:var(--text-main);font-family:var(--font-sans);}
+      .btn-primary{background:var(--color-excel);color:#fff;border:none;padding:.9rem 1.5rem;border-radius:4px;font-weight:600;cursor:pointer;width:100%;font-size:.95rem;}
+      .btn-primary:hover{opacity:.92;}
+      .result-screen{text-align:center;}
+      .score-circle{width:150px;height:150px;border-radius:50%;border:8px solid var(--color-excel);display:flex;flex-direction:column;align-items:center;justify-content:center;margin:2rem auto;}
+      .practice-hint{display:block;margin-top:.75rem;text-align:center;font-size:.9rem;color:var(--text-muted);}
+      .practice-hint a{color:var(--color-excel);font-weight:600;}
+    </style>
+  </head>
+  <body>
+    <nav class="breadcrumb-nav">
+      <a href="../../index.html">Inicio</a> >
+      <a href="../index-evaluaciones.html">Evaluaciones Excel</a> >
+      <span>Test 01 Formato de Planillas</span>
+      <button id="theme-toggle" aria-label="Cambiar modo oscuro/claro" class="theme-btn">☾</button>
+    </nav>
+
+    <main class="container">
+      <div class="quiz-container">
+        <header style="margin-bottom:2rem;text-align:center">
+          <a href="../index-evaluaciones.html" style="text-decoration:none;color:var(--color-excel);font-weight:600">← Volver a evaluaciones</a>
+          <h1 id="test-title" style="margin-top:1rem;font-family:var(--font-heading);">Test 01: Formato de Planillas (Práctica 00A)</h1>
+          <p style="color:var(--text-muted);">Combinar y centrar, rellenos, bordes, alineación y orientación del texto. 10 preguntas.</p>
+          <span class="practice-hint">Basado en la <a href="../practicas/finanzas-00a-formato-planillas.html">Práctica Finanzas 00A</a></span>
+        </header>
+
+        <section id="registration-form" class="animate-fade">
+          <h2 style="margin-bottom:1rem;">Identificación</h2>
+          <p style="margin-bottom:2rem;color:var(--text-muted);">Ingresa tu nombre para comenzar. Usa el resultado para el debate en clase.</p>
+          <div class="form-group">
+            <label style="display:block;margin-bottom:.5rem;font-weight:500">Nombre y Apellido</label>
+            <input type="text" id="student-name" class="form-input" placeholder="Ej. Samuel Durán" required />
+          </div>
+          <button type="button" onclick="startQuiz()" class="btn-primary">Empezar Evaluación</button>
+        </section>
+
+        <section id="quiz-screen" class="hidden animate-fade">
+          <div class="quiz-header">
+            <div id="question-counter" style="font-size:.85rem;color:var(--text-muted);font-family:var(--font-code);">Pregunta 1 de 10</div>
+          </div>
+          <div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
+          <div id="question-container">
+            <div class="question-text" id="question-text">Cargando...</div>
+            <div class="options-grid" id="options-grid"></div>
+          </div>
+        </section>
+
+        <section id="result-screen" class="result-screen hidden animate-fade">
+          <div style="font-size:3rem;margin-bottom:1rem">🎉</div>
+          <h2>¡Evaluación Completada!</h2>
+          <p id="student-name-display" style="font-size:1.1rem;font-weight:600;margin-top:1rem;"></p>
+          <div class="score-circle">
+            <div class="score-value" id="final-score" style="font-size:3rem;font-weight:700;color:var(--color-excel)">0</div>
+            <div style="color:var(--text-muted)">de 100</div>
+          </div>
+          <p id="feedback-text" style="font-size:1rem;color:var(--text-muted);margin-bottom:1.5rem;"></p>
+          <button onclick="location.href='../index-evaluaciones.html'" class="btn-primary" style="max-width:250px">Finalizar y Salir</button>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 - Instituto Nueva Tecnología | Prof. Samuel Durán | Ofimática</p>
+    </footer>
+
+    <script src="js/quiz-core.js"></script>
+    <script>
+      var preguntasTest01 = [
+        {
+          pregunta: "¿Cuál es el objetivo central de la Práctica 00A?",
+          opciones: [
+            "Aplicar fórmulas y funciones de cálculo como SUMA y PROMEDIO",
+            "Dar formato visual profesional a planillas: combinar, colorear, bordear y orientar el texto",
+            "Crear gráficos dinámicos y tablas dinámicas",
+            "Programar macros con Visual Basic for Applications"
+          ],
+          respuesta: 1,
+          tipo: "multiple",
+          explicacion: "La Práctica 00A es de nivelación visual: se evalúa el diseño de la planilla sin usar fórmulas ni macros. El objetivo es transformar datos crudos en una planilla legible y profesional."
+        },
+        {
+          pregunta: "¿Qué hace exactamente el botón «Combinar y centrar»?",
+          opciones: [
+            "Suma los valores de las celdas seleccionadas",
+            "Une varias celdas en una sola y centra el contenido en el rango resultante",
+            "Aplica bordes gruesos a la selección",
+            "Copia el formato de una celda hacia otra"
+          ],
+          respuesta: 1,
+          tipo: "multiple",
+          explicacion: "Combinar y centrar fusiona las celdas seleccionadas en una única celda y centra el texto dentro de ella. Se usa en el banner (B2:J2, B3:J3) y en los encabezados de grupo (B5:C5, D5:H5)."
+        },
+        {
+          pregunta: "¿En qué ruta de la cinta de opciones se encuentra la orientación del texto a 45° o 90°?",
+          opciones: [
+            "Insertar > Texto > Cuadro de texto",
+            "Fórmulas > Biblioteca de funciones",
+            "Inicio > Alineación > Orientación",
+            "Vista > Ventana > Inmovilizar paneles"
+          ],
+          respuesta: 2,
+          tipo: "multiple",
+          explicacion: "La orientación del texto vive en Inicio > Alineación > Orientación (el ícono «ab» inclinado). Ahí se elige el ángulo ascendente (45°) o girar el texto hacia arriba (90°)."
+        },
+        {
+          pregunta: "Después de girar los encabezados de los días (D6:H6), ¿qué ajuste evita que el texto quede cortado?",
+          opciones: [
+            "Aumentar el alto de la fila 6 (por ejemplo, 55 px) y reducir el ancho de las columnas D:H",
+            "Borrar el contenido de los encabezados y volver a escribirlo",
+            "Aplicar negrita y cursiva a los días",
+            "Combinar las celdas D6:H6 en una sola"
+          ],
+          respuesta: 0,
+          tipo: "multiple",
+          explicacion: "El texto rotado ocupa altura: si la fila es muy baja, se recorta arriba y abajo. Por eso se aumenta el alto de la fila 6 y se compactan las columnas D:H a 5–6 caracteres."
+        },
+        {
+          pregunta: "«Alinear en el medio» y «Centrar» son lo mismo: ambos centran el texto horizontalmente.",
+          opciones: [],
+          respuesta: 1,
+          tipo: "vf",
+          explicacion: "Falso. «Centrar» alinea horizontalmente, mientras que «Alinear en el medio» alinea verticalmente (centra el contenido entre el borde superior e inferior de la celda)."
+        },
+        {
+          pregunta: "¿Para qué sirve activar «Ajustar texto» en la columna Observaciones (J7:J14)?",
+          opciones: [
+            "Para que el texto largo se divida en varias líneas dentro de la celda",
+            "Para cambiar el color de la fuente",
+            "Para ordenar las observaciones alfabéticamente",
+            "Para bloquear la edición de la celda"
+          ],
+          respuesta: 0,
+          tipo: "multiple",
+          explicacion: "Ajustar texto hace que el contenido largo se reparta en varias líneas dentro de la misma celda, en lugar de desbordarse o quedar oculto. Se combina con alineación vertical al medio."
+        },
+        {
+          pregunta: "¿Dónde se aplican el color de relleno y los bordes de una celda?",
+          opciones: [
+            "Inicio > Fuente (balde de relleno y botón Bordes)",
+            "Insertar > Ilustraciones",
+            "Datos > Herramientas de datos",
+            "Revisar > Comentarios"
+          ],
+          respuesta: 0,
+          tipo: "multiple",
+          explicacion: "El color de relleno (balde) y los bordes están en Inicio > grupo Fuente. Desde ahí se aplican «Todos los bordes» y luego «Borde exterior grueso»."
+        },
+        {
+          pregunta: "La Práctica 00A exige calcular la columna Total Días con la función SUMA.",
+          opciones: [],
+          respuesta: 1,
+          tipo: "vf",
+          explicacion: "Falso. La columna Total Días ya trae el dato en el libro base y la práctica no pide fórmulas: se evalúa únicamente el formato visual."
+        },
+        {
+          pregunta: "Después de aplicar «Todos los bordes» a B5:J14, ¿cómo se destaca el contorno de la planilla?",
+          opciones: [
+            "Aplicando «Borde exterior grueso» a la misma selección",
+            "Cambiando la fuente a tamaño 20",
+            "Combinando todas las celdas del rango",
+            "Ocultando las líneas de cuadrícula de la hoja"
+          ],
+          respuesta: 0,
+          tipo: "multiple",
+          explicacion: "Primero se aplican los bordes internos finos con «Todos los bordes» y luego se refuerza el perímetro con «Borde exterior grueso»; así la planilla se lee como un bloque cerrado."
+        },
+        {
+          pregunta: "Si aplicas texto oscuro sobre un fondo oscuro, el contraste mejora y la planilla se lee mejor.",
+          opciones: [],
+          respuesta: 1,
+          tipo: "vf",
+          explicacion: "Falso. Es un error frecuente de contraste: texto oscuro sobre fondo oscuro (o claro sobre pastel) pierde legibilidad. La regla es usar texto claro sobre fondo oscuro y texto oscuro sobre fondo claro."
+        }
+      ];
+      document.addEventListener("DOMContentLoaded", function () { initQuiz(preguntasTest01); });
+    </script>
+    <script src="../../busqueda.js"></script>
+  </body>
+</html>

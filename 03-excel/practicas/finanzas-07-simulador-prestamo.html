@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Práctica Finanzas 07: Simulador de Préstamo y Tabla de Amortización (PAGO) - Excel</title>
+    <title>Práctica Finanzas 07: Tablero Ejecutivo: Tablas Dinámicas, Segmentadores y PDF - Excel</title>
     <link rel="stylesheet" href="../../main-style.css" />
     <script>
       (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.setAttribute('data-theme','dark')}})();
@@ -26,14 +26,14 @@
     <main class="content">
       <header class="lesson-header">
         <span class="date">Serie Finanzas Personales y Negocios &bull; Práctica #07</span>
-        <h1>Simulador de Préstamo y Tabla de Amortización (PAGO)</h1>
-        <p class="subtitle">Función financiera PAGO, tasa mensual, cuota fija, interés, abono a capital y saldo</p>
+        <h1>Tablero Ejecutivo: Tablas Dinámicas, Segmentadores y PDF</h1>
+        <p class="subtitle">KPIs, Total Venta y comisión, Tabla Dinámica, Gráfico Dinámico, Segmentador por mes y exportación</p>
       </header>
 
       <section class="lesson-body">
         <div class="box box-excel">
           <span class="task-title">Objetivo de la Práctica</span>
-          <p>Construir un simulador de préstamo bancario y tabla de amortización francesa a 12 cuotas (En_Clase, Propuesto y Para_Casa) utilizando la función financiera PAGO y comprobando que el saldo final cierre en cero.</p>
+          <p>Integrar fórmulas de negocio con herramientas de inteligencia de negocios en Excel: crear Tablas Dinámicas, Gráficos Dinámicos y Segmentadores de Datos (Slicers) para construir un reporte ejecutivo listo para exportar a PDF.</p>
         </div>
 
         <h2>Material de Trabajo</h2>
@@ -50,9 +50,15 @@
         <h2>Resumen de Actividades</h2>
         <ul class="step-list">
           <li>Descarga el <strong>Libro Base (.xlsx)</strong> y la <strong>Guía de Práctica (.docx)</strong>.</li>
-          <li>Calcula la cuota mensual fija con <code>=PAGO(tasa_anual/12; plazo; -monto)</code> y desglosa interés, amortización a capital y saldo insoluto en las 12 cuotas.</li>
-          <li>Comprueba que el saldo final de la cuota 12 sea <code>0.00</code> y que el marcador marque <code>100 / 100 pts</code> en las 3 hojas.</li>
+          <li>Completa <strong>Total Venta</strong> y <strong>Comisión (5 %)</strong> y los KPIs con <code>=SUMA</code>, <code>=PROMEDIO</code> y <code>=MAX</code> hasta lograr <code>100 / 100 pts</code>.</li>
+          <li>Crea una hoja <strong>Dashboard</strong> con Tabla Dinámica (Sucursal en Filas, Categoría en Columnas, Total Venta en Valores), Gráfico Dinámico y Segmentador por <strong>Mes</strong>.</li>
+          <li>Oculta las líneas de cuadrícula, ajusta a <strong>1 página horizontal</strong> y exporta el dashboard a <strong>PDF</strong>.</li>
         </ul>
+
+        <div class="box box-excel" style="margin-top: 2rem;">
+          <span class="task-title">¿Ya terminaste la práctica?</span>
+          <p>Pon a prueba lo aprendido con el <a href="../evaluaciones/test-07-tablero-ejecutivo.html" style="color: var(--color-excel); font-weight: 600;">Test 09: Tablero Ejecutivo y Tablas Dinámicas (Práctica 07)</a>: 10 preguntas con retroalimentación inmediata.</p>
+        </div>
       </section>
     </main>
 

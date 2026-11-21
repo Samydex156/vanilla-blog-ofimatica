@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test 09: Tablero Ejecutivo y Tablas Dinámicas (Práctica 07) - Prof. Samuel Durán</title>
+    <link rel="icon" type="image/png" href="../../imgs/img-favicon.png" />
+    <link rel="stylesheet" href="../../main-style.css" />
+    <script>
+      (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.setAttribute('data-theme','dark')}})();
+    </script>
+    <style>
+      .quiz-container{max-width:800px;margin:1.2rem auto;background:var(--bg-content);border-radius:4px;padding:1.8rem;border:1px solid var(--border-light);box-shadow:var(--shadow-sm);}
+      .quiz-header{margin-bottom:1rem;border-bottom:1px solid var(--border-light);padding-bottom:1rem;}
+      .progress-bar{height:6px;background:var(--bg-body);border:1px solid var(--border-light);border-radius:10px;margin-bottom:2rem;overflow:hidden;}
+      .progress-fill{height:100%;background:var(--color-excel);width:0%;transition:width .4s ease;}
+      .question-text{font-family:var(--font-heading);font-size:1.25rem;font-weight:700;margin-bottom:1.5rem;color:var(--title-main);}
+      .options-grid{display:grid;gap:.8rem;}
+      .option-btn{padding:.9rem 1rem;border-radius:4px;background:var(--bg-body);border:1px solid var(--border-light);text-align:left;font-size:.95rem;font-weight:500;cursor:pointer;transition:var(--transition);display:flex;align-items:center;gap:.8rem;color:var(--text-color);font-family:var(--font-sans);}
+      .option-btn:hover{background:var(--bg-content);border-left:3px solid var(--color-excel);box-shadow:var(--shadow-sm);}
+      .option-btn span{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;background:var(--border-light);color:var(--text-muted);font-weight:700;}
+      .hidden{display:none!important;}
+      .animate-fade{animation:fadeIn .4s ease forwards;}
+      @keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+      .form-group{margin-bottom:1.5rem;}
+      .form-input{width:100%;padding:.6rem .8rem;border-radius:4px;border:1px solid var(--border-light);font-size:.95rem;background:var(--bg-body);color:var(--text-main);font-family:var(--font-sans);}
+      .btn-primary{background:var(--color-excel);color:#fff;border:none;padding:.9rem 1.5rem;border-radius:4px;font-weight:600;cursor:pointer;width:100%;font-size:.95rem;}
+      .btn-primary:hover{opacity:.92;}
+      .result-screen{text-align:center;}
+      .score-circle{width:150px;height:150px;border-radius:50%;border:8px solid var(--color-excel);display:flex;flex-direction:column;align-items:center;justify-content:center;margin:2rem auto;}
+      .practice-hint{display:block;margin-top:.75rem;text-align:center;font-size:.9rem;color:var(--text-muted);}
+      .practice-hint a{color:var(--color-excel);font-weight:600;}
+    </style>
+  </head>
+  <body>
+    <nav class="breadcrumb-nav">
+      <a href="../../index.html">Inicio</a> >
+      <a href="../index-evaluaciones.html">Evaluaciones Excel</a> >
+      <span>Test 09 Tablero Ejecutivo</span>
+      <button id="theme-toggle" aria-label="Cambiar modo oscuro/claro" class="theme-btn">☾</button>
+    </nav>
+
+    <main class="container">
+      <div class="quiz-container">
+        <header style="margin-bottom:2rem;text-align:center">
+          <a href="../index-evaluaciones.html" style="text-decoration:none;color:var(--color-excel);font-weight:600">← Volver a evaluaciones</a>
+          <h1 id="test-title" style="margin-top:1rem;font-family:var(--font-heading);">Test 09: Tablero Ejecutivo y Tablas Dinámicas (Práctica 07)</h1>
+          <p style="color:var(--text-muted);">KPIs, tablas dinámicas, segmentadores y exportación a PDF. 10 preguntas.</p>
+          <span class="practice-hint">Basado en la <a href="../practicas/finanzas-07-simulador-prestamo.html">Práctica Finanzas 07</a></span>
+        </header>
+
+        <section id="registration-form" class="animate-fade">
+          <h2 style="margin-bottom:1rem;">Identificación</h2>
+          <p style="margin-bottom:2rem;color:var(--text-muted);">Ingresa tu nombre para comenzar. Usa el resultado para el debate en clase.</p>
+          <div class="form-group">
+            <label style="display:block;margin-bottom:.5rem;font-weight:500">Nombre y Apellido</label>
+            <input type="text" id="student-name" class="form-input" placeholder="Ej. Samuel Durán" required />
+          </div>
+          <button type="button" onclick="startQuiz()" class="btn-primary">Empezar Evaluación</button>
+        </section>
+
+        <section id="quiz-screen" class="hidden animate-fade">
+          <div class="quiz-header">
+            <div id="question-counter" style="font-size:.85rem;color:var(--text-muted);font-family:var(--font-code);">Pregunta 1 de 10</div>
+          </div>
+          <div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
+          <div id="question-container">
+            <div class="question-text" id="question-text">Cargando...</div>
+            <div class="options-grid" id="options-grid"></div>
+          </div>
+        </section>
+
+        <section id="result-screen" class="result-screen hidden animate-fade">
+          <div style="font-size:3rem;margin-bottom:1rem">🎉</div>
+          <h2>¡Evaluación Completada!</h2>
+          <p id="student-name-display" style="font-size:1.1rem;font-weight:600;margin-top:1rem;"></p>
+          <div class="score-circle">
+            <div class="score-value" id="final-score" style="font-size:3rem;font-weight:700;color:var(--color-excel)">0</div>
+            <div style="color:var(--text-muted)">de 100</div>
+          </div>
+          <p id="feedback-text" style="font-size:1rem;color:var(--text-muted);margin-bottom:1.5rem;"></p>
+          <button onclick="location.href='../index-evaluaciones.html'" class="btn-primary" style="max-width:250px">Finalizar y Salir</button>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 - Instituto Nueva Tecnología | Prof. Samuel Durán | Ofimática</p>
+    </footer>
+
+    <script src="js/quiz-core.js"></script>
+    <script>
+      var preguntasTest09 = [
+  {
+    "pregunta": "¿Qué fórmula calcula el Total Venta en I7?",
+    "opciones": [
+      "=G7+H7",
+      "=G7*H7",
+      "=SUMA(G7:H7)",
+      "=H7/G7"
+    ],
+    "respuesta": 1,
+    "tipo": "multiple",
+    "explicacion": "El total de venta es unidades (G7) por precio unitario (H7)."
+  },
+  {
+    "pregunta": "¿Qué fórmula calcula la comisión del 5 % en J7?",
+    "opciones": [
+      "=I7*0.05",
+      "=I7/0.05",
+      "=I7*5",
+      "=I7-0.05"
+    ],
+    "respuesta": 0,
+    "tipo": "multiple",
+    "explicacion": "La comisión es el 5 % del total de venta: se multiplica por 0.05 (no por 5, que daría 500 %)."
+  },
+  {
+    "pregunta": "¿Qué fórmula calcula el KPI «Ventas Totales» en M7?",
+    "opciones": [
+      "=PROMEDIO(I7:I18)",
+      "=MAX(I7:I18)",
+      "=CONTAR(I7:I18)",
+      "=SUMA(I7:I18)"
+    ],
+    "respuesta": 3,
+    "tipo": "multiple",
+    "explicacion": "Ventas Totales suma toda la columna Total Venta; PROMEDIO, MAX y CONTAR responden a otros indicadores."
+  },
+  {
+    "pregunta": "¿En qué ruta se inserta una Tabla dinámica?",
+    "opciones": [
+      "Datos > Validación de datos",
+      "Vista > Macros",
+      "Insertar > Tabla dinámica",
+      "Fórmulas > Insertar función"
+    ],
+    "respuesta": 2,
+    "tipo": "multiple",
+    "explicacion": "La Tabla dinámica se inserta desde Insertar y se ubica en una hoja nueva, como Dashboard_Clase."
+  },
+  {
+    "pregunta": "¿Cómo se configuran los campos para el reporte por sucursal y categoría?",
+    "opciones": [
+      "Fecha en Valores y Total Venta en Filas",
+      "Sucursal en Filas, Categoría en Columnas y Total Venta en Valores",
+      "Vendedor en Columnas y Mes en Valores",
+      "Total Venta en Filas y Sucursal en Valores"
+    ],
+    "respuesta": 1,
+    "tipo": "multiple",
+    "explicacion": "Las filas y columnas definen el cruce del reporte; Total Venta va en Valores, donde se puede aplicar formato Moneda."
+  },
+  {
+    "pregunta": "¿Qué hace el Segmentador de datos (Slicer) por Mes?",
+    "opciones": [
+      "Recalcula las comisiones de la hoja original",
+      "Filtra la tabla y el gráfico dinámico según el mes seleccionado",
+      "Borra de la base los meses no seleccionados",
+      "Exporta el dashboard a PDF"
+    ],
+    "respuesta": 1,
+    "tipo": "multiple",
+    "explicacion": "El segmentador es un filtro visual conectado a la Tabla dinámica: al elegir Febrero, la tabla y el gráfico muestran solo ese mes."
+  },
+  {
+    "pregunta": "Si cambias un dato en la base de ventas, ¿qué debes hacer con la Tabla dinámica?",
+    "opciones": [
+      "Nada: se actualiza sola al instante",
+      "Aplicarle Formato condicional",
+      "Eliminarla y crearla de nuevo",
+      "Actualizarla con clic derecho > Actualizar"
+    ],
+    "respuesta": 3,
+    "tipo": "multiple",
+    "explicacion": "Las tablas dinámicas no se recalculan solas: hay que actualizar para que los totales y el gráfico reflejen el cambio."
+  },
+  {
+    "pregunta": "El Segmentador filtra únicamente la tabla y el gráfico conectados, sin modificar la base original.",
+    "opciones": [],
+    "respuesta": 0,
+    "tipo": "vf",
+    "explicacion": "Verdadero. El segmentador es una vista filtrada; los datos de la hoja de ventas permanecen intactos."
+  },
+  {
+    "pregunta": "La Tabla dinámica se actualiza automáticamente al modificar la base de datos original.",
+    "opciones": [],
+    "respuesta": 1,
+    "tipo": "vf",
+    "explicacion": "Falso. Requiere actualización manual (clic derecho > Actualizar) para reflejar los cambios de la base."
+  },
+  {
+    "pregunta": "«Ajustar a 1 página» en orientación horizontal permite exportar el dashboard completo en una sola página del PDF.",
+    "opciones": [],
+    "respuesta": 0,
+    "tipo": "vf",
+    "explicacion": "Verdadero. Se configura en Disposición de página antes de Archivo > Exportar > Crear PDF/XPS."
+  }
+];
+      document.addEventListener("DOMContentLoaded", function () { initQuiz(preguntasTest09); });
+    </script>
+    <script src="../../busqueda.js"></script>
+  </body>
+</html>
